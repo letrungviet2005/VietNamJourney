@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './Navbar/Navbar.js';
+import { Routes, Route } from 'react-router-dom';
+import Intro from './Intro/Intro.js'
+import TrangChu from './TrangChu/TrangChu.js'
+import CongDong from './CongDong/CongDong.js'
+import ChienDich from './ChienDich/ChienDich.js'
+import Quy from './Quy/Quy.js'
+import TaiKhoan from './TaiKhoan/TaiKhoan.js'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      <div style={{ height: '4rem' }}></div>
+      <Routes>
+      <Route path="/" element={<Intro />} />
+      <Route path="/TrangChu" element={<TrangChu />} />
+      <Route path="/CongDong" element={<CongDong />} />
+      <Route path="/ChienDich" element={<ChienDich />} />
+      <Route path="/Quy" element={<Quy />} />
+      <Route path="/TaiKhoan" element={<TaiKhoan />} />
+        {/* Thêm các Route khác ở đây */}
+      </Routes>
     </div>
+    
   );
 }
 
