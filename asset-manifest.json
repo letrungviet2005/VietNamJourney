@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/VietNamJourney/static/css/main.8b0456e0.css",
+    "main.js": "/VietNamJourney/static/js/main.def2a315.js",
+    "static/js/453.e0258706.chunk.js": "/VietNamJourney/static/js/453.e0258706.chunk.js",
+    "static/media/header1.png": "/VietNamJourney/static/media/header1.911d4bbae5aa2e2c9af6.png",
+    "static/media/header2.png": "/VietNamJourney/static/media/header2.a2618553258482f127e4.png",
+    "index.html": "/VietNamJourney/index.html",
+    "main.8b0456e0.css.map": "/VietNamJourney/static/css/main.8b0456e0.css.map",
+    "main.def2a315.js.map": "/VietNamJourney/static/js/main.def2a315.js.map",
+    "453.e0258706.chunk.js.map": "/VietNamJourney/static/js/453.e0258706.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8b0456e0.css",
+    "static/js/main.def2a315.js"
+  ]
+}
