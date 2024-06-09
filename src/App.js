@@ -13,13 +13,13 @@ function App() {
       <Navbar />
       <div style={{ height: '4rem' }}></div>
       <Routes>
-      <Route path="/" element={<Intro />} />
-      <Route path="/TrangChu" element={<TrangChu />} />
-      <Route path="/CongDong" element={<CongDong />} />
-      <Route path="/ChienDich" element={<ChienDich />} />
-      <Route path="/Quy" element={<Quy />} />
-      <Route path="/TaiKhoan" element={<TaiKhoan />} />
-        {/* Thêm các Route khác ở đây */}
+      <Route path="/VietNamJourney/" element={<Intro />} />
+      <Route path="/VietNamJourney/TrangChu" element={<TrangChu />} />
+      <Route path="/VietNamJourney/CongDong" element={<CongDong />} />
+      <Route path="/VietNamJourney/ChienDich" element={<ChienDich />} />
+      <Route path="/VietNamJourney/Quy" element={<Quy />} />
+      <Route path="/VietNamJourney/TaiKhoan" element={<TaiKhoan />} />
+      {/* Thêm các Route khác ở đây */}
       </Routes>
     </div>
     
