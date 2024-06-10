@@ -1,12 +1,12 @@
-import Navbar from './Navbar/Navbar.js';
+import Navbar from './component/Navbar/Navbar.js';
 import { Routes, Route } from 'react-router-dom';
-import Intro from './Intro/Intro.js'
-import TrangChu from './TrangChu/TrangChu.js'
-import CongDong from './CongDong/CongDong.js'
-import ChienDich from './ChienDich/ChienDich.js'
-import Quy from './Quy/Quy.js'
-import TaiKhoan from './TaiKhoan/TaiKhoan.js'
-import User from './User/User.js'
+import Intro from './pages/Intro/Intro.js'
+import TrangChu from './pages/TrangChu/TrangChu.js'
+import CongDong from './pages/CongDong/CongDong.js'
+import ChienDich from './pages/ChienDich/ChienDich.js'
+import Quy from './pages/Quy/Quy.js'
+import TaiKhoan from './pages/TaiKhoan/TaiKhoan.js'
+import User from './pages/User/User.js'
 
 function App() {
   return (

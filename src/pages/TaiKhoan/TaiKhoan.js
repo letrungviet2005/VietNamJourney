@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './TaiKhoan.module.css';
-import background from '../Images/TaiKhoan/background_taikhoan.jpg';
+
 
 function TaiKhoan() {
   const [active, setActive] = useState(false);

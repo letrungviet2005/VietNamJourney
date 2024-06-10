@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css'; // Import CSS module
-import header1 from '../Images/header1.png';
-import header2 from '../Images/header2.png';
+import header1 from '../../Images/Logos/header1.png';
+import header2 from '../../Images/Logos/header2.png';
 
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
