@@ -1,6 +1,15 @@
+import React from "react";
+import CoVeChungToi from "./VeChungToi";
+
+
+
 function TrangChu() {
     return (
-        <div>Đây là Trang Chủ</div>
+        <div>
+
+            <CoVeChungToi />
+
+        </div>
     );
 }
 
