@@ -33,11 +33,11 @@ function Navbar() {
 
       <div className={styles.links}> 
         <nav>
-          <Link to="/VietNamJourney/TrangChu">TRANG CHỦ</Link>
-          <Link to="/VietNamJourney/CongDong">CỘNG ĐỒNG</Link>
-          <Link to="/VietNamJourney/ChienDich">CHIẾN DỊCH</Link>
-          <Link to="/VietNamJourney/Quy">QUỸ</Link>
-          <Link to="/VietNamJourney/TaiKhoan">TÀI KHOẢN  <i className="fa-solid fa-user"></i></Link>
+          <Link to="/TrangChu">TRANG CHỦ</Link>
+          <Link to="/CongDong">CỘNG ĐỒNG</Link>
+          <Link to="/ChienDich">CHIẾN DỊCH</Link>
+          <Link to="/Quy">QUỸ</Link>
+          <Link to="/TaiKhoan">TÀI KHOẢN  <i className="fa-solid fa-user"></i></Link>
         </nav>
       </div>
 
@@ -56,19 +56,19 @@ function Navbar() {
             <i className="fa-solid fa-bars"></i>
           </div>
           <div className={styles['list-navbar']}> 
-            <Link to="/VietNamJourney/TrangChu" onClick={toggleSidebar}>
+            <Link to="/TrangChu" onClick={toggleSidebar}>
               TRANG CHỦ <i className="fa-solid fa-house"></i>
             </Link>
-            <Link to="/VietNamJourney/CongDong" onClick={toggleSidebar}>
+            <Link to="/CongDong" onClick={toggleSidebar}>
               CỘNG ĐỒNG <i className="fa-solid fa-earth-americas"></i>
             </Link>
-            <Link to="/VietNamJourney/ChienDich" onClick={toggleSidebar}>
+            <Link to="/ChienDich" onClick={toggleSidebar}>
               CHIẾN DỊCH <i className="fa-solid fa-fire"></i>
             </Link>
-            <Link to="/VietNamJourney/Quy" onClick={toggleSidebar}>
+            <Link to="/Quy" onClick={toggleSidebar}>
               QUỸ <i className="fa-solid fa-hand-holding-dollar"></i>
             </Link>
-            <Link to="/VietNamJourney/TaiKhoan" onClick={toggleSidebar}>
+            <Link to="/TaiKhoan" onClick={toggleSidebar}>
               TÀI KHOẢN <i className="fa-solid fa-user"></i>
             </Link>
           </div>
