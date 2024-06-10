@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'RaleWay';
+    src: url('../../../component/Fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
+
+
+
 div.main {
     width: 1512px;
 
@@ -90,6 +102,8 @@ div.main div.div2 div.bt1 button {
     height: 76px;
     flex-shrink: 0;
 
+    padding-right: 30px;
+
     border-radius: 20px;
     background: #3AB137;
 
@@ -111,6 +125,6 @@ div.main div.div2 div.bt1 img {
     height: 37px;
     flex-shrink: 0;
 
-    margin-left: -65px;
+    margin-left: -70px;
     margin-top: -10px;
 }

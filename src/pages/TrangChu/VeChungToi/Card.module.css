@@ -3,6 +3,10 @@
     src: url('../../../component/Fonts/Raleway/Raleway-VariableFont_wght.ttf');
 }
 
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
 
 
 

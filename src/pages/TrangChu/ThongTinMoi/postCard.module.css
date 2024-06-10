@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'RaleWay';
+    src: url('../../../component/Fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
+
+
+div.main {
+    width: 390px;
+    height: 453px;
+    flex-shrink: 0;
+
+    border-radius: 10px;
+    border: 1px solid #B9B9B9;
+    background: #FFF;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+div.main div.post_div1 img {
+    width: 285px;
+    height: 236px;
+    flex-shrink: 0;
+}
+
+
+div.main div.post_div2 {
+    width: 328px;
+    height: 142px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.post_div2 div.info1 {
+    width: 102px;
+    height: 27px;
+    flex-shrink: 0;
+
+    border-radius: 30px;
+    background: rgba(238, 238, 238, 0.60);
+
+    display: flex;
+}
+
+
+div.main div.post_div2 div.info1 img {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+}
+
+
+div.main div.post_div2 div.info1 p {
+    width: 76px; 
+    padding-top: 3.2px;
+
+    color: #018E42;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Radio Canada";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 18.2px */
+}
+
+
+div.main div.post_div2 div.info2 {
+    width: 328px;
+    height: 75px;
+    flex-shrink: 0;
+
+    padding-top: 7px;
+}
+
+
+div.main div.post_div2 div.info2 p {
+    width: 328px; 
+
+    color: #1E266D;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Radio Canada";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 28.6px */
+}
+
+
+div.main div.post_div2 div.info3 {
+    width: 328px;
+    height: 40px;
+    flex-shrink: 0;
+
+    display: flex;
+}
+
+
+div.main div.post_div2 div.info3 img {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+}
+
+
+div.main div.post_div2 div.info3 p {
+    width: 292px; 
+    margin-left: 4.2px;
+    padding-top: 3px;
+
+    color: #1E266D;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Radio Canada";
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 24.7px */
+}
