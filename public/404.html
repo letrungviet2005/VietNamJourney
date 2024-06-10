@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html>
-    <head>
-    <meta http-equiv="refresh" content="0; URL='https://letrungviet2005.github.io/VietNamJourney/'" />
-    </head>
-    <body>
-    </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404</title>
+<script>
+    // Điều hướng tất cả các route không xác định tới index.html, giữ lại đường dẫn gốc
+    if (location.pathname !== '/VietNamJourney/index.html') {
+        location.replace('/VietNamJourney/index.html?redirect=' + location.pathname + location.search);
+    }
+</script>
+</head>
+<body>
+</body>
 </html>
