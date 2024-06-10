@@ -1,5 +1,4 @@
-import React from "react";
-import CoVeChungToi from "./VeChungToi";
+import CoVeChungToi from "./VeChungToi/VeChungToi.jsx";
 
 
 
