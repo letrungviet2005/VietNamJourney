@@ -56,19 +56,19 @@ function Navbar() {
             <i className="fa-solid fa-bars"></i>
           </div>
           <div className={styles['list-navbar']}> 
-            <Link to="/VietNamJourney/TrangChu" onClick={toggleSidebar}>
+            <Link to="/TrangChu" onClick={toggleSidebar}>
               TRANG CHỦ <i className="fa-solid fa-house"></i>
             </Link>
-            <Link to="/VietNamJourney/CongDong" onClick={toggleSidebar}>
+            <Link to="/CongDong" onClick={toggleSidebar}>
               CỘNG ĐỒNG <i className="fa-solid fa-earth-americas"></i>
             </Link>
-            <Link to="/VietNamJourney/ChienDich" onClick={toggleSidebar}>
+            <Link to="/ChienDich" onClick={toggleSidebar}>
               CHIẾN DỊCH <i className="fa-solid fa-fire"></i>
             </Link>
-            <Link to="/VietNamJourney/Quy" onClick={toggleSidebar}>
+            <Link to="/Quy" onClick={toggleSidebar}>
               QUỸ <i className="fa-solid fa-hand-holding-dollar"></i>
             </Link>
-            <Link to="/VietNamJourney/TaiKhoan" onClick={toggleSidebar}>
+            <Link to="/TaiKhoan" onClick={toggleSidebar}>
               TÀI KHOẢN <i className="fa-solid fa-user"></i>
             </Link>
           </div>
