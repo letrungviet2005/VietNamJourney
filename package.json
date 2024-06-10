@@ -18,8 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "postbuild": "cpy build/index.html build/404.html"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -42,7 +41,6 @@
   "homepage": "https://letrungviet2005.github.io/VietNamJourney",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "cpy-cli": "^5.0.0",
     "gh-pages": "^6.1.1"
   }
 }
