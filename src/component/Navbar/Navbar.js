@@ -33,11 +33,11 @@ function Navbar() {
 
       <div className={styles.links}> 
         <nav>
-          <Link to="/VietNamJourney/TrangChu">TRANG CHỦ</Link>
-          <Link to="/VietNamJourney/CongDong">CỘNG ĐỒNG</Link>
-          <Link to="/VietNamJourney/ChienDich">CHIẾN DỊCH</Link>
-          <Link to="/VietNamJourney/Quy">QUỸ</Link>
-          <Link to="/VietNamJourney/TaiKhoan">TÀI KHOẢN  <i className="fa-solid fa-user"></i></Link>
+          <Link to="/TrangChu">TRANG CHỦ</Link>
+          <Link to="/CongDong">CỘNG ĐỒNG</Link>
+          <Link to="/ChienDich">CHIẾN DỊCH</Link>
+          <Link to="/Quy">QUỸ</Link>
+          <Link to="/TaiKhoan">TÀI KHOẢN  <i className="fa-solid fa-user"></i></Link>
         </nav>
       </div>
 
