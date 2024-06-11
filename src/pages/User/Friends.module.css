@@ -1,0 +1,23 @@
+.container2-friends{
+    display: flex;
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    
+}.container2-friends img{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}.container2-friends-info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    
+}.container2-friends-info button{
+    border-radius: 10px;
+    border : 1px solid rgb(182, 182, 182);
+    background-color: #ffffff;
+}
