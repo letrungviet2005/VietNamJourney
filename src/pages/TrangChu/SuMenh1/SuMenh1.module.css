@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'RaleWay';
+    src: url('../../../component/Fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
+
+
+
+div.main {
+    width: 1512px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+div.main div.div1 {
+    width: 1512px;
+    height: 159px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+div.main div.div1 h2 {
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Raleway;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%; /* 62.4px */
+}
+
+
+div.main div.div1 p {
+    color: #403E3E;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Raleway;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%; /* 33.8px */
+}
+
+
+div.main div.div2 {
+    width: 1511px;
+    height: 755px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+div.main div.div2 div.txt p {
+    width: 723px;
+    padding-left: 10px; 
+
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    text-shadow: 0px 4px 22px rgba(255, 255, 255, 0.25);
+    font-family: Raleway;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%; /* 44.2px */
+}
+
+
+div.main div.div2 div.images {
+    width: 788px;
+    height: 755px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div2 div.images div.imgbg {
+    width: 988px;
+    margin-left: -200px;
+    height: 755px;
+
+    background: rgba(168, 204, 172, 0.45);
+    filter: blur(250px);
+
+    position: absolute;
+
+    z-index: -1;
+}
+
+
+
+div.main div.div2 div.images img.img1 {
+    width: 370px;
+    height: 361px;
+    flex-shrink: 0;
+
+    border-radius: 20px;
+
+    margin-top: -250px;
+    margin-right: -78px;
+
+    z-index: 2;
+}
+
+
+div.main div.div2 div.images img.img2 {
+    width: 397px;
+    height: 378px;
+    flex-shrink: 0;
+
+    border-radius: 20px; 
+
+    margin-bottom: -200px;
+}

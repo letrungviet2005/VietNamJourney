@@ -27,7 +27,7 @@ function CoThongTinMoi() {
                 <div className={styles.posts}>
                     <CopostCard image={anh1}
                                 txt1="Việt Nam"
-                                txt2="Việt Nam cam kết giảm rát thải rắn bằng 0 vào 2050"
+                                txt2="Việt Nam cam kết giảm rác thải rắn bằng 0 vào 2050"
                                 txt3="04/06/2024"
                     />
 
