@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/VietNamJourney/static/css/main.a51186e7.css",
-    "main.js": "/VietNamJourney/static/js/main.dbaf38a1.js",
+    "main.css": "/VietNamJourney/static/css/main.1fb17f8a.css",
+    "main.js": "/VietNamJourney/static/js/main.af00f645.js",
     "static/js/453.e0258706.chunk.js": "/VietNamJourney/static/js/453.e0258706.chunk.js",
     "static/media/anhNen.png": "/VietNamJourney/static/media/anhNen.2b37d013869226a4fa7f.png",
     "static/media/anhphuhoa.png": "/VietNamJourney/static/media/anhphuhoa.5ac880525e50fd769fbc.png",
     "static/media/RadioCanada-VariableFont_wdth,wght.ttf": "/VietNamJourney/static/media/RadioCanada-VariableFont_wdth,wght.ab9bef6550875ce75c4f.ttf",
     "static/media/Dinh.png": "/VietNamJourney/static/media/Dinh.8f9bfbfa2806f53a6a0b.png",
+    "static/media/anh2.png": "/VietNamJourney/static/media/anh2.ccbdea21a7efd239f0e9.png",
     "static/media/header1.png": "/VietNamJourney/static/media/header1.911d4bbae5aa2e2c9af6.png",
     "static/media/Raleway-VariableFont_wght.ttf": "/VietNamJourney/static/media/Raleway-VariableFont_wght.d8040b0cc740dda7550a.ttf",
+    "static/media/anh1.png": "/VietNamJourney/static/media/anh1.79f38454ee5def1b0898.png",
     "static/media/Tu.jpeg": "/VietNamJourney/static/media/Tu.89170e3cea193ae88b66.jpeg",
     "static/media/header2.png": "/VietNamJourney/static/media/header2.a2618553258482f127e4.png",
     "static/media/anh3.png": "/VietNamJourney/static/media/anh3.41205f0a4e4bfd4e5333.png",
-    "static/media/anh2.png": "/VietNamJourney/static/media/anh2.ccbdea21a7efd239f0e9.png",
-    "static/media/anh1.png": "/VietNamJourney/static/media/anh1.79f38454ee5def1b0898.png",
     "static/media/Bao.jpeg": "/VietNamJourney/static/media/Bao.112a3ee08103c3878743.jpeg",
     "index.html": "/VietNamJourney/index.html",
-    "main.a51186e7.css.map": "/VietNamJourney/static/css/main.a51186e7.css.map",
-    "main.dbaf38a1.js.map": "/VietNamJourney/static/js/main.dbaf38a1.js.map",
+    "main.1fb17f8a.css.map": "/VietNamJourney/static/css/main.1fb17f8a.css.map",
+    "main.af00f645.js.map": "/VietNamJourney/static/js/main.af00f645.js.map",
     "453.e0258706.chunk.js.map": "/VietNamJourney/static/js/453.e0258706.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a51186e7.css",
-    "static/js/main.dbaf38a1.js"
+    "static/css/main.1fb17f8a.css",
+    "static/js/main.af00f645.js"
   ]
 }
