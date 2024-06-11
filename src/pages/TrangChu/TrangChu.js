@@ -1,5 +1,8 @@
-import React from "react";
-import CoVeChungToi from "./VeChungToi";
+import CoVeChungToi from "./VeChungToi/VeChungToi.jsx";
+import CoSuMenh1 from "./SuMenh1/SuMenh1.jsx";
+import CoSuMenh2 from "./SuMenh2/SuMenh2.jsx";
+import CoSuMenh3 from "./SuMenh3/SuMenh3.jsx";
+import CoThongTinMoi from "./ThongTinMoi/ThongTinMoi.jsx";
 
 
 
@@ -8,6 +11,12 @@ function TrangChu() {
         <div>
 
             <CoVeChungToi />
+
+            <CoSuMenh1 />
+            <CoSuMenh2 />
+            <CoSuMenh3 />
+
+            <CoThongTinMoi />
 
         </div>
     );
