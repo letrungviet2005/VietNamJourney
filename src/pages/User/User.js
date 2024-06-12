@@ -63,21 +63,23 @@ function User() {
           </div>
           <hr className={styles['black-line']} />
           <div className={styles.container4}>
-            <Post
-              avatar={viet}
-              name="Lê Trung Việt"
-              time="6 giờ trước"
-              content="Chiến dịch này tôi đã tham gia cách đây 2 tháng về trước, chuyến đi đã cho tôi những trải nghiệm khó quên với những người bạn. Hy vọng mọi điều sẽ tốt đẹp đến với mọi người."
-              hashtags="#VIETNAM_JOURNEY #VIETNAMXANH"
-              image={anhchiendich}
-              likes={13}
-              comments={1}
-              shares={2}
-              commenterAvatar={dinh}
-              commenterName="Dương Đính"
-              commentTime="15 phút trước"
-              commentText="Hạnh phúc khi được là một phần của cuộc hành trình ❤️ #VIETNAM_JOURNEY"
-            />
+          <Post
+    avatar={viet}
+    name="Lê Trung Việt"
+    time="6 giờ trước"
+    content="Chiến dịch này tôi đã tham gia cách đây 2 tháng về trước, chuyến đi đã cho tôi những trải nghiệm khó quên với những người bạn. Hy vọng mọi điều sẽ tốt đẹp đến với mọi người."
+    hashtags="#VIETNAM_JOURNEY #VIETNAMXANH"
+    image={anhchiendich}
+    likes={13}
+    comments={1}
+    shares={2}
+    comment={true}
+    commenterAvatar={dinh}
+    commenterName="Dương Đính"
+    commentTime="15 phút trước"
+    commentText="Hạnh phúc khi được là một phần của cuộc hành trình ❤️ #VIETNAM_JOURNEY"
+    isLike={true}
+/>
             <Post
               avatar={viet}
               name="Lê Trung Việt"
@@ -88,10 +90,8 @@ function User() {
               likes={26}
               comments={5}
               shares={7}
-              commenterAvatar={bao}
-              commenterName="Phước Bảo"
-              commentTime="8 phút trước"
-              commentText="Không nằm ngoài dự đoán ❤️ #VIETNAM_JOURNEY"
+              comment={false}
+              isLike={false}
             />
           </div>
         </div>

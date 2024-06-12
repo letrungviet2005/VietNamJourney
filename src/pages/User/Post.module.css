@@ -7,7 +7,7 @@
     margin-bottom: 2rem;
     padding-bottom: 1rem;
 }.post-header {
-    width: 90%;
+    width: 92%;
     display: flex;
     margin-left: 2rem;
 }.post-header-avatar {
@@ -40,6 +40,7 @@
     width: 95%;
     margin-left: 2rem;
     margin-top: 1rem;
+    font-weight: 500;
 }.post-body img{
     width: 100%;
     height: auto;
