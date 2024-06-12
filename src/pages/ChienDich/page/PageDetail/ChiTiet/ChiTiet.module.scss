@@ -1,0 +1,59 @@
+.ChiTiet {
+  width: calc(100% - 200px);
+  margin-left: 100px;
+  margin-top: 40px;
+  background-color: white;
+
+  hr {
+    width: 100px;
+    border: 2px solid #35973F;
+    opacity: 1;
+    margin-bottom: 10px;
+    margin-top: 40px;
+  }
+}
+
+.left {
+  padding-left: 50px;
+}
+
+.left .time {
+  margin-left: 10px;
+  border-left: 3px solid #001273;
+  padding-left: 40px;
+}
+
+.left .inner-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #001273;
+  margin-bottom: 5px;
+}
+
+.left .desc {
+  font-size: 16px;
+  font-weight: 600;
+  color: #737373;
+  margin-bottom: 30px;  
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #35973F;
+  margin-bottom: 20px;
+}
+
+.right .desc {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4F4F4F;
+  margin-bottom: 20px;
+}
+
+.line {
+  border: 1px solid #e3e3e3;
+  width: calc(100% - 100px);
+  margin-left: 50px;
+  margin-top: 30px;
+}

@@ -1,0 +1,35 @@
+.Campaign {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+}
+
+.camp-id {
+  position: absolute;
+  display: inline-block;
+  top: 15px;
+  left: 15px;
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+  line-height: 100%;
+}
+
+.camp-type {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background-color: #35973F;
+  border-radius: 10px;
+}
+
+.Campaign .title {
+  padding-top: 50%;
+  font-size: 40px;
+}

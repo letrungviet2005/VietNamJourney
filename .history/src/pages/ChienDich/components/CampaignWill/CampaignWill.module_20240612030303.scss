@@ -1,0 +1,26 @@
+:root {
+  --color-text: #196E36;
+  --color-desc: #8C8989;
+}
+.CampaignWill {
+  margin-top: 80px;
+
+  hr {
+    margin: 0;
+    width: 20%;
+    border: 3px solid var(--color-text);
+    opacity: 1;
+  }
+}
+
+.CampaignWill .title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 40px;
+  margin-top: 15px;
+}
+
+.pad {
+  margin: 0px -35px;
+}

@@ -1,0 +1,19 @@
+.TongQuan {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.left {
+  width: 20%;
+}
+
+.left .inner .title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.right {
+  width: 60%;
+}
+
+

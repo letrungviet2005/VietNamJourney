@@ -1,0 +1,25 @@
+:root {
+  --color-text: #196E36;
+  --color-desc: #8C8989;
+}
+.CampaignIng {
+  margin-top: 80px;
+
+  hr {
+    margin: 0;
+    width: 300px;
+    border: 2px solid var(--color-text);
+    opacity: 1;
+  }
+}
+
+.CampaignIng .title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 40px;
+}
+
+.pad {
+  margin: 0px -35px;
+}
