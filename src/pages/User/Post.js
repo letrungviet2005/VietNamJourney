@@ -12,11 +12,6 @@ const Post = ({
     likes, 
     comments, 
     shares, 
-    comment, 
-    commenterAvatar, 
-    commenterName, 
-    commentTime, 
-    commentText, 
     isLike 
 }) => {
     const [isLiked, setIsLiked] = useState(isLike);
@@ -39,7 +34,7 @@ const Post = ({
                 </div>
                 <div className={styles['post-header-info']}>
                     <h5>{name}</h5>
-                    <span style={{ fontSize: '0.8rem' }}>{time} <i className="fa-solid fa-earth-asia"></i></span>
+                    <span style={{ fontSize: '0.8rem' }}>{time}</span>
                 </div>
                 <div className={styles['post-header-option']}>
                     <img alt="options" src={dots} />
@@ -67,25 +62,6 @@ const Post = ({
                     <p><i className="fa-regular fa-comment"></i> comment</p>
                     <p><i className="fa-regular fa-paper-plane"></i> share</p>
                 </div>
-                {comment &&
-                    <div className={styles['post-footer-bottom']}>
-                        <img alt="commenter avatar" src={commenterAvatar} />
-                        <div className={styles['post-footer-bottom-comment']}>
-                            <div className={styles['post-footer-bottom-comment-top']}>
-                                <p style={{ fontWeight: 'bold' }}>{commenterName} </p>
-                                <p style={{ marginLeft: '0.2rem' }}> - {commentTime}</p>
-                                <div className={styles['post-footer-bottom-comment-top-option']}>
-                                    <img alt="options" src={dots} />
-                                </div>
-                            </div>
-                            <div className={styles['post-footer-bottom-comment-body']}>
-                                <p>{commentText}</p>
-                                <div className={styles['post-footer-bottom-comment-body-like']}>
-                                    <i className="fa-regular fa-heart"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>}
             </div>
         </div>
     );

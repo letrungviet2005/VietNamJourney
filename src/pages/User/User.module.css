@@ -80,6 +80,7 @@ body {
     border-radius: 20px;
     background-color: white;
     padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 .container3-top {
     display: flex;
@@ -100,17 +101,6 @@ body {
     background-color: white;
     border: 1px solid rgb(101, 100, 100);
     margin-left: 0.3rem;
-}.container3-bottom {
-    width: 80%;
-    display: flex;
-    margin-left: 0;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}.container3-bottom p{
-    margin-left: 7rem;
-}.container3-bottom img{
-    width: 2rem;
-    height: 2rem;
 }
 .container4 {
     margin-top: 1rem;
@@ -131,38 +121,9 @@ body {
 
 
 
-@media (max-width: 992px) {
-    .container3-bottom {
-    width: 100%;
-}.container3-bottom p{
-    margin-left: 4rem;
-}
-}
-@media (max-width: 765px) {
-    .container3-bottom {
-    width: 100%;
-}.container3-bottom p{
-    margin-left: 5.4rem;
-}
-}@media (max-width: 600px) {
-    .container3-bottom {
-    width: 100%;
-}.container3-bottom p{
-    margin-left: 4rem;
-}
-}@media (max-width: 500px) {
+
+@media (max-width: 500px) {
     .container3-top {
     margin-left: 1rem;
-}
-    .container3-bottom {
-    width: 100%;
-}.container3-bottom p{
-    margin-left: 3rem;
-}
-}@media (max-width: 450px) {
-    .container3-bottom {
-    width: 100%;
-}.container3-bottom p{
-    margin-left: 1.5rem;
 }
 }

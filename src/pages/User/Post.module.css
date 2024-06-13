@@ -59,41 +59,6 @@
     margin-left: 1rem;
 }.post-footer-middle p{
     margin-left: 1rem;
-}.post-footer-bottom{
-    width: 90%;
-    margin-left: 3rem;
-    display: flex;
-}.post-footer-bottom img{
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-}.post-footer-bottom-comment{
-    width: 90%;
-    margin-left: 1rem;
-    background-color: #e4e7e5;
-    border-radius: 10px;
-    padding-left: 1rem;
-}.post-footer-bottom-comment-top{
-    width: 100%;
-    display: flex;
-}.post-footer-bottom-comment-top-option{
-    margin-left: auto;
-    margin-right: 2rem;
-}.post-footer-bottom-comment-top-option img{
-    width: 1.5rem ;
-    height: auto;
-}.post-footer-bottom-comment-body{
-    width: 100%;
-    display: flex;
-}.post-footer-bottom-comment-body-like{
-    margin-left: auto;
-    margin-right: 2rem;
-}.post-footer-bottom-comment-body-like i{
-    font-size: 1.5rem;
 }
 
 

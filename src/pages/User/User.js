@@ -1,13 +1,8 @@
 import React from 'react';
 import styles from './User.module.css';
-import image from '../../Images/User/image.png';
-import event from '../../Images/User/event.png';
-import location from '../../Images/User/location.png';
 import anhchiendich from '../../Images/User/anhchiendich.png';
 import f4 from '../../Images/User/FourStarts.jpg';
 import viet from '../../Images/Icons/Viet.jpeg';
-import bao from '../../Images/Icons/Bao.jpeg';
-import dinh from '../../Images/Icons/Dinh.png';
 import tu from '../../Images/Icons/Tu.jpeg';
 import Friends from './Friends.js';
 import Post from './Post.js';
@@ -34,16 +29,14 @@ function User() {
             </div>
           </div>
           <div className={styles.container2}>
-            <p style={{ marginLeft: '1rem' }}> Gợi ý cho bạn</p>
+            <p style={{ marginLeft: '1rem',fontWeight : 'bold' }}> Gợi ý cho bạn</p>
             <Friends 
               imgSrc={tu} 
               username="anh_tu" 
-              role="Đồng sáng lập VIETNAMJOURNEY" 
             />
             <Friends 
               imgSrc={tu} 
               username="anh_tu" 
-              role="Đồng sáng lập VIETNAMJOURNEY" 
             />
           </div>
         </div>
@@ -54,11 +47,6 @@ function User() {
                 <img src={viet} alt="Avatar" />
               </div>
               <button>Hãy viết gì đó cho bài viết của bạn</button>
-            </div>
-            <div className={styles['container3-bottom']}>
-              <p><img alt="image1" src={image} />Ảnh/Video</p>
-              <p><img alt="image2" src={event} />Sự kiện</p>
-              <p><img alt="image3" src={location} />Vị trí</p>
             </div>
           </div>
           <hr className={styles['black-line']} />
@@ -73,13 +61,8 @@ function User() {
     likes={13}
     comments={1}
     shares={2}
-    comment={true}
-    commenterAvatar={dinh}
-    commenterName="Dương Đính"
-    commentTime="15 phút trước"
-    commentText="Hạnh phúc khi được là một phần của cuộc hành trình ❤️ #VIETNAM_JOURNEY"
     isLike={true}
-/>
+    />
             <Post
               avatar={viet}
               name="Lê Trung Việt"
@@ -90,7 +73,6 @@ function User() {
               likes={26}
               comments={5}
               shares={7}
-              comment={false}
               isLike={false}
             />
           </div>
