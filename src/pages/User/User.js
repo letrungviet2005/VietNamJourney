@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './User.module.css';
 import anhchiendich from '../../Images/User/anhchiendich.png';
 import f4 from '../../Images/User/FourStarts.jpg';
@@ -8,6 +8,23 @@ import Friends from './Friends.js';
 import Post from './Post.js';
 
 function User() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost/BWD/vietnamjourney/Server/backend.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ userId: 1 }) // Gửi dữ liệu cần thiết
+    })
+    .then(response => response.json())
+    .then(data => {
+      setPosts(data.posts); // Giả sử phản hồi chứa danh sách bài viết
+    })
+    .catch(error => console.error('Error:', error));
+  }, []);
+
   return (
     <div className="container" style={{ marginTop: '1rem' }}>
       <div className="row">
@@ -51,30 +68,21 @@ function User() {
           </div>
           <hr className={styles['black-line']} />
           <div className={styles.container4}>
-          <Post
-    avatar={viet}
-    name="Lê Trung Việt"
-    time="6 giờ trước"
-    content="Chiến dịch này tôi đã tham gia cách đây 2 tháng về trước, chuyến đi đã cho tôi những trải nghiệm khó quên với những người bạn. Hy vọng mọi điều sẽ tốt đẹp đến với mọi người."
-    hashtags="#VIETNAM_JOURNEY #VIETNAMXANH"
-    image={anhchiendich}
-    likes={13}
-    comments={1}
-    shares={2}
-    isLike={true}
-    />
-            <Post
-              avatar={viet}
-              name="Lê Trung Việt"
-              time="6 giờ trước"
-              content="Có vẻ như ... nhà vô địch BWD 2024 đã lộ diện."
-              hashtags="#VIETNAM_JOURNEY #VIETNAMXANH"
-              image={f4}
-              likes={26}
-              comments={5}
-              shares={7}
-              isLike={false}
-            />
+            {posts.map((post, index) => (
+              <Post
+                key={index}
+                avatar={viet}
+                name="Lê Trung Việt"
+                time={post.time}
+                content={post.content}
+                hashtags={post.hashtags}
+                image={post.image}
+                likes={post.likes}
+                comments={post.comments}
+                shares={post.shares}
+                isLike={post.isLike}
+              />
+            ))}
           </div>
         </div>
       </div>
