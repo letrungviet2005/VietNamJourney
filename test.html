@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Status Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+
+        #status {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Server Status Checker</h1>
+    <input type="text" id="serverUrl" placeholder="Enter server URL" size="50">
+    <button onclick="checkServerStatus()">Check Status</button>
+    <div id="status"></div>
+
+    <script>
+        function checkServerStatus() {
+            const url = document.getElementById('serverUrl').value;
+            const statusDiv = document.getElementById('status');
+
+            if (!url) {
+                statusDiv.innerHTML = 'Please enter a server URL.';
+                statusDiv.classList.add('error');
+                return;
+            }
+
+            fetch(url)
+                .then(response => {
+                    if (response.ok) {
+                        statusDiv.innerHTML = `Server is up and running. Status: ${response.status}`;
+                        statusDiv.classList.add('success');
+                        statusDiv.classList.remove('error');
+                    } else {
+                        statusDiv.innerHTML = `Server is down. Status: ${response.status}`;
+                        statusDiv.classList.add('error');
+                        statusDiv.classList.remove('success');
+                    }
+                })
+                .catch(error => {
+                    statusDiv.innerHTML = `Error: ${error.message}`;
+                    statusDiv.classList.add('error');
+                    statusDiv.classList.remove('success');
+                });
+        }
+    </script>
+</body>
+
+</html>
