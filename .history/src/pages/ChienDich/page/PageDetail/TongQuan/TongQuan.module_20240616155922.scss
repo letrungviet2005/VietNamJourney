@@ -1,0 +1,59 @@
+.TongQuan {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 40px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.left {
+  width: 20%;
+  border-left: 1px solid #C3C3C3;
+  padding-left: 10px;
+
+  hr {
+    margin: 0;
+    width: 60%;
+    border: 2px solid var(--color-text);
+    opacity: 1;
+    margin-bottom: 40px;
+  }
+}
+
+.left .inner .title {
+  font-size: 18px;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.left .inner .time {
+  font-size: 18px;
+  font-weight: 500;
+  color: #35973F;
+  margin-bottom: 40px;
+}
+
+.right {
+  width: 50%;
+  border-left: 1px solid #C3C3C3;
+  padding-left: 10px;
+  border-right: 1px solid #C3C3C3;
+  padding-right: 10px;
+
+  p {
+    color: black;
+    font-size: 16;
+    font-weight: 400;
+    text-align: justify;
+  }
+}
+
+.info {
+  width: 30%;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+

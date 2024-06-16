@@ -1,0 +1,68 @@
+import classNames from "classnames/bind";
+import style from './PageDetail.module.scss';
+import { useLocation } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import TongQuan from "./TongQuan/TongQuan";
+import TacDong from "./TacDong/TacDong";
+import ChiTiet from "./ChiTiet/ChiTiet";
+import ThongTinThem from "./ThongTinThem/ThongTinThem";
+
+const cx = classNames.bind(style);
+
+function PageDetail() {
+  const location = useLocation(); // Hook để lấy thông tin location hiện tại
+  const { imageUrl, campId, desc } = location.state || {}; // Lấy dữ liệu từ state hoặc đặt mặc định là {} nếu không có
+
+
+  
+  const myStyle = {
+    backgroundImage: `url(${imageUrl})`,
+    backgroundSize: 'cover',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Màu đen trong suốt với độ mờ 50%
+    backgroundBlendMode: 'multiply', // Áp dụng chế độ kết hợp 'multiply' để làm cho ảnh nền bị tối đi
+  };
+
+  return (  
+    <div className={cx('PageDetail')}>
+      <div className={cx('header')} style={myStyle}>
+        <p className={cx('title')}>Dự án & Chiến dịch</p>
+        <p className={cx('camp-id')}>{campId}</p>
+        <p className={cx('desc')}>{desc}</p>
+      </div>
+      <div className={classNames('menu')}>
+        <ul>
+          <li
+            className={classNames({ 'active': activeSection === 'tongQuan' })}
+            onClick={() => scrollToSection(tongQuanRef, 'tongQuan')}
+          >
+            Tổng quan
+          </li>
+          <li
+            onClick={() => scrollToSection(tacDongRef, 'tacDong')}
+            className={classNames({ 'active': activeSection === 'tacDong' })}
+          >
+            Tác động
+          </li>
+          <li
+            onClick={() => scrollToSection(chiTietRef, 'chiTiet')}
+            className={classNames({ 'active': activeSection === 'chiTiet' })}
+          >
+            Chi tiết
+          </li>
+          <li
+            onClick={() => scrollToSection(thongTinThemRef, 'thongTinThem')}
+            className={classNames({ 'active': activeSection === 'thongTinThem' })}
+          >
+            Thông tin thêm
+          </li>
+        </ul>
+      </div>
+      <div ref={tongQuanRef}><TongQuan /></div>
+      <div ref={tacDongRef}><TacDong /></div>
+      <div ref={chiTietRef}><ChiTiet /></div>
+      <div ref={thongTinThemRef}><ThongTinThem /></div>
+    </div>
+  );
+}
+
+export default PageDetail;
