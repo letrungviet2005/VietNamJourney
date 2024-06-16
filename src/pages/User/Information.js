@@ -42,7 +42,7 @@ function Information({ user_ID }) {
                     <p><i className="fa-solid fa-user-group"></i> {followers} follower - {following} following</p>
                     {role && <p><i className="fa-solid fa-building"></i> {role}</p>}
                     {location && <p><i className="fa-solid fa-location-dot"></i> Sống tại {location}</p>}
-                    {facebookLink && <p><i className="fa-brands fa-facebook"></i> <a href={facebookLink} target="_blank" rel="noopener noreferrer">Link_to_facebook</a></p>}
+                    {facebookLink && <p><i className="fa-brands fa-facebook"></i> <a href={facebookLink} target="_blank" rel="noopener noreferrer">Facebook</a></p>}
                     <button>Chỉnh sửa trang cá nhân</button>
                 </div>
             </div>

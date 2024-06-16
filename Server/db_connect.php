@@ -11,7 +11,9 @@ function dbConnect()
 
     // Kiểm tra kết nối
     if ($conn->connect_error) {
-        return false;
+        die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
     }
     return $conn;
 }
+
+// Hàm kiểm tra kết nối đến database
