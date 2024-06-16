@@ -1,7 +1,7 @@
 <?php
 function dbConnect()
 {
-    $servername = 'localhost';
+    $servername = 'sql12.freesqldatabase.com';
     $username = 'root';
     $password = '';
     $database = 'sql12714051';

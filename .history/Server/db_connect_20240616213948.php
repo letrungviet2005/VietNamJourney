@@ -4,7 +4,7 @@ function dbConnect()
     $servername = 'localhost';
     $username = 'root';
     $password = '';
-    $database = 'sql12714051';
+    $database = 'testphp';
 
     // Kết nối đến cơ sở dữ liệu
     $conn = new mysqli($servername, $username, $password, $database);
