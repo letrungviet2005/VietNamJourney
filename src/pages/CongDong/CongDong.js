@@ -4,7 +4,7 @@ function CongDong() {
     const [responseData, setResponseData] = useState(null);
 
     const handleFetch = async () => {
-        const url = 'http://localhost/BWD/vietnamjourney/Server/backend.php'; 
+        const url = 'http://localhost/BWD/vietnamjourney/Server/Post_Comment.php'; 
         const data = { test: "data" };
 
         try {
@@ -13,7 +13,7 @@ function CongDong() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data),
+               body: JSON.stringify({ post_ID: 1 }) 
             });
 
             if (response.ok) {

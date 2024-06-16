@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import styles from './Post.module.css';
 import dots from '../../Images/User/dots.png';
+import CommentModal from './CommentModal/CommentModal'; 
 
 const Post = ({ 
+    Post_ID,
     avatar, 
     name, 
     time, 
     content, 
-    hashtags, 
     image, 
     likes, 
     comments, 
-    shares, 
     isLike 
 }) => {
     const [isLiked, setIsLiked] = useState(isLike);
     const [likeCount, setLikeCount] = useState(likes);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleLikeClick = () => {
         if (isLiked) {
@@ -26,6 +27,14 @@ const Post = ({
         setIsLiked(!isLiked);
     };
 
+    const handleCommentClick = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <div className={styles['container-post']}>
             <div className={styles['post-header']}>
@@ -34,7 +43,7 @@ const Post = ({
                 </div>
                 <div className={styles['post-header-info']}>
                     <h5>{name}</h5>
-                    <span style={{ fontSize: '0.8rem' }}>{time}</span>
+                    <span style={{ fontSize: '0.8rem' }}>{time} <i className="fas fa-earth-asia"></i></span>
                 </div>
                 <div className={styles['post-header-option']}>
                     <img alt="options" src={dots} />
@@ -42,27 +51,27 @@ const Post = ({
             </div>
             <div className={styles['post-content']}>
                 <p>{content}</p>
-                <p style={{ color: 'green' }}>{hashtags}</p>
             </div>
-            <div className={styles['post-body']}>
+            {image && <div className={styles['post-body']}>
                 <img src={image} alt="post content" />
-            </div>
+            </div>}
             <div className={styles['post-footer']}>
                 <div className={styles['post-footer-top']}>
                     <p>{likeCount} lượt thích </p>
                     <p> - </p>
                     <p>{comments} bình luận</p>
-                    <p style={{ marginLeft: 'auto' }}> {shares} lượt chia sẻ</p>
                 </div>
                 <hr className={styles['black-line']} style={{ marginLeft: '2rem', marginTop: '0' }} />
                 <div className={styles['post-footer-middle']}>
                     <p onClick={handleLikeClick} style={{ cursor: 'pointer' }}>
                         <i className={isLiked ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i> like
                     </p>
-                    <p><i className="fa-regular fa-comment"></i> comment</p>
-                    <p><i className="fa-regular fa-paper-plane"></i> share</p>
+                    <p onClick={handleCommentClick} style={{ cursor: 'pointer' }}>
+                        <i className="fa-regular fa-comment"></i> comment
+                    </p>
                 </div>
             </div>
+            {isModalOpen && <CommentModal onClose={handleCloseModal} postId={Post_ID} />}
         </div>
     );
 };

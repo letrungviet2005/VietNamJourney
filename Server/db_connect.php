@@ -1,10 +1,10 @@
 <?php
 function dbConnect()
 {
-    $servername = 'sql12.freesqldatabase.com';
-    $username = 'sql12714051';
-    $password = 'X5N7Kae1as';
-    $database = 'sql12714051';
+    $servername = 'localhost';
+    $username = 'root';
+    $password = '';
+    $database = 'test';
 
     // Kết nối đến cơ sở dữ liệu
     $conn = new mysqli($servername, $username, $password, $database);
