@@ -1,0 +1,219 @@
+@font-face {
+    font-family: 'RaleWay';
+    src: url('../../../component/Fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
+
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../../component/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
+
+
+div.main {
+    width: 1512px;
+    height: 984px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+}
+
+
+div.main div.div_left {
+    width: 661px;
+    height: 633px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div_left div.nenbg {
+    width: 817px;
+    height: 350px;
+    flex-shrink: 0;
+
+    margin-top: 160px;
+    margin-left: -65px;
+
+    background: rgba(51, 255, 0, 0.25);
+    filter: blur(250px);
+
+    position: absolute;
+
+    z-index: -1;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div_left img.anh1 {
+    width: 661px;
+    height: 347px;
+    flex-shrink: 0;
+
+    border-radius: 10px;
+}
+
+
+div.main div.div_left div.imgbot {
+    width: 661px;
+    height: 263px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+div.main div.div_left div.imgbot img.anh2 {
+    width: 301px;
+    height: 263px;
+    flex-shrink: 0;
+
+    border-radius: 10px; 
+}
+
+
+div.main div.div_left div.imgbot img.anh3 {
+    width: 332px;
+    height: 263px;
+    flex-shrink: 0;
+
+    border-radius: 10px; 
+}
+
+
+div.main div.div_right {
+    width: 634px;
+    height: 633px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div_right h2.h2 {
+    width: 535px; 
+
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 58.5px */
+}
+
+
+div.main div.div_right p.p1 {
+    width: 554px; 
+
+    margin-top: -20px;
+
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 147%; /* 27.93px */
+}
+
+
+div.main div.div_right div.stats1 {
+    width: 520.015px;
+    height: 59px;
+    flex-shrink: 0;
+
+    margin-top: -5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+div.main div.div_right div.stats1 hr {
+    width: 520.015px;
+    height: 3px;
+
+    margin-top: 0px;
+
+    background: rgb(0,0,0);
+}
+
+
+div.main div.div_right div.stats1 p {
+    width: 503px; 
+
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 147%; /* 30.87px */
+}
+
+
+div.main div.div_right div.stats2 {
+    width: 634px;
+    height: 131px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+div.main div.div_right div.stats2 div.mini {
+    width: 185px;
+    height: 131px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+div.main div.div_right div.stats2 div.mini h2 {
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 70px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 147%; /* 102.9px */
+}
+
+
+div.main div.div_right div.stats2 div.mini p {
+    color: #616161;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 147%; /* 24.99px */
+}
+
+
+
