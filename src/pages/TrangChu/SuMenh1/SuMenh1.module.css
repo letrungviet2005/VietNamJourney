@@ -13,6 +13,8 @@
 div.main {
     width: 1512px;
 
+    padding-top: 121px;
+
     display: flex;
     flex-direction: column;
     align-items: center;

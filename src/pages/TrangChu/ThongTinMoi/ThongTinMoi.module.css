@@ -77,6 +77,11 @@ div.main div.divIn div.txt p {
 }
 
 
+div.main div.divIn div.bt {
+    padding-right: 36px;
+}
+
+
 div.main div.divIn div.bt button {
     width: 263px;
     height: 66px;
@@ -109,12 +114,12 @@ div.main div.divIn div.bt img {
 
 
 div.main div.divIn div.posts {
-    width: 1296px;
+    width: 1396px;
     height: 453px;
     flex-shrink: 0;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
     /* border: 1px solid red; */
 }

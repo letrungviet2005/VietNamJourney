@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('../../../component/Fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
+
+
+div.main {
+    width: 1512px;
+
+    padding-top: 31px;
+
+    background: rgba(130, 255, 157, 0.10); 
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div1 {
+    width: 1512px;
+    height: 211px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div1 h2 {
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Raleway;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%; /* 62.4px */
+}
+
+
+div.main div.div1 p {
+    width: 940px;
+
+    color: #403E3E;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Raleway;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%; /* 33.8px */
+
+}
+
+
+div.main div.div2 {
+    width: 1512px;
+    height: 512px;
+
+    display: flex;
+}
+
+
+div.main div.div2 div.div2_1 {
+    width: 750px;
+    height: 512px;
+    flex-shrink: 0;
+}
+
+
+div.main div.div2 div.div2_2 {
+    width: 762px;
+    height: 512px;
+    flex-shrink: 0;
+
+    background: #09430E;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+div.main div.div2 div.div2_2 p {
+    width: 670px;
+    
+    color: #FFF;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Radio Canada";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 33.8px */
+}
