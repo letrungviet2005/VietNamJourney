@@ -10,6 +10,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
+function timeElapsedString($datetime, $full = false)
+{
+    $timezone = new DateTimeZone('Asia/Ho_Chi_Minh');
+    $now = new DateTime('now', $timezone);
+    $ago = new DateTime($datetime, $timezone);
+    $diff = $now->diff($ago);
+
+    $string = array(
+        'y' => 'năm',
+        'm' => 'tháng',
+        'd' => 'ngày',
+        'h' => 'giờ',
+        'i' => 'phút',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v;
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' trước' : 'vừa xong';
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
     $postId = isset($data['post_ID']) ? $data['post_ID'] : null;
@@ -21,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         if ($postId) {
 
-            $sqlComment = "SELECT User_ID, Content FROM comment WHERE Post_ID = ?";
+            $sqlComment = "SELECT User_ID, Content,CreateAt FROM comment WHERE Post_ID = ?";
             $stmtComment = $conn->prepare($sqlComment);
             $stmtComment->bind_param("i", $postId);
             $stmtComment->execute();
@@ -42,7 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $comments[] = array(
                         "username" => $user['Name'],
                         "avatar" => $user['Image'],
-                        "content" => $row['Content']
+                        "content" => $row['Content'],
+                        "time" => timeElapsedString($row["CreateAt"])
                     );
                 }
             }

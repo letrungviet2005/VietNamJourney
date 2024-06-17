@@ -51,10 +51,13 @@ const CommentModal = ({ onClose, postId }) => {
                     comments.map((comment, index) => (
                         <div key={index} className={styles.modalContent}>
                             <img src={comment.avatar} alt="Avatar" />
+                            <div className={styles.ContentRight}>
                             <div className={styles.modalContentinfo}>
                                 <h6>{comment.username}</h6>
                                 <p>{comment.content}</p>
-                            </div>
+                                </div>
+                                <p className={styles.time}>{comment.time }</p>
+                                </div>
                         </div>
                     ))
                 ) : (

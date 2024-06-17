@@ -58,20 +58,27 @@ padding-top: 0.1rem;
     width: 100%;
     display: flex;
 }.event input {
-    border-radius: 7px;
-    width: 80%;
+    border-radius: 13px;
+    width: 85%;
     border: 1px solid transparent; 
     margin-right: 0.3rem;
     margin-left: 0.1rem;
     padding-left: 0.5rem; 
+    padding-right: 0.3rem;
     transition: border-color 0.3s; 
 }
 
 .event input:focus {
     outline: none; 
-    border-color: #007BFF; 
+    border-color: #37be54; 
 }.event i{
     font-size: 1.5rem;
     margin-right: 0.3rem;
     color: rgb(66, 66, 66);
+}.ContentRight {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}.time {
+    margin-left: 1.2rem;
 }
