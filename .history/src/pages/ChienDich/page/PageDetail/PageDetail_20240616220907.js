@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import style from './PageDetail.module.scss';
-import { useEffect } from "react";
+import {use}
 import { useLocation } from 'react-router-dom';
 import React, { useRef, useState } from 'react';
 import TongQuan from "./TongQuan/TongQuan";
@@ -14,7 +14,7 @@ function PageDetail() {
   const location = useLocation(); // Hook để lấy thông tin location hiện tại
   const { imageUrl, campId, desc } = location.state || {}; // Lấy dữ liệu từ state hoặc đặt mặc định là {} nếu không có
 
-  const [activeSection, setActiveSection] = useState('tongQuan');
+  const [activeSection, setActiveSection] = useState();
 
   const tongQuanRef = useRef(null);
   const tacDongRef = useRef(null);

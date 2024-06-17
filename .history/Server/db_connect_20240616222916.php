@@ -28,4 +28,4 @@ function dbConnect()
 //     }
 // }
 
-// testDbConnection();
+testDbConnection();

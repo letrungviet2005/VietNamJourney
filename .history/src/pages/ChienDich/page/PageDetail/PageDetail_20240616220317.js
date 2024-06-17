@@ -1,6 +1,5 @@
 import classNames from "classnames/bind";
 import style from './PageDetail.module.scss';
-import { useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import React, { useRef, useState } from 'react';
 import TongQuan from "./TongQuan/TongQuan";
@@ -40,9 +39,6 @@ function PageDetail() {
     setActiveSection(sectionName);
   };
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
 
   const myStyle = {
     backgroundImage: `url(${imageUrl})`,

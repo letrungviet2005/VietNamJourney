@@ -17,15 +17,15 @@ function dbConnect()
 }
 
 // Hàm kiểm tra kết nối đến database
-// function testDbConnection()
-// {
-//     $conn = dbConnect();
-//     if ($conn) {
-//         echo "Kết nối đến cơ sở dữ liệu thành công.";
-//         $conn->close();
-//     } else {
-//         echo "Kết nối đến cơ sở dữ liệu thất bại.";
-//     }
-// }
+function testDbConnection()
+{
+    $conn = dbConnect();
+    if ($conn) {
+        echo "Kết nối đến cơ sở dữ liệu thành công.";
+        $conn->close();
+    } else {
+        echo "Kết nối đến cơ sở dữ liệu thất bại.";
+    }
+}
 
-// testDbConnection();
+testDbConnection();

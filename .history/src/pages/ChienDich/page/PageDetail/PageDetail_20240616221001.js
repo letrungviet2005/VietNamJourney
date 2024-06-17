@@ -14,7 +14,7 @@ function PageDetail() {
   const location = useLocation(); // Hook để lấy thông tin location hiện tại
   const { imageUrl, campId, desc } = location.state || {}; // Lấy dữ liệu từ state hoặc đặt mặc định là {} nếu không có
 
-  const [activeSection, setActiveSection] = useState('tongQuan');
+  const [activeSection, setActiveSection] = useState(tongQuan);
 
   const tongQuanRef = useRef(null);
   const tacDongRef = useRef(null);

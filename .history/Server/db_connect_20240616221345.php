@@ -4,7 +4,7 @@ function dbConnect()
     $servername = 'localhost';
     $username = 'root';
     $password = '';
-    $database = 'test';
+    $database = 'test1';
 
     // Kết nối đến cơ sở dữ liệu
     $conn = new mysqli($servername, $username, $password, $database);
@@ -17,15 +17,15 @@ function dbConnect()
 }
 
 // Hàm kiểm tra kết nối đến database
-// function testDbConnection()
-// {
-//     $conn = dbConnect();
-//     if ($conn) {
-//         echo "Kết nối đến cơ sở dữ liệu thành công.";
-//         $conn->close();
-//     } else {
-//         echo "Kết nối đến cơ sở dữ liệu thất bại.";
-//     }
-// }
+function testDbConnection()
+{
+    $conn = dbConnect();
+    if ($conn) {
+        echo "Kết nối đến cơ sở dữ liệu thành công.";
+        $conn->close();
+    } else {
+        echo "Kết nối đến cơ sở dữ liệu thất bại.";
+    }
+}
 
-// testDbConnection();
+testDbConnection();

@@ -16,6 +16,7 @@ function CongDong() {
                body: JSON.stringify({ post_ID: 2 }) 
                
             });
+            console.log(response);
 
             if (response.ok) {
                 const result = await response.json();

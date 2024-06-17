@@ -8,7 +8,7 @@ function CongDong() {
         const data = { test: "data" };
 
         try {
-            const response = await fetch(url, {
+            const  = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -16,6 +16,7 @@ function CongDong() {
                body: JSON.stringify({ post_ID: 2 }) 
                
             });
+            console.log(body);
 
             if (response.ok) {
                 const result = await response.json();

@@ -14,11 +14,11 @@ function CongDong() {
                     'Content-Type': 'application/json',
                 },
                body: JSON.stringify({ post_ID: 2 }) 
-               
             });
 
             if (response.ok) {
-                const result = await response.json();
+                const result = await 
+                
                 setResponseData(result);
             } else {
                 throw new Error(`Server responded with status: ${response.status}`);

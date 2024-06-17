@@ -13,8 +13,7 @@ function CongDong() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-               body: JSON.stringify({ post_ID: 2 }) 
-               
+               body: JSON.stringify({ post_ID: 1 }) 
             });
 
             if (response.ok) {

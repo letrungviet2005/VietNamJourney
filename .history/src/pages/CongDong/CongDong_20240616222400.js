@@ -14,7 +14,6 @@ function CongDong() {
                     'Content-Type': 'application/json',
                 },
                body: JSON.stringify({ post_ID: 2 }) 
-               
             });
 
             if (response.ok) {
