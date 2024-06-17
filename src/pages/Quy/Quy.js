@@ -1,7 +1,20 @@
+import CoSuMenh1 from "./SuMenh1/SuMenh1";
+
+
+
+
+
+
+
+
 function Quy() {
     return (
         <div>
-            <p>Đây là Trang Quỹ</p>
+            
+
+            <CoSuMenh1 />
+
+
         </div>
     );
 }

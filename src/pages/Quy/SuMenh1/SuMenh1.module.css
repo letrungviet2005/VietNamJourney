@@ -1,0 +1,138 @@
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
+
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../../component/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
+
+
+div.main {
+    width: 1511px;
+    height: 996px;
+    flex-shrink: 0;
+
+    background: #1B9F56;
+
+    display: flex;
+    justify-content: center;
+    gap: 52px;
+    padding-top: 80px;
+}
+
+
+div.main div.div_left {
+    width: 718px;
+    height: 700.711px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    /* border: 1px solid blue; */
+}
+
+
+div.main div.div_left div.top {
+    width: 718px;
+    height: 287px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div_left div.top h2 {
+    width: 718px; 
+
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 46px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 61.74px */
+}
+
+
+div.main div.div_left div.top p {
+    width: 663px; 
+
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 145%; /* 31.9px */
+}
+
+
+div.main div.div_left div.bot {
+    width: 650px;
+    height: 351.711px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div_left div.bot p.p1 {
+    width: 644px;
+
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%; /* 41.6px */
+}
+
+
+div.main div.div_right {
+    width: 654px;
+    height: 772px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div_right img {
+    width: 637px;
+    height: 684px;
+    flex-shrink: 0;
+
+    border-radius: 10px;
+    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+div.main div.div_right p {
+    width: 654px;
+
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 20.8px */
+}
