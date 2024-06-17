@@ -43,7 +43,7 @@ const Post = ({
                 </div>
                 <div className={styles['post-header-info']}>
                     <h5>{name}</h5>
-                    <span style={{ fontSize: '0.8rem' }}>{time} <i className="fas fa-earth-asia"></i></span>
+                    <span style={{ fontSize: '0.8rem' }}>{time} · <i className="fas fa-earth-asia"></i></span>
                 </div>
                 <div className={styles['post-header-option']}>
                     <img alt="options" src={dots} />
@@ -57,9 +57,9 @@ const Post = ({
             </div>}
             <div className={styles['post-footer']}>
                 <div className={styles['post-footer-top']}>
-                    <p>{likeCount} lượt thích </p>
-                    <p> - </p>
-                    <p>{comments} bình luận</p>
+                    <p><span style={{ fontWeight : 'bold'  }}>{likeCount}</span> lượt thích </p>
+                    <p style={{ marginLeft : '0.2rem',marginRight : '0.2rem',fontWeight : 'bold' }}> · </p>
+                    <p><span style={{ fontWeight : 'bold'  }}>{comments}</span> bình luận</p>
                 </div>
                 <hr className={styles['black-line']} style={{ marginLeft: '2rem', marginTop: '0' }} />
                 <div className={styles['post-footer-middle']}>

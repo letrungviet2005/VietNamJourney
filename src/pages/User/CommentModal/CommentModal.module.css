@@ -33,22 +33,25 @@ padding-top: 0.2rem;
 width: 550px;
 }
 .modalContent {
-margin-top: 2rem; 
-display: flex
+margin-top: 0.3rem; 
+display: flex;
+margin-bottom: 0;
 }
-.modalContent img{
-width: 3rem;
-height: 3rem;
-border-radius: 50%;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
+.modalContent img {
+    width: 3rem !important;
+    height: 3rem !important; 
+    border-radius: 50%;
+    object-fit: cover; 
+    object-position: center; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .modalContentinfo{
-margin-left: 1rem;
+margin-left: 0.7rem;
 background-color: rgb(212, 208, 208);
 border-radius: 14px;
-width: 80%;
+width: 90%;
 padding-right: 0.5rem;
 padding-left: 0.3rem;
 padding-top: 0.1rem;
@@ -79,6 +82,8 @@ padding-top: 0.1rem;
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: auto;
+    margin-bottom: 0;
 }.time {
     margin-left: 1.2rem;
 }

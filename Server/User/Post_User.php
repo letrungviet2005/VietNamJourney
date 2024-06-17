@@ -31,7 +31,6 @@ function timeElapsedString($datetime, $full = false)
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    // Xử lý yêu cầu preflight
     header("HTTP/1.1 200 OK");
     exit();
 }
@@ -46,15 +45,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $response = array("error" => "Kết nối đến cơ sở dữ liệu thất bại");
     } else {
         if ($userId) {
-
-            $sqlUser = "SELECT * FROM user_information WHERE User_ID = ?";
+            $sqlUser = "SELECT Name, Image FROM user_information WHERE User_ID = ?";
             $stmtUser = $conn->prepare($sqlUser);
             $stmtUser->bind_param("i", $userId);
             $stmtUser->execute();
             $resultUser = $stmtUser->get_result();
             $user = $resultUser->fetch_assoc();
 
-            // Lấy các bài viết của người dùng
+            if ($user && $user['Image']) {
+                $user['Image'] = base64_encode($user['Image']);
+            }
+
             $sqlPosts = "SELECT * FROM post WHERE User_ID = ?";
             $stmtPosts = $conn->prepare($sqlPosts);
             $stmtPosts->bind_param("i", $userId);
@@ -63,13 +64,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $posts = array();
 
             while ($row = $resultPosts->fetch_assoc()) {
+                // Đếm tổng số lượt like từ bảng IsLike
+                $sqlLikes = "SELECT COUNT(*) as likeCount FROM IsLike WHERE Post_ID = ?";
+                $stmtLikes = $conn->prepare($sqlLikes);
+                $stmtLikes->bind_param("i", $row['Post_ID']);
+                $stmtLikes->execute();
+                $resultLikes = $stmtLikes->get_result();
+                $likeCount = $resultLikes->fetch_assoc()['likeCount'];
+
+                $sqlComments = "SELECT COUNT(*) as commentCount FROM comment WHERE Post_ID = ?";
+                $stmtComments = $conn->prepare($sqlComments);
+                $stmtComments->bind_param("i", $row['Post_ID']);
+                $stmtComments->execute();
+                $resultComments = $stmtComments->get_result();
+                $commentCount = $resultComments->fetch_assoc()['commentCount'];
+
                 $post = array(
                     "id" => $row['Post_ID'],
                     "content" => $row["Content"],
-                    "image" => $row["Image"],
+                    "image" => $row["Image"] ? base64_encode($row["Image"]) : null,
                     "createdAt" => timeElapsedString($row["CreateAt"]),
-                    "likes" => $row["Like"],
-                    "comments" => $row["Comment"]
+                    "likes" => $likeCount,
+                    "comments" => $commentCount,
+                    "name" => $user['Name'],
+                    "avatar" => $user['Image']
                 );
                 $posts[] = $post;
             }
@@ -82,7 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $response = array("error" => "User ID không hợp lệ");
         }
 
-        // Đóng kết nối
         $conn->close();
     }
 

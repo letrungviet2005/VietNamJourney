@@ -5,13 +5,16 @@ import tu from '../../Images/Icons/Tu.jpeg';
 import Friends from './Friends.js';
 import Post from './Post.js';
 import Information from './Information.js';
+import { useCheckCookie } from '../../Cookie/getCookie';
 
 function User() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const user_id = searchParams.get('user_id'); // Lấy giá trị của user_id từ query parameter
+  const user_id = searchParams.get('user_id');
+  const user_ID = useCheckCookie('User_ID', '/TaiKhoan');
   
   const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState(null); 
 
   useEffect(() => {
     if (user_id) {
@@ -24,7 +27,8 @@ function User() {
       })
       .then(response => response.json())
       .then(data => {
-        setPosts(data.posts); 
+        setPosts(data.posts || []); 
+        setUser(data.user || null); 
       })
       .catch(error => console.error('Error:', error));
     }
@@ -42,35 +46,40 @@ function User() {
           </div>
         </div>
         <div className="col-md-8 col-lg-8">
-          <div className={styles.container3}>
-            <div className={styles['container3-top']}>
-              <div className={styles['container3-top-avatar']}>
-                <img src={posts.avatar} alt="Avatar" />
+          {user && user.Image && user_ID === user_id && (
+            <>
+              <div className={styles.container3}>
+                <div className={styles['container3-top']}>
+                  <div className={styles['container3-top-avatar']}>
+                    <img src={`data:image/jpeg;base64,${user.Image}`} alt="Avatar" />
+                  </div>
+                  <button>Hãy viết gì đó cho bài viết của bạn</button>
+                </div>
               </div>
-              <button>Hãy viết gì đó cho bài viết của bạn</button>
-            </div>
-          </div>
-          <hr className={styles['black-line']} />
+              <hr className={styles['black-line']} />
+            </>
+          )}
           <div className={styles.container4}>
-  {posts.length === 0 ? (
-              <div style={{ textAlign: 'center', marginTop: '2rem', backgroundColor: 'white', borderRadius :'10px' }}>Chưa có bài viết nào</div>
-  ) : (
-    posts.map(post => (
-      <Post
-        key={post.id}
-        Post_ID={post.id}
-        avatar={post.avatar}
-        name="Lê Trung Việt"
-        time={post.createdAt}
-        content={post.content}
-        image={post.image}
-        likes={post.likes}
-        comments={post.comments}
-        isLike={post.isLike}
-      />
-    ))
-  )}
-</div>
+            {posts.length === 0 ? (
+              <div style={{ textAlign: 'center', marginTop: '2rem', backgroundColor: 'white', borderRadius :'10px' }}>
+                Chưa có bài viết nào
+              </div>
+            ) : (
+              posts.map(post => (
+                <Post
+                  key={post.id}
+                  Post_ID={post.id}
+                  avatar={post.avatar ? `data:image/jpeg;base64,${post.avatar}` : null}
+                  name={post.name}
+                  time={post.createdAt}
+                  content={post.content}
+                  image={post.image ? `data:image/jpeg;base64,${post.image}` : null}
+                  likes={post.likes}
+                  comments={post.comments}
+                />
+              ))
+            )}
+          </div>
         </div>
       </div>
     </div>

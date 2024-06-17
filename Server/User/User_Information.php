@@ -35,14 +35,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user = $resultUser->fetch_assoc();
 
             if ($user) {
+                $imageData = base64_encode($user['Image']);
                 $response = array(
                     "user" => array(
-                        "avatar" => $user['Image'],
+                        "avatar" => 'data:image/jpeg;base64,' . $imageData,
                         "name" => $user['Name'],
                         "username" => $user['Username'],
                         "followers" => $user['followers'],
                         "following" => $user['following'],
-                        "role" => $user['Gender'],
+                        "role" => $user['Role'],
                         "location" => $user['LiveAt'],
                         "facebookLink" => $user['facebookLink']
                     )

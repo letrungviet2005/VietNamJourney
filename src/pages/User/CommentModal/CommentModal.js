@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './CommentModal.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const CommentModal = ({ onClose, postId }) => {
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchComments = async () => {
@@ -34,6 +36,10 @@ const CommentModal = ({ onClose, postId }) => {
         fetchComments();
     }, [postId]);
 
+    const handleAvatarClick = (userId) => {
+        navigate(`/User?user_id=${userId}`);
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -50,24 +56,34 @@ const CommentModal = ({ onClose, postId }) => {
                 {comments.length > 0 ? (
                     comments.map((comment, index) => (
                         <div key={index} className={styles.modalContent}>
-                            <img src={comment.avatar} alt="Avatar" />
+                            <img 
+                                src={comment.avatar} 
+                                alt="Avatar" 
+                                onClick={() => handleAvatarClick(comment.user_ID)} 
+                                style={{ cursor: 'pointer' }} 
+                            />
                             <div className={styles.ContentRight}>
-                            <div className={styles.modalContentinfo}>
-                                <h6>{comment.username}</h6>
-                                <p>{comment.content}</p>
+                                <div className={styles.modalContentinfo}>
+                                    <h6 
+                                        style={{ cursor: 'pointer' }} 
+                                        onClick={() => handleAvatarClick(comment.user_ID)}
+                                    >
+                                        {comment.username}
+                                    </h6>
+                                    <p>{comment.content}</p>
                                 </div>
-                                <p className={styles.time}>{comment.time }</p>
-                                </div>
+                                <p style={{ fontSize : '13px' }} className={styles.time}>{comment.time}</p>
+                            </div>
                         </div>
                     ))
                 ) : (
-                    <div>Hiện có bình luận nào</div>
+                    <div style={{ textAlign : 'center' }}>Hiện có bình luận nào</div>
                 )}
                 <div className={styles.event}>
                     <i className="fa-regular fa-image"></i>
-                    <input type="text" placeholder="Hãy viết gì đó..."></input>
-                    <i class="fa-regular fa-paper-plane"></i>
-                    </div>
+                    <input type="text" placeholder="Hãy viết gì đó..." />
+                    <i className="fa-regular fa-paper-plane"></i>
+                </div>
             </div>
         </div>
     );

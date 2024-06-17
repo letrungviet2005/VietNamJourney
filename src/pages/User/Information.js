@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Information.module.css';
+import { useCheckCookie } from '../../Cookie/getCookie'
 
 function Information({ user_ID }) {
     const [userData, setUserData] = useState(null);
+    const user_id = useCheckCookie('User_ID', '/TaiKhoan');
 
     useEffect(() => {
         fetch(`http://localhost/BWD/vietnamjourney/Server/User/User_Information.php`, {
@@ -37,13 +39,15 @@ function Information({ user_ID }) {
             </div>
             <div className={styles['container1-information']}>
                 <div className={styles['container1-information-name']}>{name}</div>
-                <div className={styles['container1-information-linkuser']}>{username}</div>
+                <div className={styles['container1-information-linkuser']}>@{username}</div>
                 <div className={styles['container1-information-content']}>
-                    <p><i className="fa-solid fa-user-group"></i> {followers} follower - {following} following</p>
+                    <p><i className="fa-solid fa-user-group"></i><span style={{ fontWeight: 'bold' }}> {followers}</span> follower
+                    <span style={{ marginLeft : '0.1rem',marginRight : '0.2rem',fontWeight : 'bold' }}> ·</span>
+                    <span style={{ fontWeight: 'bold' }}>{following}</span> following</p>
                     {role && <p><i className="fa-solid fa-building"></i> {role}</p>}
                     {location && <p><i className="fa-solid fa-location-dot"></i> Sống tại {location}</p>}
                     {facebookLink && <p><i className="fa-brands fa-facebook"></i> <a href={facebookLink} target="_blank" rel="noopener noreferrer">Facebook</a></p>}
-                    <button>Chỉnh sửa trang cá nhân</button>
+                    {user_id === user_ID && <button>Chỉnh sửa trang cá nhân</button>}
                 </div>
             </div>
         </div>

@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         if ($postId) {
 
-            $sqlComment = "SELECT User_ID, Content,CreateAt FROM comment WHERE Post_ID = ?";
+            $sqlComment = "SELECT User_ID, Content, CreateAt FROM comment WHERE Post_ID = ?";
             $stmtComment = $conn->prepare($sqlComment);
             $stmtComment->bind_param("i", $postId);
             $stmtComment->execute();
@@ -65,9 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $user = $resultUser->fetch_assoc();
 
                 if ($user) {
+                    $imageData = base64_encode($user['Image']);
                     $comments[] = array(
+                        "user_ID" => $userId,
                         "username" => $user['Name'],
-                        "avatar" => $user['Image'],
+                        "avatar" => 'data:image/jpeg;base64,' . $imageData,
                         "content" => $row['Content'],
                         "time" => timeElapsedString($row["CreateAt"])
                     );
