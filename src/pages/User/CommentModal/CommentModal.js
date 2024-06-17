@@ -9,7 +9,7 @@ const CommentModal = ({ onClose, postId }) => {
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await fetch('http://localhost/BWD/vietnamjourney/Server/Post_Comment.php', {
+                const response = await fetch('http://localhost/BWD/vietnamjourney/Server/User/Post_Comment.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

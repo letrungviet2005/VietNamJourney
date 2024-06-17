@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './User.module.css';
-import anhchiendich from '../../Images/User/anhchiendich.png';
-import f4 from '../../Images/User/FourStarts.jpg';
-import viet from '../../Images/Icons/Viet.jpeg';
 import tu from '../../Images/Icons/Tu.jpeg';
 import Friends from './Friends.js';
 import Post from './Post.js';
@@ -18,7 +15,7 @@ function User() {
 
   useEffect(() => {
     if (user_id) {
-      fetch('http://localhost/BWD/vietnamjourney/Server/Post_User.php', {
+      fetch('http://localhost/BWD/vietnamjourney/Server/User/Post_User.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -48,7 +45,7 @@ function User() {
           <div className={styles.container3}>
             <div className={styles['container3-top']}>
               <div className={styles['container3-top-avatar']}>
-                <img src={viet} alt="Avatar" />
+                <img src={posts.avatar} alt="Avatar" />
               </div>
               <button>Hãy viết gì đó cho bài viết của bạn</button>
             </div>

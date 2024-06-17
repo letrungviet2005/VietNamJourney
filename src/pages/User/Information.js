@@ -5,7 +5,7 @@ function Information({ user_ID }) {
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost/BWD/vietnamjourney/Server/User_Information.php`, {
+        fetch(`http://localhost/BWD/vietnamjourney/Server/User/User_Information.php`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

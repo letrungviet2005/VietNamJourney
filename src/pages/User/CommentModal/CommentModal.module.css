@@ -30,7 +30,7 @@ padding: 1rem;
 border-radius: 8px;
 box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 padding-top: 0.2rem;
-width: 400px;
+width: 550px;
 }
 .modalContent {
 margin-top: 2rem; 
@@ -47,7 +47,7 @@ background-repeat: no-repeat;
 .modalContentinfo{
 margin-left: 1rem;
 background-color: rgb(212, 208, 208);
-border-radius: 10px;
+border-radius: 14px;
 width: 80%;
 padding-right: 0.5rem;
 padding-left: 0.3rem;

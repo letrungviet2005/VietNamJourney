@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
-require 'db_connect.php';
+require '../db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     // Xử lý yêu cầu preflight
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             while ($row = $resultComment->fetch_assoc()) {
 
                 $userId = $row['User_ID'];
-                $sqlUser = "SELECT Name, URL FROM User_Information WHERE User_ID = ?";
+                $sqlUser = "SELECT Name, Image FROM User_Information WHERE User_ID = ?";
                 $stmtUser = $conn->prepare($sqlUser);
                 $stmtUser->bind_param("i", $userId);
                 $stmtUser->execute();
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($user) {
                     $comments[] = array(
                         "username" => $user['Name'],
-                        "avatar" => $user['URL'],
+                        "avatar" => $user['Image'],
                         "content" => $row['Content']
                     );
                 }

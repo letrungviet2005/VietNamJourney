@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
-require 'db_connect.php';
+require '../db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     // Xử lý yêu cầu preflight
