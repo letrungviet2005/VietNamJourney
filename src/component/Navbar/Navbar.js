@@ -4,12 +4,9 @@ import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css'; // Import CSS module
 import header1 from '../../Images/Logos/header1.png';
 import header2 from '../../Images/Logos/header2.png';
-import { useCheckCookie } from '../../Cookie/getCookie';
 
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const user_ID = useCheckCookie('User_ID', '/TaiKhoan');
-   const linkTo = user_ID ? `/User?user_id=${user_ID}` : '/TaiKhoan';
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -40,7 +37,7 @@ function Navbar() {
           <Link to="/CongDong">CỘNG ĐỒNG</Link>
           <Link to="/ChienDich">CHIẾN DỊCH</Link>
           <Link to="/Quy">QUỸ</Link>
-          <Link to={linkTo}>TÀI KHOẢN  <i className="fa-solid fa-user"></i></Link>
+          <Link to="/TaiKhoan">TÀI KHOẢN  <i className="fa-solid fa-user"></i></Link>
         </nav>
       </div>
 
