@@ -13,21 +13,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
     $postId = isset($data['Post_ID']) ? $data['Post_ID'] : null;
     $userId = isset($data['user_id']) ? $data['user_id'] : null;
+    $isLike = isset($data['isLike']) ? $data['isLike'] : null;
 
-    if ($postId && $userId) {
+    if ($postId && $userId !== null && $isLike !== null) {
         $conn = dbConnect();
 
         if ($conn) {
-            $sql = "SELECT 1 FROM islike WHERE Post_ID = ? AND User_ID = ?";
+            if ($isLike) {
+                $sql = "INSERT INTO islike (Post_ID, User_ID) VALUES (?, ?)";
+            } else {
+                $sql = "DELETE FROM islike WHERE Post_ID = ? AND User_ID = ?";
+            }
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ii", $postId, $userId);
-            $stmt->execute();
-            $result = $stmt->get_result();
-
-            if ($result->num_rows > 0) {
-                echo json_encode(["isLiked" => true]);
+            if ($stmt->execute()) {
+                echo json_encode(["success" => true]);
             } else {
-                echo json_encode(["isLiked" => false]);
+                echo json_encode(["success" => false, "error" => $stmt->error]);
             }
 
             $stmt->close();

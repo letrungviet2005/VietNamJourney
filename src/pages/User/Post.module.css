@@ -41,9 +41,22 @@
     margin-left: 2rem;
     margin-top: 1rem;
     font-weight: 500;
-}.post-body img{
+}.post-body {
     width: 100%;
     height: auto;
+    padding-left: auto;
+    padding-right: auto;
+    text-align: center; 
+    background-color: rgba(238, 255, 239, 0.705);
+}
+
+.post-body img {
+    width: auto;
+    height: auto;
+    max-height: 420px;
+    max-width: 100%;
+    display: block; 
+    margin: 0 auto; 
 }.post-footer {
     width: 95%;
     display: flex;
@@ -57,6 +70,7 @@
 }.post-footer-middle {
     display:flex ;
     margin-left: 1rem;
+    font-size: 1.1rem;
 }.post-footer-middle p{
     margin-left: 1rem;
 }

@@ -39,11 +39,13 @@ function User() {
       <div className="row">
         <div className="col-md-4 col-lg-4">
           <Information user_ID={user_id} />
-          <div className={styles.container2}>
-            <p style={{ marginLeft: '1rem', fontWeight: 'bold' }}> Gợi ý cho bạn</p>
-            <Friends imgSrc={tu} username="anh_tu" />
-            <Friends imgSrc={tu} username="anh_tu" />
+          {user_ID != null && 
+            <div className={styles.container2}>
+            <p style={{ marginLeft: '1rem', fontWeight: 'revert',fontSize :'1.2rem' }}> Gợi ý cho bạn</p>
+            <Friends User_ID={user_ID} />
+            <h6 style ={{ float : 'right',marginRight :'1rem' }}>Xem thêm <i class="fa-solid fa-circle-arrow-right"></i></h6>
           </div>
+          }
         </div>
         <div className="col-md-8 col-lg-8">
           {user && user.Image && user_ID === user_id && (
@@ -61,14 +63,15 @@ function User() {
           )}
           <div className={styles.container4}>
             {posts.length === 0 ? (
-              <div style={{ textAlign: 'center', marginTop: '2rem', backgroundColor: 'white', borderRadius :'10px' }}>
-                Chưa có bài viết nào
+              <div style={{ textAlign: 'center', marginTop: '2rem', backgroundColor: 'white', borderRadius :'10px',padding : '2rem' }}>
+                Hiện chưa có bài viết nào .
               </div>
             ) : (
               posts.map(post => (
                 <Post
                   key={post.id}
                   Post_ID={post.id}
+                  user_id={post.user_id} 
                   avatar={post.avatar ? `data:image/jpeg;base64,${post.avatar}` : null}
                   name={post.name}
                   time={post.createdAt}

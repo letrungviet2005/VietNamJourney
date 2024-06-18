@@ -48,6 +48,7 @@ function Information({ user_ID }) {
                     {location && <p><i className="fa-solid fa-location-dot"></i> Sống tại {location}</p>}
                     {facebookLink && <p><i className="fa-brands fa-facebook"></i> <a href={facebookLink} target="_blank" rel="noopener noreferrer">Facebook</a></p>}
                     {user_id === user_ID && <button>Chỉnh sửa trang cá nhân</button>}
+                    {user_id != user_ID && <button>Theo dõi</button>}
                 </div>
             </div>
         </div>
