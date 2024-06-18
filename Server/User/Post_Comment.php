@@ -2,12 +2,38 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
-require 'db_connect.php';
+require '../db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     // Xử lý yêu cầu preflight
     header("HTTP/1.1 200 OK");
     exit();
+}
+
+function timeElapsedString($datetime, $full = false)
+{
+    $timezone = new DateTimeZone('Asia/Ho_Chi_Minh');
+    $now = new DateTime('now', $timezone);
+    $ago = new DateTime($datetime, $timezone);
+    $diff = $now->diff($ago);
+
+    $string = array(
+        'y' => 'năm',
+        'm' => 'tháng',
+        'd' => 'ngày',
+        'h' => 'giờ',
+        'i' => 'phút',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v;
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' trước' : 'vừa xong';
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -21,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         if ($postId) {
 
-            $sqlComment = "SELECT User_ID, Content FROM comment WHERE Post_ID = ?";
+            $sqlComment = "SELECT User_ID, Content, CreateAt FROM comment WHERE Post_ID = ?";
             $stmtComment = $conn->prepare($sqlComment);
             $stmtComment->bind_param("i", $postId);
             $stmtComment->execute();
@@ -31,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             while ($row = $resultComment->fetch_assoc()) {
 
                 $userId = $row['User_ID'];
-                $sqlUser = "SELECT Name, URL FROM User_Information WHERE User_ID = ?";
+                $sqlUser = "SELECT Name, Image FROM User_Information WHERE User_ID = ?";
                 $stmtUser = $conn->prepare($sqlUser);
                 $stmtUser->bind_param("i", $userId);
                 $stmtUser->execute();
@@ -39,10 +65,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $user = $resultUser->fetch_assoc();
 
                 if ($user) {
+                    $imageData = base64_encode($user['Image']);
                     $comments[] = array(
+                        "user_ID" => $userId,
                         "username" => $user['Name'],
-                        "avatar" => $user['URL'],
-                        "content" => $row['Content']
+                        "avatar" => 'data:image/jpeg;base64,' . $imageData,
+                        "content" => $row['Content'],
+                        "time" => timeElapsedString($row["CreateAt"])
                     );
                 }
             }

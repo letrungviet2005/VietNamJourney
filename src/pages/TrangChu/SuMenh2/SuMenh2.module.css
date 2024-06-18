@@ -87,6 +87,8 @@ div.main div.div2 div.signs div.sign p {
     /* height: 67px; */
     flex-shrink: 0;
 
+    margin-top: 12px;
+
     color: #FFF;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Raleway;

@@ -1,0 +1,235 @@
+@font-face {
+    font-family: 'RaleWay';
+    src: url('../../../component/Fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
+
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../../component/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
+
+
+div.main {
+    width: 1512px;
+    height: 1053px;
+    flex-shrink: 0;
+
+    padding-left: 50px;
+
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+div.main div.div1 {
+    width: 874px;
+    height: 98px;
+    flex-shrink: 0;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div1 p {
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 41px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 53.3px */
+}
+
+
+div.main div.div2 {
+    width: 1434px;
+    height: 684px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div2 div.div_left img {
+    width: 584px;
+    height: 674px;
+    flex-shrink: 0;
+}
+
+
+div.main div.div2 div.div_right {
+    width: 791.053px;
+    height: 684px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* border: 1px solid yellow; */
+}
+
+
+div.main div.div2 div.div_right div.top {
+    width: 791.053px;
+    height: 169px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+div.main div.div2 div.div_right div.top div.part1 {
+    width: 191.053px;
+    height: 67px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+div.main div.div2 div.div_right div.top div.part1 div.line1 {
+    width: 76.105px;
+    height: 6px;
+
+    margin-bottom: 5px;
+
+    border: 4px solid black;
+}
+
+
+div.main div.div2 div.div_right div.top div.part1 p {
+
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 41px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 53.3px */
+}
+
+
+div.main div.div2 div.div_right div.top p.top_p1 {
+    width: 510px; 
+
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 130%; /* 39px */
+}
+
+
+div.main div.div2 div.div_right div.mid {
+    width: 683px;
+    height: 345px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+div.main div.div2 div.div_right div.mid img {
+    width: 51px;
+    height: 51px;
+    flex-shrink: 0;
+}
+
+
+div.main div.div2 div.div_right div.mid p.mid_p1 {
+    width: 683px; 
+
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 39px */
+}
+
+
+div.main div.div2 div.div_right div.mid p.mid_p2 {
+    width: 553px; 
+
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 27.3px */
+}
+
+
+div.main div.div2 div.div_right div.bot {
+    width: 433px;
+    height: 35px;
+    flex-shrink: 0;
+
+    align-self: flex-end;
+
+    display: flex;
+
+    /* border: 1px solid salmon; */
+}
+
+
+div.main div.div2 div.div_right div.bot p {
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 23.4px */
+}
+
+
+div.main div.div2 div.div_right div.bot img {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+
+    margin-left: 5px;
+    margin-top: -5px;
+}
+
+
+div.main div.div3 {
+    width: 106px;
+    height: 41px;
+    flex-shrink: 0;
+
+    margin-top: 31px;
+
+    align-self: center;
+}
+
+
+
+
+
+
+

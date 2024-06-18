@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100%; 
+    height: auto; 
     width: 100%; 
 }
 .container{
@@ -208,6 +208,15 @@
 
 .container.active .toggle-right{
     transform: translateX(200%);
+}.errorMessage {
+    color: red;
+    font-size: 14px !important; 
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.inputError {
+  border-color: red !important; 
 }
 
 @media (max-width: 575px) {

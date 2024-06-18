@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'RaleWay';
+    src: url('../../../component/Fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
+
+
+
+div.main {
+    width: 1512px;
+
+    display: flex;
+}
+
+
+div.main div.div1 img {
+    width: 755px;
+    height: 789px;
+}
+
+
+div.main div.div2 {
+    width: 760px;
+    height: 789px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    background: #1D0356;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div2 p.p1 {
+    width: 673px; 
+    /* height: 114px; */
+    flex-shrink: 0;
+
+    color: #FFF;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    text-shadow: 0px 4px 22px rgba(255, 255, 255, 0.25);
+    font-family: Raleway;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%; /* 44.2px */
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.div2 div.signs {
+    width: 642px;
+    height: 322px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+div.main div.div2 div.signs div.sign {
+    width: 278px;
+    height: 145px;
+    flex-shrink: 0;
+}
+
+
+div.main div.div2 div.signs div.sign img {
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+}
+
+
+div.main div.div2 div.signs div.sign p {
+    width: 278px;
+    /* height: 67px; */
+    flex-shrink: 0;
+
+    margin-top: 12px;
+
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Raleway;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 29.9px */
+}
+
+
+div.main div.div2 div.bt1 button {
+    width: 295px;
+    height: 76px;
+    flex-shrink: 0;
+
+    padding-right: 30px;
+
+    border-radius: 20px;
+    background: #3AB137;
+
+    border: 0px solid white;
+
+    color: #FFF;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Raleway;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 35.1px */
+}
+
+
+div.main div.div2 div.bt1 img {
+    width: 37px;
+    height: 37px;
+    flex-shrink: 0;
+
+    margin-left: -70px;
+    margin-top: -10px;
+}
