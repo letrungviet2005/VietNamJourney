@@ -1,0 +1,200 @@
+@font-face {
+    font-family: 'RaleWay';
+    src: url('../../../component/Fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
+
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../../component/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
+
+
+
+div.main {
+    width: 1512px;
+    height: 1161px;
+    flex-shrink: 0;
+
+    background: #1B9F56;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+div.main div.top {
+    width: 1294px;
+    height: 204px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.top h2 {
+    color: #FFF;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 52px */
+}
+
+
+div.main div.top p {
+    color: #F0EFEF;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 33px */
+}
+
+
+div.main div.bot {
+    width: 1512px;
+    height: 766px;
+    flex-shrink: 0;
+
+    display: flex;
+}
+
+
+div.main div.bot div.div_left {
+    width: 664px;
+    height: 766px;
+    flex-shrink: 0;
+
+    border-right: 4px solid white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 3rem;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.bot div.div_left p {
+    color: #FFF;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 44.2px */
+}
+
+
+div.main div.bot div.div_left img {
+    width: 385.993px;
+    height: 500px;
+    flex-shrink: 0;
+
+    border-radius: 50px;
+    box-shadow: 0px 4px 85px 0px rgba(0, 0, 0, 0.40);
+}
+
+
+div.main div.bot div.div_right {
+    width: 848px;
+    height: 762px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.bot div.div_right p.p1 {
+    color: #FFF;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 44.2px */
+}
+
+
+div.main div.bot div.div_right div.part1 {
+    width: 631px;
+    height: 428.554px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    /* border: 1px solid red; */
+}
+
+
+div.main div.bot div.div_right div.part1 img.img2 {
+    width: 126px;
+    height: 126px;
+    flex-shrink: 0;
+}
+
+
+div.main div.bot div.div_right div.part1 img.img3 {
+    width: 369px;
+    height: 428.554px;
+    flex-shrink: 0;
+
+    border-radius: 17px;
+
+    box-shadow: 0px 4px 85px 0px rgba(0, 0, 0, 0.35);
+}
+
+
+div.main div.bot div.div_right p.p2 {
+    align-self: flex-start;
+
+    padding-left: 31px;;
+
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+}
+
+
+div.main div.bot div.div_right p.p2 span.span1 {
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 39px */
+}
+
