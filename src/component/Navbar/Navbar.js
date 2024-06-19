@@ -1,4 +1,3 @@
-// Navbar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css'; // Import CSS module
@@ -6,6 +5,15 @@ import header1 from '../../Images/Logos/header1.png';
 import header2 from '../../Images/Logos/header2.png';
 
 function Navbar() {
+  const getUserLink = () => {
+    const cookies = document.cookie;
+    const cookiesArray = cookies.split('; ');
+    const userIdCookie = cookiesArray.find(cookie => cookie.startsWith('User_ID='));
+    const userId = userIdCookie ? userIdCookie.split('=')[1] : null;
+    return userId ? `/User?user_id=${userId}` : "/TaiKhoan";
+  };
+
+  const [link] = useState(getUserLink());
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -37,7 +45,7 @@ function Navbar() {
           <Link to="/CongDong">CỘNG ĐỒNG</Link>
           <Link to="/ChienDich">CHIẾN DỊCH</Link>
           <Link to="/Quy">QUỸ</Link>
-          <Link to="/TaiKhoan">TÀI KHOẢN  <i className="fa-solid fa-user"></i></Link>
+          <Link to={link}>TÀI KHOẢN  <i className="fa-solid fa-user"></i></Link>
         </nav>
       </div>
 
@@ -68,7 +76,7 @@ function Navbar() {
             <Link to="/Quy" onClick={toggleSidebar}>
               QUỸ <i className="fa-solid fa-hand-holding-dollar"></i>
             </Link>
-            <Link to="/TaiKhoan" onClick={toggleSidebar}>
+            <Link to={link} onClick={toggleSidebar}>
               TÀI KHOẢN <i className="fa-solid fa-user"></i>
             </Link>
           </div>
