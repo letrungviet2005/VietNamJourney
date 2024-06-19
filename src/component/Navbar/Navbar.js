@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css'; // Import CSS module
 import header1 from '../../Images/Logos/header1.png';
@@ -13,25 +13,37 @@ function Navbar() {
     return userId ? `/User?user_id=${userId}` : "/TaiKhoan";
   };
 
-  const [link] = useState(getUserLink());
+  const [link, setLink] = useState(getUserLink());
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  useEffect(() => {
+    const handleCookieChange = () => {
+      setLink(getUserLink());
+    };
+
+    window.addEventListener('cookiechange', handleCookieChange);
+
+    return () => {
+      window.removeEventListener('cookiechange', handleCookieChange);
+    };
+  }, []);
+
   return (
-    <header className={styles.header}> 
-      <div className={styles.logo}> 
+    <header className={styles.header}>
+      <div className={styles.logo}>
         <Link to="/intro">
           <img
-            className={styles.logo1} 
+            className={styles.logo1}
             src={header1}
             alt="Logo 1"
             style={{ height: '40px', cursor: 'pointer' }}
           />
           <img
-            className={styles.logo2} 
+            className={styles.logo2}
             src={header2}
             alt="Logo 2"
             style={{ cursor: 'pointer' }}
@@ -39,13 +51,13 @@ function Navbar() {
         </Link>
       </div>
 
-      <div className={styles.links}> 
+      <div className={styles.links}>
         <nav>
           <Link to="/TrangChu">TRANG CHỦ</Link>
           <Link to="/CongDong">CỘNG ĐỒNG</Link>
           <Link to="/ChienDich">CHIẾN DỊCH</Link>
           <Link to="/Quy">QUỸ</Link>
-          <Link to={link}>TÀI KHOẢN  <i className="fa-solid fa-user"></i></Link>
+          <Link to={link}>TÀI KHOẢN <i className="fa-solid fa-user"></i></Link>
         </nav>
       </div>
 
@@ -53,17 +65,17 @@ function Navbar() {
         <i className="fa-solid fa-bars"></i>
       </div>
 
-      <div className={`${styles.overlay} ${isSidebarOpen ? styles.active : ''}`} onClick={toggleSidebar}></div> 
-      
-      <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''}`}> 
-        <div className={styles['sidebar-content']}> 
+      <div className={`${styles.overlay} ${isSidebarOpen ? styles.active : ''}`} onClick={toggleSidebar}></div>
+
+      <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''}`}>
+        <div className={styles['sidebar-content']}>
           <div
             style={{ color: 'aliceblue', textAlign: 'right', marginTop: 0, cursor: 'pointer' }}
             onClick={toggleSidebar}
           >
             <i className="fa-solid fa-bars"></i>
           </div>
-          <div className={styles['list-navbar']}> 
+          <div className={styles['list-navbar']}>
             <Link to="/TrangChu" onClick={toggleSidebar}>
               TRANG CHỦ <i className="fa-solid fa-house"></i>
             </Link>
