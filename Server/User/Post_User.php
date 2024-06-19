@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $user['Image'] = base64_encode($user['Image']);
             }
 
-            $sqlPosts = "SELECT * FROM post WHERE User_ID = ?";
+            $sqlPosts = "SELECT * FROM post WHERE User_ID = ? ORDER BY Post_ID ASC";
             $stmtPosts = $conn->prepare($sqlPosts);
             $stmtPosts->bind_param("i", $userId);
             $stmtPosts->execute();
@@ -81,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 $post = array(
                     "id" => $row['Post_ID'],
+                    "user_id" => $row['User_ID'], // Thêm User_ID vào mảng phản hồi
                     "content" => $row["Content"],
                     "image" => $row["Image"] ? base64_encode($row["Image"]) : null,
                     "createdAt" => timeElapsedString($row["CreateAt"]),

@@ -1,25 +1,35 @@
-.container2-friends{
+.friends-container {
     display: flex;
+    flex-direction: column;
     padding-left: 1rem;
     margin-bottom: 2rem;
-    
-}.container2-friends img{
+}
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.friend-avatar {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
-}.container2-friends-info{
+}
+
+.friend-info {
     display: flex;
     flex-direction: column;
     margin-left: 1rem;
     width: 80%;
-    
-}.container2-friends-info button{
+}
+
+.friend-info button {
     border-radius: 10px;
-    border : 1px solid rgb(182, 182, 182);
+    border: 1px solid rgb(182, 182, 182);
     background-color: #ffffff;
     width: 80%;
 }

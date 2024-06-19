@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Post.module.css';
 import dots from '../../Images/User/dots.png';
-import CommentModal from './CommentModal/CommentModal'; 
+import CommentModal from './CommentModal/CommentModal';
 
 const Post = ({ 
     Post_ID,
     avatar, 
+    user_id,
     name, 
     time, 
     content, 
@@ -17,14 +19,72 @@ const Post = ({
     const [isLiked, setIsLiked] = useState(isLike);
     const [likeCount, setLikeCount] = useState(likes);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate(); // useNavigate hook
+
+    useEffect(() => {
+        const cookies = document.cookie;
+        const cookiesArray = cookies.split('; ');
+        const userIdCookie = cookiesArray.find(cookie => cookie.startsWith('User_ID='));
+        const userId = userIdCookie ? userIdCookie.split('=')[1] : null;
+
+        if (userId) {
+            fetch('http://localhost/BWD/vietnamjourney/Server/User/Check_Islike.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ Post_ID, user_id: userId }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.isLiked !== undefined) {
+                    setIsLiked(data.isLiked);
+                } else {
+                    setIsLiked(false);
+                }
+            })
+            .catch(error => {
+                console.error('Error checking like status:', error);
+                setIsLiked(false);
+            });
+        } else {
+            setIsLiked(false);
+        }
+    }, [Post_ID]);
 
     const handleLikeClick = () => {
-        if (isLiked) {
-            setLikeCount(likeCount - 1);
+        const cookies = document.cookie;
+        const cookiesArray = cookies.split('; ');
+        const userIdCookie = cookiesArray.find(cookie => cookie.startsWith('User_ID='));
+        const userId = userIdCookie ? userIdCookie.split('=')[1] : null;
+
+        if (userId) {
+            fetch('http://localhost/BWD/vietnamjourney/Server/User/ToggleLike.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ Post_ID, user_id: userId, isLike: !isLiked }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (isLiked) {
+                        setLikeCount(likeCount - 1);
+                    } else {
+                        setLikeCount(likeCount + 1);
+                    }
+                    setIsLiked(!isLiked);
+                } else {
+                    console.error('Error updating like status:', data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         } else {
-            setLikeCount(likeCount + 1);
+            navigate('/TaiKhoan');
         }
-        setIsLiked(!isLiked);
     };
 
     const handleCommentClick = () => {
@@ -35,14 +95,18 @@ const Post = ({
         setIsModalOpen(false);
     };
 
+    const handleAvatarClick = () => {
+        navigate(`/User?user_id=${user_id}`);
+    };
+
     return (
         <div className={styles['container-post']}>
             <div className={styles['post-header']}>
-                <div className={styles['post-header-avatar']}>
+                <div className={styles['post-header-avatar']} onClick={handleAvatarClick} style={{ cursor: 'pointer' }}>
                     <img src={avatar} alt="avatar" />
                 </div>
                 <div className={styles['post-header-info']}>
-                    <h5>{name}</h5>
+                    <h5 onClick={handleAvatarClick} style={{ cursor: 'pointer' }}>{name}</h5>
                     <span style={{ fontSize: '0.8rem' }}>{time} · <i className="fas fa-earth-asia"></i></span>
                 </div>
                 <div className={styles['post-header-option']}>
@@ -57,9 +121,9 @@ const Post = ({
             </div>}
             <div className={styles['post-footer']}>
                 <div className={styles['post-footer-top']}>
-                    <p><span style={{ fontWeight : 'bold'  }}>{likeCount}</span> lượt thích </p>
-                    <p style={{ marginLeft : '0.2rem',marginRight : '0.2rem',fontWeight : 'bold' }}> · </p>
-                    <p><span style={{ fontWeight : 'bold'  }}>{comments}</span> bình luận</p>
+                    <p><span style={{ fontWeight: 'bold' }}>{likeCount}</span> lượt thích </p>
+                    <p style={{ marginLeft: '0.2rem', marginRight: '0.2rem', fontWeight: 'bold' }}> · </p>
+                    <p><span style={{ fontWeight: 'bold' }}>{comments}</span> bình luận</p>
                 </div>
                 <hr className={styles['black-line']} style={{ marginLeft: '2rem', marginTop: '0' }} />
                 <div className={styles['post-footer-middle']}>

@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'RaleWay';
+    src: url('../../../component/Fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
+
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../../component/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
+
+
+div.main {
+    width: 1513px;
+    height: 983px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    background-image: url("../../../Images/Quy/Top/anhnen.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+
+div.main div.upper {
+    width: 1367px;
+    height: 161.424px;
+    flex-shrink: 0;
+
+    margin-top: 81px;
+
+    color: #094B17;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Montserrat;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 45.5px */
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.bottom {
+    width: 1512px;
+    /* height: 159.263px; */
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+div.main div.bottom img {
+    width: 63px;
+    height: 61.263px;
+    flex-shrink: 0;
+}
+
+
+div.main div.bottom div.imgpaper {
+    width: 1512px;
+    height: 200px;
+    flex-shrink: 0;
+
+    background-image: url("../../../Images/Quy/Top/paper2.png");
+    background-size: 90% 100%;
+    background-repeat: round;
+}
+
+
+
+
+
