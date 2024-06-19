@@ -6,7 +6,7 @@ const Friends = ({ User_ID }) => {
     const [followers, setFollowers] = useState([]);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const [Following, setFollowing] = useState(true);
+    const [activeUserId, setActiveUserId] = useState(null);
 
     useEffect(() => {
         const fetchFollowers = async () => {
@@ -23,14 +23,7 @@ const Friends = ({ User_ID }) => {
                     throw new Error('Network response was not ok');
                 }
 
-                const text = await response.text();
-
-                let data;
-                try {
-                    data = JSON.parse(text);
-                } catch (e) {
-                    throw new Error('Invalid JSON response');
-                }
+                const data = await response.json();
 
                 if (data.users) {
                     setFollowers(data.users);
@@ -38,7 +31,7 @@ const Friends = ({ User_ID }) => {
                     setFollowers([]);
                 }
             } catch (error) {
-                setError('Error fetching followers');
+                setError('Đã xảy ra lỗi khi lấy danh sách người theo dõi');
             }
         };
 
@@ -49,10 +42,47 @@ const Friends = ({ User_ID }) => {
         navigate(`/User?user_id=${userId}`);
     };
 
-    const following = () => {
-        setFollowing(!Following)
+    const updateFollowerStatus = async (userId, action) => {
+        try {
+            const response = await fetch('http://localhost/BWD/vietnamjourney/Server/User/updateFollowStatus.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ User_ID :User_ID, Followed_User_ID: userId, Status: action }),
+            });
+            console.log( User_ID, 'Followed_User_ID:', userId, 'Status:', action)
 
-    }
+            if (!response.ok) {
+                throw new Error('Không thể cập nhật trạng thái theo dõi');
+            }
+
+            const updatedFollowers = followers.map(follower => {
+                if (follower.User_ID === userId) {
+                    return {
+                        ...follower,
+                        is_following: action === 'insert'
+                    };
+                }
+                return follower;
+            });
+
+            setFollowers(updatedFollowers);
+
+        } catch (error) {
+            console.error('Lỗi khi cập nhật trạng thái theo dõi:', error);
+        }
+    };
+
+    const handleFollowClick = (userId) => {
+        if (activeUserId === userId) {
+            setActiveUserId(null);
+            updateFollowerStatus(userId, 'delete');
+        } else {
+            setActiveUserId(userId);
+            updateFollowerStatus(userId, 'insert');
+        }
+    };
 
     return (
         <div className={styles['friends-container']}>
@@ -63,7 +93,7 @@ const Friends = ({ User_ID }) => {
                     <div key={follower.User_ID} className={styles['friend-item']}>
                         <img
                             src={`data:image/jpeg;base64,${follower.Image}`}
-                            alt={`${follower.Username}'s avatar`}
+                            alt={`Ảnh đại diện của ${follower.Username}`}
                             className={styles['friend-avatar']}
                             onClick={() => handleAvatarClick(follower.User_ID)}
                             style={{ cursor: 'pointer' }}
@@ -75,7 +105,9 @@ const Friends = ({ User_ID }) => {
                             >
                                 @{follower.Username}
                             </h6>
-                            <button onClick={following}> {Following ? "Theo dõi" : "Đang theo dõi" }</button>
+                            <button onClick={() => handleFollowClick(follower.User_ID)}>
+                                {follower.is_following ? "Đang theo dõi" : "Theo dõi"}
+                            </button>
                         </div>
                     </div>
                 ))
