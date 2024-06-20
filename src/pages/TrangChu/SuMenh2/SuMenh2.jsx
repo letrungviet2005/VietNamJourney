@@ -1,4 +1,5 @@
 import styles from './SuMenh2.module.css';
+import { Link } from 'react-router-dom';
 
 import anh1 from '../../../Images/TrangChu/SuMenh2/anhphuhoa.png';
 import anhbt from '../../../Images/TrangChu/SuMenh2/anhbt.png';
@@ -47,8 +48,10 @@ function CoSuMenh2() {
                 </div>
 
                 <div className={styles.bt1}>
-                    <button>Ủng hộ quỹ</button>
-                    <img alt="^_^" src={anhbt}></img>
+                    <Link to="/Quy">
+                        <button>Ủng hộ quỹ</button>
+                        <img alt="^_^" src={anhbt}></img>
+                    </Link>
                 </div>
 
             </div>

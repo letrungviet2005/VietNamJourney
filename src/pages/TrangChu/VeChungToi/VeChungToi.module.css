@@ -14,7 +14,9 @@ div.main {
     height: 900px;
     flex-shrink: 0;
 
-    background: rgba(130, 255, 157, 0.10); 
+    padding-top: 71px;
+
+    background: rgba(130, 255, 157, 0.1); 
 
     display: flex;
     flex-direction: column;
