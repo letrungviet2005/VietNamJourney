@@ -1,3 +1,4 @@
+import React, { useEffect, useRef } from 'react';
 import styles from './GioiThieu.module.css';
 
 import anh1 from "../../../Images/TrangChu/GioiThieu/anh1.png";
@@ -7,6 +8,33 @@ import vid1 from "../../../Images/TrangChu/GioiThieu/GioiThieubg.mp4";
 
 
 function CoGioiThieu() {
+    
+// Scrolling animation
+const hiddenElementsRef = useRef([]);
+
+useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add(styles.show);
+            }
+            //  else {
+            //     entry.target.classList.remove(styles.show);
+            // }
+        });
+    });
+
+    hiddenElementsRef.current.forEach((el) => observer.observe(el));
+
+    // Cleanup function to unobserve elements
+    return () => {
+        hiddenElementsRef.current.forEach((el) => observer.unobserve(el));
+    };
+}, []);
+
+
+
+
 
     return(
         <div className={styles.main}>
@@ -23,7 +51,7 @@ function CoGioiThieu() {
 
 
             <div className={styles.top}>
-                <div className={styles.txt}>
+            <div className={`${styles.txt} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}>
                     <h2><span className={styles.color1}>Thiên nhiên</span><br></br>
                     là tài sản vô giá</h2>
 
@@ -35,8 +63,7 @@ function CoGioiThieu() {
 
             <div className={styles.bot}>
                 <div className={styles.tabs}>
-
-                    <div className={styles.tab}>
+                    <div className={`${styles.tab} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}> 
                         <img alt=">_<" src={anh1}></img>
                         
                         <p className={styles.p1}>Về chúng tôi</p>
@@ -47,7 +74,7 @@ function CoGioiThieu() {
                         <p className={styles.p3}>Tìm hiểu thêm</p>
                     </div>
 
-                    <div className={styles.tab}>
+                    <div className={`${styles.tab} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}> 
                         <img alt=">_<" src={anh2}></img>
                         
                         <p className={styles.p1}>Thực trạng</p>
@@ -58,7 +85,7 @@ function CoGioiThieu() {
                         <p className={styles.p3}>Tìm hiểu thêm</p>
                     </div>
 
-                    <div className={styles.tab}>
+                    <div className={`${styles.tab} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}> 
                         <img alt=">_<" src={anh3}></img>
                         
                         <p className={styles.p1}>Sứ mệnh</p>

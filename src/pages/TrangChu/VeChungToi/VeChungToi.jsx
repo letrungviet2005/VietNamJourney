@@ -1,4 +1,5 @@
 import styles from './VeChungToi.module.css';
+import React, { useEffect, useRef } from 'react';
 
 import CoCard from './Card';
 
@@ -10,13 +11,39 @@ import jpg4 from '../../../Images/Icons/Viet.jpeg';
 
 function CoVeChungToi() {
 
+// Scrolling animation
+const hiddenElementsRef = useRef([]);
+
+useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add(styles.show);
+            }
+            //  else {
+            //     entry.target.classList.remove(styles.show);
+            // }
+        });
+    });
+
+    hiddenElementsRef.current.forEach((el) => observer.observe(el));
+
+    // Cleanup function to unobserve elements
+    // return () => {
+    //     hiddenElementsRef.current.forEach((el) => observer.unobserve(el));
+    // };
+}, []);
+
+
+
     return(
         <div className={styles.main}>
             
             <div className={styles.txt1}>
-                <h2>Về chúng tôi</h2>
+                <h2 className={styles.hidden} ref={(el) => hiddenElementsRef.current.push(el)}>Về chúng tôi</h2>
 
-                <p>Với mục tiêu chung làm việc vì môi trường, chúng tôi cùng nhau xây dựng dự án này
+                <p className={styles.hidden} ref={(el) => hiddenElementsRef.current.push(el)}>Với mục tiêu chung làm việc vì môi trường, chúng tôi cùng nhau xây dựng dự án này
                 nhằm mong muốn nâng cao nhận thức về môi trường đến cho tất cả mọi người.</p>
             </div>
 

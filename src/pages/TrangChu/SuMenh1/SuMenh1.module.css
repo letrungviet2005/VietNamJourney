@@ -144,3 +144,32 @@ div.main div.div2 div.images img.img2 {
 
     margin-bottom: -200px;
 }
+
+
+
+
+
+/* Scrolling animation */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(100%);
+    transition: all 1s;
+}
+
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+
+div.main div.div1 p {
+    transition-delay: 200ms;
+}
+
+
+div.main div.div2 div.images img.img2 {
+    transition-delay: 200ms;
+}
