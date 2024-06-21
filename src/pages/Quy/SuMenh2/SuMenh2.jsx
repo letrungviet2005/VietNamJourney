@@ -1,4 +1,5 @@
 import styles from './SuMenh2.module.css';
+import React, { useEffect, useRef } from 'react';
 
 import anh1 from '../../../Images/Quy/SuMenh2/anhphuhoa.png';
 import anhs1 from '../../../Images/Quy/SuMenh2/la.png';
@@ -9,6 +10,33 @@ import anhs4 from '../../../Images/Quy/SuMenh2/brain.png';
 
 
 function CoSuMenh2() {
+
+    // Scrolling animation
+    const hiddenElementsRef = useRef([]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(styles.show);
+                }
+                //  else {
+                //     entry.target.classList.remove(styles.show);
+                // }
+            });
+        });
+
+        hiddenElementsRef.current.forEach((el) => observer.observe(el));
+
+        // Cleanup function to unobserve elements
+        // return () => {
+        //     hiddenElementsRef.current.forEach((el) => observer.unobserve(el));
+        // };
+    }, []);
+
+
+
     return(
         <div className={styles.main}>
 
@@ -18,25 +46,26 @@ function CoSuMenh2() {
 
 
             <div className={styles.div2}>
-                <p className={styles.p1}>Ngoài ra chúng tôi hỗ trợ các hoạt động nghiên cứu giúp bảo vệ môi trường và ngăn chặn biến đổi khí hậu.</p>
+                <p className={`${styles.p1} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}
+                >Ngoài ra chúng tôi hỗ trợ các hoạt động nghiên cứu giúp bảo vệ môi trường và ngăn chặn biến đổi khí hậu.</p>
 
                 <div className={styles.signs}>
-                    <div className={styles.sign}>
+                    <div className={`${styles.sign} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}>
                         <img alt=">_<" src={anhs1}></img>
                         <p>Tạo ra năng lượng xanh</p>
                     </div>
 
-                    <div className={styles.sign}>
+                    <div className={`${styles.sign} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}>
                         <img alt=">_<" src={anhs2}></img>
                         <p>Nghiên cứu công nghệ</p>
                     </div>
 
-                    <div className={styles.sign}>
+                    <div className={`${styles.sign} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}>
                         <img alt=">_<" src={anhs3}></img>
                         <p>Giảm thiểu phát thải CO2</p>
                     </div>
 
-                    <div className={styles.sign}>
+                    <div className={`${styles.sign} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}>
                         <img alt=">_<" src={anhs4}></img>
                         <p>Nâng cao nhận thức </p>
                     </div>
