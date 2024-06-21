@@ -4,25 +4,33 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json; charset=UTF-8");
 require '../db_connect.php';
+$imagePath = "../../src/Images/Icons/clone.jpg";
+
+// Function to read and encode image to base64
+function base64_encode_image($imagePath)
+{
+    $imageData = file_get_contents($imagePath);
+    return base64_encode($imageData);
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    // Xử lý yêu cầu preflight của CORS
+    // Handle preflight CORS request
     header("HTTP/1.1 200 OK");
     exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Đọc dữ liệu JSON từ yêu cầu POST
+    // Read JSON data from POST request
     $data = json_decode(file_get_contents("php://input"), true);
 
-    // Kiểm tra nếu dữ liệu JSON không hợp lệ
+    // Check if JSON data is invalid
     if (!$data) {
         http_response_code(400);
         echo json_encode(array("error" => "Dữ liệu không hợp lệ"));
         exit();
     }
 
-    // Kiểm tra các tham số bắt buộc
+    // Check for required fields
     $requiredFields = ['email', 'username', 'password'];
 
     foreach ($requiredFields as $field) {
@@ -36,8 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = htmlspecialchars(strip_tags($data['email']));
     $username = htmlspecialchars(strip_tags($data['username']));
     $password = htmlspecialchars(strip_tags($data['password']));
+    $base64Image = base64_encode_image($imagePath);
 
-    // Kết nối đến cơ sở dữ liệu
+    // Connect to the database
     $conn = dbConnect();
     if (!$conn) {
         http_response_code(500);
@@ -45,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Kiểm tra nếu username đã tồn tại
+    // Check if username already exists
     $query = $conn->prepare("SELECT * FROM userlogin WHERE Username = ?");
     $query->bind_param("s", $username);
     $query->execute();
@@ -56,11 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    // Chèn dữ liệu vào bảng userlogin
+    // Insert data into userlogin table
     $query = $conn->prepare("INSERT INTO userlogin (Username, Password) VALUES (?, ?)");
     $query->bind_param("ss", $username, $password);
     if ($query->execute()) {
-        // Lấy UserLogin_ID dựa trên username và password vừa chèn
+        // Get UserLogin_ID based on the inserted username and password
         $query = $conn->prepare("SELECT UserLogin_ID FROM userlogin WHERE Username = ? AND Password = ?");
         $query->bind_param("ss", $username, $password);
         $query->execute();
@@ -70,9 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($user) {
             $userID = $user['UserLogin_ID'];
 
-            // Chèn dữ liệu vào bảng user_information
-            $query = $conn->prepare("INSERT INTO user_information (UserLogin_ID, Username) VALUES (?, ?)");
-            $query->bind_param("is", $userID, $username);
+            // Insert data into user_information table including the base64 encoded image
+            $query = $conn->prepare("INSERT INTO user_information (UserLogin_ID, Username, Image) VALUES (?, ?, ?)");
+            $null = NULL;
+            $query->bind_param("iss", $userID, $username, $null); // Bind image as NULL initially
+            $query->send_long_data(2, $base64Image); // Send image data as longBlob
             if ($query->execute()) {
                 echo json_encode(['success' => true, 'user' => ['UserLogin_ID' => $userID, 'Username' => $username]]);
             } else {
@@ -88,6 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query->close();
     $conn->close();
 } else {
-    http_response_code(405); // Phương thức không được phép
+    http_response_code(405); // Method not allowed
     echo json_encode(array("error" => "Method not allowed"));
 }
