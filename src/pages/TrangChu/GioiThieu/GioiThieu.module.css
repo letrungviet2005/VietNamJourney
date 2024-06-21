@@ -106,7 +106,9 @@ div.main div.top div.txt h2 {
 
 
 div.main div.top div.txt h2 span.color1 {
-    color: rgb(19, 165, 19);
+    color: rgb(23, 161, 23);
+    -webkit-text-stroke: 0.5px rgb(29, 104, 0);
+    paint-order: stroke fill;
 }
 
 
