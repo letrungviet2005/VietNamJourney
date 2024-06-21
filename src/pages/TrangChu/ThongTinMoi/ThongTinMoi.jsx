@@ -1,7 +1,8 @@
 import styles from './ThongTinMoi.module.css';
 import CopostCard from './postCard';
+import React, { useEffect, useRef } from 'react';
 
-import anhBt from '../../../Images/TrangChu/ThongTinMoi/anhBt.png';
+// import anhBt from '../../../Images/TrangChu/ThongTinMoi/anhBt.png';
 import anh1 from '../../../Images/TrangChu/ThongTinMoi/anh1.png';
 import anh2 from '../../../Images/TrangChu/ThongTinMoi/anh2.png';
 import anh3 from '../../../Images/TrangChu/ThongTinMoi/anh3.png';
@@ -10,13 +11,43 @@ import anh3 from '../../../Images/TrangChu/ThongTinMoi/anh3.png';
 
 
 function CoThongTinMoi() {
+    
+    // Scrolling animation
+    const hiddenElementsRef = useRef([]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(styles.show);
+                }
+                //  else {
+                //     entry.target.classList.remove(styles.show);
+                // }
+            });
+        });
+
+        hiddenElementsRef.current.forEach((el) => observer.observe(el));
+
+        // Cleanup function to unobserve elements
+        // return () => {
+        //     hiddenElementsRef.current.forEach((el) => observer.unobserve(el));
+        // };
+    }, []);
+
+
+
     return(
         <div className={styles.main}>            
             <div className={styles.divIn}>
 
                 <div className={styles.txt}>
-                    <h2>Thông tin mới từ chúng tôi</h2>
-                    <p>Cập nhật những thông tin mới nhất về dự án cũng như thông tin về môi trường ở Việt Nam và trên Thế giới</p>
+                    <h2 className={styles.hidden} ref={(el) => hiddenElementsRef.current.push(el)}
+                    >Thông tin mới từ chúng tôi</h2>
+
+                    <p className={styles.hidden} ref={(el) => hiddenElementsRef.current.push(el)}
+                    >Cập nhật những thông tin mới nhất về dự án cũng như thông tin về môi trường ở Việt Nam và trên Thế giới</p>
                 </div>
 
                 {/* <div className={styles.bt}>

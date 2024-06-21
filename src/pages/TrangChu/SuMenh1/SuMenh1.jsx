@@ -47,7 +47,8 @@ function CoSuMenh1() {
 
             <div className={styles.div2}>
                 <div className={styles.txt}>
-                    <p>Chúng tôi giúp kết nối mọi người thực hiện những chiến dịch, những hành động cụ thể góp phần Bảo vệ môi trường</p>
+                    <p className={styles.hidden} ref={(el) => hiddenElementsRef.current.push(el)}
+                    >Chúng tôi giúp kết nối mọi người thực hiện những chiến dịch, những hành động cụ thể góp phần Bảo vệ môi trường</p>
                 </div>
 
                 <div className={styles.images}>

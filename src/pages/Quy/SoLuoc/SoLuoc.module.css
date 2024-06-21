@@ -225,3 +225,44 @@ div.main div.div_right div.stats2 div.mini p {
 
 
 
+
+
+/* Scrolling animation */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(100%);
+    transition: all 1s;
+}
+
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+
+div.main div.div_right p {
+    transition-delay: 200ms;
+}
+
+
+div.main div.div_right div.stats1 p {
+    transition-delay: 200ms;
+}
+
+
+div.main div.div_right div.stats1 hr:nth-child(2) {
+    transition-delay: 400ms;
+}
+
+
+div.main div.div_right div.stats2 div.mini:nth-child(2) {
+    transition-delay: 200ms;
+}
+
+
+div.main div.div_right div.stats2 div.mini:nth-child(3) {
+    transition-delay: 400ms;
+}
