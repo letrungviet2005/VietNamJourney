@@ -1,59 +1,113 @@
-import React, { useState } from 'react';
-import { useCheckCookie } from '../../Cookie/getCookie';
-
-const deleteCookie = (cookieName) => {
-  const expireDate = new Date();
-  expireDate.setTime(expireDate.getTime() - 1);
-  document.cookie = `${cookieName}=; expires=${expireDate.toUTCString()}; path=/`;
-};
+import React, { useEffect, useState } from 'react';
+import './CongDong.css';
+import Friends from '../User/Friend/Friends';
+import Post from '../User/Post/Post.js';
+import tu from '../../Images/Icons/Tu.jpeg'
+import viet from '../../Images/Icons/Viet.jpeg'
+import bao from '../../Images/Icons/Bao.jpeg'
+import dinh from '../../Images/Icons/Dinh.png'
 
 function CongDong() {
-    const [responseData, setResponseData] = useState(null);
-    const user_id = useCheckCookie('User_ID', '/login');
-    
-    const handleFetch = async () => {
-    const url = 'http://localhost/BWD/vietnamjourney/Server/User/Post_Comment.php'; 
-    const data = { post_ID: user_id };
+    const cookies = document.cookie;
+    const cookiesArray = cookies.split('; ');
+    const userIdCookie = cookiesArray.find(cookie => cookie.startsWith('User_ID='));
+    const user_ID = userIdCookie ? userIdCookie.split('=')[1] : null;
+    const [posts, setPosts] = useState([]);
 
-    try {
-        const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-        });
+    useEffect(() => {
+            fetch('http://localhost/BWD/vietnamjourney/Server/CongDong/Post.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                setPosts(data.posts || []);
+            })
+            .catch(error => console.error('Error:', error));
+        
+    }, [user_ID]); 
 
-      if (response.ok) {
-        const result = await response.json();
-        setResponseData(result);
-      } else {
-        throw new Error(`Server responded with status: ${response.status}`);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      setResponseData({ error: error.message });
-    }
-  };
+    return (
+        <div className="container">
+            <div className="row">
+                <div className="col-md-8">
+                    <div className="container1 sticky-search-bar">
+                        <input type="text" placeholder="Tìm kiếm" />
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <div className="container2">
+                        {posts.length === 0 ? (
+                            <div style={{ textAlign: 'center', marginTop: '2rem', backgroundColor: 'white', borderRadius: '10px', padding: '2rem', fontWeight: 'revert' }}>
+                                Hiện chưa có bài viết nào.
+                            </div>
+                        ) : (
+                            posts.map(post => (
+                                <Post
+                                    key={post.id}
+                                    Post_ID={post.id}
+                                    user_id={post.user_id}
+                                    avatar={post.avatar ? `data:image/jpeg;base64,${post.avatar}` : null}
+                                    name={post.name}
+                                    time={post.createdAt}
+                                    content={post.content}
+                                    image={post.image ? `data:image/jpeg;base64,${post.image}` : null}
+                                    likes={post.likes}
+                                    comments={post.comments}
+                                />
+                            ))
+                        )}
+                    </div>
+                </div>
+                <div className="col-md-4">
+                    <div className="container3">
+                        <p style={{ marginLeft: '0.3rem', fontWeight: 'revert', fontSize: '1.2rem' }}>Top người nổi bật</p>
+                        <div className="container3-info">
+                        <img alt="test" src={viet}></img>
+                        <div className="container3-content">
+                            <h6> @vietlee_2005</h6>
+                            <p>3 người theo dõi</p>
+                            </div>
+                            </div>
 
-  const handleDeleteCookie = () => {
-    deleteCookie('User_ID');
-    deleteCookie('UserName');
-  };
+                        <div className="container3-info">
+                        <img alt="test" src={tu}></img>
+                        <div className="container3-content">
+                            <h6> @anh_tu</h6>
+                            <p>3 người theo dõi</p>
+                        </div>
+                        </div>
 
-  return (
-    <div>
-      <h1>Đây là trang cộng đồng</h1>
-      <button onClick={handleFetch}>Gửi yêu cầu đến server</button>
-      <button onClick={handleDeleteCookie}>Xóa Cookie</button>
-      {responseData && (
-        <div id="status">
-          <h3>Kết quả từ server:</h3>
-          <pre>{JSON.stringify(responseData, null, 2)}</pre>
+                        <div className="container3-info">
+                        <img alt="test" src={bao}></img>
+                        <div className="container3-content">
+                            <h6> @boi_ma</h6>
+                            <p>3 người theo dõi</p>
+                        </div>
+                        </div>
+
+                        <div className="container3-info">
+                        <img alt="test" src={dinh}></img>
+                        <div className="container3-content">
+                            <h6> @duong_dinh</h6>
+                            <p>3 người theo dõi</p>
+                        </div>
+                        </div>
+                    </div>
+                    {user_ID != null && 
+                    <div className="container4">
+                        <p style={{ marginLeft: '1rem', fontWeight: 'revert', fontSize: '1.2rem' }}>Gợi ý cho bạn</p>
+                        <Friends User_ID={user_ID} />
+                        <h6 style={{ textAlign : 'right',marginRight: '1rem', color: 'green' }}>
+                            Xem thêm <i className="fa-solid fa-circle-arrow-right"></i>
+                        </h6>
+                    </div>
+                    }
+                </div>
+            </div>
         </div>
-      )}
-    </div>
-  );
+    );
 }
 
 export default CongDong;

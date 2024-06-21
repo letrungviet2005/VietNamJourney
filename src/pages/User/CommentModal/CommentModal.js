@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import styles from './CommentModal.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useCheckCookie } from '../../../Cookie/getCookie';
+import anh from '../../../Images/User/FourStarts.jpg';
 
 const CommentModal = ({ onClose, postId }) => {
+    const user_ID = useCheckCookie('User_ID', '/TaiKhoan');
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [commentContent, setCommentContent] = useState('');
+    const [commentImage, setCommentImage] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -36,8 +41,78 @@ const CommentModal = ({ onClose, postId }) => {
         fetchComments();
     }, [postId]);
 
+    useEffect(() => {
+        const socket = new WebSocket('ws://localhost:8080');
+
+        socket.onopen = () => {
+            console.log('WebSocket connection opened');
+        };
+
+        socket.onmessage = (event) => {
+            const comment = JSON.parse(event.data);
+            setComments((prevComments) => [comment, ...prevComments]);
+        };
+
+        socket.onclose = () => {
+            console.log('WebSocket connection closed');
+        };
+
+        return () => {
+            socket.close();
+        };
+    }, []);
+
     const handleAvatarClick = (userId) => {
         navigate(`/User?user_id=${userId}`);
+    };
+
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setCommentImage(reader.result);
+        };
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const sendComment = async () => {
+        if (!commentContent.trim() && !commentImage) {
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost/BWD/vietnamjourney/Server/User/addComment.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    User_ID: user_ID,
+                    Post_ID: postId,
+                    Content: commentContent,
+                    ImageComment: commentImage,
+                }),
+            });
+            const data = await response.json();
+
+            if (data.success) {
+                // Send the new comment to the WebSocket server
+                const socket = new WebSocket('ws://localhost:8080');
+                socket.onopen = () => {
+                    socket.send(JSON.stringify(data.comment));
+                };
+
+                setComments([data.comment, ...comments]);
+                setCommentContent('');
+                setCommentImage(null);
+            } else {
+                alert(`Failed to add comment: ${data.error}`);
+            }
+        } catch (error) {
+            console.error('Error adding comment:', error);
+        }
     };
 
     if (loading) {
@@ -53,36 +128,60 @@ const CommentModal = ({ onClose, postId }) => {
             <div className={styles.modal}>
                 <button className={styles.closeButton} onClick={onClose}><i className="fas fa-times"></i></button>
                 <hr className={styles['black-line']} />
-                {comments.length > 0 ? (
-                    comments.map((comment, index) => (
-                        <div key={index} className={styles.modalContent}>
-                            <img 
-                                src={comment.avatar} 
-                                alt="Avatar" 
-                                onClick={() => handleAvatarClick(comment.user_ID)} 
-                                style={{ cursor: 'pointer' }} 
-                            />
-                            <div className={styles.ContentRight}>
-                                <div className={styles.modalContentinfo}>
-                                    <h6 
-                                        style={{ cursor: 'pointer' }} 
-                                        onClick={() => handleAvatarClick(comment.user_ID)}
-                                    >
-                                        {comment.username}
-                                    </h6>
-                                    <p>{comment.content}</p>
+                <div className={styles.modalContentWrapper}>
+                    {comments.length > 0 ? (
+                        comments.map((comment, index) => (
+                            <div key={index} className={styles.modalContent}>
+                                <img 
+                                    src={comment.avatar} 
+                                    alt="Avatar" 
+                                    onClick={() => handleAvatarClick(comment.user_ID)} 
+                                    style={{ cursor: 'pointer' }} 
+                                />
+                                <div className={styles.ContentRight}>
+                                    <div className={styles.modalContentinfo}>
+                                        <h6 
+                                            style={{ cursor: 'pointer' }} 
+                                            onClick={() => handleAvatarClick(comment.user_ID)}
+                                        >
+                                            {comment.username}
+                                        </h6>
+                                        <p>{comment.content}</p>
+                                        {comment.imageComment && (
+                                            <div className={styles.commentContent}>
+                                                <img src={comment.imageComment} alt="Comment Content" />
+                                            </div>
+                                        )}
+                                    </div>
+                                    <p style={{ fontSize: '13px' }} className={styles.time}>{comment.time}</p>
                                 </div>
-                                <p style={{ fontSize : '13px' }} className={styles.time}>{comment.time}</p>
                             </div>
-                        </div>
-                    ))
-                ) : (
-                    <div style={{ textAlign : 'center' }}>Hiện có bình luận nào</div>
-                )}
+                        ))
+                    ) : (
+                        <div style={{ textAlign: 'center' }}>Hiện chưa có bình luận nào</div>
+                    )}
+                </div>
                 <div className={styles.event}>
-                    <i className="fa-regular fa-image"></i>
-                    <input type="text" placeholder="Hãy viết gì đó..." />
-                    <i className="fa-regular fa-paper-plane"></i>
+                    <div className={styles['event-head']}>
+                        <label htmlFor="image-upload">
+                            <i className="fa-regular fa-image"></i>
+                        </label>
+                        <input 
+                            id="image-upload" 
+                            type="file" 
+                            style={{ display: 'none' }} 
+                            onChange={handleImageChange}
+                            accept="image/*"
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Hãy viết gì đó..." 
+                            value={commentContent}
+                            onChange={(e) => setCommentContent(e.target.value)}
+                        />
+                        <i onClick={sendComment} className="fa-regular fa-paper-plane"></i>
+                    </div>
+                    {commentImage && <img src={commentImage} alt="Selected" />}
                 </div>
             </div>
         </div>

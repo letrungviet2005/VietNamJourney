@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $user['Image'] = base64_encode($user['Image']);
             }
 
-            $sqlPosts = "SELECT * FROM post WHERE User_ID = ? ORDER BY Post_ID ASC";
+            $sqlPosts = "SELECT * FROM post WHERE User_ID = ? ORDER BY Post_ID DESC";
             $stmtPosts = $conn->prepare($sqlPosts);
             $stmtPosts->bind_param("i", $userId);
             $stmtPosts->execute();

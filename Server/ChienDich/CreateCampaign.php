@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Lấy các tham số từ yêu cầu và làm sạch dữ liệu
+    $id = $data['id'];
     $name = htmlspecialchars(strip_tags($data['name']));
     $province = htmlspecialchars(strip_tags($data['province']));
     $district = htmlspecialchars(strip_tags($data['district']));
@@ -69,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Câu lệnh SQL để thêm một chiến dịch mới
-    $sql = "INSERT INTO campaign (name, province, district, location, dateStart, dateEnd, totalMoney, moneyByVNJN, timeline, infoContact, infoOrganization, image, description, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO campaign (userid, name, province, district, location, dateStart, dateEnd, totalMoney, moneyByVNJN, timeline, infoContact, infoOrganization, image, description, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         http_response_code(500);
@@ -79,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Ràng buộc các tham số với truy vấn
     $null = NULL;
-    $stmt->bind_param("ssssssiisssbsi", $name, $province, $district, $location, $dateStart, $dateEnd, $totalMoney, $moneyByVNJN, $timeline, $infoContact, $infoOrganization, $null, $description, $status);
+    $stmt->bind_param("issssssiisssbsi", $id, $name, $province, $district, $location, $dateStart, $dateEnd, $totalMoney, $moneyByVNJN, $timeline, $infoContact, $infoOrganization, $null, $description, $status);
     $stmt->send_long_data(11, $imageData);
     // Thực thi câu lệnh
     if ($stmt->execute()) {
@@ -96,5 +97,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     http_response_code(405); // Phương thức không được phép
     echo json_encode(array("error" => "Method not allowed"));
 }
-?>
-

@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode(file_get_contents("php://input"), true);
     $userId = isset($data['userId']) ? $data['userId'] : null;
+    $currentUserId = isset($data['currentUserId']) ? $data['currentUserId'] : null;
 
     $conn = dbConnect();
 
@@ -20,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $response = array("error" => "Kết nối đến cơ sở dữ liệu thất bại");
     } else {
         if ($userId) {
-            // Lấy thông tin người dùng
             $sqlUser = "SELECT u.*, 
             (SELECT COUNT(*) FROM follow WHERE Following_ID = u.User_ID) AS followers, 
             (SELECT COUNT(*) FROM follow WHERE Follower_ID = u.User_ID) AS following, 
@@ -36,6 +36,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if ($user) {
                 $imageData = base64_encode($user['Image']);
+
+
+                $isFollowing = false;
+                if ($currentUserId) {
+                    $sqlFollow = "SELECT * FROM follow WHERE Follower_ID = ? AND Following_ID = ?";
+                    $stmtFollow = $conn->prepare($sqlFollow);
+                    $stmtFollow->bind_param("ii", $currentUserId, $userId);
+                    $stmtFollow->execute();
+                    $resultFollow = $stmtFollow->get_result();
+                    if ($resultFollow->num_rows > 0) {
+                        $isFollowing = true;
+                    }
+                }
+
                 $response = array(
                     "user" => array(
                         "avatar" => 'data:image/jpeg;base64,' . $imageData,
@@ -45,7 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         "following" => $user['following'],
                         "role" => $user['Role'],
                         "location" => $user['LiveAt'],
-                        "facebookLink" => $user['facebookLink']
+                        "facebookLink" => $user['facebookLink'],
+                        "isFollowing" => $isFollowing
                     )
                 );
             } else {
@@ -55,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $response = array("error" => "User ID không hợp lệ");
         }
 
-        // Đóng kết nối
+
         $conn->close();
     }
 

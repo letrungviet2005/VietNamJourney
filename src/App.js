@@ -11,6 +11,7 @@ import PageDetail from './pages/ChienDich/page/PageDetail/PageDetail.js';
 import CreateCampaign from './pages/ChienDich/page/CreateCampaign/CreateCampaign.js';
 import Manager from './pages/ChienDich/page/Manager/Manager.js';
 import UpdateCampaign from './pages/ChienDich/page/UpdateCampaign/UpdateCampaign.js';
+import Footer from './component/Footer/Footer.js'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/UpdateCampaign" element={<UpdateCampaign />} />
         <Route path="/Manager" element={<Manager />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

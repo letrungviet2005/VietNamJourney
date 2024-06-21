@@ -27,7 +27,6 @@ function ChienDich() {
             <CampaignWill province={province}  />
             <CampaignEd province={province}  />
             <Contact />
-            <Footer />
         </div>
     );
 }

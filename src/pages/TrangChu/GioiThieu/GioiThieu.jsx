@@ -27,9 +27,9 @@ useEffect(() => {
     hiddenElementsRef.current.forEach((el) => observer.observe(el));
 
     // Cleanup function to unobserve elements
-    return () => {
-        hiddenElementsRef.current.forEach((el) => observer.unobserve(el));
-    };
+    // return () => {
+    //     hiddenElementsRef.current.forEach((el) => observer.unobserve(el));
+    // };
 }, []);
 
 

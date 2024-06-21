@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if ($user) {
                 // Thiết lập cookie User_ID
-                setcookie("User_ID", $user['UserLogin_ID'], time() + (86400 * 30), "/"); // Cookie có hiệu lực trong 30 ngày
+                setcookie("User_ID", $user['UserLogin_ID'], time() + (86400 * 30), "/");
                 $response = array("success" => "Đăng nhập thành công", "user" => $user);
             } else {
                 $response = array("error" => "Email hoặc mật khẩu sai !");

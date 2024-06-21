@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';  // Thêm import useNavigate
 import styles from './TaiKhoan.module.css';
-import background from '../../Images/TaiKhoan/background_taikhoan.jpg';
 import background1 from '../../Images/TaiKhoan/phong.jpg';
 import Cookies from 'js-cookie';
 
@@ -90,7 +89,8 @@ function TaiKhoan() {
             </div>
             <span>hoặc sử dụng email của bạn để đăng ký</span>
             <input type="text" placeholder="Email" />
-            <input type="email" placeholder="Mật Khẩu" />
+            <input type="text" placeholder="username" />
+            <input type="text" placeholder="Mật Khẩu" />
             <input type="password" placeholder="Xác thực mật khẩu" />
             <button onClick={handleRegister}>ĐĂNG KÝ</button>
           </form>
