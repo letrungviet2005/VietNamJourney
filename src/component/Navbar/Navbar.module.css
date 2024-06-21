@@ -1,4 +1,3 @@
-/* Loại bỏ margin - padding global */
 * {
     margin: 0px;
     padding: 0px;
@@ -130,7 +129,6 @@ header .sidebar-content i {
     font-size: smaller;
 }
 
-
 * {
     box-sizing: border-box;
 }
@@ -153,10 +151,6 @@ header .list-navbar a:hover {
     color: #b8e994;
 }
 
-
-
-
-
 .dropdown-toggle {
     cursor: pointer;
     text-decoration: none;
@@ -164,6 +158,8 @@ header .list-navbar a:hover {
     font-size: 16px;
     font-weight: 600;
     position: relative;
+    display: flex;
+    align-items: center;
   }
   
   .dropdown-menu {
@@ -176,7 +172,6 @@ header .list-navbar a:hover {
     width: 205px;
     right: 15px;
     top: 60px;
-
     &:focus-within {
         display: none;
     }
@@ -199,34 +194,9 @@ header .list-navbar a:hover {
   .nav-item.open .dropdown-menu {
     display: block; /* Hiển thị dropdown menu khi .nav-item có lớp .open */
   }
-  
-  .bar {
-    /* styles cho bar */
-  }
-  
-  .sidebar {
-    /* styles cho sidebar */
-  }
-  
-  .overlay {
-    /* styles cho overlay */
-  }
-  
-  .sidebar-content {
-    /* styles cho nội dung sidebar */
-  }
-  
-  .list-navbar {
-    /* styles cho danh sách navbar trong sidebar */
-  }
 
-/* END NAVIGATION BAR */
-
-
-
-
-@media (max-width: 1380px) {
-    header .links nav a {
+  @media (max-width: 1380px) {
+    header .links nav a, header .links nav .nav-item {
         display: none;
     }
 
@@ -291,3 +261,5 @@ header .list-navbar a:hover {
         width: 95%;
     }
 }
+
+/* END NAVIGATION BAR */

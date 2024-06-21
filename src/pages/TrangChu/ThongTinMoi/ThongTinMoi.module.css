@@ -125,7 +125,9 @@ div.main div.divIn div.posts {
 }
 
 
-
+div.main div.divIn div.posts .lnk {
+    text-decoration: none;
+}
 
 
 

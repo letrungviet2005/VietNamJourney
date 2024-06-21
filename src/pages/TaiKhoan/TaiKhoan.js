@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Thêm import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import styles from './TaiKhoan.module.css';
 import background1 from '../../Images/TaiKhoan/phong.jpg';
 import Cookies from 'js-cookie';
-
 
 function TaiKhoan() {
   const [active, setActive] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [username, setUsername] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-
-
-
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [usernameError, setUsernameError] = useState('');
 
   const navigate = useNavigate();  
 
@@ -72,9 +72,64 @@ function TaiKhoan() {
     }
   };
 
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
-    console.log("Đăng ký");
+
+    // Reset lỗi
+    setEmailError('');
+    setPasswordError('');
+    setConfirmPasswordError('');
+    setUsernameError('');
+
+    let hasError = false;
+
+    if (!email) {
+      setEmailError('Vui lòng nhập vào trường này');
+      hasError = true;
+    }
+
+    if (!username) {
+      setUsernameError('Vui lòng nhập vào trường này');
+      hasError = true;
+    }
+
+    if (!password) {
+      setPasswordError('Vui lòng nhập vào trường này');
+      hasError = true;
+    }
+
+    if (password !== confirmPassword) {
+      setConfirmPasswordError('Mật khẩu xác thực không khớp');
+      hasError = true;
+    }
+
+    if (hasError) {
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost/BWD/vietnamjourney/Server/TaiKhoan/Register.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, username, password }),
+      });
+      const data = await response.json();
+      if (data.error) {
+        setErrorMessage(data.error);
+      } else {
+        setErrorMessage('');
+        console.log("Đăng ký thành công", data.user);
+        const userID = data.user.UserLogin_ID;
+        const userName = data.user.Username;
+        Cookies.set('User_ID', userID, { expires: 30 });
+        Cookies.set('UserName', userName, { expires: 30 });
+        navigate('/TrangChu'); 
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -88,10 +143,38 @@ function TaiKhoan() {
               <a href="#" className={styles.icon}><i className="fa-brands fa-facebook-f"></i></a>
             </div>
             <span>hoặc sử dụng email của bạn để đăng ký</span>
-            <input type="text" placeholder="Email" />
-            <input type="text" placeholder="username" />
-            <input type="text" placeholder="Mật Khẩu" />
-            <input type="password" placeholder="Xác thực mật khẩu" />
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={emailError ? styles.inputError : ''}
+            />
+            {emailError && <h6 className={styles.errorMessage}>{emailError}</h6>}
+            <input
+              type="text"
+              placeholder="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className={usernameError ? styles.inputError : ''}
+            />
+            {usernameError && <h6 className={styles.errorMessage}>{usernameError}</h6>}
+            <input
+              type="password"
+              placeholder="Mật Khẩu"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={passwordError ? styles.inputError : ''}
+            />
+            {passwordError && <h6 className={styles.errorMessage}>{passwordError}</h6>}
+            <input
+              type="password"
+              placeholder="Xác thực mật khẩu"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className={confirmPasswordError ? styles.inputError : ''}
+            />
+            {confirmPasswordError && <h6 className={styles.errorMessage}>{confirmPasswordError}</h6>}
             <button onClick={handleRegister}>ĐĂNG KÝ</button>
           </form>
         </div>

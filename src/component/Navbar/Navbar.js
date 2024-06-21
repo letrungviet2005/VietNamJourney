@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
@@ -40,6 +39,7 @@ function Navbar() {
     expireDate.setTime(expireDate.getTime() - 1);
     document.cookie = `${cookieName}=; expires=${expireDate.toUTCString()}; path=/`;
   };
+
   const handleDeleteCookie = () => {
     deleteCookie('User_ID');
     deleteCookie('UserName');
@@ -75,7 +75,7 @@ function Navbar() {
           {userName ? (
             <div className={cx('nav-item', { open: isDropdownOpen })}>
               <span className={cx('dropdown-toggle')} onClick={toggleDropdown}>
-                {userName} <i class="fa-solid fa-caret-down"></i> {/* Hiển thị tên người dùng */}
+                <i className="fa-solid fa-circle-user" style={{ marginRight :'0.3rem',fontSize : '1.4rem' }}></i>{userName} <i className="fa-solid fa-caret-down"></i>
               </span>
               <div className={cx('dropdown-menu')}>
                 <Link className={cx('dropdown-item')} to={"/User?user_id=" + getCookie('User_ID')} onClick={closeDropdown}>
@@ -129,25 +129,19 @@ function Navbar() {
               QUỸ <i className="fa-solid fa-hand-holding-dollar"></i>
             </Link>
             {userName ? (
-              <div className={cx('nav-item')}>
-                <span className={cx('dropdown-toggle')} onClick={toggleDropdown}>
-                  {userName}  <i class="fa-solid fa-caret-down"></i> {/* Hiển thị tên người dùng */}
-                </span>
-                <div className={cx('dropdown-menu')}>
-                <Link className={cx('dropdown-item')} to={"/User?user_id=" + getCookie('User_ID')} onClick={closeDropdown}>
-                  Thông tin cá nhân
-                </Link>
-                <Link className={cx('dropdown-item')} to="/Manager" onClick={closeDropdown}>
-                  Chiến dịch của tôi
-                </Link>
-                <Link className={cx('dropdown-item')} to="/CampaignJoined" onClick={closeDropdown}>
-                  Chiến dịch đã tham gia
-                </Link>
-                <div className={cx('dropdown-divider')}></div>
-                <Link className={cx('dropdown-item')} to="/Logout" onClick={closeDropdown}>
-                  Đăng xuất
-                </Link>
-              </div>
+              <div style={{ display : 'flex' , flexDirection : 'column' }} >
+                  <Link to={"/User?user_id=" + getCookie('User_ID')} onClick={toggleSidebar}>
+                    {userName}  <i className="fa-solid fa-circle-user"></i>
+                  </Link>
+                  <Link to="/Manager" onClick={toggleSidebar}>
+                    CHIẾN DỊCH CỦA TÔI
+                  </Link>
+                  <Link to="/CampaignJoined" onClick={toggleSidebar}>
+                    CHIẾN DỊCH THAM GIA
+                  </Link>
+                  <Link to="/TaiKhoan" onClick={handleDeleteCookie && toggleSidebar}>
+                    ĐĂNG XUẤT <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  </Link>
               </div>
             ) : (
               <Link to={link} onClick={toggleSidebar}>
