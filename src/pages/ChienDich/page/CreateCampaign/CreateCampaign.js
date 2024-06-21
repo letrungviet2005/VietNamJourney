@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Select from "react-select";
+import {getCookie} from "../../../../Cookie/getCookie"
 
 const cx = classNames.bind(style);
 
@@ -132,6 +133,7 @@ function CreateCampaign() {
     const imageData = await convertImageToBase64(imageFile);
   
     const data = {
+      id: getCookie('User_ID'),
       name: event.target.elements.name.value,
       description: event.target.elements.desc.value,
       dateStart: event.target.elements.dateStart.value,
@@ -160,6 +162,7 @@ function CreateCampaign() {
           },
         }
       );
+      console.log(data);
       console.log('Phản hồi từ API:', response.data);
       if (response.data.success) {
         alert('Thêm chiến dịch thành công!');

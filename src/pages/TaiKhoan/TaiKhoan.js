@@ -89,7 +89,8 @@ function TaiKhoan() {
             </div>
             <span>hoặc sử dụng email của bạn để đăng ký</span>
             <input type="text" placeholder="Email" />
-            <input type="email" placeholder="Mật Khẩu" />
+            <input type="text" placeholder="username" />
+            <input type="text" placeholder="Mật Khẩu" />
             <input type="password" placeholder="Xác thực mật khẩu" />
             <button onClick={handleRegister}>ĐĂNG KÝ</button>
           </form>
