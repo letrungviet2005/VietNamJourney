@@ -1,0 +1,277 @@
+/* Loại bỏ margin - padding global */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* global font */
+* {
+    font-family: Montserrat;
+}
+
+/* NAVIGATION BAR */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1.5px solid rgb(97, 94, 94);
+    background: linear-gradient(to right, rgb(29, 96, 42), rgb(39, 154, 83));
+    z-index: 999;
+}
+
+header .logo img {
+    width: auto;
+    height: 2.9rem;
+}
+
+header .logo img.logo1 {
+    display: block;
+    padding-left: 10px;
+    margin: 20px;
+}
+
+header .logo img.logo2 {
+    display: none;
+}
+
+header .links nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+header .links nav a {
+    margin: 0;
+    padding: 0 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+header .links nav i {
+    margin-left: 1px;
+    font-size: 14px;
+}
+
+header .links nav a:hover {
+    color: #b8e994;
+}
+
+header .bar {
+    display: none;
+    margin-right: 1rem;
+    color: aliceblue;
+    text-align: right;
+}
+
+header .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.603);
+    z-index: 9998; 
+}
+
+header .overlay.active {
+    display: block;
+}
+
+header .sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to top, rgb(37, 79, 46), rgb(53, 189, 105));
+    transition: right 0.3s ease-in-out; 
+    z-index: 9999;
+}
+
+header .sidebar.open {
+    right: 0; 
+}
+
+header .sidebar-content {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+header .sidebar-content a {
+    text-align: right;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: aliceblue;
+    margin-top: 1.5rem;
+    margin-right: 0;
+}
+
+header .sidebar-content a:hover {
+    color: #b8e994;
+}
+
+header .sidebar-content i {
+    font-size: smaller;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+header .list-navbar {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+    padding: 20px;
+    float: right;
+}
+
+header .list-navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+}
+
+header .list-navbar a:hover {
+    color: #b8e994;
+}
+
+
+
+
+
+.dropdown-toggle {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .dropdown-menu {
+    display: none; /* Ẩn dropdown menu */
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+  }
+  
+  .dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #ddd;
+  }
+  
+  .nav-item.open .dropdown-menu {
+    display: block; /* Hiển thị dropdown menu khi .nav-item có lớp .open */
+  }
+  
+  .bar {
+    /* styles cho bar */
+  }
+  
+  .sidebar {
+    /* styles cho sidebar */
+  }
+  
+  .overlay {
+    /* styles cho overlay */
+  }
+  
+  .sidebar-content {
+    /* styles cho nội dung sidebar */
+  }
+  
+  .list-navbar {
+    /* styles cho danh sách navbar trong sidebar */
+  }
+
+/* END NAVIGATION BAR */
+
+
+
+
+@media (max-width: 1380px) {
+    header .links nav a {
+        display: none;
+    }
+
+    header .bar  {
+        display: block;
+    }
+
+    header .sidebar {
+        width: 30%;
+    }
+}
+@media (max-width: 800px) {
+    header .sidebar {
+        width: 40%;
+    }
+}
+
+@media (max-width: 630px) {
+    header {
+        height: 3.5rem;
+    }
+
+    header .logo img.logo1 {
+        display: none;
+    }
+
+    header .logo img.logo2 {
+        display: block;
+    }
+
+    header .logo img {
+        width: auto;
+        height: 3.5rem;
+        margin-left: 14rem;
+    }
+
+    header .sidebar {
+        width: 50%;
+    }
+}
+
+@media (max-width: 560px) {
+    header .logo img {
+        margin-left: 8rem;
+    }
+
+    header .sidebar {
+        width: 60%;
+    }
+}
+@media (max-width: 400px) {
+    header .sidebar {
+        width: 80%;
+    }
+}
+
+@media (max-width: 320px) {
+    header .logo img {
+        margin-left: 5rem;
+    } 
+    header .sidebar {
+        width: 95%;
+    }
+}

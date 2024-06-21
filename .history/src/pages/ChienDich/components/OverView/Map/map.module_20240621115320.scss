@@ -1,0 +1,28 @@
+.map {
+  // background-color: #E8FEEB;
+  background-image: url("https://upanh123.com/wp-content/uploads/2020/12/back-ground-thien-nhien-viet-nam-yen-bai.jpg");
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+
+  &::before {
+    content: "";
+    position: absolute; /* Để overlay phủ lên toàn bộ phần tử map */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Màu nền đen với độ mờ 50% */
+    pointer-events: none; /* Đảm bảo overlay không chặn các tương tác chuột */
+    border-radius: inherit; /* Kế thừa border-radius từ phần tử cha */
+  }
+}
+
+.mapVietNam {
+  width: 100%;
+  height: auto;
+  max-width: 1000px; /* Giới hạn kích thước tối đa nếu cần */
+  display: block;
+  margin: auto;
+}

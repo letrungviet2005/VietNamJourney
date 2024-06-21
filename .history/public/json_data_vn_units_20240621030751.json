@@ -1,0 +1,1398 @@
+[
+  {
+    "Type": "province",
+    "Code": "01",
+    "Name": "Hà Nội",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "001",
+        "Name": "Ba Đình"
+      },
+      {
+        "Type": "district",
+        "Code": "002",
+        "Name": "Hoàn Kiếm"
+      },
+      {
+        "Type": "district",
+        "Code": "003",
+        "Name": "Tây Hồ"
+      },
+      {
+        "Type": "district",
+        "Code": "005",
+        "Name": "Cầu Giấy"
+      },
+      {
+        "Type": "district",
+        "Code": "006",
+        "Name": "Đống Đa"
+      },
+      {
+        "Type": "district",
+        "Code": "007",
+        "Name": "Hai Bà Trưng"
+      },
+      {
+        "Type": "district",
+        "Code": "008",
+        "Name": "Hoàng Mai"
+      },
+      {
+        "Type": "district",
+        "Code": "009",
+        "Name": "Thanh Xuân"
+      },
+      {
+        "Type": "district",
+        "Code": "016",
+        "Name": "Sóc Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "017",
+        "Name": "Đông Anh"
+      },
+      {
+        "Type": "district",
+        "Code": "018",
+        "Name": "Gia Lâm"
+      },
+      {
+        "Type": "district",
+        "Code": "019",
+        "Name": "Nam Từ Liêm"
+      },
+      {
+        "Type": "district",
+        "Code": "020",
+        "Name": "Thanh Trì"
+      },
+      {
+        "Type": "district",
+        "Code": "021",
+        "Name": "Bắc Từ Liêm"
+      },
+      {
+        "Type": "district",
+        "Code": "250",
+        "Name": "Mê Linh"
+      },
+      {
+        "Type": "district",
+        "Code": "268",
+        "Name": "Hà Đông"
+      },
+      {
+        "Type": "district",
+        "Code": "269",
+        "Name": "Sơn Tây"
+      },
+      {
+        "Type": "district",
+        "Code": "271",
+        "Name": "Ba Vì"
+      },
+      {
+        "Type": "district",
+        "Code": "272",
+        "Name": "Phúc Thọ"
+      },
+      {
+        "Type": "district",
+        "Code": "273",
+        "Name": "Đan Phượng"
+      },
+      {
+        "Type": "district",
+        "Code": "274",
+        "Name": "Hoài Đức"
+      },
+      {
+        "Type": "district",
+        "Code": "275",
+        "Name": "Quốc Oai"
+      },
+      {
+        "Type": "district",
+        "Code": "276",
+        "Name": "Thạch Thất"
+      },
+      {
+        "Type": "district",
+        "Code": "277",
+        "Name": "Chương Mỹ"
+      },
+      {
+        "Type": "district",
+        "Code": "278",
+        "Name": "Thanh Oai"
+      },
+      {
+        "Type": "district",
+        "Code": "279",
+        "Name": "Thường Tín"
+      },
+      {
+        "Type": "district",
+        "Code": "280",
+        "Name": "Phú Xuyên"
+      },
+      {
+        "Type": "district",
+        "Code": "281",
+        "Name": "Ứng Hòa"
+      },
+      {
+        "Type": "district",
+        "Code": "282",
+        "Name": "Mỹ Đức"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "02",
+    "Name": "Hà Giang",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "024",
+        "Name": "Hà Giang"
+      },
+      {
+        "Type": "district",
+        "Code": "026",
+        "Name": "Đồng Văn"
+      },
+      {
+        "Type": "district",
+        "Code": "027",
+        "Name": "Mèo Vạc"
+      },
+      {
+        "Type": "district",
+        "Code": "028",
+        "Name": "Yên Minh"
+      },
+      {
+        "Type": "district",
+        "Code": "029",
+        "Name": "Quản Bạ"
+      },
+      {
+        "Type": "district",
+        "Code": "030",
+        "Name": "Vị Xuyên"
+      },
+      {
+        "Type": "district",
+        "Code": "031",
+        "Name": "Bắc Mê"
+      },
+      {
+        "Type": "district",
+        "Code": "032",
+        "Name": "Hoàng Su Phì"
+      },
+      {
+        "Type": "district",
+        "Code": "033",
+        "Name": "Xín Mần"
+      },
+      {
+        "Type": "district",
+        "Code": "034",
+        "Name": "Bắc Quang"
+      },
+      {
+        "Type": "district",
+        "Code": "035",
+        "Name": "Quang Bình"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "04",
+    "Name": "Cao Bằng",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "040",
+        "Name": "Cao Bằng"
+      },
+      {
+        "Type": "district",
+        "Code": "042",
+        "Name": "Bảo Lâm"
+      },
+      {
+        "Type": "district",
+        "Code": "043",
+        "Name": "Bảo Lạc"
+      },
+      {
+        "Type": "district",
+        "Code": "045",
+        "Name": "Hà Quảng"
+      },
+      {
+        "Type": "district",
+        "Code": "047",
+        "Name": "Trùng Khánh"
+      },
+      {
+        "Type": "district",
+        "Code": "048",
+        "Name": "Hạ Lang"
+      },
+      {
+        "Type": "district",
+        "Code": "049",
+        "Name": "Quảng Hòa"
+      },
+      {
+        "Type": "district",
+        "Code": "051",
+        "Name": "Hoà An"
+      },
+      {
+        "Type": "district",
+        "Code": "052",
+        "Name": "Nguyên Bình"
+      },
+      {
+        "Type": "district",
+        "Code": "053",
+        "Name": "Thạch An"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "06",
+    "Name": "Bắc Kạn",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "058",
+        "Name": "Bắc Kạn"
+      },
+      {
+        "Type": "district",
+        "Code": "060",
+        "Name": "Pác Nặm"
+      },
+      {
+        "Type": "district",
+        "Code": "061",
+        "Name": "Ba Bể"
+      },
+      {
+        "Type": "district",
+        "Code": "062",
+        "Name": "Ngân Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "063",
+        "Name": "Bạch Thông"
+      },
+      {
+        "Type": "district",
+        "Code": "064",
+        "Name": "Chợ Đồn"
+      },
+      {
+        "Type": "district",
+        "Code": "065",
+        "Name": "Chợ Mới"
+      },
+      {
+        "Type": "district",
+        "Code": "066",
+        "Name": "Na Rì"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "08",
+    "Name": "Tuyên Quang",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "070",
+        "Name": "Tuyên Quang"
+      },
+      {
+        "Type": "district",
+        "Code": "071",
+        "Name": "Lâm Bình"
+      },
+      {
+        "Type": "district",
+        "Code": "072",
+        "Name": "Na Hang"
+      },
+      {
+        "Type": "district",
+        "Code": "073",
+        "Name": "Chiêm Hóa"
+      },
+      {
+        "Type": "district",
+        "Code": "074",
+        "Name": "Hàm Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "075",
+        "Name": "Yên Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "076",
+        "Name": "Sơn Dương"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "10",
+    "Name": "Lào Cai",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "080",
+        "Name": "Lào Cai"
+      },
+      {
+        "Type": "district",
+        "Code": "082",
+        "Name": "Bát Xát"
+      },
+      {
+        "Type": "district",
+        "Code": "083",
+        "Name": "Mường Khươn"
+      },
+      {
+        "Type": "district",
+        "Code": "084",
+        "Name": "Si Ma Cai"
+      },
+      {
+        "Type": "district",
+        "Code": "085",
+        "Name": "Bắc Hà"
+      },
+      {
+        "Type": "district",
+        "Code": "086",
+        "Name": "Bảo Thắng"
+      },
+      {
+        "Type": "district",
+        "Code": "087",
+        "Name": "Bảo Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "088",
+        "Name": "Sa Pa"
+      },
+      {
+        "Type": "district",
+        "Code": "089",
+        "Name": "Văn Bàn"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "11",
+    "Name": "Điện Biên",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "094",
+        "Name": "Điện Biên Phủ"
+      },
+      {
+        "Type": "district",
+        "Code": "095",
+        "Name": "Mường Lay"
+      },
+      {
+        "Type": "district",
+        "Code": "096",
+        "Name": "Mường Nhé"
+      },
+      {
+        "Type": "district",
+        "Code": "097",
+        "Name": "Mường Chà"
+      },
+      {
+        "Type": "district",
+        "Code": "098",
+        "Name": "Tủa Chùa"
+      },
+      {
+        "Type": "district",
+        "Code": "099",
+        "Name": "Tuần Giáo"
+      },
+      {
+        "Type": "district",
+        "Code": "100",
+        "Name": "Điện Biên"
+      },
+      {
+        "Type": "district",
+        "Code": "101",
+        "Name": "Điện Biên"
+      },
+      {
+        "Type": "district",
+        "Code": "102",
+        "Name": "Mường Ảng"
+      },
+      {
+        "Type": "district",
+        "Code": "103",
+        "Name": "Nậm Pồ"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "12",
+    "Name": "Lai Châu",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "105",
+        "Name": "Lai Châu"
+      },
+      {
+        "Type": "district",
+        "Code": "106",
+        "Name": "Tam Đường"
+      },
+      {
+        "Type": "district",
+        "Code": "107",
+        "Name": "Mường Tè"
+      },
+      {
+        "Type": "district",
+        "Code": "108",
+        "Name": "Sìn Hồ"
+      },
+      {
+        "Type": "district",
+        "Code": "109",
+        "Name": "Phong Thổ"
+      },
+      {
+        "Type": "district",
+        "Code": "110",
+        "Name": "Than Uyên"
+      },
+      {
+        "Type": "district",
+        "Code": "111",
+        "Name": "Tân Uyên"
+      },
+      {
+        "Type": "district",
+        "Code": "112",
+        "Name": "Nậm Nhùn"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "14",
+    "Name": "Sơn La",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "116",
+        "Name": "Sơn La"
+      },
+      {
+        "Type": "district",
+        "Code": "118",
+        "Name": "Quỳnh Nhai"
+      },
+      {
+        "Type": "district",
+        "Code": "119",
+        "Name": "Thuận Châu"
+      },
+      {
+        "Type": "district",
+        "Code": "120",
+        "Name": "Mường La"
+      },
+      {
+        "Type": "district",
+        "Code": "121",
+        "Name": "Bắc Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "122",
+        "Name": "Phù Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "123",
+        "Name": "Mộc Châu"
+      },
+      {
+        "Type": "district",
+        "Code": "124",
+        "Name": "Yên Châu"
+      },
+      {
+        "Type": "district",
+        "Code": "125",
+        "Name": "Mai Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "126",
+        "Name": "Sông Mã"
+      },
+      {
+        "Type": "district",
+        "Code": "127",
+        "Name": "Sốp Cộp"
+      },
+      {
+        "Type": "district",
+        "Code": "128",
+        "Name": "Vân Hồ"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "15",
+    "Name": "Yên Bái",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "132",
+        "Name": "Yên Bái"
+      },
+      {
+        "Type": "district",
+        "Code": "133",
+        "Name": "Nghĩa Lộ"
+      },
+      {
+        "Type": "district",
+        "Code": "135",
+        "Name": "Lục Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "136",
+        "Name": "Văn Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "137",
+        "Name": "Mù Căng Chải"
+      },
+      {
+        "Type": "district",
+        "Code": "138",
+        "Name": "Trấn Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "139",
+        "Name": "Trạm Tấu"
+      },
+      {
+        "Type": "district",
+        "Code": "140",
+        "Name": "Văn Chấn"
+      },
+      {
+        "Type": "district",
+        "Code": "141",
+        "Name": "Yên Bình"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "17",
+    "Name": "Hoà Bình",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "148",
+        "Name": "Hòa Bình"
+      },
+      {
+        "Type": "district",
+        "Code": "150",
+        "Name": "Đà Bắc"
+      },
+      {
+        "Type": "district",
+        "Code": "152",
+        "Name": "Lương Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "153",
+        "Name": "Kim Bôi"
+      },
+      {
+        "Type": "district",
+        "Code": "154",
+        "Name": "Cao Phong"
+      },
+      {
+        "Type": "district",
+        "Code": "155",
+        "Name": "Tân Lạc"
+      },
+      {
+        "Type": "district",
+        "Code": "156",
+        "Name": "Mai Châu"
+      },
+      {
+        "Type": "district",
+        "Code": "157",
+        "Name": "Lạc Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "158",
+        "Name": "Yên Thủy"
+      },
+      {
+        "Type": "district",
+        "Code": "159",
+        "Name": "Lạc Thủy"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "19",
+    "Name": "Thái Nguyên",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "164",
+        "Name": "Thái Nguyên"
+      },
+      {
+        "Type": "district",
+        "Code": "165",
+        "Name": "Sông Công"
+      },
+      {
+        "Type": "district",
+        "Code": "167",
+        "Name": "Định Hóa"
+      },
+      {
+        "Type": "district",
+        "Code": "168",
+        "Name": "Phú Lương"
+      },
+      {
+        "Type": "district",
+        "Code": "169",
+        "Name": "Đồng Hỷ"
+      },
+      {
+        "Type": "district",
+        "Code": "170",
+        "Name": "Võ Nhai"
+      },
+      {
+        "Type": "district",
+        "Code": "171",
+        "Name": "Đại Từ"
+      },
+      {
+        "Type": "district",
+        "Code": "172",
+        "Name": "Phổ Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "173",
+        "Name": "Phú Bình"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "20",
+    "Name": "Lạng Sơn",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "178",
+        "Name": "Lạng Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "180",
+        "Name": "Tràng Định"
+      },
+      {
+        "Type": "district",
+        "Code": "181",
+        "Name": "Bình Gia"
+      },
+      {
+        "Type": "district",
+        "Code": "182",
+        "Name": "Văn Lãng"
+      },
+      {
+        "Type": "district",
+        "Code": "183",
+        "Name": "Cao Lộc"
+      },
+      {
+        "Type": "district",
+        "Code": "184",
+        "Name": "Văn Quan"
+      },
+      {
+        "Type": "district",
+        "Code": "185",
+        "Name": "Bắc Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "186",
+        "Name": "Hữu Lũng"
+      },
+      {
+        "Type": "district",
+        "Code": "187",
+        "Name": "Chi Lăng"
+      },
+      {
+        "Type": "district",
+        "Code": "188",
+        "Name": "Lộc Bình"
+      },
+      {
+        "Type": "district",
+        "Code": "189",
+        "Name": "Đình Lập"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "22",
+    "Name": "Quảng Ninh",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "193",
+        "Name": "Hạ Long"
+      },
+      {
+        "Type": "district",
+        "Code": "194",
+        "Name": "Móng Cái"
+      },
+      {
+        "Type": "district",
+        "Code": "195",
+        "Name": "Cẩm Phả"
+      },
+      {
+        "Type": "district",
+        "Code": "196",
+        "Name": "Uông Bí"
+      },
+      {
+        "Type": "district",
+        "Code": "198",
+        "Name": "Bình Liêu"
+      },
+      {
+        "Type": "district",
+        "Code": "199",
+        "Name": "Tiên Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "200",
+        "Name": "Đầm Hà"
+      },
+      {
+        "Type": "district",
+        "Code": "201",
+        "Name": "Hải Hà"
+      },
+      {
+        "Type": "district",
+        "Code": "202",
+        "Name": "Ba Chẽ"
+      },
+      {
+        "Type": "district",
+        "Code": "203",
+        "Name": "Vân Đồn"
+      },
+      {
+        "Type": "district",
+        "Code": "205",
+        "Name": "Đông Triều"
+      },
+      {
+        "Type": "district",
+        "Code": "206",
+        "Name": "Quảng Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "207",
+        "Name": "Cô Tô"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "24",
+    "Name": "Bắc Giang",
+    "NameEn": "Bac Giang",
+    "FullName": "Tỉnh Bắc Giang",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "213",
+        "Name": "Bắc Giang"
+      },
+      {
+        "Type": "district",
+        "Code": "215",
+        "Name": "Yên Thế"
+      },
+      {
+        "Type": "district",
+        "Code": "216",
+        "Name": "Tân Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "217",
+        "Name": "Lạng Giang"
+      },
+      {
+        "Type": "district",
+        "Code": "218",
+        "Name": "Lục Nam"
+      },
+      {
+        "Type": "district",
+        "Code": "219",
+        "Name": "Lục Ngạn"
+      },
+      {
+        "Type": "district",
+        "Code": "220",
+        "Name": "Sơn Động"
+      },
+      {
+        "Type": "district",
+        "Code": "221",
+        "Name": "Yên Dũng"
+      },
+      {
+        "Type": "district",
+        "Code": "222",
+        "Name": "Việt Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "223",
+        "Name": "Hiệp Hòa"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "25",
+    "Name": "Phú Thọ",
+    "NameEn": "Phu Tho",
+    "FullName": "Tỉnh Phú Thọ",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "227",
+        "Name": "Việt Trì"
+      },
+      {
+        "Type": "district",
+        "Code": "228",
+        "Name": "Phú Thọ"
+      },
+      {
+        "Type": "district",
+        "Code": "230",
+        "Name": "Đoan Hùng"
+      },
+      {
+        "Type": "district",
+        "Code": "231",
+        "Name": "Hạ Hoà"
+      },
+      {
+        "Type": "district",
+        "Code": "232",
+        "Name": "Thanh Ba"
+      },
+      {
+        "Type": "district",
+        "Code": "233",
+        "Name": "Phù Ninh"
+      },
+      {
+        "Type": "district",
+        "Code": "234",
+        "Name": "Yên Lập"
+      },
+      {
+        "Type": "district",
+        "Code": "235",
+        "Name": "Cẩm Khê"
+      },
+      {
+        "Type": "district",
+        "Code": "236",
+        "Name": "Tam Nông"
+      },
+      {
+        "Type": "district",
+        "Code": "237",
+        "Name": "Lâm Thao"
+      },
+      {
+        "Type": "district",
+        "Code": "238",
+        "Name": "Thanh Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "239",
+        "Name": "Thanh Thuỷ"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "26",
+    "Name": "Vĩnh Phúc",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "243",
+        "Name": "Vĩnh Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "244",
+        "Name": "Phúc Yên"
+      },
+      {
+        "Type": "district",
+        "Code": "246",
+        "Name": "Lập Thạch"
+      },
+      {
+        "Type": "district",
+        "Code": "247",
+        "Name": "Tam Dương"
+      },
+      {
+        "Type": "district",
+        "Code": "248",
+        "Name": "Tam Đảo"
+      },
+      {
+        "Type": "district",
+        "Code": "249",
+        "Name": "Bình Xuyên"
+      },
+      {
+        "Type": "district",
+        "Code": "251",
+        "Name": "Yên Lạc"
+      },
+      {
+        "Type": "district",
+        "Code": "252",
+        "Name": "Vĩnh Tường"
+      },
+      {
+        "Type": "district",
+        "Code": "253",
+        "Name": "Sông Lô"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "27",
+    "Name": "Bắc Ninh",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "256",
+        "Name": "Bắc Ninh"
+      },
+      {
+        "Type": "district",
+        "Code": "258",
+        "Name": "Yên Phong"
+      },
+      {
+        "Type": "district",
+        "Code": "259",
+        "Name": "Quế Võ"
+      },
+      {
+        "Type": "district",
+        "Code": "260",
+        "Name": "Tiên Du"
+      },
+      {
+        "Type": "district",
+        "Code": "261",
+        "Name": "Từ Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "262",
+        "Name": "Thuận Thành"
+      },
+      {
+        "Type": "district",
+        "Code": "263",
+        "Name": "Gia Bình"
+      },
+      {
+        "Type": "district",
+        "Code": "264",
+        "Name": "Lương Tài"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "30",
+    "Name": "Hải Dương",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "288",
+        "Name": "Hải Dương"
+      },
+      {
+        "Type": "district",
+        "Code": "290",
+        "Name": "Chí Linh"
+      },
+      {
+        "Type": "district",
+        "Code": "291",
+        "Name": "Nam Sách"
+      },
+      {
+        "Type": "district",
+        "Code": "292",
+        "Name": "Kinh Môn"
+      },
+      {
+        "Type": "district",
+        "Code": "293",
+        "Name": "Kim Thành"
+      },
+      {
+        "Type": "district",
+        "Code": "294",
+        "Name": "Thanh Hà"
+      },
+      {
+        "Type": "district",
+        "Code": "295",
+        "Name": "Cẩm Giàng"
+      },
+      {
+        "Type": "district",
+        "Code": "296",
+        "Name": "Bình Giang"
+      },
+      {
+        "Type": "district",
+        "Code": "297",
+        "Name": "Gia Lộc"
+      },
+      {
+        "Type": "district",
+        "Code": "298",
+        "Name": "Tứ Kỳ"
+      },
+      {
+        "Type": "district",
+        "Code": "299",
+        "Name": "Ninh Giang"
+      },
+      {
+        "Type": "district",
+        "Code": "300",
+        "Name": "Thanh Miện"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "31",
+    "Name": "Hải Phòng",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "303",
+        "Name": "Hồng Bàng"
+      },
+      {
+        "Type": "district",
+        "Code": "304",
+        "Name": "Ngô Quyền"
+      },
+      {
+        "Type": "district",
+        "Code": "305",
+        "Name": "Lê Chân"
+      },
+      {
+        "Type": "district",
+        "Code": "306",
+        "Name": "Hải An"
+      },
+      {
+        "Type": "district",
+        "Code": "307",
+        "Name": "Kiến An"
+      },
+      {
+        "Type": "district",
+        "Code": "308",
+        "Name": "Đồ Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "309",
+        "Name": "Dương Kinh"
+      },
+      {
+        "Type": "district",
+        "Code": "311",
+        "Name": "Thuỷ Nguyên"
+      },
+      {
+        "Type": "district",
+        "Code": "312",
+        "Name": "An Dương"
+      },
+      {
+        "Type": "district",
+        "Code": "313",
+        "Name": "An Lão"
+      },
+      {
+        "Type": "district",
+        "Code": "314",
+        "Name": "Kiến Thuỵ"
+      },
+      {
+        "Type": "district",
+        "Code": "315",
+        "Name": "Tiên Lãng"
+      },
+      {
+        "Type": "district",
+        "Code": "316",
+        "Name": "Vĩnh Bảo"
+      },
+      {
+        "Type": "district",
+        "Code": "317",
+        "Name": "Cát Hải"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "48",
+    "Name": "Đà Nẵng",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "490",
+        "Name": "Liên Chiểu"
+      },
+      {
+        "Type": "district",
+        "Code": "491",
+        "Name": "Thanh Khê"
+      },
+      {
+        "Type": "district",
+        "Code": "492",
+        "Name": "Hải Châu"
+      },
+      {
+        "Type": "district",
+        "Code": "493",
+        "Name": "Sơn Trà"
+      },
+      {
+        "Type": "district",
+        "Code": "494",
+        "Name": "Ngũ Hành Sơn"
+      },
+      {
+        "Type": "district",
+        "Code": "495",
+        "Name": "Cẩm Lệ"
+      },
+      {
+        "Type": "district",
+        "Code": "497",
+        "Name": "Hòa Vang"
+      }
+    ]
+  },
+
+  {
+    "Type": "province",
+    "Code": "46",
+    "Name": "Thừa Thiên Huế",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "474",
+        "Name": "Huế"
+      },
+      {
+        "Type": "district",
+        "Code": "476",
+        "Name": "Phong Điền"
+      },
+      {
+        "Type": "district",
+        "Code": "477",
+        "Name": "Quảng Điền"
+      },
+      {
+        "Type": "district",
+        "Code": "478",
+        "Name": "Phú Vang"
+      },
+      {
+        "Type": "district",
+        "Code": "479",
+        "Name": "Hương Thủy"
+      },
+      {
+        "Type": "district",
+        "Code": "480",
+        "Name": "Hương Trà"
+      },
+      {
+        "Type": "district",
+        "Code": "481",
+        "Name": "A Lưới"
+      },
+      {
+        "Type": "district",
+        "Code": "482",
+        "Name": "Phú Lộc"
+      },
+      {
+        "Type": "district",
+        "Code": "483",
+        "Name": "Nam Đông"
+      }
+    ]
+  },
+  {
+    "Type": "province",
+    "Code": "45",
+    "Name": "Quảng Trị",
+    "District": [
+      {
+        "Type": "district",
+        "Code": "461",
+        "Name": "Đông Hà"
+      },
+      {
+        "Type": "district",
+        "Code": "462",
+        "Name": "Quảng Trị"
+      },
+      {
+        "Type": "district",
+        "Code": "464",
+        "Name": "Vĩnh Linh"
+      },
+      {
+        "Type": "district",
+        "Code": "465",
+        "Name": "Hướng Hóa"
+      },
+      {
+        "Type": "district",
+        "Code": "466",
+        "Name": "Gio Linh"
+      },
+      {
+        "Type": "district",
+        "Code": "467",
+        "Name": "Đa Krông"
+      },
+      {
+        "Type": "district",
+        "Code": "468",
+        "Name": "Cam Lộ"
+      },
+      {
+        "Type": "district",
+        "Code": "469",
+        "Name": "Triệu Phong"
+      },
+      {
+        "Type": "district",
+        "Code": "470",
+        "Name": "Hải Lăng"
+      }
+    ]
+  }
+]
