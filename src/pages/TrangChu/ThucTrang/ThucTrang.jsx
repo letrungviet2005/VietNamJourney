@@ -52,9 +52,7 @@ function CoThucTrang() {
 
 
                 <div className={styles.div2_2}>
-                    <p>Trong giai đoạn 1994 - 2016, tổng lượng phát thải khí
-                    nhà kính (KNK) của Việt Nam đã tăng khoảng 3 lần,
-                    từ 103,8 triệu tấn lên 316,7 triệu tấn CO2 tương đương. </p>
+                    <p>Để giảm thiểu CO2, Việt Nam cần đẩy mạnh phát triển năng lượng tái tạo, cải thiện hiệu quả năng lượng, tăng cường giao thông công cộng, bảo vệ rừng và áp dụng canh tác nông nghiệp bền vững. </p>
                 </div>
 
             </div>

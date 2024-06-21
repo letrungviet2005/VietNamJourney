@@ -136,3 +136,27 @@ div.main div.div_right p {
     font-weight: 600;
     line-height: 130%; /* 20.8px */
 }
+
+
+
+
+
+/* Scrolling animation */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(100%);
+    transition: all 1s;
+}
+
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+
+div.main div.div_left div.top p {
+    transition-delay: 200ms;
+}
