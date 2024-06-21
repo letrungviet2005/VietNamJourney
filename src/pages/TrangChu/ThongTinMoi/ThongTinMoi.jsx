@@ -19,10 +19,10 @@ function CoThongTinMoi() {
                     <p>Cập nhật những thông tin mới nhất về dự án cũng như thông tin về môi trường ở Việt Nam và trên Thế giới</p>
                 </div>
 
-                <div className={styles.bt}>
+                {/* <div className={styles.bt}>
                     <button>Xem tất cả</button>
                     <img alt=">_<" src={anhBt}></img>
-                </div>
+                </div> */}
 
                 <div className={styles.posts}>
                     <CopostCard image={anh1}

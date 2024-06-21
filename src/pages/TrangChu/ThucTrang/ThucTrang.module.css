@@ -10,7 +10,7 @@
 
 
 div.main {
-    width: 1512px;
+    width: 100%;
 
     padding-top: 31px;
 
@@ -21,7 +21,7 @@ div.main {
 
 
 div.main div.div1 {
-    width: 1512px;
+    width: 100%;
     height: 211px;
 
     display: flex;
@@ -61,7 +61,7 @@ div.main div.div1 p {
 
 
 div.main div.div2 {
-    width: 1512px;
+    width: 100%;
     height: 512px;
 
     display: flex;
@@ -69,14 +69,14 @@ div.main div.div2 {
 
 
 div.main div.div2 div.div2_1 {
-    width: 750px;
+    width: 49%;
     height: 512px;
     flex-shrink: 0;
 }
 
 
 div.main div.div2 div.div2_2 {
-    width: 762px;
+    width: 51%;
     height: 512px;
     flex-shrink: 0;
 
@@ -99,4 +99,28 @@ div.main div.div2 div.div2_2 p {
     font-style: normal;
     font-weight: 500;
     line-height: 130%; /* 33.8px */
+}
+
+
+
+
+
+/* Scrolling animation */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(100%);
+    transition: all 1s;
+}
+
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+
+div.main div.div1 p {
+    transition-delay: 200ms;
 }

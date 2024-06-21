@@ -17,7 +17,7 @@
 
 
 div.main {
-    width: 1512px;
+    width: 100%;
     height: 1161px;
     flex-shrink: 0;
 
@@ -69,7 +69,7 @@ div.main div.top p {
 
 
 div.main div.bot {
-    width: 1512px;
+    width: 100%;
     height: 766px;
     flex-shrink: 0;
 
@@ -78,7 +78,7 @@ div.main div.bot {
 
 
 div.main div.bot div.div_left {
-    width: 664px;
+    width: 44%;
     height: 766px;
     flex-shrink: 0;
 
@@ -117,7 +117,7 @@ div.main div.bot div.div_left img {
 
 
 div.main div.bot div.div_right {
-    width: 848px;
+    width: 56%;
     height: 762px;
     flex-shrink: 0;
 

@@ -1,0 +1,566 @@
+@font-face {
+    font-family: 'RaleWay';
+    src: url('../../../component/Fonts/Raleway/Raleway-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Radio Canada';
+    src: url('../../../component/Fonts/Radio_Canada/RadioCanada-VariableFont_wdth\,wght.ttf');
+}
+
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../../../component/Fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
+
+
+div.main {
+    width: 100%;
+    height: 1002px;
+    flex-shrink: 0;
+    
+    background: rgba(130, 255, 157, 0.1); 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+div.main div.vid {
+    width: 100%;
+    height: 1002px;
+    flex-shrink: 0;
+
+    margin-top: -100px;
+
+    position: absolute;
+
+    /* z-index: 0; */
+}
+
+
+div.main div.vid div.dimmed {
+    width: 100%;
+    height: 1002px;
+    flex-shrink: 0;
+
+    position: absolute;
+
+    background-color: rgba(0, 0, 0, 0.10);
+
+    z-index: 1;
+
+    /* border: 2px solid red; */
+}
+
+
+div.main div.vid video {
+    width: 100%;
+    height: 1002px;
+    flex-shrink: 0;
+
+    margin-top: -60px;
+}
+
+
+div.main div.top {
+    width: 100%;
+    height: 600px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    z-index: 2;
+    
+    /* border: 1px solid red; */
+}
+
+
+div.main div.top div.txt {
+    width: 622px;
+    height: 417.742px;
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.top div.txt h2 {
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    text-shadow: 0px 4px 60.2px rgba(0, 0, 0, 0.25);
+    font-family: Raleway;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%; /* 83.2px */
+}
+
+
+div.main div.top div.txt h2 span.color1 {
+    color: rgb(23, 161, 23);
+    -webkit-text-stroke: 0.5px rgb(29, 104, 0);
+    paint-order: stroke fill;
+}
+
+
+div.main div.top div.txt p {
+    width: 560px; 
+
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    text-shadow: 0px 4px 75px #000;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 140%; /* 28px */
+}
+
+
+div.main div.bot {
+    width: 100%;
+    height: 412px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+
+    z-index: 1;
+
+    /* border: 1px solid yellow; */
+}
+
+
+div.main div.bot div.tabs {
+    width: 1203px;
+    height: 288px;
+    flex-shrink: 0;
+
+    align-self: flex-start;
+
+    display: flex;
+    justify-content: space-between;
+
+    z-index: 2;
+
+    /* border: 1px solid blue; */
+}
+
+
+div.main div.bot div.tabs div.tab {
+    width: 359px;
+    height: 288px;
+    flex-shrink: 0;
+
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.49);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+div.main div.bot div.tabs div.tab img {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+}
+
+
+div.main div.bot div.tabs div.tab p.p1 {
+    color: #130985;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Raleway;
+    font-size: 29px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%; /* 37.7px */
+}
+
+
+div.main div.bot div.tabs div.tab p.p2 {
+    color: #908C8C;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Raleway;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 27.3px */
+}
+
+
+div.main div.bot div.tabs div.tab p.p3 {
+    color: #1C8827;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Raleway;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%; /* 29.9px */
+}
+
+
+div.main div.bot div.eclipse {
+    width: 100%;
+    height: 287px;
+    flex-shrink: 0;
+
+    background-image: url("../../../Images/TrangChu/GioiThieu/eclip2.png");
+    background-position: center center;
+    background-size: 1854px 287px;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    align-self: flex-end;
+}
+
+
+
+
+
+/* Media Queries */
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    div.main {
+        height: auto;
+    }
+
+
+    div.main div.vid {
+        overflow: hidden;
+    }
+
+
+    div.main div.vid div.dimmed {
+        width: 100%;
+        height: 802px;
+    }
+
+    
+    div.main div.vid video {
+        width: 1511px;
+    }
+
+
+    div.main div.top {
+        height: 400px;
+    }
+
+
+    div.main div.top div.txt {
+        width: 100%;
+        height: 300px;
+        align-items: center;
+    }
+
+
+    div.main div.top div.txt h2 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+
+    div.main div.top div.txt p {
+        width: 85%;
+        font-size: 14px;
+        text-align: center;
+    }
+
+
+    div.main div.bot {
+        height: auto;
+    }
+
+    
+    div.main div.bot div.tabs {
+        width: 100%;
+        height: auto;
+
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        gap: 2rem;
+    }
+
+
+    div.main div.bot div.tabs div.tab {
+        width: 90%;
+        height: 250px;
+
+        box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.2);
+    }
+
+
+    div.main div.bot div.eclipse {
+        align-self: flex-start;
+
+        margin-top: 90px;
+    }
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    div.main {
+        height: auto;
+    }
+
+
+    div.main div.vid {
+        overflow: hidden;
+    }
+
+
+    div.main div.vid div.dimmed {
+        width: 100%;
+        height: 802px;
+    }
+
+    
+    div.main div.vid video {
+        width: 1511px;
+    }
+
+
+    div.main div.top {
+        height: 400px;
+    }
+
+
+    div.main div.top div.txt {
+        width: 100%;
+        height: 300px;
+        align-items: center;
+    }
+
+
+    div.main div.top div.txt h2 {
+        font-size: 50px;
+        text-align: center;
+    }
+
+
+    div.main div.top div.txt p {
+        width: 85%;
+        font-size: 16px;
+        text-align: center;
+    }
+
+
+    div.main div.bot {
+        height: auto;
+    }
+
+    
+    div.main div.bot div.tabs {
+        width: 100%;
+        height: auto;
+
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        gap: 2rem;
+    }
+
+
+    div.main div.bot div.tabs div.tab {
+        width: 70%;
+        height: 250px;
+
+        box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.2);
+    }
+
+
+    div.main div.bot div.eclipse {
+        align-self: flex-start;
+
+        margin-top: 90px;
+    }
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    div.main {
+        height: auto;
+    }
+
+
+    div.main div.vid {
+        overflow: hidden;
+    }
+
+
+    div.main div.vid div.dimmed {
+        width: 100%;
+    }
+
+    
+    div.main div.vid video {
+        width: 1511px;
+    }
+
+
+    div.main div.top div.txt {
+        height: 390px;
+    }
+
+
+    div.main div.top div.txt h2 {
+        font-size: 56px;
+    }
+
+
+    div.main div.top div.txt p {
+        font-size: 20px;
+    }
+
+
+    div.main div.bot {
+        height: auto;
+    }
+
+    
+    div.main div.bot div.tabs {
+        width: 100%;
+        height: auto;
+
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        gap: 2rem;
+    }
+
+
+    div.main div.bot div.tabs div.tab {
+        width: 70%;
+        height: 250px;
+
+        box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.2);
+    }
+
+
+    div.main div.bot div.eclipse {
+        align-self: flex-start;
+
+        margin-top: 90px;
+    }
+}
+
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1511.98px) {
+    div.main {
+        height: auto;
+    }
+
+
+    div.main div.vid {
+        overflow: hidden;
+    }
+
+
+    div.main div.vid div.dimmed {
+        width: 100%;
+    }
+
+    
+    div.main div.vid video {
+        width: 1511px;
+    }
+
+
+    div.main div.top div.txt {
+        height: 390px;
+    }
+
+
+    div.main div.top div.txt h2 {
+        font-size: 56px;
+    }
+
+
+    div.main div.top div.txt p {
+        font-size: 20px;
+    }
+
+
+    div.main div.bot {
+        height: auto;
+    }
+
+    
+    div.main div.bot div.tabs {
+        width: 100%;
+        height: auto;
+
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        gap: 2rem;
+    }
+
+
+    div.main div.bot div.tabs div.tab {
+        width: 70%;
+        height: 250px;
+
+        box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.2);
+    }
+
+
+    div.main div.bot div.eclipse {
+        align-self: flex-start;
+
+        margin-top: 90px;
+    }
+}
+
+
+
+
+
+/* Scrolling animation */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+
+div.main div.tabs div.tab:nth-child(2) {
+    transition-delay: 200ms;
+}
+
+
+div.main div.tabs div.tab:nth-child(3) {
+    transition-delay: 400ms;
+}

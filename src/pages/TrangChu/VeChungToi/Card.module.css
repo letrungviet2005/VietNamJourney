@@ -54,7 +54,7 @@ div.main div.block1 div.txtBlock {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
 
     /* border: 1px solid red; */
 }
@@ -72,12 +72,14 @@ div.main div.block1 div.txtBlock p.txt1 {
 
 
 div.main div.block1 div.txtBlock p.txt2 {
-    color: #000;
+    margin-top: -15px;
+
+    color: #474747;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Raleway;
     font-size: 24px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 130%; /* 31.2px */
 }
 
@@ -98,4 +100,23 @@ div.main div.block2 p {
     font-style: normal;
     font-weight: 600;
     line-height: 130%; /* 27.3px */
+}
+
+
+
+
+
+/* Scrolling animation */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(100%);
+    transition: all 1s;
+}
+
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
 }
