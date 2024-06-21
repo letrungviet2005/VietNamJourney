@@ -62,7 +62,9 @@ function TaiKhoan() {
         setErrorMessage('');
         console.log("Đăng nhập thành công", data.user);
         const userID = data.user.UserLogin_ID;
+        const userName = data.user.Username;
         Cookies.set('User_ID', userID, { expires: 30 });
+        Cookies.set('UserName', userName, { expires: 30 });
         navigate('/TrangChu'); 
       }
     } catch (error) {

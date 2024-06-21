@@ -1,0 +1,16 @@
+.map {
+  // background-color: #E8FEEB;
+  background-image: url("https://tse4.mm.bing.net/th?id=OIP.e3soQUyXZOwzwhUyPh2IxQHaEK&pid=Api&P=0&h=220");
+  // background-color: white;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.mapVietNam {
+  width: 100%;
+  height: auto;
+  max-width: 1000px; /* Giới hạn kích thước tối đa nếu cần */
+  display: block;
+  margin: auto;
+}

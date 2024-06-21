@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $response = array("error" => "Kết nối đến cơ sở dữ liệu thất bại");
     } else {
         if ($userId) {
-            // Lấy thông tin người dùng
             $sqlUser = "SELECT u.*, 
             (SELECT COUNT(*) FROM follow WHERE Following_ID = u.User_ID) AS followers, 
             (SELECT COUNT(*) FROM follow WHERE Follower_ID = u.User_ID) AS following, 
@@ -38,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if ($user) {
                 $imageData = base64_encode($user['Image']);
 
-                // Kiểm tra trạng thái theo dõi
+
                 $isFollowing = false;
                 if ($currentUserId) {
                     $sqlFollow = "SELECT * FROM follow WHERE Follower_ID = ? AND Following_ID = ?";
@@ -71,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $response = array("error" => "User ID không hợp lệ");
         }
 
-        // Đóng kết nối
+
         $conn->close();
     }
 

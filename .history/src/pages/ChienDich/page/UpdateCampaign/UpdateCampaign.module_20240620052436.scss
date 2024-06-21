@@ -1,0 +1,237 @@
+.CreateCampaign {
+  width: 100%;
+  padding: 50px 100px;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 700 ;
+    text-align: center;
+    color: #196F36;
+  }
+
+  hr {
+    width: 100px;
+    border: 2px solid #35973F;
+    opacity: 1;
+    margin-bottom: 10px;
+    margin-top: 0px;
+  }
+
+  label {
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+  }
+
+  input, textArea {
+    width: 100%;
+    border: 1px solid #c9c9c9;
+    border-radius: 8px;
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+
+    &:focus-visible {
+      outline: none;
+      border: 1px solid #5fa967;
+    }
+  }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #35973F;
+  margin-bottom: 20px;
+}
+
+.input-name {
+  height: 50px;
+  margin-bottom: 15px;
+}
+
+.input-desc {
+  height: 200px;
+  margin-bottom: 15px;
+}
+
+.date {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 15px;
+}
+
+.date label {
+  display: inline-block;
+  width: 150px;
+}
+
+.date input {
+  width: 150px;
+  height: 32px;
+}
+
+.where {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.province {
+  display: inline-block;
+  width: 160px;
+}
+
+.district {
+  display: inline-block;
+  width: 130px;
+}
+
+.input-province, .input-district {
+  display: inline-block;
+  width: 250px;
+} 
+
+.input-province {
+  margin-right: 100px;
+}
+
+.money-row {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.money {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.total-money, .money-by-VNJN {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.input-total-money, .input-money-by-VNJN {
+  height: 45px;
+  flex: 1;
+  width: 200px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #35973F;
+  margin-right: 100px;
+}
+
+.timeline-row {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 40px;
+}
+
+.timeline-row .timeline {
+  display: inline-block;
+}
+
+.time {
+  margin-left: 10px;
+  border-left: 3px solid #001273;
+  padding-left: 40px;
+  width: 300px;
+}
+
+.time .inner-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #001273;
+  margin-bottom: 5px;
+}
+
+.time .desc {
+  font-size: 16px;
+  font-weight: 600;
+  color: #737373;
+  margin-bottom: 30px;  
+  height: 32px;
+}
+
+.input-location {
+  height: calc(100% - 100px);
+  margin-top: 5px;
+}
+
+.contact-row {
+  button {
+    padding: 10px 30px;
+    border: none;
+    background-color: #35973F;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+  }
+
+  input {
+    width: 80%;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 5px 10px;
+    margin-top: 10px;
+  }
+}
+
+.form-contact {
+  margin-bottom: 30px;
+}
+
+.image-upload-container {
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-top: 60px;
+
+  label {
+    padding: 10px 30px;
+    border: none;
+    background-color: #35973F;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+  }
+}
+.image-upload-button {
+  display: inline-block;
+}
+.image-preview-container {
+  width: 60%;
+  height: auto;
+  aspect-ratio: 2/1;
+  margin-top: 20px;
+  margin-left: 20%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
+
+.submit-button {
+  display: block;
+  margin: 0 auto; 
+  margin-top: 80px;
+  padding: 10px 30px;
+  border: none;
+  background-color: #ffffff;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #35973F;
+  border: 3px solid #35973F;
+}

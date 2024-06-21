@@ -8,6 +8,10 @@ import Quy from './pages/Quy/Quy.js';
 import TaiKhoan from './pages/TaiKhoan/TaiKhoan.js';
 import User from './pages/User/User.js';
 import PageDetail from './pages/ChienDich/page/PageDetail/PageDetail.js';
+import CreateCampaign from './pages/ChienDich/page/CreateCampaign/CreateCampaign.js';
+import Manager from './pages/ChienDich/page/Manager/Manager.js';
+import UpdateCampaign from './pages/ChienDich/page/UpdateCampaign/UpdateCampaign.js';
+import Footer from './component/Footer/Footer.js'
 
 function App() {
   return (
@@ -24,7 +28,11 @@ function App() {
         <Route path="/User" element={<User />} />
 
         <Route path="/campaign-detail" element={<PageDetail />} />
+        <Route path="/CreateCampaign" element={<CreateCampaign />} />
+        <Route path="/UpdateCampaign" element={<UpdateCampaign />} />
+        <Route path="/Manager" element={<Manager />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

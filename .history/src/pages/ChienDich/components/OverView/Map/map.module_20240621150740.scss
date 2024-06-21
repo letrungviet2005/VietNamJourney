@@ -1,0 +1,20 @@
+.map {
+  position: relative;
+  background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
+              url("https://img5.thuthuatphanmem.vn/uploads/2021/09/19/anh-dao-phu-quoc-nhin-tu-tren-cao_095335834.jpg");
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+//https://h3qvn.com/hinh-phong-canh-dep-viet-nam/imager_18_27936_700.jpg
+
+.mapVietNam {
+  width: 100%;
+  height: auto;
+  max-width: 1000px; /* Giới hạn kích thước tối đa nếu cần */
+  display: block;
+  margin: auto;
+}
