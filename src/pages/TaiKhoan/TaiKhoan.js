@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';  // Thêm import useNavigate
 import styles from './TaiKhoan.module.css';
-import background from '../../Images/TaiKhoan/background_taikhoan.jpg';
 import background1 from '../../Images/TaiKhoan/phong.jpg';
 import Cookies from 'js-cookie';
 

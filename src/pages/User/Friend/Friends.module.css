@@ -1,0 +1,40 @@
+.friends-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.friend-item:hover {
+    background-color: rgb(231, 230, 230);
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.friend-avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.friend-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    width: 80%;
+}
+
+.friend-info button {
+    border-radius: 10px;
+    border: 1px solid rgb(182, 182, 182);
+    background-color: #26a739;
+    width: 80%;
+    color: aliceblue;
+}

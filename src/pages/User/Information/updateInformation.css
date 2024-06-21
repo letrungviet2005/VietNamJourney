@@ -1,0 +1,49 @@
+.information {
+    margin-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}.information input {
+    width: 85%;
+    border-radius: 10px;
+    border: 1px solid rgb(148, 154, 149);
+    color: rgb(64, 63, 63);
+    padding: 2px; 
+    transition: background 0.3s ease, border 0.3s ease; 
+    padding-left: 8px;
+}
+
+.information input:hover {
+    border: 1px solid rgb(71, 148, 81);
+}
+
+.information input:focus {
+    border: 1px solid rgb(51, 128, 61);
+    outline: none; 
+}.file {
+    display: flex;
+    margin-top: 0.8rem;
+}.file input{
+    width: 76%;
+}.file i{
+    font-size: 1.7rem;
+    margin-right: 0.6rem;
+}.eventbutton {
+    margin-top: 2rem;
+    display: flex;
+    margin-right: 2rem;
+    margin-left: 50%;
+}.eventbutton button{
+    width: 4.5rem;
+    height: 1.8rem;
+    border-radius: 10px;
+    color: aliceblue;
+    margin-left: 0.5rem;
+    background-color: rgb(55, 155, 55);
+    border: none;
+    
+}.eventbutton button:hover{
+    background-color: aliceblue;
+    color:rgb(55, 155, 55) ;
+    border:  1px solid green;
+    
+}

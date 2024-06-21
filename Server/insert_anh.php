@@ -7,13 +7,13 @@ if ($conn->connect_error) {
     die("Kết nối đến cơ sở dữ liệu thất bại: " . $conn->connect_error);
 }
 
-$imagePath = "../src/Images/Icons/Dinh.png";
+$imagePath = "../src/Images/User/FourStarts.jpg";
 
 // Đọc dữ liệu từ file ảnh
 $imageData = file_get_contents($imagePath);
 
 // Chuẩn bị câu lệnh SQL UPDATE
-$sql = "UPDATE post SET Image = ? WHERE User_ID = 2";
+$sql = "UPDATE comment SET ImageComment = ? WHERE Comment_ID = 6";
 $stmt = $conn->prepare($sql);
 
 if ($stmt === false) {

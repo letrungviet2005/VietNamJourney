@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './User.module.css';
-import tu from '../../Images/Icons/Tu.jpeg';
-import Friends from './Friends.js';
-import Post from './Post.js';
-import Information from './Information.js';
+import Friends from './Friend/Friends.js';
+import Post from './Post/Post.js';
+import Information from './Information/Information.js';
 import { useCheckCookie } from '../../Cookie/getCookie';
+import NewPost from './NewPost/NewPost.js'
 
 function User() {
   const location = useLocation();
@@ -15,6 +15,10 @@ function User() {
   
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState(null); 
+  const [isPostOpen, setIsPostOpen] = useState(false);
+  const handlePost = () => {
+        setIsPostOpen(!isPostOpen)
+  }
 
   useEffect(() => {
     if (user_id) {
@@ -43,7 +47,7 @@ function User() {
             <div className={styles.container2}>
             <p style={{ marginLeft: '1rem', fontWeight: 'revert',fontSize :'1.2rem' }}> Gợi ý cho bạn</p>
             <Friends User_ID={user_ID} />
-            <h6 style ={{ float : 'right',marginRight :'1rem' }}>Xem thêm <i class="fa-solid fa-circle-arrow-right"></i></h6>
+            <h6 style ={{ float : 'right',marginRight :'1rem',color : 'green' }}>Xem thêm <i class="fa-solid fa-circle-arrow-right"></i></h6>
           </div>
           }
         </div>
@@ -55,7 +59,8 @@ function User() {
                   <div className={styles['container3-top-avatar']}>
                     <img src={`data:image/jpeg;base64,${user.Image}`} alt="Avatar" />
                   </div>
-                  <button>Hãy viết gì đó cho bài viết của bạn</button>
+                  <button onClick={handlePost}>Hãy viết gì đó cho bài viết của bạn</button>
+                  {isPostOpen && <NewPost onClose={ handlePost} User_ID_Post = {1} />}
                 </div>
               </div>
               <hr className={styles['black-line']} />
@@ -63,7 +68,7 @@ function User() {
           )}
           <div className={styles.container4}>
             {posts.length === 0 ? (
-              <div style={{ textAlign: 'center', marginTop: '2rem', backgroundColor: 'white', borderRadius :'10px',padding : '2rem' }}>
+              <div style={{ textAlign: 'center', marginTop: '2rem', backgroundColor: 'white', borderRadius :'10px',padding : '2rem',fontWeight :'revert' }}>
                 Hiện chưa có bài viết nào .
               </div>
             ) : (

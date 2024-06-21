@@ -15,5 +15,3 @@ function dbConnect()
     }
     return $conn;
 }
-
-// Hàm kiểm tra kết nối đến database

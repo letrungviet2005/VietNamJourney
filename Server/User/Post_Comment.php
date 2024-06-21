@@ -5,7 +5,6 @@ header("Access-Control-Allow-Headers: Content-Type");
 require '../db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    // Xử lý yêu cầu preflight
     header("HTTP/1.1 200 OK");
     exit();
 }
@@ -47,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         if ($postId) {
 
-            $sqlComment = "SELECT User_ID, Content, CreateAt FROM comment WHERE Post_ID = ?";
+            $sqlComment = "SELECT User_ID, Content, ImageComment, CreateAt FROM comment WHERE Post_ID = ? ORDER BY Comment_ID DESC";
             $stmtComment = $conn->prepare($sqlComment);
             $stmtComment->bind_param("i", $postId);
             $stmtComment->execute();
@@ -66,11 +65,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 if ($user) {
                     $imageData = base64_encode($user['Image']);
+                    $imageCommentData = $row['ImageComment'] ? base64_encode($row['ImageComment']) : null;
                     $comments[] = array(
                         "user_ID" => $userId,
                         "username" => $user['Name'],
                         "avatar" => 'data:image/jpeg;base64,' . $imageData,
                         "content" => $row['Content'],
+                        "imageComment" => $imageCommentData ? 'data:image/jpeg;base64,' . $imageCommentData : null,
                         "time" => timeElapsedString($row["CreateAt"])
                     );
                 }

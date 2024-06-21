@@ -3,17 +3,13 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
-// Bật hiển thị lỗi
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require '../db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     header("HTTP/1.1 200 OK");
     exit();
 }
+$conn = dbConnect();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $input = json_decode(file_get_contents('php://input'), true);
@@ -27,12 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    if ($Status === 'insert') {
+    if ($Status === 'follow') {
         // Thêm vào bảng follow
         $query = "INSERT INTO follow (Follower_ID, Following_ID) VALUES (?, ?)";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("ii", $User_ID, $Followed_User_ID);
-    } elseif ($Status === 'delete') {
+    } elseif ($Status === 'unfollow') {
         // Xóa khỏi bảng follow
         $query = "DELETE FROM follow WHERE Follower_ID = ? AND Following_ID = ?";
         $stmt = $conn->prepare($query);
