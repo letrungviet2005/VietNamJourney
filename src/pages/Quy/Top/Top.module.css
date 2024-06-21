@@ -16,7 +16,7 @@
 
 
 div.main {
-    width: 1513px;
+    width: 100%;
     height: 983px;
     flex-shrink: 0;
 
@@ -52,7 +52,7 @@ div.main div.upper {
 
 
 div.main div.bottom {
-    width: 1512px;
+    width: 100%;
     /* height: 159.263px; */
     flex-shrink: 0;
 
@@ -71,7 +71,7 @@ div.main div.bottom img {
 
 
 div.main div.bottom div.imgpaper {
-    width: 1512px;
+    width: 100%;
     height: 200px;
     flex-shrink: 0;
 

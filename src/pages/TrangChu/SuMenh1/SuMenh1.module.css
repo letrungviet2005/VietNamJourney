@@ -68,12 +68,17 @@ div.main div.div2 {
     justify-content: center;
     align-items: center;
 
+    padding-left: 100px;
+    padding-right: 100px;
+
+    gap: 3rem;
+
     /* border: 1px solid red; */
 }
 
 
 div.main div.div2 div.txt p {
-    width: 723px;
+    width: 100%;
     padding-left: 10px; 
 
     color: #000;
@@ -89,7 +94,7 @@ div.main div.div2 div.txt p {
 
 
 div.main div.div2 div.images {
-    width: 788px;
+    width: 50%;
     height: 755px;
     flex-shrink: 0;
 

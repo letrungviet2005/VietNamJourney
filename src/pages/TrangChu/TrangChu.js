@@ -19,7 +19,7 @@ function TrangChu() {
             <CoVeChungToi />
             <CoThucTrang />
 
-            <CoThucTrangVideo />
+            {/* <CoThucTrangVideo /> */}
 
             <CoSuMenh1 />
             <CoSuMenh2 />
