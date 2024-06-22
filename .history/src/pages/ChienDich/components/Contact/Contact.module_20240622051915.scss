@@ -1,0 +1,134 @@
+.Contact {
+  background-color: #E8FEEB;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding:20px 30px 80px 30px;
+  border-radius: 25px;
+  text-align: center;
+  
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1E266D;
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+}
+
+.coquan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font-size: 19px;
+    font-weight: 600;
+    margin-top: 20px;
+    color: #4B4B4B;
+  }
+
+  img {
+    width: auto;
+    height: 100px;
+  }
+}
+
+.chuyengia-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 40px;
+  justify-content: space-between;
+}
+
+.chuyengia {
+  padding: 25px;
+  background-color: white;
+  width: 25%;
+  border-radius: 10px;
+  border: 2px solid #dddddd;
+  text-align: left;
+
+  img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+}
+
+.chuyengia .name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1E266D;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.chuyengia .desc {
+  font-size: 14px;
+  font-weight: 600;
+  color: #777575;
+  margin-top: 5px;
+}
+
+.chuyengia .email {
+  font-size: 14px;
+  font-weight: 600;
+  color: #229C09;
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 1500px) {
+  .chuyengia .email {
+    font-size: 12px;
+  }
+  .chuyengia .name {
+    font-size: 14px;
+  }
+  
+  .chuyengia .desc {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 1199.8px) {
+  .chuyengia {
+    width: 30%;
+  }
+
+  .chuyengia .email {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 991.8px) {
+  .chuyengia {
+    padding: 15px;
+    width: 32%;
+  }
+
+  .chuyengia .email {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 767.8px){
+  .chuyengia-row {
+    
+  }
+  .chuyengia .email {
+    font-size: 8px;
+  }
+  .chuyengia .name {
+    font-size: 12px;
+  }
+  
+  .chuyengia .desc {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 575.8px){
+  
+}
+

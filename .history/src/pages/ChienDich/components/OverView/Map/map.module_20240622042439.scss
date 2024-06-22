@@ -1,0 +1,96 @@
+.map {
+  position: relative;
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), 
+              url("https://i0.wp.com/www.goexplorevietnam.com/wp-content/uploads/2018/07/Yen-island-Nha-Trang-Vietnam.jpg?fit=1296%2C864&ssl=1");
+  background-size: cover;
+  background-position: center right;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+//https://h3qvn.com/hinh-phong-canh-dep-viet-nam/imager_18_27936_700.jpg
+
+.mapVietNam {
+  width: 100%;
+  height: auto;
+  max-width: 1000px; /* Giới hạn kích thước tối đa nếu cần */
+  display: block;
+  margin: auto;
+}
+
+@media screen and (max-width: 1199.8px) {
+
+}
+
+@media screen and (max-width: 991.8px) {
+  
+}
+@media screen and (max-width: 767.8px){
+  
+}
+@media screen and (max-width: 575.8px){
+  .map {
+      width: 90%;
+      display: block;
+      margin: auto;
+      max-height: 450px;
+      margin-bottom: 20px;
+  }
+  .right {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0;
+      height: 320px;
+  }
+  .right .search {
+      width: 90%;
+      height: 40px;
+      margin-bottom:20px;
+  }   
+  .right .search .inner-search {
+      font-size: 11px;
+      font-weight: 700;
+  }
+  .right .search #province {
+      font-size: 11px;
+      font-weight: 700;
+  }
+  .right .content {
+      height: 250px;
+      width: 90%;
+  }
+  .right .content img {
+      width: 40%;
+      height: auto;
+      object-fit: cover;
+  } 
+  .right .content .inner-content {
+      width: 60%;
+      padding: 15px;
+  }
+  .right .content .inner-content .inner-title {
+      font-size: 20px;
+  }
+  .right .content .inner-content .inner-title .inner-line {
+      height: 5px;
+  }
+  .right .content .inner-content .part {
+      margin-bottom: 10px;
+  }
+  .right .content .inner-content .part .inner-content {
+      width: 85%;
+  }
+  .right .content .inner-content .part .inner-content .inner-title{
+      font-size: 16px;
+      margin-bottom: 3px;
+  }
+  .right .content .inner-content .part .inner-content .inner-button {
+      font-size: 11px;
+  }
+  .right .content .inner-content .part .inner-count {
+      font-size: 20px;
+      margin-right: 10px;
+  }
+}
