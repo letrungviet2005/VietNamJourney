@@ -6,18 +6,23 @@
 
 
 div.main {
-    width: 1512px;
+    position: fixed;
+
+    width: 1536px;
     height: 864px;
+
+    margin-top: -100px;
+
+    display: flex;
 }
 
 
 div.main div.vid {
     width: 100%;
     
-
     position: absolute;
 
-    z-index: 0;
+    z-index: 1;
 }
 
 
@@ -33,22 +38,15 @@ div.main div.front {
     z-index: 2;
     
     display: flex;
-    justify-content: space-between;
-}
+    justify-content: center;
 
-
-div.main div.front img.logo {
-    width: 233px;
-    height: 84px;
-    flex-shrink: 0;
-
-    align-self: flex-start;
+    /* border: 1px solid red; */
 }
 
 
 div.main div.front div.mid {
     width: 346px;
-    height: 161px;
+    height: auto;
     flex-shrink: 0;
 
     align-self: center;
@@ -56,6 +54,9 @@ div.main div.front div.mid {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+
+    /* border: 1px solid red; */
 }
 
 
@@ -77,11 +78,26 @@ div.main div.front div.mid img {
 }
 
 
-div.main div.front p.next {
-    color: #239510;
+div.main div.front .lnk {
+    padding-bottom: 75px;
+    margin-right: -1400px;
+
+    position: absolute;
+
+    align-self: flex-end;
+
+    /* border: 1px solid red; */
+}
+
+
+div.main div.front .lnk p.next {
+    /* padding-bottom: 75px;
+    margin-right: -1400px; */
+
+    color: white;
     text-align: center;
     font-family: Inter;
-    font-size: 28px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
