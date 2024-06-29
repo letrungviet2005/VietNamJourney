@@ -55,6 +55,7 @@ function Info({ className, province }) {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
   }
 
+  // Tìm URL hình ảnh dựa trên tên tỉnh
   const provinceData = provinces.find(p => p.province === province);
   const imageUrl = provinceData ? provinceData.urlImage : "https://www.pullman-danang.com/wp-content/uploads/sites/86/2019/05/DJI_0004.jpg"; // Đặt URL mặc định nếu không tìm thấy tỉnh
 

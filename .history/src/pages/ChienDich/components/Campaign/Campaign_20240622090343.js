@@ -15,6 +15,8 @@ function Campaign({ className='col-12', campId, campType='TÌNH NGUYỆN', title
 
   const navigate = useNavigate();
   const handleButtonClick = () => {
+    const id = useCheckCookie('User_ID', '/TaiKhoan');
+    // Điều hướng đến đường dẫn mục tiêu
     navigate('/campaign-detail/?id=' + campId);
   };
 

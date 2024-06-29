@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import style from './Campaign.module.scss';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { useCheckCookie } from "../../../../Cookie/getCookie";
+import {}
 
 const cx = classNames.bind(style);
 
@@ -15,6 +15,7 @@ function Campaign({ className='col-12', campId, campType='TÌNH NGUYỆN', title
 
   const navigate = useNavigate();
   const handleButtonClick = () => {
+    // Điều hướng đến đường dẫn mục tiêu
     navigate('/campaign-detail/?id=' + campId);
   };
 

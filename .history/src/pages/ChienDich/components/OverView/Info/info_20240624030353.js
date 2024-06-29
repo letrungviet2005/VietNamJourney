@@ -19,8 +19,10 @@ function Info({ className, province }) {
       province: "Quảng Trị",
       urlImage: "https://toplist.vn/images/800px/cau-hien-luong-song-ben-hai-507421.jpg"
     }
+    // Thêm các tỉnh khác nếu cần
   ];
 
+  // Tạo state để lưu trữ dữ liệu từ API
   const [data, setData] = useState({
     totalCampaigns: 0,
     totalFund: 0,
@@ -29,10 +31,13 @@ function Info({ className, province }) {
     endedCampaigns: 0,
   });
 
+  // Sử dụng useEffect để gọi API khi component được mount
   useEffect(() => {
+    // Định nghĩa hàm fetchData
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost/bwd/VietNamJourney/Server/ChienDich/getprovince.php?province=${province}`);
+        // Cập nhật state với dữ liệu từ API
         if (response.data) {
           setData({
             totalCampaigns: response.data.campaignIng + response.data.campaignWill + response.data.campaignEd,
@@ -55,6 +60,7 @@ function Info({ className, province }) {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
   }
 
+  // Tìm URL hình ảnh dựa trên tên tỉnh
   const provinceData = provinces.find(p => p.province === province);
   const imageUrl = provinceData ? provinceData.urlImage : "https://www.pullman-danang.com/wp-content/uploads/sites/86/2019/05/DJI_0004.jpg"; // Đặt URL mặc định nếu không tìm thấy tỉnh
 

@@ -30,9 +30,11 @@ function Info({ className, province }) {
   });
 
   useEffect(() => {
+    // Định nghĩa hàm fetchData
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost/bwd/VietNamJourney/Server/ChienDich/getprovince.php?province=${province}`);
+        // Cập nhật state với dữ liệu từ API
         if (response.data) {
           setData({
             totalCampaigns: response.data.campaignIng + response.data.campaignWill + response.data.campaignEd,
@@ -55,6 +57,7 @@ function Info({ className, province }) {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
   }
 
+  // Tìm URL hình ảnh dựa trên tên tỉnh
   const provinceData = provinces.find(p => p.province === province);
   const imageUrl = provinceData ? provinceData.urlImage : "https://www.pullman-danang.com/wp-content/uploads/sites/86/2019/05/DJI_0004.jpg"; // Đặt URL mặc định nếu không tìm thấy tỉnh
 
