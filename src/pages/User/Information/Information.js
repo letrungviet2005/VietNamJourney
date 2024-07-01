@@ -18,7 +18,7 @@ function Information({ user_ID }) {
     };
 
     useEffect(() => {
-        fetch('http://localhost/BWD/vietnamjourney/Server/User/User_Information.php', {
+        fetch('http://localhost/BWD/VietNamJourney/Server/User/User_Information.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ function Information({ user_ID }) {
 
     const handleUpdateFollow = () => {
         const followStatus = isFollowing ? 'unfollow' : 'follow';
-        fetch('http://localhost/BWD/vietnamjourney/Server/User/updateFollowStatus.php', {
+        fetch('http://localhost/BWD/VietNamJourney/Server/User/updateFollowStatus.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

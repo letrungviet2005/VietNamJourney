@@ -16,7 +16,7 @@ const CommentModal = ({ onClose, postId }) => {
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await fetch('http://localhost/BWD/vietnamjourney/Server/User/Post_Comment.php', {
+                const response = await fetch('http://localhost/BWD/VietNamJourney/Server/User/Post_Comment.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ const CommentModal = ({ onClose, postId }) => {
         }
 
         try {
-            const response = await fetch('http://localhost/BWD/vietnamjourney/Server/User/addComment.php', {
+            const response = await fetch('http://localhost/BWD/VietNamJourney/Server/User/addComment.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

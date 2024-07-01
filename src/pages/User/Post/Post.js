@@ -31,7 +31,7 @@ const Post = ({
     useEffect(() => {
 
         if (userId) {
-            fetch('http://localhost/BWD/vietnamjourney/Server/User/Check_Islike.php', {
+            fetch('http://localhost/BWD/VietNamJourney/Server/User/Check_Islike.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const Post = ({
                 setIsLiked(false);
             });
 
-            fetch('http://localhost/BWD/vietnamjourney/Server/User/GetComment.php', {
+            fetch('http://localhost/BWD/VietNamJourney/Server/User/GetComment.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const Post = ({
 
     const handleLikeClick = () => {
         if (userId) {
-            fetch('http://localhost/BWD/vietnamjourney/Server/User/ToggleLike.php', {
+            fetch('http://localhost/BWD/VietNamJourney/Server/User/ToggleLike.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ const Post = ({
     };
 
     const handleConfirmDelete = () => {
-        fetch('http://localhost/BWD/vietnamjourney/Server/User/DeletePost.php', {
+        fetch('http://localhost/BWD/VietNamJourney/Server/User/DeletePost.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -23,7 +23,7 @@ function User() {
 
   useEffect(() => {
     if (user_id) {
-      fetch('http://localhost/BWD/vietnamjourney/Server/User/Post_User.php', {
+      fetch('http://localhost/BWD/VietNamJourney/Server/User/Post_User.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

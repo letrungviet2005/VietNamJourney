@@ -37,7 +37,7 @@ const NewPost = ({ onClose }) => {
         }
 
         try {
-            const response = await fetch('http://localhost/BWD/vietnamjourney/Server/User/Post/addPost.php', {
+            const response = await fetch('http://localhost/BWD/VietNamJourney/Server/User/Post/addPost.php', {
                 method: 'POST',
                 body: formData
             });

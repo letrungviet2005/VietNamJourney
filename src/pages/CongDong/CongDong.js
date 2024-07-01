@@ -15,7 +15,7 @@ function CongDong() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-            fetch('http://localhost/BWD/vietnamjourney/Server/CongDong/Post.php', {
+            fetch('http://localhost/BWD/VietNamJourney/Server/CongDong/Post.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
