@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import styles from './CommentModal.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useCheckCookie } from '../../../Cookie/getCookie';
-import anh from '../../../Images/User/FourStarts.jpg';
 
 const CommentModal = ({ onClose, postId }) => {
     const user_ID = useCheckCookie('User_ID', '/TaiKhoan');
@@ -16,7 +15,7 @@ const CommentModal = ({ onClose, postId }) => {
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await fetch('http://localhost/BWD/VietNamJourney/Server/User/Post_Comment.php', {
+                const response = await fetch('http://localhost:8000/api/getComments', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -68,13 +67,7 @@ const CommentModal = ({ onClose, postId }) => {
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setCommentImage(reader.result);
-        };
-        if (file) {
-            reader.readAsDataURL(file);
-        }
+        setCommentImage(file);
     };
 
     const sendComment = async () => {
@@ -82,23 +75,22 @@ const CommentModal = ({ onClose, postId }) => {
             return;
         }
 
+        const formData = new FormData();
+        formData.append('User_ID', user_ID);
+        formData.append('Post_ID', postId);
+        formData.append('Content', commentContent);
+        if (commentImage) {
+            formData.append('ImageComment', commentImage);
+        }
+
         try {
-            const response = await fetch('http://localhost/BWD/VietNamJourney/Server/User/addComment.php', {
+            const response = await fetch('http://localhost:8000/api/addComment', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    User_ID: user_ID,
-                    Post_ID: postId,
-                    Content: commentContent,
-                    ImageComment: commentImage,
-                }),
+                body: formData,
             });
             const data = await response.json();
 
             if (data.success) {
-                // Send the new comment to the WebSocket server
                 const socket = new WebSocket('ws://localhost:8080');
                 socket.onopen = () => {
                     socket.send(JSON.stringify(data.comment));
@@ -149,7 +141,7 @@ const CommentModal = ({ onClose, postId }) => {
                                         <p>{comment.content}</p>
                                         {comment.imageComment && (
                                             <div className={styles.commentContent}>
-                                                <img src={comment.imageComment} alt="Comment Content" />
+                                                <img src={`http://localhost:8000/${comment.imageComment}`} alt="Comment Content" />
                                             </div>
                                         )}
                                     </div>
@@ -181,7 +173,7 @@ const CommentModal = ({ onClose, postId }) => {
                         />
                         <i onClick={sendComment} className="fa-regular fa-paper-plane"></i>
                     </div>
-                    {commentImage && <img src={commentImage} alt="Selected" />}
+                    {commentImage && <img src={URL.createObjectURL(commentImage)} alt="Selected" />}
                 </div>
             </div>
         </div>

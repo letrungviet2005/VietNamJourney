@@ -11,7 +11,7 @@ const Friends = ({ User_ID }) => {
     useEffect(() => {
         const fetchFollowers = async () => {
             try {
-                const response = await fetch('http://localhost/BWD/VietNamJourney/Server/User/getFollowers.php', {
+                const response = await fetch('http://localhost:8000/api/getUnFollowedUsers', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ const Friends = ({ User_ID }) => {
 
     const updateFollowerStatus = async (userId, action) => {
         try {
-            const response = await fetch('http://localhost/BWD/VietNamJourney/Server/User/updateFollowStatus.php', {
+            const response = await fetch('http://localhost:8000/api/updateFollower', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

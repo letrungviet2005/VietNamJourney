@@ -17,49 +17,49 @@ function Information({ user_ID }) {
         setupdateInfo(true);
     };
 
-    useEffect(() => {
-        fetch('http://localhost/BWD/VietNamJourney/Server/User/User_Information.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ userId: user_ID, currentUserId: user_id })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.user) {
-                setUserData(data.user);
-                setIsFollowing(data.user.isFollowing);
-            } else {
-                console.error('Failed to fetch user data:', data.error);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }, [user_ID, user_id]);
+useEffect(() => {
+    fetch('http://localhost:8000/api/user_information', { // Đảm bảo rằng URL này là chính xác
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId: user_ID, currentUserId: user_id })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.user) {
+            setUserData(data.user);
+            setIsFollowing(data.user.isFollowing);
+        } else {
+            console.error('Failed to fetch user data:', data.error);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}, [user_ID, user_id]);
 
     if (!userData) {
         return <div>Loading...</div>;
     }
 
-    const handleUpdateFollow = () => {
-        const followStatus = isFollowing ? 'unfollow' : 'follow';
-        fetch('http://localhost/BWD/VietNamJourney/Server/User/updateFollowStatus.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ User_ID: user_id, Followed_User_ID: user_ID, Status: followStatus })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                setIsFollowing(!isFollowing);
-            } else {
-                console.error('Failed to update follow status:', data.error);
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    };
+   const handleUpdateFollow = () => {
+    const followStatus = isFollowing ? 'unfollow' : 'follow';
+    fetch('http://localhost/api/updateFollowStatus', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ User_ID: user_id, Followed_User_ID: user_ID, Status: followStatus })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            setIsFollowing(!isFollowing);
+        } else {
+            console.error('Failed to update follow status:', data.error);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+};
 
     const { avatar, name, username, followers, following, role, location, facebookLink } = userData;
 

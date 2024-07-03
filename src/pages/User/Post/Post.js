@@ -31,7 +31,7 @@ const Post = ({
     useEffect(() => {
 
         if (userId) {
-            fetch('http://localhost/BWD/VietNamJourney/Server/User/Check_Islike.php', {
+            fetch('http://localhost:8000/api/checkLikeStatus', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ const Post = ({
                 setIsLiked(false);
             });
 
-            fetch('http://localhost/BWD/VietNamJourney/Server/User/GetComment.php', {
+            fetch('http://localhost:8000/api/getComment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const Post = ({
 
     const handleLikeClick = () => {
         if (userId) {
-            fetch('http://localhost/BWD/VietNamJourney/Server/User/ToggleLike.php', {
+            fetch('http://localhost:8000/api/toogleLike', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ const Post = ({
     };
 
     const handleConfirmDelete = () => {
-        fetch('http://localhost/BWD/VietNamJourney/Server/User/DeletePost.php', {
+        fetch('http://localhost:8000/api/deletePost', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ const Post = ({
                     <img alt="options" src={dots} />
                     {isOptionsOpen && (
                         <div className={styles['options-menu']}>
-                            <p>Lưu bài viết</p>
+                            <p>Chia sẻ</p>
                             {user_id == userId &&
                                 <p onClick={handleDeleteClick}>Xóa bài viết</p>
                             }

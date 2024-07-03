@@ -12,7 +12,7 @@ function UpdateInformation({ onCloseInfo, user_id }) {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch('http://localhost/BWD/VietNamJourney/Server/User/User_Information.php', {
+                const response = await fetch('http://localhost:8000/api/user_information', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ function UpdateInformation({ onCloseInfo, user_id }) {
 
     const update = async () => {
         try {
-            const response = await fetch('http://localhost/BWD/VietNamJourney/Server/User/update_user_information.php', {
+            const response = await fetch('http://localhost/api/updateUserInfo', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
