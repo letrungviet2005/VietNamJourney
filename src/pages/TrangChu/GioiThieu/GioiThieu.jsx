@@ -4,7 +4,7 @@ import styles from './GioiThieu.module.css';
 import anh1 from "../../../Images/TrangChu/GioiThieu/anh1.png";
 import anh2 from "../../../Images/TrangChu/GioiThieu/anh2.png";
 import anh3 from "../../../Images/TrangChu/GioiThieu/anh3.png";
-import vid1 from "../../../Images/TrangChu/GioiThieu/GioiThieubg.mp4";
+import vid1 from "../../../videos/GioiThieubg.mp4";
 
 
 function CoGioiThieu() {

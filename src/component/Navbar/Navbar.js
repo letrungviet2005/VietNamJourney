@@ -49,7 +49,7 @@ function Navbar() {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link to="/intro">
+        <Link to="/">
           <img
             className={styles.logo1}
             src={header1}
