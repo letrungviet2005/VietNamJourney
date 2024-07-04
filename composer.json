@@ -1,0 +1,9 @@
+{
+    "name": "dkt/viet-nam-journey",
+    "autoload": {
+        "psr-4": {
+            "Dkt\\VietNamJourney\\": "src/"
+        }
+    },
+    "require": {}
+}

@@ -4,7 +4,7 @@ import styles from './GioiThieu.module.css';
 import anh1 from "../../../Images/TrangChu/GioiThieu/anh1.png";
 import anh2 from "../../../Images/TrangChu/GioiThieu/anh2.png";
 import anh3 from "../../../Images/TrangChu/GioiThieu/anh3.png";
-import vid1 from "../../../videos/GioiThieubg.mp4";
+
 
 
 function CoGioiThieu() {
@@ -43,7 +43,7 @@ useEffect(() => {
                 <div className={styles.dimmed}></div>
 
                 <video autoPlay muted loop>
-                    <source src={vid1} type='video/mp4'></source>
+                    <source src={""} type='video/mp4'></source>
 
                     Your browser doesn't support videos o_O
                 </video>

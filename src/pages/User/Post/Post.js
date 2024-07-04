@@ -81,7 +81,7 @@ const Post = ({
 
     const handleLikeClick = () => {
         if (userId) {
-            fetch('http://localhost:8000/api/toggleLike', {
+            fetch('http://localhost:8000/api/toogleLike', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
