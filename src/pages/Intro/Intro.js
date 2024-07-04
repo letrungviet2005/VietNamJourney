@@ -6,9 +6,6 @@ import vid1 from "../../videos/videointro.mp4";
 function Intro() {
 
     return (
-<<<<<<< HEAD
-        <p>Loading...</p>
-=======
         <div className={styles.main}>
             <div className={styles.vid}>
                 <video id='myvideo' controls>
@@ -26,7 +23,6 @@ function Intro() {
             </div> */}
 
         </div>
->>>>>>> 83b4105b27c14916ce7e52ad98a74abfcb5934bc
     );
 }
 
