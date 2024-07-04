@@ -4,24 +4,25 @@ import styles from './Post.module.css';
 import dots from '../../../Images/User/dots.png';
 import CommentModal from '../CommentModal/CommentModal';
 
-const Post = ({ 
+const Post = ({
     Post_ID,
-    avatar, 
+    avatar,
     user_id,
-    name, 
-    time, 
-    content, 
-    image, 
-    likes, 
-    comments, 
-    isLike 
+    name,
+    time,
+    content,
+    image,
+    likes,
+    comments,
+    isLike,
+    comment
 }) => {
     const [isLiked, setIsLiked] = useState(isLike);
     const [likeCount, setLikeCount] = useState(likes);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isOptionsOpen, setIsOptionsOpen] = useState(false);
     const [isDeleteOverlayOpen, setIsDeleteOverlayOpen] = useState(false);
-    const [comment, setComment] = useState(null); 
+    const [commentData, setCommentData] = useState(comment);
     const navigate = useNavigate();
     const cookies = document.cookie;
     const cookiesArray = cookies.split('; ');
@@ -29,7 +30,6 @@ const Post = ({
     const userId = userIdCookie ? userIdCookie.split('=')[1] : null;
 
     useEffect(() => {
-
         if (userId) {
             fetch('http://localhost:8000/api/checkLikeStatus', {
                 method: 'POST',
@@ -38,18 +38,18 @@ const Post = ({
                 },
                 body: JSON.stringify({ Post_ID, user_id: userId }),
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.isLiked !== undefined) {
-                    setIsLiked(data.isLiked);
-                } else {
+                .then(response => response.json())
+                .then(data => {
+                    if (data.isLiked !== undefined) {
+                        setIsLiked(data.isLiked);
+                    } else {
+                        setIsLiked(false);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking like status:', error);
                     setIsLiked(false);
-                }
-            })
-            .catch(error => {
-                console.error('Error checking like status:', error);
-                setIsLiked(false);
-            });
+                });
 
             fetch('http://localhost:8000/api/getComment', {
                 method: 'POST',
@@ -58,47 +58,48 @@ const Post = ({
                 },
                 body: JSON.stringify({ Post_ID }),
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.comment) {
-                    setComment(data.comment);
-                } else {
-                    setComment(null);
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching comment:', error);
-            });
-        } else {
-            setIsLiked(false);
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.comment) {
+                        const comment = {
+                            username: data.comment.Name,
+                            avatar: data.comment.Image,
+                            content: data.comment.Content,
+                            imageComment: data.comment.ImageComment,
+                            time: data.comment.CreateAt,
+                        };
+                        setCommentData(comment);
+                    } else {
+                        setCommentData(null);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching comment:', error);
+                });
         }
-    }, [Post_ID]);
+    }, [Post_ID, userId]);
 
     const handleLikeClick = () => {
         if (userId) {
-            fetch('http://localhost:8000/api/toogleLike', {
+            fetch('http://localhost:8000/api/toggleLike', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ Post_ID, user_id: userId, isLike: !isLiked }),
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    if (isLiked) {
-                        setLikeCount(likeCount - 1);
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        setLikeCount(prev => (isLiked ? prev - 1 : prev + 1));
+                        setIsLiked(!isLiked);
                     } else {
-                        setLikeCount(likeCount + 1);
+                        console.error('Error updating like status:', data.error);
                     }
-                    setIsLiked(!isLiked);
-                } else {
-                    console.error('Error updating like status:', data.error);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         } else {
             navigate('/TaiKhoan');
         }
@@ -133,17 +134,17 @@ const Post = ({
             },
             body: JSON.stringify({ Post_ID }),
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.reload();
-            } else {
-                console.error('Error deleting post:', data.error);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.reload();
+                } else {
+                    console.error('Error deleting post:', data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     };
 
     const handleCancelDelete = () => {
@@ -165,7 +166,7 @@ const Post = ({
                     {isOptionsOpen && (
                         <div className={styles['options-menu']}>
                             <p>Chia sẻ</p>
-                            {user_id == userId &&
+                            {user_id === userId &&
                                 <p onClick={handleDeleteClick}>Xóa bài viết</p>
                             }
                         </div>
@@ -184,7 +185,7 @@ const Post = ({
                     <p style={{ marginLeft: '0.2rem', marginRight: '0.2rem', fontWeight: 'bold' }}> · </p>
                     <p><span style={{ fontWeight: 'bold' }}>{comments}</span> bình luận</p>
                 </div>
-                <hr className={styles['black-line']}  />
+                <hr className={styles['black-line']} />
                 <div className={styles['post-footer-middle']}>
                     <p onClick={handleLikeClick} style={{ cursor: 'pointer' }}>
                         <i className={isLiked ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i> like
@@ -193,16 +194,16 @@ const Post = ({
                         <i className="fa-regular fa-comment"></i> comment
                     </p>
                 </div>
-                {comment && (
+                {commentData && (
                     <div onClick={handleCommentClick} style={{ cursor: 'pointer' }} className={styles['post-footer-footer']}>
-                        <img style={{ objectFit : 'cover' }} src={`data:image/jpeg;base64,${comment.Image}`} alt="comment avatar" />
+                        <img style={{ objectFit: 'cover' }} src={commentData.avatar} alt="comment avatar" />
                         <div className={styles['post-footer-footer-right']}>
                             <div className={styles['post-footer-footer-content']}>
-                                <h6 style={{ fontWeight: 'revert' }}>{comment.Name}</h6>
-                                <p style={{ marginLeft :'0.1rem' , fontSize :' 1rem' }}>{comment.Content}</p>
-                                {comment.ImageComment && <img src={`data:image/jpeg;base64,${comment.ImageComment}`} alt="comment content" />}
+                                <h6 style={{ fontWeight: 'revert' }}>{commentData.username}</h6>
+                                <p style={{ marginLeft: '0.1rem', fontSize: '1rem' }}>{commentData.content}</p>
+                                {commentData.imageComment && <img src={commentData.imageComment} alt="comment content" />}
                             </div>
-                            <span style={{ fontSize: '0.8rem',marginLeft :'0.2rem' }}>{comment.CreateAt}</span>
+                            <span style={{ fontSize: '0.8rem', marginLeft: '0.2rem' }}>{commentData.time}</span>
                         </div>
                     </div>
                 )}

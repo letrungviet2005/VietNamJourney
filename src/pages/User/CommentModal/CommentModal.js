@@ -141,7 +141,7 @@ const CommentModal = ({ onClose, postId }) => {
                                         <p>{comment.content}</p>
                                         {comment.imageComment && (
                                             <div className={styles.commentContent}>
-                                                <img src={`http://localhost:8000/${comment.imageComment}`} alt="Comment Content" />
+                                                <img src={comment.imageComment} alt="Comment Content" />
                                             </div>
                                         )}
                                     </div>

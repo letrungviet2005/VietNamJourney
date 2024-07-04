@@ -15,7 +15,7 @@ function CongDong() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-            fetch('http://localhost/BWD/VietNamJourney/Server/CongDong/Post.php', {
+            fetch('http://localhost:8000/api/getSocialPosts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -48,11 +48,11 @@ function CongDong() {
                                     key={post.id}
                                     Post_ID={post.id}
                                     user_id={post.user_id}
-                                    avatar={post.avatar ? `data:image/jpeg;base64,${post.avatar}` : null}
+                                    avatar={post.avatar}
                                     name={post.name}
                                     time={post.createdAt}
                                     content={post.content}
-                                    image={post.image ? `data:image/jpeg;base64,${post.image}` : null}
+                                    image={post.image}
                                     likes={post.likes}
                                     comments={post.comments}
                                 />

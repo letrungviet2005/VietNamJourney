@@ -54,20 +54,20 @@ function UpdateInformation({ onCloseInfo, user_id }) {
     };
 
     const update = async () => {
+        const formData = new FormData();
+        formData.append('userId', user_id);
+        formData.append('name', name);
+        formData.append('location', location);
+        formData.append('facebookLink', facebookLink);
+        formData.append('role', role);
+        if (newAvatar) {
+            formData.append('avatar', document.querySelector('input[type="file"]').files[0]);
+        }
+
         try {
-            const response = await fetch('http://localhost/api/updateUserInfo', {
+            const response = await fetch('http://localhost:8000/api/updateUserInfo', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    userId: user_id,
-                    name,
-                    location,
-                    facebookLink,
-                    role,
-                    avatar: newAvatar || avatar
-                })
+                body: formData
             });
 
             if (!response.ok) {
@@ -89,42 +89,44 @@ function UpdateInformation({ onCloseInfo, user_id }) {
 
     return (
         <div>
-            <div style={{ display: 'flex', marginBottom: '1rem',flexDirection : 'column' }}>
-               {newAvatar ? (
-    <img 
-        src={newAvatar} 
-        alt="New Avatar" 
-        style={{ 
-            borderRadius: '50%', 
-            width: '7rem', 
-            height: '7rem', 
-            objectFit: 'cover', 
-            marginRight: 'auto', 
-            marginLeft: 'auto', 
-            border: '2px solid white',
-            marginTop: '-3.7rem',
-            position: 'relative',
-            zIndex: 10 
-        }} 
-    />
-) : (
-    avatar && <img 
-        src={avatar} 
-        alt="Avatar" 
-        style={{ 
-            borderRadius: '50%', 
-            width: '7rem', 
-            height: '7rem', 
-            objectFit: 'cover', 
-            marginRight: 'auto', 
-            marginLeft: 'auto', 
-            border: '2px solid white',
-            marginTop: '-3.7rem',
-            position: 'relative',
-            zIndex: 10
-        }} 
-    />
-)}
+            <div style={{ display: 'flex', marginBottom: '1rem', flexDirection: 'column' }}>
+                {newAvatar ? (
+                    <img
+                        src={newAvatar}
+                        alt="New Avatar"
+                        style={{
+                            borderRadius: '50%',
+                            width: '7rem',
+                            height: '7rem',
+                            objectFit: 'cover',
+                            marginRight: 'auto',
+                            marginLeft: 'auto',
+                            border: '2px solid white',
+                            marginTop: '-3.7rem',
+                            position: 'relative',
+                            zIndex: 10
+                        }}
+                    />
+                ) : (
+                    avatar && (
+                        <img
+                            src={avatar}
+                            alt="Avatar"
+                            style={{
+                                borderRadius: '50%',
+                                width: '7rem',
+                                height: '7rem',
+                                objectFit: 'cover',
+                                marginRight: 'auto',
+                                marginLeft: 'auto',
+                                border: '2px solid white',
+                                marginTop: '-3.7rem',
+                                position: 'relative',
+                                zIndex: 10
+                            }}
+                        />
+                    )
+                )}
                 <input
                     type="file"
                     accept="image/*"
@@ -132,37 +134,44 @@ function UpdateInformation({ onCloseInfo, user_id }) {
                     id="fileInput"
                     onChange={handleAvatarChange}
                 />
-                <label htmlFor="fileInput" style={{
-                    width: '5.3rem', height: '1.3rem', marginLeft: 'auto',
-                    marginRight: 'auto', fontSize: '0.7rem',
-                    borderRadius: '10px', border: 'none',
-                    backgroundColor: 'green',
-                    color: 'white',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                    marginTop : '0.5rem'
-                }}>
+                <label
+                    htmlFor="fileInput"
+                    style={{
+                        width: '5.3rem',
+                        height: '1.3rem',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        fontSize: '0.7rem',
+                        borderRadius: '10px',
+                        border: 'none',
+                        backgroundColor: 'green',
+                        color: 'white',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        marginTop: '0.5rem'
+                    }}
+                >
                     + chọn avatar
                 </label>
             </div>
             <div className="information">
                 <h6 style={{ fontWeight: 'bold' }}>Tên hiển thị</h6>
-                <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
                 <h6 style={{ fontWeight: 'bold', marginTop: '1rem' }}>Thông tin</h6>
                 <div className="file">
                     <i className="fa-solid fa-location-dot"></i>
-                    <input type='text' value={location} onChange={(e) => setLocation(e.target.value)} />
+                    <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
                 </div>
                 <div className="file">
                     <i className="fa-solid fa-building"></i>
-                    <input type='text' value={role} onChange={(e) => setRole(e.target.value)} />
+                    <input type="text" value={role} onChange={(e) => setRole(e.target.value)} />
                 </div>
                 <h6 style={{ fontWeight: 'bold', marginTop: '1rem' }}>Tài khoản mạng xã hội</h6>
                 <div className="file">
                     <i className="fa-brands fa-square-facebook"></i>
-                    <input type='text' value={facebookLink} onChange={(e) => setFacebookLink(e.target.value)} />
+                    <input type="text" value={facebookLink} onChange={(e) => setFacebookLink(e.target.value)} />
                 </div>
                 <div className="eventbutton">
                     <button onClick={onCloseInfo}>Hủy</button>
