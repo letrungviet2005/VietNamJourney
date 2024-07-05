@@ -81,6 +81,9 @@ const Post = ({
 
     const handleLikeClick = () => {
         if (userId) {
+            setIsLiked(prevIsLiked => !prevIsLiked);
+            setLikeCount(prevLikeCount => isLiked ? prevLikeCount - 1 : prevLikeCount + 1);
+
             fetch('http://localhost:8000/api/toogleLike', {
                 method: 'POST',
                 headers: {
@@ -90,15 +93,16 @@ const Post = ({
             })
                 .then(response => response.json())
                 .then(data => {
-                    if (data.success) {
-                        setLikeCount(prev => (isLiked ? prev - 1 : prev + 1));
-                        setIsLiked(!isLiked);
-                    } else {
+                    if (!data.success) {
                         console.error('Error updating like status:', data.error);
+                        setIsLiked(prevIsLiked => !prevIsLiked);
+                        setLikeCount(prevLikeCount => isLiked ? prevLikeCount + 1 : prevLikeCount - 1);
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
+                    setIsLiked(prevIsLiked => !prevIsLiked);
+                    setLikeCount(prevLikeCount => isLiked ? prevLikeCount + 1 : prevLikeCount - 1);
                 });
         } else {
             navigate('/TaiKhoan');
@@ -158,7 +162,7 @@ const Post = ({
                     <img src={avatar} alt="avatar" />
                 </div>
                 <div className={styles['post-header-info']}>
-                    <h6 onClick={handleAvatarClick} style={{ cursor: 'pointer', fontWeight: 'revert' }}>{name}</h6>
+                    <h6 onClick={handleAvatarClick} style={{ cursor: 'pointer', fontWeight: 'revert' }}>{name} <i class="fa-solid fa-circle-check" style={{ color :"#258e31" }}></i></h6>
                     <span style={{ fontSize: '0.8rem' }}>{time} · <i className="fas fa-earth-asia"></i></span>
                 </div>
                 <div className={styles['post-header-option']} onClick={handleDotsClick} style={{ cursor: 'pointer' }}>
@@ -166,7 +170,7 @@ const Post = ({
                     {isOptionsOpen && (
                         <div className={styles['options-menu']}>
                             <p>Chia sẻ</p>
-                            {user_id === userId &&
+                            {user_id == userId &&
                                 <p onClick={handleDeleteClick}>Xóa bài viết</p>
                             }
                         </div>

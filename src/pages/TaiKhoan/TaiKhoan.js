@@ -22,7 +22,7 @@ function TaiKhoan() {
     setActive(!active);
   };
 
-  const handleLogin = async (event) => {
+const handleLogin = async (event) => {
     event.preventDefault();
 
     // Reset lỗi
@@ -32,47 +32,48 @@ function TaiKhoan() {
     let hasError = false;
 
     if (!email) {
-      setEmailError('Vui lòng nhập vào trường này');
-      hasError = true;
+        setEmailError('Vui lòng nhập vào trường này');
+        hasError = true;
     }
 
     if (!password) {
-      setPasswordError('Vui lòng nhập vào trường này');
-      hasError = true;
+        setPasswordError('Vui lòng nhập vào trường này');
+        hasError = true;
     }
 
     if (hasError) {
-      return;
+        return;
     }
 
     try {
-      const response = await fetch('http://localhost/BWD/vietnamjourney/Server/TaiKhoan/Check_Login.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username: email, password: password }),
-      });
-      const data = await response.json();
-      if (data.error) {
-        setErrorMessage(data.error);
-        setEmailError(''); 
-        setPasswordError(''); 
-      } else {
-        setErrorMessage('');
-        console.log("Đăng nhập thành công", data.user);
-        const userID = data.user.UserLogin_ID;
-        const userName = data.user.Username;
-        Cookies.set('User_ID', userID, { expires: 30 });
-        Cookies.set('UserName', userName, { expires: 30 });
-        navigate('/TrangChu'); 
-      }
+        const response = await fetch('http://localhost:8000/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username: email, password: password }),
+        });
+        const data = await response.json();
+        if (data.error) {
+            // Kiểm tra nếu error là một object, thì chuyển thành string
+            setErrorMessage(typeof data.error === 'object' ? JSON.stringify(data.error) : data.error);
+            setEmailError(''); 
+            setPasswordError(''); 
+        } else {
+            setErrorMessage('');
+            console.log("Đăng nhập thành công", data.user);
+            const userID = data.user.UserLogin_ID;
+            const userName = data.user.Username;
+            Cookies.set('User_ID', userID, { expires: 30 });
+            Cookies.set('UserName', userName, { expires: 30 });
+            navigate('/TrangChu'); 
+        }
     } catch (error) {
-      console.error('Error:', error);
+        console.error('Error:', error);
     }
-  };
+};
 
-  const handleRegister = async (event) => {
+ const handleRegister = async (event) => {
     event.preventDefault();
 
     // Reset lỗi
@@ -84,53 +85,54 @@ function TaiKhoan() {
     let hasError = false;
 
     if (!email) {
-      setEmailError('Vui lòng nhập vào trường này');
-      hasError = true;
+        setEmailError('Vui lòng nhập vào trường này');
+        hasError = true;
     }
 
     if (!username) {
-      setUsernameError('Vui lòng nhập vào trường này');
-      hasError = true;
+        setUsernameError('Vui lòng nhập vào trường này');
+        hasError = true;
     }
 
     if (!password) {
-      setPasswordError('Vui lòng nhập vào trường này');
-      hasError = true;
+        setPasswordError('Vui lòng nhập vào trường này');
+        hasError = true;
     }
 
     if (password !== confirmPassword) {
-      setConfirmPasswordError('Mật khẩu xác thực không khớp');
-      hasError = true;
+        setConfirmPasswordError('Mật khẩu xác thực không khớp');
+        hasError = true;
     }
 
     if (hasError) {
-      return;
+        return;
     }
 
     try {
-      const response = await fetch('http://localhost/BWD/vietnamjourney/Server/TaiKhoan/Register.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, username, password }),
-      });
-      const data = await response.json();
-      if (data.error) {
-        setErrorMessage(data.error);
-      } else {
-        setErrorMessage('');
-        console.log("Đăng ký thành công", data.user);
-        const userID = data.user.UserLogin_ID;
-        const userName = data.user.Username;
-        Cookies.set('User_ID', userID, { expires: 30 });
-        Cookies.set('UserName', userName, { expires: 30 });
-        navigate('/TrangChu'); 
-      }
+        const response = await fetch('http://localhost:8000/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, username, password }),
+        });
+        const data = await response.json();
+        if (data.error) {
+            // Kiểm tra nếu error là một object, thì chuyển thành string
+            setErrorMessage(typeof data.error === 'object' ? JSON.stringify(data.error) : data.error);
+        } else {
+            setErrorMessage('');
+            console.log("Đăng ký thành công", data.user);
+            const userID = data.user.UserLogin_ID;
+            const userName = data.user.Username;
+            Cookies.set('User_ID', userID, { expires: 30 });
+            Cookies.set('UserName', userName, { expires: 30 });
+            navigate('/TrangChu'); 
+        }
     } catch (error) {
-      console.error('Error:', error);
+        console.error('Error:', error);
     }
-  };
+};
 
   return (
     <div className={styles.box} style={{ backgroundImage: `url(${background1})` }}>
@@ -153,7 +155,7 @@ function TaiKhoan() {
             {emailError && <h6 className={styles.errorMessage}>{emailError}</h6>}
             <input
               type="text"
-              placeholder="username"
+              placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className={usernameError ? styles.inputError : ''}

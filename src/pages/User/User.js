@@ -17,6 +17,7 @@ function User() {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState(null); 
   const [isPostOpen, setIsPostOpen] = useState(false);
+
   const handlePost = () => {
     setIsPostOpen(!isPostOpen);
   }
@@ -32,9 +33,19 @@ function User() {
       })
       .then(response => response.json())
       .then(data => {
-        setPosts(data || []); // Cập nhật để phù hợp với API đã thay đổi
+        if (data.posts) {
+          setPosts(data.posts);
+          setUser(data.user); // Cập nhật thông tin người dùng
+        } else {
+          setPosts([]); // Đảm bảo rằng posts luôn là mảng
+          setUser(null); // Đảm bảo rằng user là null khi không có dữ liệu
+        }
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => {
+        console.error('Error:', error);
+        setPosts([]); // Đảm bảo rằng posts luôn là mảng khi có lỗi
+        setUser(null); // Đảm bảo rằng user là null khi có lỗi
+      });
     }
   }, [user_id]);
 
@@ -52,12 +63,12 @@ function User() {
           }
         </div>
         <div className="col-md-8 col-lg-8">
-          {user && user.Image && user_ID === user_id && (
+          {user && user.avatar && user_ID == user_id && (
             <>
               <div className={styles.container3}>
                 <div className={styles['container3-top']}>
                   <div className={styles['container3-top-avatar']}>
-                    <img src={user.Image} alt="Avatar" />
+                    <img src={user.avatar} alt="Avatar" />
                   </div>
                   <button onClick={handlePost}>Hãy viết gì đó cho bài viết của bạn</button>
                   {isPostOpen && <NewPost onClose={handlePost} User_ID_Post={1} />}
@@ -77,11 +88,11 @@ function User() {
                   key={post.id}
                   Post_ID={post.id}
                   user_id={post.user_id}
-                  avatar={post.user_avatar} // Không chuyển đổi base64
-                  name={post.user_name} // Đổi 'name' thành 'user_name'
+                  avatar={post.user_avatar} 
+                  name={post.user_name} 
                   time={post.createdAt}
                   content={post.content}
-                  image={post.image} // Không chuyển đổi base64
+                  image={post.image} 
                   likes={post.likes}
                   comments={post.comments}
                 />

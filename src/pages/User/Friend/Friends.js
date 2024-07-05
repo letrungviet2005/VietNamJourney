@@ -92,7 +92,7 @@ const Friends = ({ User_ID }) => {
                 followers.map((follower) => (
                     <div key={follower.User_ID} className={styles['friend-item']}>
                         <img
-                            src={`data:image/jpeg;base64,${follower.Image}`}
+                            src={follower.Image}
                             alt={`Ảnh đại diện của ${follower.Username}`}
                             className={styles['friend-avatar']}
                             onClick={() => handleAvatarClick(follower.User_ID)}

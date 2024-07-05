@@ -73,7 +73,7 @@ useEffect(() => {
                     </div>
                     <div className={styles['container1-information']}>
                         <div className={styles['container1-information-name']}>{name}</div>
-                        <div className={styles['container1-information-linkuser']}>@{username}</div>
+                        <div className={styles['container1-information-linkuser']}>@{username} <i class="fa-solid fa-circle-check" style={{ color :"#258e31" }}></i></div>
                         <div className={styles['container1-information-content']}>
                             <p>
                                 <i className="fa-solid fa-user-group"></i>

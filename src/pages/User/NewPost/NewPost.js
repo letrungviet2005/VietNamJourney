@@ -7,18 +7,14 @@ const NewPost = ({ onClose }) => {
     const [content, setContent] = useState('');
     const navigate = useNavigate();
 
-    const PostImage = (event) => {
+    const handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                setSelectedImage(e.target.result); 
-            };
-            reader.readAsDataURL(file);
+            setSelectedImage(file);
         }
-    }
+    };
 
-    const Post = async () => {
+    const handleSubmit = async () => {
         if (!selectedImage && !content) {
             return;
         }
@@ -30,14 +26,14 @@ const NewPost = ({ onClose }) => {
 
         const formData = new FormData();
         formData.append('User_ID', userId);
-        formData.append('Content', content); // Replace with actual content
+        formData.append('Content', content);
 
         if (selectedImage) {
-            formData.append('Image', selectedImage); // Base64 string
+            formData.append('Image', selectedImage);
         }
 
         try {
-            const response = await fetch('http://localhost/BWD/VietNamJourney/Server/User/Post/addPost.php', {
+            const response = await fetch('http://localhost:8000/api/addPost', {
                 method: 'POST',
                 body: formData
             });
@@ -57,7 +53,7 @@ const NewPost = ({ onClose }) => {
         } catch (error) {
             console.error('Failed to add post:', error);
         }
-    }
+    };
 
     return (
         <div className={styles.overlay}>
@@ -74,21 +70,21 @@ const NewPost = ({ onClose }) => {
                         onChange={(e) => setContent(e.target.value)}
                     ></textarea>
                     <div className={styles['post-body']}>
-                        {selectedImage && <img src={selectedImage} alt="Selected" />}
+                        {selectedImage && <img src={URL.createObjectURL(selectedImage)} alt="Selected" />}
                     </div>
                 </div>
                 <div className={styles.event}>
                     <input 
                         type="file" 
                         accept="image/*" 
-                        onChange={PostImage} 
+                        onChange={handleImageChange} 
                         style={{ display: 'none' }} 
                         id="fileInput"
                     />
                     <label htmlFor="fileInput" className={styles.uploadButton}>
                         <i className="fa-regular fa-image"></i>
                     </label>
-                    <button onClick={Post}>Đăng bài viết</button>
+                    <button onClick={handleSubmit}>Đăng bài viết</button>
                 </div>
             </div>
         </div>
