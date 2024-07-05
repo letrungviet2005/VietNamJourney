@@ -22,7 +22,12 @@ function TaiKhoan() {
     setActive(!active);
   };
 
-const handleLogin = async (event) => {
+  const validateEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const handleLogin = async (event) => {
     event.preventDefault();
 
     // Reset lỗi
@@ -87,6 +92,9 @@ const handleLogin = async (event) => {
     if (!email) {
         setEmailError('Vui lòng nhập vào trường này');
         hasError = true;
+    } else if (!validateEmail(email)) {
+        setEmailError('Email không hợp lệ');
+        hasError = true;
     }
 
     if (!username) {
@@ -96,6 +104,9 @@ const handleLogin = async (event) => {
 
     if (!password) {
         setPasswordError('Vui lòng nhập vào trường này');
+        hasError = true;
+    } else if (password.length < 6) {
+        setPasswordError('Mật khẩu phải có ít nhất 6 ký tự');
         hasError = true;
     }
 
@@ -177,6 +188,7 @@ const handleLogin = async (event) => {
               className={confirmPasswordError ? styles.inputError : ''}
             />
             {confirmPasswordError && <h6 className={styles.errorMessage}>{confirmPasswordError}</h6>}
+            {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
             <button onClick={handleRegister}>ĐĂNG KÝ</button>
           </form>
         </div>

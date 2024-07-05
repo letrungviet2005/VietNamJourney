@@ -11,6 +11,7 @@ const CommentModal = ({ onClose, postId }) => {
     const [commentContent, setCommentContent] = useState('');
     const [commentImage, setCommentImage] = useState(null);
     const navigate = useNavigate();
+    const [socket, setSocket] = useState(null);
 
     useEffect(() => {
         const fetchComments = async () => {
@@ -41,25 +42,34 @@ const CommentModal = ({ onClose, postId }) => {
     }, [postId]);
 
     useEffect(() => {
-        const socket = new WebSocket('ws://localhost:8080');
+        const newSocket = new WebSocket('ws://localhost:8080');
 
-        socket.onopen = () => {
+        newSocket.onopen = () => {
             console.log('WebSocket connection opened');
+            newSocket.send(JSON.stringify({ type: 'subscribe', post_ID: postId }));
         };
 
-        socket.onmessage = (event) => {
-            const comment = JSON.parse(event.data);
-            setComments((prevComments) => [comment, ...prevComments]);
+        newSocket.onmessage = (event) => {
+            try {
+                const comment = JSON.parse(event.data);
+                if (comment.post_ID === postId) {
+                    setComments((prevComments) => [comment, ...prevComments]);
+                }
+            } catch (e) {
+                console.error('Error parsing WebSocket message:', e);
+            }
         };
 
-        socket.onclose = () => {
+        newSocket.onclose = () => {
             console.log('WebSocket connection closed');
         };
 
+        setSocket(newSocket);
+
         return () => {
-            socket.close();
+            newSocket.close();
         };
-    }, []);
+    }, [postId]);
 
     const handleAvatarClick = (userId) => {
         navigate(`/User?user_id=${userId}`);
@@ -70,7 +80,7 @@ const CommentModal = ({ onClose, postId }) => {
         setCommentImage(file);
     };
 
-    const sendComment = async () => {
+   const sendComment = async () => {
         if (!commentContent.trim() && !commentImage) {
             return;
         }
@@ -91,12 +101,19 @@ const CommentModal = ({ onClose, postId }) => {
             const data = await response.json();
 
             if (data.success) {
-                const socket = new WebSocket('ws://localhost:8080');
-                socket.onopen = () => {
-                    socket.send(JSON.stringify(data.comment));
+                const newComment = {
+                    ...data.comment,
+                    avatar: data.comment.user_avatar, // Ensure the avatar is set correctly
                 };
 
-                setComments([data.comment, ...comments]);
+                if (socket && socket.readyState === WebSocket.OPEN) {
+                    socket.send(JSON.stringify({
+                        type: 'comment',
+                        post_ID: postId,
+                        ...newComment,
+                    }));
+                }
+                setComments([newComment, ...comments]);
                 setCommentContent('');
                 setCommentImage(null);
             } else {
@@ -179,5 +196,6 @@ const CommentModal = ({ onClose, postId }) => {
         </div>
     );
 };
+
 
 export default CommentModal;
