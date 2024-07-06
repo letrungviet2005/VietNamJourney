@@ -103,7 +103,7 @@ const Friends = ({ User_ID }) => {
                                 style={{ fontWeight: 'revert-layer', cursor: 'pointer' }}
                                 onClick={() => handleAvatarClick(follower.User_ID)}
                             >
-                                @{follower.Username}
+                                {follower.Username}
                             </h6>
                             <button onClick={() => handleFollowClick(follower.User_ID)}>
                                 {follower.is_following ? "Đang theo dõi" : "Theo dõi"}

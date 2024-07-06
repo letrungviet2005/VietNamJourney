@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CongDong.css';
 import Friends from '../User/Friend/Friends';
 import Post from '../User/Post/Post.js';
@@ -13,21 +14,40 @@ function CongDong() {
     const userIdCookie = cookiesArray.find(cookie => cookie.startsWith('User_ID='));
     const user_ID = userIdCookie ? userIdCookie.split('=')[1] : null;
     const [posts, setPosts] = useState([]);
+    const [topUsers, setTopUsers] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-            fetch('http://localhost:8000/api/getSocialPosts', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                setPosts(data.posts || []);
-            })
-            .catch(error => console.error('Error:', error));
-        
-    }, [user_ID]); 
+        fetch('http://localhost:8000/api/getSocialPosts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            setPosts(data.posts || []);
+        })
+        .catch(error => console.error('Error:', error));
+    }, [user_ID]);
+
+    useEffect(() => {
+        fetch('http://localhost:8000/api/getSocialOutstanding', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            setTopUsers(data.outstanding_users || []);
+        })
+        .catch(error => console.error('Error:', error));
+    }, []);
+
+    const handleUserClick = (userId) => {
+        navigate(`/User?user_id=${userId}`);
+    };
 
     return (
         <div className="container">
@@ -35,7 +55,7 @@ function CongDong() {
                 <div className="col-md-8">
                     <div className="container1 sticky-search-bar">
                         <input type="text" placeholder="Tìm kiếm" />
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i className="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <div className="container2">
                         {posts.length === 0 ? (
@@ -63,43 +83,21 @@ function CongDong() {
                 <div className="col-md-4">
                     <div className="container3">
                         <p style={{ marginLeft: '0.3rem', fontWeight: 'revert', fontSize: '1.2rem' }}>Top người nổi bật</p>
-                        <div className="container3-info">
-                        <img alt="test" src={viet}></img>
-                        <div className="container3-content">
-                            <h6> @vietlee_2005</h6>
-                            <p>3 người theo dõi</p>
+                        {topUsers.map(user => (
+                            <div style={{ cursor: 'pointer' }} key={user.id} className="container3-info" onClick={() => handleUserClick(user.id)}>
+                                <img alt={user.username} src={user.image || viet}></img>
+                                <div className="container3-content">
+                                    <h6>{user.username}{user.check == 1 && <i class="fa-solid fa-circle-check" style={{ color :"#258e31",fontSize : '0.8rem',marginLeft : '0.2rem' }}></i>  }</h6>
+                                    <p>{user.total_following} người theo dõi</p>
+                                </div>
                             </div>
-                            </div>
-
-                        <div className="container3-info">
-                        <img alt="test" src={tu}></img>
-                        <div className="container3-content">
-                            <h6> @anh_tu</h6>
-                            <p>3 người theo dõi</p>
-                        </div>
-                        </div>
-
-                        <div className="container3-info">
-                        <img alt="test" src={bao}></img>
-                        <div className="container3-content">
-                            <h6> @boi_ma</h6>
-                            <p>3 người theo dõi</p>
-                        </div>
-                        </div>
-
-                        <div className="container3-info">
-                        <img alt="test" src={dinh}></img>
-                        <div className="container3-content">
-                            <h6> @duong_dinh</h6>
-                            <p>3 người theo dõi</p>
-                        </div>
-                        </div>
+                        ))}
                     </div>
                     {user_ID != null && 
                     <div className="container4">
                         <p style={{ marginLeft: '1rem', fontWeight: 'revert', fontSize: '1.2rem' }}>Gợi ý cho bạn</p>
                         <Friends User_ID={user_ID} />
-                        <h6 style={{ textAlign : 'right',marginRight: '1rem', color: 'green' }}>
+                        <h6 style={{ textAlign : 'right', marginRight: '1rem', color: 'green' }}>
                             Xem thêm <i className="fa-solid fa-circle-arrow-right"></i>
                         </h6>
                     </div>
