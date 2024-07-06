@@ -33,16 +33,15 @@ function PageDetail() {
     setActiveSection(sectionName);
   };
 
+  // Lấy thông tin từ query params
+  const queryParams = new URLSearchParams(location.search);
+  const id = queryParams.get('id');
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Lấy thông tin từ query params
-    const queryParams = new URLSearchParams(location.search);
-    const id = queryParams.get('id');
-
+  
     if (id) {
-      // Gọi API để lấy thông tin chiến dịch
-      axios.get(`http://localhost/bwd/VietNamJourney/Server/ChienDich/getCampaign.php?id=${id}`)
+      axios.get(`http://localhost:8000/api/getCampaign/${id}`)
         .then(response => {
           console.log(response.data); // Log dữ liệu để kiểm tra
           setCampaign(response.data); // Lưu dữ liệu vào state
@@ -51,14 +50,14 @@ function PageDetail() {
           console.error('Error fetching campaign data:', error);
         });
     }
-  }, [location]);
+  }, [id]);
 
   if (!campaign) {
     return <div>Loading...</div>; // Hiển thị trạng thái tải trong khi chờ dữ liệu từ API
   }
 
   const myStyle = {
-    backgroundImage: `url(data:image/png;base64,${campaign.image})`, // Sử dụng dữ liệu hình ảnh từ API
+    backgroundImage: `url(http://localhost:8000/${campaign.image})`, // Sử dụng dữ liệu hình ảnh từ API
     backgroundSize: 'cover',
     backgroundColor: 'rgba(0, 0, 0, 0.5)', // Màu đen trong suốt với độ mờ 50%
     backgroundBlendMode: 'multiply', // Áp dụng chế độ kết hợp 'multiply' để làm cho ảnh nền bị tối đi

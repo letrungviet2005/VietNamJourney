@@ -32,7 +32,7 @@ function Info({ className, province }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost/bwd/VietNamJourney/Server/ChienDich/getprovince.php?province=${province}`);
+        const response = await axios.get(`http://localhost:8000/api/getCampaignStatistics/${province}`);
         if (response.data) {
           setData({
             totalCampaigns: response.data.campaignIng + response.data.campaignWill + response.data.campaignEd,

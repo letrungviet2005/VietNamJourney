@@ -17,7 +17,7 @@ function CampaignWill({ province }) {
     // Hàm để gửi yêu cầu API và cập nhật danh sách chiến dịch
     async function fetchCampaigns() {
       try {
-        const response = await axios.get(`http://localhost/bwd/VietNamJourney/Server/ChienDich/Detail_Will.php?province=${province}`);
+        const response = await axios.get(`http://localhost:8000/api/listCampaignWill/${province}`);
         setCampaigns(response.data);
       } catch (error) {
         console.error('Error fetching campaigns:', error);

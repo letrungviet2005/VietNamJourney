@@ -111,7 +111,20 @@ function CreateCampaign() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const timelineArray = [
+    const formData = new FormData();
+    // formData.append("id", getCookie('User_ID'));
+    formData.append("userid", 1);
+    formData.append("name", event.target.elements.name.value);
+    formData.append("description", event.target.elements.desc.value);
+    formData.append("plan", event.target.elements.plan.value);
+    formData.append("dateStart", event.target.elements.dateStart.value);
+    formData.append("dateEnd", event.target.elements.dateEnd.value);
+    formData.append("totalMoney", event.target.elements.totalMoney.value);
+    formData.append("moneyByVNJN", event.target.elements.moneyByVNJN.value);
+    formData.append("province", selectedProvince ? selectedProvince.label : '');
+    formData.append("district", selectedDistrict ? selectedDistrict.label : '');
+    formData.append("location", event.target.elements.location.value);
+    formData.append("timeline", JSON.stringify([
       {
         title: "Giai đoạn ban đầu",
         value: event.target.elements.timelineGiaiDoanBanDau.value,
@@ -128,47 +141,31 @@ function CreateCampaign() {
         title: "Tổng kết dự án",
         value: event.target.elements.timelineTongKetDuAn.value,
       },
-    ];
-  
-    // Chuyển đổi ảnh thành base64
-    const imageFile = event.target.elements.image.files[0];
-    const imageData = await convertImageToBase64(imageFile);
-  
-    const data = {
-      id: getCookie('User_ID'),
-      name: event.target.elements.name.value,
-      description: event.target.elements.desc.value,
-      dateStart: event.target.elements.dateStart.value,
-      dateEnd: event.target.elements.dateEnd.value,
-      totalMoney: event.target.elements.totalMoney.value,
-      moneyByVNJN: event.target.elements.moneyByVNJN.value,
-      province: selectedProvince ? selectedProvince.label : '',
-      district: selectedDistrict ? selectedDistrict.label : '',
-      location: event.target.elements.location.value,
-      timeline: timelineArray,
-      infoContact: contacts,
-      infoOrganization: organizationContacts,
-      image: imageData, // Thêm base64 của ảnh vào đối tượng data
-      status: 'active'
-    };
+    ]));
+    formData.append("infoContact", JSON.stringify(contacts));
+    formData.append("infoOrganization", JSON.stringify(organizationContacts));
+    if (imageFile) {
+      formData.append("image", imageFile);
+    }
 
-    console.log('Data:', data);
-  
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
+
     try {
       const response = await axios.post(
-        'http://localhost/bwd/VietNamJourney/Server/ChienDich/createCampaign.php',
-        data,
+        'http://localhost:8000/api/createCampaign',
+        formData,
         {
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
           },
         }
       );
-      console.log(data);
+
       console.log('Phản hồi từ API:', response.data);
       if (response.data.success) {
         alert('Thêm chiến dịch thành công!');
-        // Thực hiện các hành động khác sau khi thêm thành công (ví dụ: chuyển hướng)
         navigate('/Manager');
       } else {
         alert('Lỗi: ' + response.data.error);
@@ -178,16 +175,6 @@ function CreateCampaign() {
       alert('Đã xảy ra lỗi. Vui lòng thử lại.');
     }
   };
-  
-  // Hàm chuyển đổi ảnh thành base64
-  const convertImageToBase64 = (imageFile) => {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result.split(',')[1]); // Chỉ lấy phần base64
-        reader.onerror = (error) => reject(error);
-        reader.readAsDataURL(imageFile);
-    });
-};
 
   return (
     <div className={cx("CreateCampaign")}>
@@ -345,6 +332,23 @@ function CreateCampaign() {
               id="location"
               name="location"
               className={cx("input-location")}
+              required
+            />
+          </div>
+        </div>
+
+        <div className={cx("row")}>
+          <div className={cx("col-2")}>
+            <label htmlFor="plan" className={cx("desc")}>
+              Kế hoạch chiến dịch:{" "}
+            </label>
+          </div>
+          <div className={cx("col-10")}>
+            <textarea
+              type="text"
+              id="plan"
+              name="plan"
+              className={cx("input-desc")}
               required
             />
           </div>
