@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Messenger.css';
+import styles from './Messenger.module.css';
 import MessengerUser from './MessengerUser/MessengerUser';
 import MessengerGroup from './MessengerGroup/MessengerGroup';
+import ChatBox from './ChatBox/ChatBox';
 
 function Messenger() {
     const cookies = document.cookie;
@@ -10,20 +10,15 @@ function Messenger() {
     const userIdCookie = cookiesArray.find(cookie => cookie.startsWith('User_ID='));
     const user_ID = userIdCookie ? userIdCookie.split('=')[1] : null;
     const [currentView, setCurrentView] = useState('user');
-    const navigate = useNavigate();
     console.log(user_ID);
 
-    const handleNavigate = (path) => {
-        navigate(path);
-    };
-
     return (
-        <div className="container">
-            <div className="container1">
-                <div className='container1-head'>
+        <div className={styles.container}>
+            <div className={styles.container1}>
+                <div className={styles.container1Head}>
                     <div style={{ display: 'flex' }}>
                         <h6 style={{ fontSize: '1.8rem', fontWeight: 'revert-layer', color: 'green' }}>Đoạn tin nhắn</h6>
-                        <p style={{ marginLeft: 'auto' }}>3 chấm</p>
+                        <p style={{ marginLeft: 'auto',marginTop:'5px' }}><i class="fa-solid fa-gear"></i></p>
                     </div>
                     <input type="text" placeholder='Tìm kiếm người dùng' />
                     <div style={{ display: 'flex' }}>
@@ -31,12 +26,12 @@ function Messenger() {
                         <h6 onClick={() => setCurrentView('group')} style={{ cursor: 'pointer' }}>Cộng Đồng</h6>
                     </div>
                 </div>
-                <div className="chatname" style={{ padding: '0' }}>
-                    {currentView === 'user' ? <MessengerUser /> : <MessengerGroup />}
+                <div className={styles.chatname} style={{ padding: '0' }}>
+                    {currentView === 'user' ? <MessengerUser user_ID={user_ID} /> : <MessengerGroup user_ID={user_ID} />}
                 </div>
             </div>
-            <div className="container2">
-                <p>chatbox</p>
+            <div className={styles.container2}>
+                <ChatBox />
             </div>
         </div>
     );
