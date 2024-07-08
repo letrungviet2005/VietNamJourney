@@ -50,7 +50,7 @@ function App() {
         <Route path="/CreateCampaign" element={<CreateCampaign />} />
         <Route path="/UpdateCampaign" element={<UpdateCampaign />} />
         <Route path="/Manager" element={<Manager />} />
-        <Route path="/Messenger" element={<Messenger />} />
+        <Route path="/Messenger/*" element={<Messenger />} />
       </Routes>
       <Footer />
     </div>
