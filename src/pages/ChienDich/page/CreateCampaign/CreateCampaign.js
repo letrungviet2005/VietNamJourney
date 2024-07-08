@@ -112,8 +112,7 @@ function CreateCampaign() {
     event.preventDefault();
 
     const formData = new FormData();
-    // formData.append("id", getCookie('User_ID'));
-    formData.append("userid", 1);
+    formData.append("id", getCookie('User_ID'));
     formData.append("name", event.target.elements.name.value);
     formData.append("description", event.target.elements.desc.value);
     formData.append("plan", event.target.elements.plan.value);
@@ -166,7 +165,7 @@ function CreateCampaign() {
       console.log('Phản hồi từ API:', response.data);
       if (response.data.success) {
         alert('Thêm chiến dịch thành công!');
-        navigate('/Manager');
+        // navigate('/Manager');
       } else {
         alert('Lỗi: ' + response.data.error);
       }

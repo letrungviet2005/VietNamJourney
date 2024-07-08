@@ -25,6 +25,7 @@ function UpdateCampaign() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   const [description, setDescription] = useState("");
+  const [plan, setPlan] = useState("");
 
   const [campaignImageBase64, setCampaignImageBase64] = useState(null);
 
@@ -45,7 +46,7 @@ function UpdateCampaign() {
     const fetchCampaign = async () => {
       try {
         const response = await axios.get(
-          `http://localhost/bwd/VietNamJourney/Server/ChienDich/getCampaign.php?id=${id}`
+          `http://localhost:8000/api/getCampaign/${id}`
         );
         const campaignData = response.data;
 
@@ -81,6 +82,7 @@ function UpdateCampaign() {
         // Set các giá trị khác cho campaign
         setCampaign(campaignData);
         setDescription(decodeHtmlEntities(campaignData.description));
+        setPlan(decodeHtmlEntities(campaignData.plan));
         setContacts(campaignData.infoContact || []);
         setOrganizationContacts(campaignData.infoOrganization || []);
         // setSelectedImage(campaignData.image);
@@ -163,57 +165,51 @@ function UpdateCampaign() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
+    const formData = new FormData();
+  
+    // Thêm các dữ liệu văn bản vào FormData
+    formData.append("id", id);
+    formData.append("name", event.target.elements.name.value);
+    formData.append("description", event.target.elements.desc.value);
+    formData.append("plan", event.target.elements.plan.value);
+    formData.append("dateStart", event.target.elements.dateStart.value);
+    formData.append("dateEnd", event.target.elements.dateEnd.value);
+    formData.append("totalMoney", event.target.elements.totalMoney.value);
+    formData.append("moneyByVNJN", event.target.elements.moneyByVNJN.value);
+    formData.append("province", selectedProvince ? selectedProvince.label : "");
+    formData.append("district", selectedDistrict ? selectedDistrict.label : "");
+    formData.append("location", event.target.elements.location.value);
+    formData.append("status", "active");
+  
+    // Thêm các dữ liệu timeline vào FormData (chuyển đổi thành chuỗi JSON)
     const timelineArray = [
-      {
-        title: "Giai đoạn ban đầu",
-        value: event.target.elements.timelineGiaiDoanBanDau.value,
-      },
-      {
-        title: "Bắt đầu dự án",
-        value: event.target.elements.timelineBatDauDuAn.value,
-      },
-      {
-        title: "Kết thúc dự án",
-        value: event.target.elements.timelineKetThucDuAn.value,
-      },
-      {
-        title: "Tổng kết dự án",
-        value: event.target.elements.timelineTongKetDuAn.value,
-      },
+      { title: "Giai đoạn ban đầu", value: event.target.elements.timelineGiaiDoanBanDau.value },
+      { title: "Bắt đầu dự án", value: event.target.elements.timelineBatDauDuAn.value },
+      { title: "Kết thúc dự án", value: event.target.elements.timelineKetThucDuAn.value },
+      { title: "Tổng kết dự án", value: event.target.elements.timelineTongKetDuAn.value },
     ];
-
-    const imageData = imageFile
-      ? await convertImageToBase64(imageFile)
-      : campaign.image;
-
-    const data = {
-      id,
-      name: event.target.elements.name.value,
-      description: event.target.elements.desc.value,
-      dateStart: event.target.elements.dateStart.value,
-      dateEnd: event.target.elements.dateEnd.value,
-      totalMoney: event.target.elements.totalMoney.value,
-      moneyByVNJN: event.target.elements.moneyByVNJN.value,
-      province: selectedProvince ? selectedProvince.label : "",
-      district: selectedDistrict ? selectedDistrict.label : "",
-      location: event.target.elements.location.value,
-      timeline: timelineArray,
-      infoContact: contacts,
-      infoOrganization: organizationContacts,
-      image: imageData,
-      status: "active",
-    };
-
-    console.log("Update Data:", data);
-
+    formData.append("timeline", JSON.stringify(timelineArray));
+  
+    // Thêm các thông tin liên hệ và tổ chức vào FormData (chuyển đổi thành chuỗi JSON)
+    formData.append("infoContact", JSON.stringify(contacts));
+    formData.append("infoOrganization", JSON.stringify(organizationContacts));
+  
+    // Xử lý hình ảnh
+    if (imageFile) {
+      formData.append("image", imageFile);
+    } 
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
+  
     try {
-      const response = await axios.put(
-        `http://localhost/bwd/VietNamJourney/Server/ChienDich/updateCampaign.php`,
-        data,
+      const response = await axios.post(
+        `http://localhost:8000/api/updateCampaign`,
+        formData,
         {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data", // Đảm bảo gửi yêu cầu dưới dạng multipart/form-data
           },
         }
       );
@@ -229,6 +225,7 @@ function UpdateCampaign() {
       alert("Đã xảy ra lỗi. Vui lòng thử lại.");
     }
   };
+  
 
   const convertImageToBase64 = (imageFile) => {
     return new Promise((resolve, reject) => {
@@ -437,6 +434,24 @@ function UpdateCampaign() {
           </div>
         </div>
 
+        <div className={cx("row")}>
+          <div className={cx("col-2")}>
+            <label htmlFor="plan" className={cx("desc")}>
+              Mô tả chiến dịch:{" "}
+            </label>
+          </div>
+          <div className={cx("col-10")}>
+            <textarea
+              type="text"
+              id="plan"
+              name="plan"
+              className={cx("input-desc")}
+              defaultValue={plan}
+              required
+            />
+          </div>
+        </div>
+
         <div className={cx("row", "contact-row")}>
           <div className={cx("col-6")}>
             <hr />
@@ -546,7 +561,7 @@ function UpdateCampaign() {
         campaignImageBase64 && (
           <div className={cx("image-preview-container")}>
             <img
-              src={`data:image/jpg;base64,${campaignImageBase64}`}
+              src={`http://localhost:8000/${campaign.image}`}
               alt="Ảnh đã chọn"
               className={cx("image-preview")}
             />

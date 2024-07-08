@@ -17,6 +17,7 @@ const Post = ({
     isLike,
     comment
 }) => {
+    console.log("image" , image);
     const [isLiked, setIsLiked] = useState(isLike);
     const [likeCount, setLikeCount] = useState(likes);
     const [isModalOpen, setIsModalOpen] = useState(false);

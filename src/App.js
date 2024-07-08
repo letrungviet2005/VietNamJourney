@@ -52,7 +52,6 @@ function App() {
         <Route path="/Manager" element={<Manager />} />
 
       </Routes>
-      <Footer />
     </div>
   );
 }

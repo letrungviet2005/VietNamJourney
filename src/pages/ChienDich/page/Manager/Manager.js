@@ -15,31 +15,29 @@ function Manager() {
 
   const navigate = useNavigate();
 
-  const userId = { userId: getCookie('User_ID') };
+  const userId = getCookie('User_ID');
+  console.log("user ", userId);
 
   // Gọi API khi component được render
   useEffect(() => {
-    fetch('http://localhost/bwd/VietNamJourney/Server/ChienDich/ListCampaign.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(userId) // Nếu cần gửi dữ liệu cụ thể trong yêu cầu POST
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.list) {
-          setData(data.list);
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(`http://localhost:8000/api/managerCampaign/${userId}`);
+
+        if (response.data.list) {
+          setData(response.data.list);
           setLoading(false);
         } else {
-          throw new Error(data.error || 'Unknown error');
+          throw new Error(response.data.error || 'Unknown error');
         }
-      })
-      .catch(error => {
+      } catch (error) {
         setError(error.message);
         setLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    fetchData();
+  }, [userId]);
 
   // Xử lý trạng thái tải dữ liệu
   if (loading) {
@@ -77,6 +75,7 @@ function Manager() {
               <th className={cx('joined')}>TNV tham gia</th>
               <th className={cx('pending')}>TNV chờ duyệt</th>
               <th className={cx('status')}>Tình trạng</th>
+              <th className={cx('edit')}>Chỉnh sửa</th>
             </tr>
           </thead>
           <tbody>
@@ -95,6 +94,11 @@ function Manager() {
                     'da-ket-thuc': campaign.status === 'đã kết thúc'
                   }, 'status')}>
                     {campaign.status}
+                  </button>
+                </td>
+                <td className={cx('edit')}>
+                  <button className={cx('edit')} onClick={() => handleRowClick(campaign.id)}>
+                    <i class="fa-solid fa-pen-to-square"></i>
                   </button>
                 </td>
               </tr>
