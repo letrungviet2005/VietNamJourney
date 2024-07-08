@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import style from "./TongQuan.module.scss";
+import axios from "axios";
+import { getCookie } from "../../../../../Cookie/getCookie";
+
 
 const cx = classNames.bind(style);
 
@@ -11,36 +14,35 @@ function TongQuan({ campaign }) {
 
   const [status, setStatus] = useState(null); 
   const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Hàm gọi API để lấy trạng thái từ server
     const fetchStatus = async () => {
       setLoading(true); // Bắt đầu loading khi gọi API
 
       try {
-        const response = await fetch(
-          `http://localhost/bwd/VietNamJourney/Server/ChienDich/GetVolunteer.php`,
+        const formData = new FormData();
+        formData.append("userId", getCookie('User_ID'));
+        formData.append("campaignId", campaign.id);
+
+        formData.forEach((value, key) => {
+          console.log(`${key}: ${value}`);
+        });
+
+        const response = await axios.post(
+          'http://localhost:8000/api/getStatusVolunteer',
+          formData,
           {
-            method: "POST",
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "multipart/form-data",
             },
-            body: JSON.stringify({
-              userId: 1, // Thay userId bằng cách lấy từ cookie hoặc context của bạn
-              campaignId: campaign.id,
-            }),
           }
         );
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch status");
-        }
-
-        const data = await response.json();
-        setStatus(data.status); // Cập nhật trạng thái từ API
-
+        setStatus(response.data.status); // Cập nhật trạng thái từ API
       } catch (error) {
-        console.error("Error fetching status:", error);
+        setError(error.message || 'Unknown error');
+        console.error('Error:', error);
       } finally {
         setLoading(false); // Kết thúc loading sau khi gọi API xong
       }
@@ -49,6 +51,7 @@ function TongQuan({ campaign }) {
     fetchStatus(); // Gọi hàm fetchStatus khi component được mount
 
   }, [campaign.id]); // Chỉ gọi lại useEffect khi campaign.id thay đổi
+
 
   let statusText = "Đang diễn ra"; // Mặc định là 'Đang diễn ra'
   if (currentDate < dateStart) {

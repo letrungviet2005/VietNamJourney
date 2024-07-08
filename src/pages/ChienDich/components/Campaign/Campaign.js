@@ -8,14 +8,17 @@ const cx = classNames.bind(style);
 
 function Campaign({ className='col-12', campId, campType='TÌNH NGUYỆN', title, desc, imageUrl }) {
   const myStyle = {
-    backgroundImage: `url(data:image/jpg;base64,${imageUrl})`,
+    backgroundImage: `url(http://localhost:8000/${imageUrl})`,
     backgroundSize: 'cover',
     backgroundBlendMode: 'multiply', // Áp dụng chế độ kết hợp 'multiply' để làm cho ảnh nền bị tối đi
   };
 
+  console.log("Background Image URL:", `url(http://localhost:8000/${imageUrl})`);
+
   const navigate = useNavigate();
   const handleButtonClick = () => {
     navigate('/campaign-detail/?id=' + campId);
+    console.log('/campaign-detail/?id=' + campId);
   };
 
   return ( 
