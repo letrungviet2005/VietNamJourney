@@ -28,7 +28,7 @@ function ChatBoxUser() {
         ws.current = new WebSocket('ws://localhost:8080');
         ws.current.onopen = () => {
             console.log('WebSocket connected');
-            ws.current.send(JSON.stringify({ type: 'subscribe', user_id: user_id, user_from: user_from }));
+            ws.current.send(JSON.stringify({ type: 'subscribe', user_to_chat: user_id, user_from_chat: user_from }));
         };
 
         ws.current.onmessage = (event) => {
@@ -70,7 +70,6 @@ function ChatBoxUser() {
     }, [messages]);
 
     const handleSendMessage = () => {
-        console.log('Đang gửi tin nhắn:', message);
         const newMessage = {
             user_from: user_from,
             user_to: user_id,
@@ -117,7 +116,7 @@ function ChatBoxUser() {
                     <img src={userInfo.image} alt="Avatar" />
                     <div className={styles.containerHeaderInfo}>
                         <h6 style={{ fontWeight: 'revert' }}>{userInfo.name || 'Người dùng'}</h6>
-                        <p>Hoạt động 5 phút trước</p>
+                        <p>Đang hoạt động</p>
                     </div>
                     <div className={styles.containerHeaderSettings}>
                         <img src={dots} alt="Settings" />
