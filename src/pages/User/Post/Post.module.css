@@ -35,8 +35,11 @@
 
 .post-header-option {
     margin-left: auto;
-    margin-right: 1rem;
+    margin-right: 1.3rem;
     position: relative;
+}.post-header-option img{
+    width: 1.5rem;
+    height: auto;
 }
 
 .options-menu {
@@ -138,7 +141,7 @@
     width: 100%; 
     height: auto;
     border-radius: 15px;
-    background-color: rgb(215, 215, 215);
+    background-color: rgb(231, 231, 231);
     display: flex;
     flex-direction: column;
     padding: 0.5rem;

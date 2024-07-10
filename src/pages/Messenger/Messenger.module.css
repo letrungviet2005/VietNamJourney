@@ -1,0 +1,138 @@
+body {
+    background-color: #EEF4F0;
+}
+
+.container {
+    width: 95%;
+    height: 80vh;
+    background-color: white;
+    margin-top: 1rem;
+    display: flex;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    border-radius: 10px;
+}
+
+.container1 {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 0;
+    border-radius: 0;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    height: 100%;
+    margin-top: 0;
+    border-radius: 0;
+    border-left:1px solid rgb(214, 214, 214) ;
+}
+
+.container1Head {
+    margin: 0;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    padding-bottom: 0.3rem;
+    margin-top: 0.5rem;
+}.container1Head {
+    position: relative; /* Để đặt vị trí cho nút tìm kiếm */
+}.title {
+    display: flex;
+}.title p{
+   margin-left: auto;
+}.title h6{
+   margin-left: 10px;
+}
+
+.container1Head input[type="text"] {
+    width: 94%; /* Độ rộng của input */
+    padding: 0.8rem 1rem; /* Thêm padding cho input */
+    margin-left: 10px; /* Khoảng cách bên trái */
+    border: 1px solid #4CAF50; /* Viền màu xanh */
+    border-radius: 13px;
+    height: 2rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    box-shadow: 0 4px 8px rgba(45, 63, 49, 0.1); /* Tạo hiệu ứng chiều sâu */
+}
+
+.container1Head input[type="text"]:focus {
+    border-color: #349132; 
+    box-shadow: 0 6px 12px rgba(53, 58, 55, 0.2); /* Tăng chiều sâu khi focus */
+}
+
+.chatname {
+    max-height: 30rem; /* Hoặc giá trị chiều cao bạn muốn */
+    height: 100%; /* Để nó chiếm toàn bộ chiều cao của cha */
+    overflow-y: hidden; /* Ban đầu tắt cuộn */
+    display: flex;
+    flex-direction: column;
+}
+.tabs {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: relative;
+}
+
+.tab {
+    cursor: pointer;
+    margin-right: 20px;
+    position: relative;
+}
+
+.tab::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background-color: green;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.tab.active::after {
+    transform: scaleX(1);
+}@media (max-width: 500px) {
+    .container {
+        width: 100%;
+    
+}.title {
+    flex-direction: column;
+    font-size: 1rem;
+    float: left;
+}.tabs {
+    margin-left: 2px;
+}.tab {
+margin-right: 5px;
+}.container1Head input[type="text"] {
+    width: 90%;
+    margin-left: 3px;
+}.title p{
+   margin-left: 8px;
+}.title h6{
+   margin-left: 4px;
+}
+}
+
+
+
+
+
+
+
+
+

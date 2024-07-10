@@ -1,0 +1,79 @@
+.container {
+    width: 100%;
+    max-height: 30rem; /* Adjust this as needed, can also use a percentage value */
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+    overflow-y: auto; /* Enable scrolling */
+    height: 100%;  
+}.containeruser {
+    width: 100%;
+    height: 4rem;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    padding-left: 0.3rem;
+    padding-top: 0.2rem;
+    cursor: pointer; /* Add cursor pointer */
+}
+
+.containeruser:hover {
+    background-color: rgb(212, 248, 213);
+}
+
+.selected {
+    background-color: rgb(212, 248, 213); /* Background color when selected */
+}
+
+.useravatar {
+    position: relative;
+}
+
+.useravatar img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    margin-bottom: auto;
+}
+
+.useravatar .activeDot {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    width: 0.8rem;
+    height: 0.8rem;
+    background-color: green;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.3rem;
+    margin-top: 0.2rem;
+    width: 100%;
+    height: 100%;
+}
+
+.userinfo h6 {
+    font-weight: 600;
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 5px;
+}
+
+.userinfo p {
+    max-width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 0;
+}@media (max-width: 450px) {
+.userinfo {
+    display: none;
+}.useravatar {
+    margin-left: 15%;
+}
+}

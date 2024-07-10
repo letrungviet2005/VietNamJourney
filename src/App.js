@@ -18,7 +18,8 @@ import CreateCampaign from './pages/ChienDich/page/CreateCampaign/CreateCampaign
 import Manager from './pages/ChienDich/page/Manager/Manager.js';
 import UpdateCampaign from './pages/ChienDich/page/UpdateCampaign/UpdateCampaign.js';
 import Footer from './component/Footer/Footer.js'
-
+import Messenger from './pages/Messenger/Messenger.js';
+import Search from './pages/Search/Search.js';
 
 import ScrollToTop from './component/Utilities/ScrollToTop.jsx';
 
@@ -51,6 +52,8 @@ function App() {
         <Route path="/UpdateCampaign" element={<UpdateCampaign />} />
         <Route path="/Manager" element={<Manager />} />
 
+        <Route path="/Search" element={<Search />} />
+        <Route path="/Messenger/*" element={<Messenger />} />
       </Routes>
     </div>
   );

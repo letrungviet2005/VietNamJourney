@@ -87,7 +87,7 @@ function Navbar() {
                 {/* <Link className={cx('dropdown-item')} to="/CampaignJoined" onClick={closeDropdown}>
                   Chiến dịch đã tham gia
                 </Link> */}
-                <Link className={cx('dropdown-item')} to="/Messenger" onClick={closeDropdown}>
+                <Link className={cx('dropdown-item')} to="/Messenger?type=user&user_id=0" onClick={closeDropdown}>
                   Nhắn tin
                 </Link>
                 
