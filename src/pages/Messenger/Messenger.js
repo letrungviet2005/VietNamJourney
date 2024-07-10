@@ -52,7 +52,6 @@ function Messenger() {
 
         ws.current.onmessage = (event) => {
             const receivedMessage = JSON.parse(event.data);
-            console.log(receivedMessage);
             
             if (!handledOnce && receivedMessage.type === 'getUserOnlines') {
                 setArray(receivedMessage.onlineUsers);

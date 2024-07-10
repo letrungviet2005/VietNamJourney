@@ -11,13 +11,11 @@ function MessengerUser({ user_ID, onUserClick, onlineUsers }) {
 
         ws.current = new WebSocket('ws://localhost:8080');
         ws.current.onopen = () => {
-            console.log('WebSocket connected');
             ws.current.send(JSON.stringify({ type: 'subscribe', user_from: user_ID }));
         };
 
         ws.current.onmessage = (event) => {
             const receivedMessage = JSON.parse(event.data);
-            console.log(receivedMessage)
             if (receivedMessage.type === 'sendMessage' && receivedMessage.user_to === user_ID) {
                 updateUsersChat(receivedMessage);
             } if (receivedMessage.type === 'sendMessage' && receivedMessage.user_from === user_ID) {
@@ -95,7 +93,6 @@ function MessengerUser({ user_ID, onUserClick, onlineUsers }) {
     const isUserOnline = (userTo) => {
         return onlineUsers.includes(userTo);
     };
-    console.log(onlineUsers);
 
     return (
         <div className={styles.container}>

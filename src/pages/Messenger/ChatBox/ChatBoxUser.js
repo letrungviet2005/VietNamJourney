@@ -5,20 +5,31 @@ import dots from '../../../Images/User/dots.png';
 import anh from '../../../Images/User/anhchiendich.png';
 
 function ChatBoxUser() {
+    const cookies = document.cookie;
+    const cookiesArray = cookies.split('; ');
+    const userIdCookie = cookiesArray.find(cookie => cookie.startsWith('User_ID='));
+    const user_from = userIdCookie ? userIdCookie.split('=')[1] : null;
+
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const user_id = params.get('user_id');
-
+    const [allowinputmessage, setInputmessage] = useState(true);
+    
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [userInfo, setUserInfo] = useState({});
     const [userFromInfo, setUserFromInfo] = useState({});
     const contentRef = useRef(null);
 
-    const cookies = document.cookie;
-    const cookiesArray = cookies.split('; ');
-    const userIdCookie = cookiesArray.find(cookie => cookie.startsWith('User_ID='));
-    const user_from = userIdCookie ? userIdCookie.split('=')[1] : null;
+    useEffect(() => {
+    if (user_id == 0 || user_from == user_id) {
+        setInputmessage(false);
+    } else {
+        setInputmessage(true);
+    }
+}, [user_id]);
+
+    
 
     const ws = useRef(null);
 
@@ -27,7 +38,6 @@ function ChatBoxUser() {
 
         ws.current = new WebSocket('ws://localhost:8080');
         ws.current.onopen = () => {
-            console.log('WebSocket connected');
             ws.current.send(JSON.stringify({ type: 'subscribe', user_to_chat: user_id, user_from_chat: user_from }));
         };
 
@@ -35,7 +45,6 @@ function ChatBoxUser() {
             const receivedMessage = JSON.parse(event.data);
             if (receivedMessage.user_to === user_from && receivedMessage.user_from === user_id) {
                 setMessages(prevMessages => [...prevMessages, receivedMessage]);
-                console.log('Received from:', receivedMessage.user_from);
             }
         };
 
@@ -123,18 +132,19 @@ function ChatBoxUser() {
                     </div>
                 </div>
             ) : (
-                <h6>Xin chào</h6>
+                <h6>loading...</h6>
             )}
             <div className={styles.content} ref={contentRef}>
                 {messages.map((msg, index) => (
                     <div key={index} className={`${styles.msg} ${getMessageAlignment(msg)}`}>
-                      {msg.content &&  <h6 className={styles.msgContent}>{msg.content}</h6>}
+                    {msg.content &&  <h6 className={styles.msgContent}>{msg.content}</h6>}
                         {msg.image && <img src={msg.image} alt="Avatar" />}
                         <span className={styles.msgTime}>{msg.created_at}</span>
                     </div>
                 ))}
-            </div>
-            <div className={styles.footer}>
+           </div>
+           {allowinputmessage &&
+               <div className={styles.footer}>
                 <input
                     type="text"
                     placeholder="Nhập tin nhắn..."
@@ -142,7 +152,7 @@ function ChatBoxUser() {
                     onChange={(e) => setMessage(e.target.value)}
                 />
                 <button onClick={handleSendMessage}>Gửi</button>
-            </div>
+            </div>}
         </div>
     );
 }
