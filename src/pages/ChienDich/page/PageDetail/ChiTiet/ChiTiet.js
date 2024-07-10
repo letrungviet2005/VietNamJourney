@@ -151,11 +151,18 @@ function ChiTiet({ campaign }) {
 
   useEffect(() => {
     let intervalId;
+    let timeoutId;
     if (showQR) {
       // Gọi API ngay lập tức khi QR được hiển thị
       fetchTransactionHistory();
       // Thiết lập interval để gọi API mỗi giây
       intervalId = setInterval(fetchTransactionHistory, 1000);
+
+      timeoutId = setTimeout(() => {
+        if (intervalId) {
+          clearInterval(intervalId);
+        }
+      }, 180000);
     }
     return () => {
       // Xóa interval khi component unmount hoặc khi showQR trở thành false
@@ -163,6 +170,10 @@ function ChiTiet({ campaign }) {
         clearInterval(intervalId);
         setShowSuccessModal(true);
         console.log("showSuccessModal", showSuccessModal);
+      }
+      // Xóa timeout khi component unmount hoặc khi showQR trở thành false
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
     };
   }, [showQR]);

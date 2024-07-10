@@ -17,7 +17,7 @@
 
 div.main {
     width: 100%;
-    height: 983px;
+    height: 800px;
     flex-shrink: 0;
 
     display: flex;
@@ -32,7 +32,7 @@ div.main {
 
 
 div.main div.upper {
-    width: 1367px;
+    width: 90%;
     height: 161.424px;
     flex-shrink: 0;
 
