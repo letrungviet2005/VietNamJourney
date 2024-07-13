@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
 import style from './info.module.scss';
 import axios from 'axios';
+import CountUp from 'react-countup';
 
 const cx = classNames.bind(style);
 
@@ -29,6 +30,9 @@ function Info({ className, province }) {
     endedCampaigns: 0,
   });
 
+  const [isVisible, setIsVisible] = useState(false);
+  const componentRef = useRef(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -48,19 +52,35 @@ function Info({ className, province }) {
     };
 
     fetchData();
-  }, [province]); 
+  }, [province]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      });
+    });
+
+    if (componentRef.current) {
+      observer.observe(componentRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const formatCurrency = (value) => {
     return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
-  }
+  };
 
   const provinceData = provinces.find(p => p.province === province);
   const imageUrl = provinceData ? provinceData.urlImage : "https://www.pullman-danang.com/wp-content/uploads/sites/86/2019/05/DJI_0004.jpg"; // Đặt URL mặc định nếu không tìm thấy tỉnh
 
   return (
     <div className={className}>
-      <div className={cx('info')}>
+      <div className={cx('info')} ref={componentRef}>
         <img src={imageUrl} alt={`Ảnh của ${province}`} className={cx('province-image')} />
         <div className={cx('title')}>
           Tổng quan - <span>{province}</span>
@@ -69,25 +89,35 @@ function Info({ className, province }) {
         <div className={cx('total', 'row')}>
           <div className={cx('total-campaign', 'col-4')}>
             <p>Tổng số chiến dịch</p>
-            <div className={cx('number')}>{data.totalCampaigns}</div>
+            <div className={cx('number')}>
+              {isVisible && <CountUp end={data.totalCampaigns} duration={1} />}
+            </div>
           </div>
           <div className={cx('total-fund', 'col-8')}>
             <p>Tổng số tiền quỹ VIETNAMJOURNEY tài trợ</p>
-            <div className={cx('number')}>{formatCurrency(data.totalFund)}</div>
+            <div className={cx('number')}>
+              {isVisible && <CountUp end={data.totalFund} duration={1} formattingFn={(value) => value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })} />}
+            </div>
           </div>
         </div>
         <div className={cx('detail', 'row')}>
           <div className={cx('section-campaign', 'col-4')}>
             <p>Chiến dịch đang diễn ra</p>
-            <div className={cx('number')}>{data.ongoingCampaigns}</div>
+            <div className={cx('number')}>
+              {isVisible && <CountUp end={data.ongoingCampaigns} duration={1} />}
+            </div>
           </div>
           <div className={cx('section-campaign', 'col-4')}>
             <p>Chiến dịch sắp tới</p>
-            <div className={cx('number')}>{data.upcomingCampaigns}</div>
+            <div className={cx('number')}>
+              {isVisible && <CountUp end={data.upcomingCampaigns} duration={1} />}
+            </div>
           </div>
           <div className={cx('section-campaign', 'col-4')}>
             <p>Chiến dịch đã kết thúc</p>
-            <div className={cx('number')}>{data.endedCampaigns}</div>
+            <div className={cx('number')}>
+              {isVisible && <CountUp end={data.endedCampaigns} duration={1} />}
+            </div>
           </div>
         </div>
       </div>

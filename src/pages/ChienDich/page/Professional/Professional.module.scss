@@ -1,0 +1,166 @@
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #35973F;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#signUpForm {
+  width: 80%;
+  background-color: #ffffff;
+  // margin: 40px auto;
+  padding: 40px;
+  // box-shadow: 0px 6px 18px rgb(0 0 0 / 9%);
+  border-radius: 12px;
+  margin: 30px auto;
+  min-height: 75vh;
+}
+#signUpForm .form-header {
+  gap: 5px;
+  text-align: center;
+  font-size: 0.9em;
+}
+#signUpForm .form-header .stepIndicator {
+  position: relative;
+  flex: 1;
+  padding-bottom: 30px;
+}
+#signUpForm .form-header .stepIndicator.active {
+  font-weight: 600;
+}
+#signUpForm .form-header .stepIndicator.finish {
+  font-weight: 600;
+  color: #02a308;
+}
+#signUpForm .form-header .stepIndicator::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 9;
+  width: 20px;
+  height: 20px;
+  background-color: #d5efed;
+  border-radius: 50%;
+  border: 3px solid #ecf5f4;
+}
+#signUpForm .form-header .stepIndicator.active::before {
+  background-color: #79fd7b;
+  border: 3px solid #d5f9f6;
+}
+#signUpForm .form-header .stepIndicator.finish::before {
+  background-color: #02a308;
+  border: 3px solid #aeffb0;
+}
+#signUpForm .form-header .stepIndicator::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 100%;
+  height: 3px;
+  background-color: #f3f3f3;
+}
+#signUpForm .form-header .stepIndicator.active::after {
+  background-color: #8ffc91;
+}
+#signUpForm .form-header .stepIndicator.finish::after {
+  background-color: #02a308;
+}
+#signUpForm .form-header .stepIndicator:last-child:after {
+  display: none;
+}
+#signUpForm input {
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 1em;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+}
+#signUpForm textarea {
+  padding: 15px 20px;
+  width: 100%;
+  height: 120px;
+  font-size: 1em;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+}
+#signUpForm input,
+#signUpForm textarea:focus {
+  border: 1px solid #02a308;
+  outline: 0;
+}
+#signUpForm input.invalid,
+#signUpForm textarea.invalid {
+  border: 1px solid #ffaba5;
+}
+#signUpForm .step {
+  display: none;
+}
+#signUpForm .form-footer {
+  overflow: auto;
+  gap: 20px;
+}
+#signUpForm .form-footer button {
+  background-color: #02a308;
+  border: 1px solid #02a308 !important;
+  color: #ffffff;
+  border: none;
+  padding: 13px 30px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  flex: 1;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+#signUpForm .form-footer button:hover {
+  opacity: 0.8;
+}
+
+#signUpForm .form-footer #prevBtn {
+  background-color: #fff;
+  color: #02a308;
+}
+
+#signUpForm .buttons {
+  margin: 0 auto;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid #02a308 !important;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  color: #495057;
+  text-align: center;
+  margin-bottom: 8px;
+  width: 100%;
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 1em;
+  border-radius: 5px;
+}
+
+.custom-file-upload:hover {
+  background-color: #e9ecef;
+}
+
+.file-input {
+  display: none;
+}
+
+.image-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2/1;
+  object-fit: fill;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}

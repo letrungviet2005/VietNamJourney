@@ -13,7 +13,7 @@
 
 div.main {
     width: 567px;
-    height: 265px;
+    /* height: 265px; */
     flex-shrink: 0;
 
     border-radius: 20px;
@@ -28,11 +28,12 @@ div.main {
 
 
 div.main div.block1 {
-    width: 495px;
-    height: 110px;
+    width: 100%;
+    /* height: 110px; */
     flex-shrink: 0;
 
     display: flex;
+    padding: 20px ;
 
     /* border: 1px solid red; */
 }
@@ -42,8 +43,9 @@ div.main div.block1 div.img img {
     width: 110px;
     height: 110px;
     flex-shrink: 0;
+    object-fit: cover;
 
-    border-radius: 110px; 
+    border-radius: 50%; 
 }
 
 
@@ -85,7 +87,8 @@ div.main div.block1 div.txtBlock p.txt2 {
 
 
 div.main div.block2 {
-    width: 495px; 
+    width: 100%; 
+    padding: 0 20px 20px 20px;
     flex-shrink: 0; 
 
     /* border: 1px solid red; */
@@ -119,4 +122,131 @@ div.main div.block2 p {
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
+}
+
+
+
+
+@media screen and (max-width: 1500px) {
+    div.main {
+        width: 470px;
+    }
+    div.main div.block1 {
+
+    }
+    
+    
+    div.main div.block1 div.img img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    
+    div.main div.block1 div.txtBlock {
+        padding-top: 10px;
+    }
+    
+    
+    div.main div.block1 div.txtBlock p.txt1 {
+        font-size: 28px;
+    }
+    
+    
+    div.main div.block1 div.txtBlock p.txt2 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 1199.8px) {
+    div.main {
+        width: 400px;
+    }
+    div.main div.block1 {
+        
+    }
+    
+    
+    div.main div.block1 div.img img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    
+    div.main div.block1 div.txtBlock {
+        padding-top: 10px;
+    }
+    
+    
+    div.main div.block1 div.txtBlock p.txt1 {
+        font-size: 24px;
+    }
+    
+    
+    div.main div.block1 div.txtBlock p.txt2 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 991.8px) {
+    div.main {
+        width: 80%;
+    }
+    div.main div.block1 {
+        
+    }
+    
+    
+    div.main div.block1 div.img img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    
+    div.main div.block1 div.txtBlock {
+        padding-top: 10px;
+    }
+    
+    
+    div.main div.block1 div.txtBlock p.txt1 {
+        font-size: 26px;
+    }
+    
+    
+    div.main div.block1 div.txtBlock p.txt2 {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 767.8px){
+    
+}
+
+@media screen and (max-width: 575.8px){
+    div.main {
+        width: 80%;
+    }
+    div.main div.block1 {
+        padding-bottom: 5px;
+    }
+    
+    div.main div.block1 div.img img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    div.main div.block1 div.txtBlock {
+        padding-top: 5px;
+    }
+    
+    div.main div.block1 div.txtBlock p.txt1 {
+        font-size: 20px;
+    }
+    
+    div.main div.block1 div.txtBlock p.txt2 {
+        font-size: 16px;
+    }
+
+    div.main div.block2 p {
+        font-size: 14px;
+    }
 }

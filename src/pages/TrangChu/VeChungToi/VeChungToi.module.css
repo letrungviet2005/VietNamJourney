@@ -11,7 +11,6 @@
 
 div.main {
     width: 100%;
-    height: 900px;
     flex-shrink: 0;
 
     padding-top: 71px;
@@ -28,8 +27,8 @@ div.main {
 
 
 div.main div.txt1 {
-    width: 1512px;
-    height: 165px;
+    width: 100%;
+    /* height: 165px; */
 
     margin-bottom: 30px;
 
@@ -53,7 +52,7 @@ div.main div.txt1 h2 {
 
 
 div.main div.txt1 p {
-    width: 1200px; 
+    width: 70%; 
 
     color: #403E3E;
     text-align: center;
@@ -67,8 +66,7 @@ div.main div.txt1 p {
 
 
 div.main div.cards {
-    width: 1320px;
-    height: 576px;
+    width: 80%;
     flex-shrink: 0;
 
     display: flex;
@@ -78,11 +76,6 @@ div.main div.cards {
 
     /* border: 1px solid red; */
 }
-
-
-
-
-
 
 /* Scrolling animation */
 .hidden {
@@ -102,4 +95,42 @@ div.main div.cards {
 
 div.main div.txt1 p {
     transition-delay: 200ms;
+}
+
+
+@media screen and (max-width: 1500px) {
+  
+}
+
+@media screen and (max-width: 1199.8px) {
+    div.main div.cards {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 991.8px) {
+    div.main div.cards {
+        width: 100%;
+    }
+
+    div.main div.txt1 {
+        width: 100%;
+        /* height: 165px; */
+    }
+}
+
+@media screen and (max-width: 767.8px){
+    div.main div.txt1 h2 {
+        font-size: 32px;
+    }
+     
+    div.main div.txt1 p {
+        width: 80%; 
+        font-size: 18px;
+        line-height: 110%; 
+    }
+}
+
+@media screen and (max-width: 575.8px){
+  
 }

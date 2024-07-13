@@ -14,9 +14,9 @@ div.main {
     height: 962px;
     flex-shrink: 0;
 
-    background-image: url('../../../Images/TrangChu/SuMenh3/anhNen.png');
+    /* background-image: url('../../../Images/TrangChu/SuMenh3/anhNen.png');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 
@@ -29,7 +29,7 @@ div.main div.div1 {
     flex-direction: column;
     align-items: center;
 
-    background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.60) 100%);
+    /* background: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, 0.60) 100%); */
 
     /* border: 1px solid red; */
 }
@@ -62,7 +62,7 @@ div.main div.div2 {
     height: 699px;
     flex-shrink: 0;
 
-    background: rgba(0, 0, 0, 0.60);
+    /* background: rgba(0, 0, 0, 0.60); */
 
     display: flex;
     flex-direction: column;
@@ -146,4 +146,25 @@ div.main div.div2 div.bt img {
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
+}
+
+
+.vid {
+    position: absolute;
+    width: 100%;
+    height: 100%; /* Hoặc chiều cao mong muốn */
+    overflow: hidden;
+}
+
+.vid video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    background-size: cover;
 }

@@ -376,7 +376,7 @@ function ChiTiet({ campaign }) {
           </pre>
         </div>
 
-        <div className={cx("quy-row")}>
+        {/* <div className={cx("quy-row")}>
           <hr />
           <div
             className={cx("title")}
@@ -389,7 +389,7 @@ function ChiTiet({ campaign }) {
                 isVisible ? "fa-caret-down" : "fa-caret-right"
               }`}
             ></i>
-          </div> 
+          </div>
 
           {isVisible && (
             <div>
@@ -445,7 +445,7 @@ function ChiTiet({ campaign }) {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
 
         <Modal
           isOpen={showSuccessModal}

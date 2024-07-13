@@ -1,0 +1,132 @@
+.ManagerDetail {
+    background-color: #F6F7F8;
+    padding-bottom: 100px;
+  }
+  
+  .header {
+    height: 600px;
+    padding-top: 250px;
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+  
+  .header .title {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0;
+  }
+  
+  .header .camp-id {
+    font-size: 60px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0;
+  }
+  
+  .header .desc {
+    font-size: 26px;
+    font-weight: 600;
+    color: white;
+  }
+  
+  .menu {
+    width: 85%;
+  
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 200px;
+      background-color: #1F8E2B ;
+    }
+  
+    ul li {
+      list-style-type: none;
+      width: 25%;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 12px 0px;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #006322;
+      }
+    }
+  
+  }
+  
+  @media screen and (max-width: 1500px) {
+    .header {
+      height: 500px;
+      padding-top: 200px;
+      padding-left: 170px;
+      padding-right: 170px;
+    }
+  }
+  
+  @media screen and (max-width: 1199.8px) {
+    .header {
+      height: 450px;
+      padding-top: 150px;
+    }
+  }
+  
+  @media screen and (max-width: 991.8px) {
+    .header {
+      height: 380px;
+      padding-top: 100px;
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+  }
+  
+  @media screen and (max-width: 767.8px){
+    .header {
+      height: 320px;
+      padding-top: 60px;
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  
+    
+  .menu {
+    width: 85%;
+  
+    ul {
+      padding-left: 80px;
+    }
+  
+    ul li {
+      font-size: 14px;
+    }
+  
+  }
+  }
+  
+  @media screen and (max-width: 575.8px){
+    .menu {
+      width: 100%;
+    
+      ul {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    
+      ul li {
+        font-size: 12px;
+      }
+    
+    }
+  
+    .header .title {
+      font-size: 18px;
+    }
+    .header .camp-id {
+      font-size: 40px;
+    }
+    .header .desc {
+      font-size: 24px;
+    }
+  }

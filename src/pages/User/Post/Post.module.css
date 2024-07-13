@@ -82,7 +82,7 @@
 }
 
 .post-body img {
-    width: auto;
+    width: 100%;
     height: auto;
     max-height: 420px;
     max-width: 100%;

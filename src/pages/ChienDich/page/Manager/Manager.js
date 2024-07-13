@@ -50,6 +50,11 @@ function Manager() {
   }
 
   const handleRowClick = (id) => {
+    navigate('/ManagerDetail/?id=' + id);
+  };
+
+  const handleEditClick = (e, id) => {
+    e.stopPropagation(); // Ngăn chặn sự kiện nổi bọt
     navigate('/UpdateCampaign' + '?id=' + id);
   };
 
@@ -97,7 +102,7 @@ function Manager() {
                   </button>
                 </td>
                 <td className={cx('edit')}>
-                  <button className={cx('edit')} onClick={() => handleRowClick(campaign.id)}>
+                  <button className={cx('edit')} onClick={(e) => handleEditClick(e, campaign.id)}>
                     <i class="fa-solid fa-pen-to-square"></i>
                   </button>
                 </td>

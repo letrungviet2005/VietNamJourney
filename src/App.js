@@ -17,6 +17,8 @@ import PageDetail from './pages/ChienDich/page/PageDetail/PageDetail.js';
 import CreateCampaign from './pages/ChienDich/page/CreateCampaign/CreateCampaign.js';
 import Manager from './pages/ChienDich/page/Manager/Manager.js';
 import UpdateCampaign from './pages/ChienDich/page/UpdateCampaign/UpdateCampaign.js';
+import ManagerDetail from './pages/ChienDich/page/ManagerDetail/ManagerDetail.js';
+import Professional from './pages/ChienDich/page/Professional/Professional.js';
 import Footer from './component/Footer/Footer.js'
 import Messenger from './pages/Messenger/Messenger.js';
 import Search from './pages/Search/Search.js';
@@ -51,6 +53,8 @@ function App() {
         <Route path="/CreateCampaign" element={<CreateCampaign />} />
         <Route path="/UpdateCampaign" element={<UpdateCampaign />} />
         <Route path="/Manager" element={<Manager />} />
+        <Route path="/ManagerDetail" element={<ManagerDetail />} />
+        <Route path="/Professional" element={<Professional />} />
 
         <Route path="/Search" element={<Search />} />
         <Route path="/Messenger/*" element={<Messenger />} />

@@ -22,7 +22,6 @@ div.main {
 
 div.main div.div1 {
     width: 100%;
-    height: 211px;
 
     display: flex;
     flex-direction: column;
@@ -42,11 +41,13 @@ div.main div.div1 h2 {
     font-style: normal;
     font-weight: 800;
     line-height: 130%; /* 62.4px */
+    margin-bottom: 20px;
+    margin-top: 50px;
 }
 
 
 div.main div.div1 p {
-    width: 940px;
+    width: 80%;
 
     color: #403E3E;
     text-align: center;
@@ -62,31 +63,27 @@ div.main div.div1 p {
 
 div.main div.div2 {
     width: 100%;
-    height: 512px;
 
     display: flex;
+    flex-wrap: wrap;
 }
 
 
 div.main div.div2 div.div2_1 {
     width: 49%;
-    height: 512px;
+    height: 450px;
     flex-shrink: 0;
+    background-color: white;
+    padding: 50px;
 }
 
-
-div.main div.div2 div.div2_1 img {
-    width: 100%;
-    height: 512px;
-}
 
 
 div.main div.div2 div.div2_2 {
     width: 51%;
-    height: 512px;
     flex-shrink: 0;
 
-    background: #09430E;
+    background: #329c30;
 
     display: flex;
     justify-content: center;
@@ -95,20 +92,16 @@ div.main div.div2 div.div2_2 {
 
 
 div.main div.div2 div.div2_2 p {
-    width: 670px;
-    
     color: #FFF;
-    text-align: center;
+    text-align: justify;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: "Radio Canada";
-    font-size: 26px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 500;
     line-height: 130%; /* 33.8px */
+    padding: 50px;
 }
-
-
-
 
 
 /* Scrolling animation */
@@ -129,4 +122,85 @@ div.main div.div2 div.div2_2 p {
 
 div.main div.div1 p {
     transition-delay: 200ms;
+}
+
+
+@media screen and (max-width: 1500px) {
+  
+}
+
+@media screen and (max-width: 1199.8px) {
+    div.main div.div2 div.div2_1 {
+        width: 100%;
+        height: 450px;
+        padding: 50px;
+    }
+    
+    div.main div.div2 div.div2_2 {
+        width: 100%;
+    }
+    
+    
+    div.main div.div2 div.div2_2 p {
+        font-size: 24px;
+    }
+
+}
+
+@media screen and (max-width: 991.8px) {
+    div.main div.div1 h2 {
+        font-size: 36px;
+    }
+    
+    div.main div.div1 p {
+        font-size: 28px;  
+    }
+}
+
+@media screen and (max-width: 767.8px){
+    div.main div.div1 h2 {
+        font-size: 30px;
+    }
+    
+    div.main div.div1 p {
+        font-size: 24px;  
+    }
+
+    div.main div.div2 div.div2_1 {
+        width: 100%;
+        height: 300px;
+        padding: 30px;
+    }
+
+    div.main div.div2 div.div2_2 {
+        padding: 20px 5px;
+    }
+    
+    div.main div.div2 div.div2_2 p {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 575.8px){
+    div.main div.div1 h2 {
+        font-size: 24px;
+    }
+    
+    div.main div.div1 p {
+        font-size: 18px;  
+    }
+
+    div.main div.div2 div.div2_1 {
+        width: 100%;
+        height: 250px;
+        padding: 20px;
+    }
+
+    div.main div.div2 div.div2_2 p {
+        padding: 20px 10px;
+    }
+    
+    div.main div.div2 div.div2_2 p {
+        font-size: 16px;
+    }
 }

@@ -26,120 +26,122 @@ function CoCauChuyen() {
         <p>Câu chuyện đằng sau những dự án</p>
       </div>
 
-      <Slider {...settings} className="row">
-        <div className="col-11">
-            <div className={styles.div2}>
-              <div className={styles.div_left}>
-                <img alt=">_<" src={nguoiphunu}></img>
-              </div>
-    
-              <div className={styles.div_right}>
-                <div className={styles.top}>
-                  <div className={styles.part1}>
-                    <div className={styles.line1}></div>
-                    <p>FP076</p>
+      <div className={styles.slide}>
+        <Slider {...settings} className="row">
+          <div className="col-11">
+              <div className={styles.div2}>
+                <div className={styles.div_left}>
+                  <img alt=">_<" src={nguoiphunu}></img>
+                </div>
+      
+                <div className={styles.div_right}>
+                  <div className={styles.top}>
+                    <div className={styles.part1}>
+                      <div className={styles.line1}></div>
+                      <p>FP076</p>
+                    </div>
+      
+                    <p className={styles.top_p1}>
+                      Nghiên cứu phát triển giống lúa mới chống chịu tác động của biến
+                      đổi khí hậu và hạn chế sử dụng thuốc bảo vệ thực vật.
+                    </p>
                   </div>
-    
-                  <p className={styles.top_p1}>
-                    Nghiên cứu phát triển giống lúa mới chống chịu tác động của biến
-                    đổi khí hậu và hạn chế sử dụng thuốc bảo vệ thực vật.
-                  </p>
-                </div>
-    
-                <div className={styles.mid}>
-                  <img alt=">_<" src={ngoac}></img>
-    
-                  <p className={styles.mid_p1}>
-                    Chị vừa nhận được giống lúa mới năm nay [2020]. Sau đó đem trồng
-                    vào tháng 6 và thu hoạch vào tháng 11. Thực sự rất vui mừng vì
-                    sản lượng tăng lên cao đồng thời cũng tiết kiệm chi phí mua
-                    thuốc trừ sâu.
-                  </p>
-    
-                  <p className={styles.mid_p2}>
-                    Chị Trần Thị Thu Hà<br></br>Nông dân tại tỉnh Thừa Thiên Huế
-                  </p>
-                </div>
-    
-              </div>
-            </div>
-        </div>
-
-        <div className="col-11">
-            <div className={styles.div2}>
-              <div className={styles.div_left}>
-                <img alt=">_<" src={nguoiphunu}></img>
-              </div>
-    
-              <div className={styles.div_right}>
-                <div className={styles.top}>
-                  <div className={styles.part1}>
-                    <div className={styles.line1}></div>
-                    <p>FP076</p>
+      
+                  <div className={styles.mid}>
+                    <img alt=">_<" src={ngoac}></img>
+      
+                    <p className={styles.mid_p1}>
+                      Chị vừa nhận được giống lúa mới năm nay [2020]. Sau đó đem trồng
+                      vào tháng 6 và thu hoạch vào tháng 11. Thực sự rất vui mừng vì
+                      sản lượng tăng lên cao đồng thời cũng tiết kiệm chi phí mua
+                      thuốc trừ sâu.
+                    </p>
+      
+                    <p className={styles.mid_p2}>
+                      Chị Trần Thị Thu Hà<br></br>Nông dân tại tỉnh Thừa Thiên Huế
+                    </p>
                   </div>
-    
-                  <p className={styles.top_p1}>
-                    Nghiên cứu phát triển giống lúa mới chống chịu tác động của biến
-                    đổi khí hậu và hạn chế sử dụng thuốc bảo vệ thực vật.
-                  </p>
+      
                 </div>
-    
-                <div className={styles.mid}>
-                  <img alt=">_<" src={ngoac}></img>
-    
-                  <p className={styles.mid_p1}>
-                    Chị vừa nhận được giống lúa mới năm nay [2020]. Sau đó đem trồng
-                    vào tháng 6 và thu hoạch vào tháng 11. Thực sự rất vui mừng vì
-                    sản lượng tăng lên cao đồng thời cũng tiết kiệm chi phí mua
-                    thuốc trừ sâu.
-                  </p>
-    
-                  <p className={styles.mid_p2}>
-                    Chị Trần Thị Thu Hà<br></br>Nông dân tại tỉnh Thừa Thiên Huế
-                  </p>
+              </div>
+          </div>
+  
+          <div className="col-11">
+              <div className={styles.div2}>
+                <div className={styles.div_left}>
+                  <img alt=">_<" src={nguoiphunu}></img>
                 </div>
-
-              </div>
-            </div>
-        </div>
-
-        <div className="col-11">
-            <div className={styles.div2}>
-              <div className={styles.div_left}>
-                <img alt=">_<" src={nguoiphunu}></img>
-              </div>
-    
-              <div className={styles.div_right}>
-                <div className={styles.top}>
-                  <div className={styles.part1}>
-                    <div className={styles.line1}></div>
-                    <p>FP076</p>
+      
+                <div className={styles.div_right}>
+                  <div className={styles.top}>
+                    <div className={styles.part1}>
+                      <div className={styles.line1}></div>
+                      <p>FP076</p>
+                    </div>
+      
+                    <p className={styles.top_p1}>
+                      Nghiên cứu phát triển giống lúa mới chống chịu tác động của biến
+                      đổi khí hậu và hạn chế sử dụng thuốc bảo vệ thực vật.
+                    </p>
                   </div>
-    
-                  <p className={styles.top_p1}>
-                    Nghiên cứu phát triển giống lúa mới chống chịu tác động của biến
-                    đổi khí hậu và hạn chế sử dụng thuốc bảo vệ thực vật.
-                  </p>
-                </div>
-    
-                <div className={styles.mid}>
-                  <img alt=">_<" src={ngoac}></img>
-    
-                  <p className={styles.mid_p1}>
-                    Chị vừa nhận được giống lúa mới năm nay [2020]. Sau đó đem trồng
-                    vào tháng 6 và thu hoạch vào tháng 11. Thực sự rất vui mừng vì
-                    sản lượng tăng lên cao đồng thời cũng tiết kiệm chi phí mua
-                    thuốc trừ sâu.
-                  </p>
-    
-                  <p className={styles.mid_p2}>
-                    Chị Trần Thị Thu Hà<br></br>Nông dân tại tỉnh Thừa Thiên Huế
-                  </p>
+      
+                  <div className={styles.mid}>
+                    <img alt=">_<" src={ngoac}></img>
+      
+                    <p className={styles.mid_p1}>
+                      Chị vừa nhận được giống lúa mới năm nay [2020]. Sau đó đem trồng
+                      vào tháng 6 và thu hoạch vào tháng 11. Thực sự rất vui mừng vì
+                      sản lượng tăng lên cao đồng thời cũng tiết kiệm chi phí mua
+                      thuốc trừ sâu.
+                    </p>
+      
+                    <p className={styles.mid_p2}>
+                      Chị Trần Thị Thu Hà<br></br>Nông dân tại tỉnh Thừa Thiên Huế
+                    </p>
+                  </div>
+  
                 </div>
               </div>
-            </div>
-        </div>
-      </Slider>
+          </div>
+  
+          <div className="col-11">
+              <div className={styles.div2}>
+                <div className={styles.div_left}>
+                  <img alt=">_<" src={nguoiphunu}></img>
+                </div>
+      
+                <div className={styles.div_right}>
+                  <div className={styles.top}>
+                    <div className={styles.part1}>
+                      <div className={styles.line1}></div>
+                      <p>FP076</p>
+                    </div>
+      
+                    <p className={styles.top_p1}>
+                      Nghiên cứu phát triển giống lúa mới chống chịu tác động của biến
+                      đổi khí hậu và hạn chế sử dụng thuốc bảo vệ thực vật.
+                    </p>
+                  </div>
+      
+                  <div className={styles.mid}>
+                    <img alt=">_<" src={ngoac}></img>
+      
+                    <p className={styles.mid_p1}>
+                      Chị vừa nhận được giống lúa mới năm nay [2020]. Sau đó đem trồng
+                      vào tháng 6 và thu hoạch vào tháng 11. Thực sự rất vui mừng vì
+                      sản lượng tăng lên cao đồng thời cũng tiết kiệm chi phí mua
+                      thuốc trừ sâu.
+                    </p>
+      
+                    <p className={styles.mid_p2}>
+                      Chị Trần Thị Thu Hà<br></br>Nông dân tại tỉnh Thừa Thiên Huế
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </Slider>
+      </div>
     </div>
   );
 }

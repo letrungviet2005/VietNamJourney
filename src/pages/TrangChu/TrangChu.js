@@ -1,6 +1,7 @@
 import CoGioiThieu from "./GioiThieu/GioiThieu.jsx";
 import CoVeChungToi from "./VeChungToi/VeChungToi.jsx";
 import CoThucTrang from "./ThucTrang/ThucTrang.jsx";
+import ThucTrang2 from "./ThucTrang2/ThucTrang2.js";
 
 // import CoThucTrangVideo from "./ThucTrangVideo/ThucTrangVideo.jsx";
 
@@ -19,6 +20,8 @@ function TrangChu() {
 
             <CoVeChungToi />
             <CoThucTrang />
+
+            <ThucTrang2 />
 
             {/* <CoThucTrangVideo /> */}
 

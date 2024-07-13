@@ -57,17 +57,16 @@ div.main div.vid div.dimmed {
 
 
 div.main div.vid video {
-    width: 100%;
+    width: 99vw;
     height: 1002px;
-    flex-shrink: 0;
-
     margin-top: -60px;
+    object-fit: cover;
 }
 
 
 div.main div.top {
     width: 100%;
-    height: 600px;
+    height: 700px;
     flex-shrink: 0;
 
     display: flex;
@@ -128,7 +127,7 @@ div.main div.top div.txt p {
 
 div.main div.bot {
     width: 100%;
-    height: 412px;
+    height: 350px;
     flex-shrink: 0;
 
     display: flex;
@@ -158,7 +157,7 @@ div.main div.bot div.tabs {
 
 div.main div.bot div.tabs div.tab {
     width: 359px;
-    height: 288px;
+    height: 250px;
     flex-shrink: 0;
 
     border-radius: 20px;
@@ -217,12 +216,12 @@ div.main div.bot div.tabs div.tab p.p3 {
 
 div.main div.bot div.eclipse {
     width: 100%;
-    height: 287px;
+    height: 250px;
     flex-shrink: 0;
 
     background-image: url("../../../Images/TrangChu/GioiThieu/eclip2.png");
     background-position: center center;
-    background-size: 1854px 287px;
+    background-size: 100% 287px;
     background-repeat: no-repeat;
 
     position: absolute;
@@ -315,8 +314,12 @@ div.main div.bot div.eclipse {
     }
 }
 
+@media (max-width: 575.98px) {
+    div.main div.vid video {
+        height: 850px;
+    }
+}
 
-/* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
     div.main {
         height: auto;
@@ -335,7 +338,8 @@ div.main div.bot div.eclipse {
 
     
     div.main div.vid video {
-        width: 1511px;
+        /* width: 1511px; */
+        height: 850px;
     }
 
 

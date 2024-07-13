@@ -1,0 +1,239 @@
+.ThucTrang2 {
+    
+}
+
+.top {
+    background-image: url("../../../Images/TrangChu/ThucTrang/anhonhiem.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-bottom: 40px;
+
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+
+}
+
+.items{
+    display: flex;
+    justify-content: space-between;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    width: 14.2857%;
+    align-items: center;
+    padding: 0 10px;
+
+    hr {
+        border: white 2px dashed;
+        width: 95%;
+        margin: 0;
+        opacity: 1;
+    }
+}
+
+.number {
+    font-size: 24px;
+    font-weight: bolder;
+    color: white;
+    margin: 25px 0;
+
+    span {
+        font-size: 14px;
+        font-weight: 700;
+    }
+}
+
+.chart {
+    margin: 20px 0 10px 0;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 30px;
+}
+
+
+
+.item-1 {
+    background-color: #29B9D9;
+}
+.item-2 {
+    background-color: #FFBC27;
+}
+.item-3 {
+    background-color: #D68E58;
+}
+.item-4 {
+    background-color: #D9E021;
+}
+.item-5 {
+    background-color: #29ABE2;
+}
+.item-6 {
+    background-color: #B16430;
+}
+.item-7 {
+    background-color: #8CC63F;
+}
+
+
+@media screen and (max-width: 1500px) {
+    .top {
+        height: 300px;
+        padding-bottom: 40px;
+        font-size: 30px;
+    
+    }
+}
+
+@media screen and (max-width: 1199.8px) {
+    .number {
+        font-size: 20px;
+        font-weight: bolder;
+        color: white;
+        margin: 25px 0;
+    
+        span {
+            font-size: 12px;
+            font-weight: 700;
+        }
+    }
+}
+
+@media screen and (max-width: 991.8px) {
+    .items{
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: center;
+    }
+    
+    .item {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        align-items: center;
+        position: relative;
+    
+        hr {
+            border: white 2px dashed;
+            width: 2px;
+            margin: 0;
+            opacity: 1;
+            height: 90%;
+        }
+
+        .number {
+            width: 250px;
+            font-size: 30px;
+            font-weight: bolder;
+            color: white;
+            margin-left: 30px;
+            display: flex;
+            align-items: center;
+        
+            span {
+                font-size: 16px;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .chart {
+        margin: 20px 0 10px 0;
+    }
+    
+    .title {
+        display: flex;
+        align-items: center;
+        width: 450px;
+        font-size: 30px;
+        color: white;
+        margin: 0;
+        margin-left: 20px;
+    }
+
+    .top {
+        height: 300px;
+        padding-bottom: 30px;
+        font-size: 24px;
+        text-align: center;
+        padding-left: 20px;
+        padding-right:20px;
+    }
+}
+
+@media screen and (max-width: 767.8px){
+    .top {
+        height: 200px;
+        padding-bottom: 20px;
+        font-size: 24px;
+        padding-left: 10px;
+        padding-right:10px;
+    }
+    .item {
+        .number {
+            width: 250px;
+            font-size: 26px;
+            margin-left: 15px;
+            display: flex;
+            flex-wrap: wrap;
+        
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+
+    .chart {
+        margin: 20px 0 10px 0;
+    }
+    
+    .title {
+        width: 450px;
+        font-size: 26px;
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 575.8px){
+    .top {
+        height: 150px;
+        padding-bottom: 20px;
+        font-size: 20px;
+        padding-left: 10px;
+        padding-right:10px;
+    }
+    .item {
+        .number {
+            width: 250px;
+            font-size: 20px;
+            margin-left: 10px;
+            display: flex;
+            flex-wrap: wrap;
+        
+            span {
+                font-size: 10px;
+            }
+        }
+    }
+
+    .chart {
+        margin: 20px 0 10px 0;
+    }
+    
+    .title {
+        width: 450px;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+}
