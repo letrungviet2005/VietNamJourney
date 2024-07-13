@@ -12,6 +12,7 @@ import CongDong from './pages/CongDong/CongDong.js';
 import ChienDich from './pages/ChienDich/ChienDich.js';
 import Quy from './pages/Quy/Quy.js';
 import TaiKhoan from './pages/TaiKhoan/TaiKhoan.js';
+import TaiKhoanTest from './pages/TaiKhoanTest/TaiKhoanTest.js';
 import User from './pages/User/User.js';
 import PageDetail from './pages/ChienDich/page/PageDetail/PageDetail.js';
 import CreateCampaign from './pages/ChienDich/page/CreateCampaign/CreateCampaign.js';
@@ -22,6 +23,7 @@ import Professional from './pages/ChienDich/page/Professional/Professional.js';
 import Footer from './component/Footer/Footer.js'
 import Messenger from './pages/Messenger/Messenger.js';
 import Search from './pages/Search/Search.js';
+import GroupCampaign from './pages/GroupCampaign/GroupCampaign.js';
 
 import ScrollToTop from './component/Utilities/ScrollToTop.jsx';
 
@@ -46,8 +48,9 @@ function App() {
         <Route path="/CongDong" element={<CongDong />} />
         <Route path="/ChienDich" element={<ChienDich />} />
         <Route path="/Quy" element={<Quy />} />
-        <Route path="/TaiKhoan" element={<TaiKhoan />} />
+        <Route path="/TaiKhoan" element={<TaiKhoanTest />} />
         <Route path="/User" element={<User />} />
+        <Route path="/GroupCampaign" element={<GroupCampaign />} />
 
         <Route path="/campaign-detail" element={<PageDetail />} />
         <Route path="/CreateCampaign" element={<CreateCampaign />} />

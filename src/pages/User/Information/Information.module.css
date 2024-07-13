@@ -6,15 +6,17 @@
     padding-top: 0;
     padding-bottom: 1rem;
     position: relative; 
+    border: 1px solid #e8e8e8;
 }
 
-.container1-background {
+.container1-background img{
     margin-top: 0;
     background: linear-gradient(to right, rgb(71, 151, 81), rgb(138, 196, 146));
     height: 6rem;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     z-index: 1;
+    width: 100%;
 }
 
 .container1-avatar img{

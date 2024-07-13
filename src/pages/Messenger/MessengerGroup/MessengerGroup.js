@@ -1,44 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './MessengerGroup.module.css';
 import image from '../../../Images/Icons/Viet.jpeg';
 
-function MessengerGroup({ user_ID, onGroupClick }) {
+function MessengerGroup({ onGroupClick }) {
+    const cookies = document.cookie;
+    const cookiesArray = cookies.split('; ');
+    const userIdCookie = cookiesArray.find(cookie => cookie.startsWith('User_ID='));
+    const user_ID = userIdCookie ? userIdCookie.split('=')[1] : null;
+
     const [selectedGroupId, setSelectedGroupId] = useState(null);
+    const [groups, setGroups] = useState([]);
+
+    useEffect(() => {
+        if (user_ID) {
+            fetchGroups(user_ID);
+        }
+    }, [user_ID]);
+
+    const fetchGroups = (userId) => {
+        axios.post('http://localhost:8000/api/getGroupUser', { user_id: userId })
+            .then(response => {
+                const { campaigns } = response.data;
+                setGroups(campaigns); // Lưu toàn bộ response vào state groups
+            })
+            .catch(error => console.error('Error fetching groups:', error));
+    };
 
     const handleGroupClick = (groupId) => {
-        setSelectedGroupId(groupId);
         onGroupClick(groupId);
+        console.log(groupId);
     };
 
     return (
         <div className={styles.container}>
-            <div 
-                className={`${styles.containergroup} ${selectedGroupId === '1' ? styles.selected : ''}`} 
-                onClick={() => handleGroupClick('1')}
-            >
-                <div className={styles.groupavatar}>
-                    <img src={image} alt="group avatar"></img>
+            {groups.map(group => (
+                <div
+                    key={group.campaignId}
+                    className={`${styles.containergroup} ${selectedGroupId === group.campaignId ? styles.selected : ''}`}
+                    onClick={() => handleGroupClick(group.campaignId)}
+                >
+                    <div className={styles.groupavatar}>
+                        <img src={group.image || image} alt="group avatar" />
+                    </div>
+                    <div className={styles.groupinfo}>
+                        <h6 style={{ fontWeight: 'revert' }}>{group.name}</h6>
+                        <span>{group.last_message }</span>
+                    </div>
                 </div>
-                <div className={styles.groupinfo}>
-                    <h6 style={{ fontWeight: 'revert' }}>Nhóm A</h6>
-                    <p>Thông báo mới nhất của nhóm A</p>
-                </div>
-            </div>
-
-            <div 
-                className={`${styles.containergroup} ${selectedGroupId === '2' ? styles.selected : ''}`} 
-                onClick={() => handleGroupClick('2')}
-            >
-                <div className={styles.groupavatar}>
-                    <img src={image} alt="group avatar"></img>
-                </div>
-                <div className={styles.groupinfo}>
-                    <h6 style={{ fontWeight: 'revert' }}>Nhóm B</h6>
-                    <p>Thông báo mới nhất của nhóm B</p>
-                </div>
-            </div>
-
-            {/* Thêm các containergroup khác với các groupId khác nhau */}
+            ))}
         </div>
     );
 }

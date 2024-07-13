@@ -9,6 +9,7 @@
     "@vimeo/player": "^2.23.0",
     "apexcharts": "^3.50.0",
     "axios": "^1.7.2",
+    "boxicons": "^2.1.4",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.11",
     "js-cookie": "^3.0.5",

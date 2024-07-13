@@ -55,11 +55,17 @@ function MessengerUser({ user_ID, onUserClick, onlineUsers }) {
             } else {
                 updatedUsers = prevUsers;
             }
+            let lastcontent;
+            if (receivedMessage.image != null) {
+                lastcontent = 'Hình ảnh';
+            } else {
+                lastcontent = receivedMessage.content;
+            }
             const updatedUser = {
                 user_to: receivedMessage.user_from,
                 user_image: receivedMessage.user_image, 
                 user_name: receivedMessage.user_name,   
-                latest_content: receivedMessage.content,
+                latest_content: lastcontent,
             };
             return [updatedUser, ...updatedUsers];
         });
@@ -75,11 +81,18 @@ function MessengerUser({ user_ID, onUserClick, onlineUsers }) {
             } else {
                 updatedUsers = prevUsers;
             }
+
+            let lastcontent;
+            if (receivedMessage.image != null) {
+                lastcontent = 'Hình ảnh';
+            } else {
+                lastcontent = receivedMessage.content;
+            }
             const updatedUser = {
                 user_to: receivedMessage.user_to,
                 user_image: receivedMessage.user_image_from, 
                 user_name: receivedMessage.user_name_from,   
-                latest_content: receivedMessage.content,
+                latest_content: lastcontent,
             };
             return [updatedUser, ...updatedUsers];
         });
@@ -108,7 +121,7 @@ function MessengerUser({ user_ID, onUserClick, onlineUsers }) {
                     </div>
                     <div className={styles.userinfo}>
                         <h6>{user.user_name}</h6>
-                        <p>{user.latest_content} · 6 phút </p>
+                        <p>{user.latest_content}  </p>
                     </div>
                 </div>
             ))}

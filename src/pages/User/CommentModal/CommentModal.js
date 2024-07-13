@@ -149,13 +149,13 @@ const CommentModal = ({ onClose, postId }) => {
                                 />
                                 <div className={styles.ContentRight}>
                                     <div className={styles.modalContentinfo}>
-                                        <h6 
-                                            style={{ cursor: 'pointer' }} 
+                                        <p
+                                            style={{ cursor: 'pointer',fontWeight: '600',marginBottom : '0' ,fontSize : '15px' }} 
                                             onClick={() => handleAvatarClick(comment.user_ID)}
                                         >
                                             {comment.username}
-                                        </h6>
-                                        <p>{comment.content}</p>
+                                        </p>
+                                        <p style={{ marginBottom : '5px'}}>{comment.content}</p>
                                         {comment.imageComment && (
                                             <div className={styles.commentContent}>
                                                 <img src={comment.imageComment} alt="Comment Content" />

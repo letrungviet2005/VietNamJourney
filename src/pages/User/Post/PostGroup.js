@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './Post.module.css';
+import styles from './PostGroup.module.css';
 import dots from '../../../Images/User/dots.png';
 import CommentModal from '../CommentModal/CommentModal';
+import group from '../../../Images/User/anhchiendich.png'
 
-const Post = ({
+const PostGroup = ({
     Post_ID,
     avatar,
+    avatargroup,
     user_id,
     name,
+    namegroup,
     time,
     content,
     image,
@@ -159,11 +162,12 @@ const Post = ({
     return (
         <div className={styles['container-post']}>
             <div className={styles['post-header']}>
-                <div className={styles['post-header-avatar']} onClick={handleAvatarClick} style={{ cursor: 'pointer' }}>
-                    <img src={avatar} alt="avatar" />
-                </div>
+                <div className={styles['post-header-avatar']} onClick={handleAvatarClick} style={{ cursor: 'pointer', position: 'relative' }}>
+    <span className={styles['square-avatar']}><img src={avatargroup} alt="avatar" /></span>
+    <img src={avatar} alt="avatar" className={styles['circle-avatar']} />
+</div>
                 <div className={styles['post-header-info']}>
-                    <h6 onClick={handleAvatarClick} style={{ cursor: 'pointer', fontWeight: 'revert' }}>{name} <i class="fa-solid fa-circle-check" style={{ color :"#258e31", fontSize: "0.8rem" }}></i></h6>
+                    <h6 onClick={handleAvatarClick} style={{ cursor: 'pointer', fontWeight: 'revert' }}>{name} - {namegroup}</h6>
                     <span style={{ fontSize: '0.8rem' }}>{time} · <i className="fas fa-earth-asia"></i></span>
                 </div>
                 <div className={styles['post-header-option']} onClick={handleDotsClick} style={{ cursor: 'pointer' }}>
@@ -227,4 +231,4 @@ const Post = ({
     );
 };
 
-export default Post;
+export default PostGroup;

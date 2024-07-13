@@ -1,0 +1,244 @@
+
+
+.background {
+  background: url(wallpaper8.jpg) no-repeat center center/cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.background::before {
+  content: '';
+  background: url(wallpaper8.jpg) no-repeat center center/cover;
+  filter: blur(10px);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.container {
+  width: 75%;
+  height: 550px;
+  margin-top: 20px;
+  background: url(wallpaper8.jpg) no-repeat center center/cover;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+.item {
+  width: 58%;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.logo {
+  font-size: 40px;
+}
+
+.textItem h2 {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.textItem p {
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+.socialIcon a i {
+  color: #fff;
+  font-size: 24px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: .5s ease;
+}
+
+.socialIcon a:hover i {
+  transform: scale(1.2);
+}
+
+.loginSection {
+  width: calc(100% - 58%);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.formBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  transition: transform .6s ease;
+  color: #fff;
+}
+
+.login {
+  transform: translateX(0);
+}
+
+.register {
+  transform: translateX(430px);
+}
+
+.active .login {
+  transform: translateX(430px);
+}
+
+.active .register {
+  transform: translateX(0);
+}
+
+input[type="email"], input[type="password"], input[type="text"] {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding-right: 28px;
+  color: white;
+}
+
+.inputBox {
+  width: 340px;
+  height: 50px;
+  border-bottom: 2px solid #fff;
+  margin: 30px 0;
+  position: relative;
+  color: white;
+}
+
+.inputBox label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 16px;
+  font-weight: 600;
+  pointer-events: none;
+  transition: .5s ease;
+}
+
+.inputBox .icon {
+  position: absolute;
+  top: 13px;
+  right: 0;
+  font-size: 19px;
+}
+
+input:focus~label, input:valid~label {
+  top: -5px;
+}
+
+.rememberPassword {
+  font-size: 14px;
+  font-weight: 500;
+  margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rememberPassword label input {
+  accent-color: #fff;
+  margin-right: 3px;
+}
+
+.rememberPassword a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.rememberPassword a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  width: 100%;
+  height: 45px;
+  background: #f72d7a;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: rgba(0, 0, 0, 0.4);
+}
+
+.createAccount {
+  font-size: 14.5px;
+  text-align: center;
+  margin: 25px 0;
+}
+
+.createAccount a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.createAccount a:hover {
+  text-decoration: underline;
+}.errorMessage {
+    color: rgb(235, 46, 46);
+    font-size: 11px !important; 
+    margin-top: 1.9rem;
+    margin-bottom: 1rem!important;
+}
+@media(max-width: 1200px) {
+    .container {
+  width: 80%;
+
+}.item {
+  width: 50%;
+}.loginSection {
+  width: calc(100% - 50%);
+}
+
+}@media(max-width: 990px) {
+    .container {
+  width: 90%;
+
+}.item {
+  width: 45%;
+}.loginSection {
+  width: calc(100% - 45%);
+}
+
+}@media(max-width: 760px) {
+    .container {
+  width: 95%;
+
+}.item {
+  width: 40%;
+}.loginSection {
+  width: calc(100% - 40%);
+}
+
+}@media(max-width: 600px) {
+    .container {
+  width: 86%;
+
+}.item {
+  width: 0%;
+  display: none;
+}.loginSection {
+  width: calc(100% );
+}
+
+}@media(max-width: 530px) {
+    .container {
+  width: 95%;
+}
+
+}
