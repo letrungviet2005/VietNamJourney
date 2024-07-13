@@ -12,11 +12,9 @@
 
 div.main {
     width: 100%;
-    height: 996px;
+    height: 900px;
     flex-shrink: 0;
-
     background: #1B9F56;
-
     display: flex;
     justify-content: center;
     gap: 52px;

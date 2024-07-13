@@ -38,12 +38,7 @@ function CoDonate() {
   const [transactionHistory, setTransactionHistory] = useState([]);
   const [showSuccessModal, setShowSuccessModal] = useState(false); // State để quản lý modal
   const [showSuccessModalHistory, setShowSuccessModalHistory] = useState(false);
-  const toggleVisibility = () => {
-    if (!isVisible) {
-      fetchTransactionHistory();
-    }
-    setIsVisible(!isVisible);
-  };
+
 
   // Hàm xử lý khi gửi form
   const handleSubmit = (e) => {
@@ -83,11 +78,18 @@ function CoDonate() {
 
   useEffect(() => {
     let intervalId;
+    let timeoutId;
     if (showQR) {
       // Gọi API ngay lập tức khi QR được hiển thị
       fetchTransactionHistory();
       // Thiết lập interval để gọi API mỗi giây
       intervalId = setInterval(fetchTransactionHistory, 1000);
+
+      timeoutId = setTimeout(() => {
+        if (intervalId) {
+          clearInterval(intervalId);
+        }
+      }, 180000);
     }
     return () => {
       // Xóa interval khi component unmount hoặc khi showQR trở thành false
@@ -95,6 +97,10 @@ function CoDonate() {
         clearInterval(intervalId);
         setShowSuccessModal(true);
         console.log("showSuccessModal", showSuccessModal);
+      }
+      // Xóa timeout khi component unmount hoặc khi showQR trở thành false
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
     };
   }, [showQR]);
@@ -112,6 +118,7 @@ function CoDonate() {
   };
 
 
+    fetchTransactionHistory();
 
     return(
         <div className={cx('main')}>
