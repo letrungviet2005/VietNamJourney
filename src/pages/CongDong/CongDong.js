@@ -3,18 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import styles from './CongDong.module.css';
 import Friends from '../User/Friend/Friends';
 import Post from '../User/Post/Post.js';
-import tu from '../../Images/Icons/Tu.jpeg';
-import viet from '../../Images/Icons/Viet.jpeg';
-import bao from '../../Images/Icons/Bao.jpeg';
-import dinh from '../../Images/Icons/Dinh.png';
 
 function CongDong() {
     const cookies = document.cookie;
     const cookiesArray = cookies.split('; ');
     const userIdCookie = cookiesArray.find(cookie => cookie.startsWith('User_ID='));
     const user_ID = userIdCookie ? userIdCookie.split('=')[1] : null;
+
     const [posts, setPosts] = useState([]);
     const [topUsers, setTopUsers] = useState([]);
+    const [topGroups, setTopGroups] = useState([]); // Mảng để lưu dữ liệu nhóm hàng đầu
+    const [campaignuser, setCampaignuser] = useState([]); 
     const [searchInput, setSearchInput] = useState('');
     const navigate = useNavigate();
 
@@ -46,8 +45,43 @@ function CongDong() {
         .catch(error => console.error('Error:', error));
     }, []);
 
+    // Fetch dữ liệu từ API getTopGroup
+    useEffect(() => {
+        fetch('http://localhost:8000/api/getTopGroup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            setTopGroups(data.top_groups || []);
+        })
+        .catch(error => console.error('Error:', error));
+    }, []);
+
+    useEffect(() => {
+        if (user_ID !== null) {
+            fetch('http://localhost:8000/api/getCampaignUser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_id: user_ID })
+            })
+            .then(response => response.json())
+            .then(data => {
+                setCampaignuser(data.campaigns || []);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    }, [user_ID]);
+
     const handleUserClick = (userId) => {
         navigate(`/User?user_id=${userId}`);
+    };
+    const handleGroupClick = (id) => {
+        navigate(`/GroupCampaign?group_id=${id}`);
     };
 
     const handleSearch = () => {
@@ -59,9 +93,40 @@ function CongDong() {
     };
 
     return (
-        <div className="container">
+        <div className={styles.container}>
             <div className="row">
-                <div className="col-md-8">
+                <div className="col-lg-3">
+                    <div className={styles.container3} style={{ marginBottom : '0',marginTop : '2.2rem' }}>
+                        <h6 style={{ marginLeft: '0.3rem', fontWeight: '', fontSize: '1.2rem' }}>Nhóm tiên phong</h6>
+                        {topGroups.map(group => (
+                            <div style={{ cursor: 'pointer', marginBottom: '0.5rem' }} key={group.id} className={styles['container3-info']} onClick={() => handleGroupClick(group.id)}>
+                                <img alt={group.name} src={group.image_url}></img>
+                                <div className={`${styles['container3-content']} ${styles['ellipsis-text']}`} style={{ maxWidth: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                    <h6 style={{ fontWeight: 'revert', fontSize: '1rem' }}>{group.name}</h6>
+                                    <p>{group.volunteer_count} người tham gia</p>
+                                </div>
+                            </div>
+                        ))}
+                        </div>
+                    {user_ID !== null && (
+                        <div className={styles.sticky}>
+                    <div className={styles.container3} style={{ marginTop : '0.5rem' }}>
+                        <h6 style={{ marginLeft: '0.3rem', fontWeight: '', fontSize: '1.2rem' }}>Nhóm của bạn</h6>
+                        {campaignuser.map(campaign => (
+                            <div style={{ cursor: 'pointer', marginBottom: '0.5rem' }} key={campaign.id} className={styles['container3-info']} onClick={() => handleGroupClick(campaign.id)}>
+                                <img alt={campaign.name} src={campaign.image_url}></img>
+                                <div className={`${styles['container3-content']} ${styles['ellipsis-text']}`} style={{ maxWidth: '100%', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                    <h6 style={{ fontWeight: 'revert', fontSize: '1rem' }}>{campaign.name}</h6>
+                                    <p>{campaign.province}</p>
+                                </div>
+                            </div>
+                        ))}
+                        </div>
+                        </div>
+                    )}
+                    
+                </div>
+                <div className="col-md-6">
                     <div className={`${styles.container1} ${styles['sticky-search-bar']}`}>
                         <input 
                             type="text" 
@@ -98,7 +163,7 @@ function CongDong() {
                         )}
                     </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-3">
                     <div className={styles.container3}>
                         <h6 style={{ marginLeft: '0.3rem', fontWeight: '', fontSize: '1.2rem' }}>Top người nổi bật</h6>
                         {topUsers.map(user => (
@@ -111,15 +176,14 @@ function CongDong() {
                             </div>
                         ))}
                     </div>
+                    <div className={styles.sticky}>
                     {user_ID != null && 
                     <div className={styles.container4}>
                         <h6 style={{ marginLeft: '1rem', fontWeight: '', fontSize: '1.2rem' }}>Gợi ý cho bạn</h6>
                         <Friends User_ID={user_ID} />
-                        <h6 style={{ textAlign : 'right', marginRight: '1rem', color: 'green' }}>
-                            Xem thêm <i className="fa-solid fa-circle-arrow-right"></i>
-                        </h6>
                     </div>
-                    }
+                        }
+                        </div>
                 </div>
             </div>
         </div>

@@ -55,10 +55,6 @@ function Search() {
         <div className="container">
             <div className="row">
                 <div className="col-md-8">
-                    <div className={`${styles.container1} ${styles['sticky-search-bar']}`}>
-                        <input type="text" placeholder="Tìm kiếm" />
-                        <i className="fa-solid fa-magnifying-glass"></i>
-                    </div>
                     <div className={styles.container2}>
                         {posts.length === 0 ? (
                             <div style={{ textAlign: 'center', marginTop: '2rem', backgroundColor: 'white', borderRadius: '10px', padding: '2rem', fontWeight: 'revert' }}>

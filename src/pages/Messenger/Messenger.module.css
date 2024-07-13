@@ -4,14 +4,14 @@ body {
 
 .container {
     width: 95%;
-    height: 80vh;
+    height: 87vh;
     background-color: white;
     margin-top: 1rem;
     display: flex;
     padding: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     border-radius: 10px;
 }
 
@@ -77,12 +77,14 @@ body {
     overflow-y: hidden; /* Ban đầu tắt cuộn */
     display: flex;
     flex-direction: column;
+    margin-bottom: 5px;
 }
 .tabs {
     display: flex;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-top: 15px;
+    margin-left: 20px;
     position: relative;
+    margin-bottom: 10px;
 }
 
 .tab {

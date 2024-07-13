@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import styles from './ChatBox.module.css';
+import styles from './ChatBoxUser.module.css';
 import dots from '../../../Images/User/dots.png';
-import anh from '../../../Images/User/anhchiendich.png';
+import logo from '../../../Images/Message/formessage.png';
 
 function ChatBoxUser() {
     const cookies = document.cookie;
@@ -13,23 +13,22 @@ function ChatBoxUser() {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const user_id = params.get('user_id');
-    const [allowinputmessage, setInputmessage] = useState(true);
-    
+    const [allowInputMessage, setAllowInputMessage] = useState(true);
+
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [userInfo, setUserInfo] = useState({});
     const [userFromInfo, setUserFromInfo] = useState({});
+    const [selectedImage, setSelectedImage] = useState(null);
     const contentRef = useRef(null);
 
     useEffect(() => {
-    if (user_id == 0 || user_from == user_id) {
-        setInputmessage(false);
-    } else {
-        setInputmessage(true);
-    }
-}, [user_id]);
-
-    
+        if (user_id === '0' || user_from === user_id) {
+            setAllowInputMessage(false);
+        } else {
+            setAllowInputMessage(true);
+        }
+    }, [user_id]);
 
     const ws = useRef(null);
 
@@ -58,52 +57,64 @@ function ChatBoxUser() {
     }, [user_from, user_id]);
 
     const fetchMessages = (from, to) => {
-    fetch('http://localhost:8000/api/getChats', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ user_from: from, user_to: to }),
-    })
+        fetch('http://localhost:8000/api/getChats', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_from: from, user_to: to }),
+        })
         .then(response => response.json())
         .then(data => {
-            setMessages(data.chats);
-            setUserInfo(data.userToInfo);
-            setUserFromInfo(data.userFromInfo);
+            if (data.chats) setMessages(data.chats);
+            if (data.userToInfo) setUserInfo(data.userToInfo);
+            if (data.userFromInfo) setUserFromInfo(data.userFromInfo);
         })
         .catch(error => console.error('Error fetching messages:', error));
-};
+    };
 
     useEffect(() => {
         contentRef.current.scrollTop = contentRef.current.scrollHeight;
     }, [messages]);
 
     const handleSendMessage = () => {
+        if (!message && !selectedImage) return;
+
         const newMessage = {
             user_from: user_from,
             user_to: user_id,
-            content: message,
+            content: message || null,
+            image: selectedImage ? URL.createObjectURL(selectedImage) : null,
             user_image: userFromInfo.image,
             user_name: userFromInfo.name,
             user_image_from: userInfo.image,
             user_name_from: userInfo.name,
         };
-        sendMessageToServer(newMessage);
-        sendMessageToWebSocket(newMessage);
-        setMessage('');
+
+        sendMessageToServer(newMessage, selectedImage);
     };
 
-    const sendMessageToServer = (newMessage) => {
+    const sendMessageToServer = (newMessage, selectedImage) => {
+        const formData = new FormData();
+        formData.append('user_from', newMessage.user_from);
+        formData.append('user_to', newMessage.user_to);
+        formData.append('content', newMessage.content);
+        if (selectedImage) {
+            formData.append('image', selectedImage);
+        }
+
         fetch('http://localhost:8000/api/sendMessage', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newMessage),
+            body: formData,
         })
-            .then(response => response.json())
-            .then(data => setMessages([...messages, data]))
-            .catch(error => console.error('Error sending message:', error));
+        .then(response => response.json())
+        .then(data => {
+            setMessages([...messages, data]);
+            sendMessageToWebSocket(data);
+            setMessage('');
+            setSelectedImage(null);
+        })
+        .catch(error => console.error('Error sending message:', error));
     };
 
     const sendMessageToWebSocket = (newMessage) => {
@@ -115,12 +126,19 @@ function ChatBoxUser() {
     };
 
     const getMessageAlignment = (msg) => {
-        return msg.user_from == user_from ? styles.alignEnd : styles.alignStart;
+        return msg.user_from === user_from ? styles.alignEnd : styles.alignStart;
     };
 
-   return (
+    const handleImageChange = (e) => {
+        if (e.target.files.length > 0) {
+            const file = e.target.files[0];
+            setSelectedImage(file);
+        }
+    };
+
+    return (
         <div className={styles.container}>
-            {userInfo && userInfo.image ? (
+            {userInfo && userInfo.image && allowInputMessage ? (
                 <div className={styles.containerHeader}>
                     <img src={userInfo.image} alt="Avatar" />
                     <div className={styles.containerHeaderInfo}>
@@ -132,27 +150,72 @@ function ChatBoxUser() {
                     </div>
                 </div>
             ) : (
-                <h6>loading...</h6>
+                <div>
+                    <p style={{ textAlign: 'center', fontSize: '1.5rem', marginTop: '4rem' }}>Chào mừng đến với <span style={{ fontWeight: 'bold', color: 'green' }}>Vietnam Journey</span></p>
+                    <p style={{ textAlign: 'center', fontSize: '1.2rem', marginTop: '0rem' }}>Cùng nhau đến với cuộc chơi của chúng tôi</p>
+                    <img src={logo} alt="Logo" style={{ width: '50%', marginTop: '2rem', textAlign: 'center', marginLeft: '25%', marginRight: '25%' }} />
+                </div>
             )}
             <div className={styles.content} ref={contentRef}>
-                {messages.map((msg, index) => (
+                {messages.length > 0 && messages.map((msg, index) => (
                     <div key={index} className={`${styles.msg} ${getMessageAlignment(msg)}`}>
-                    {msg.content &&  <h6 className={styles.msgContent}>{msg.content}</h6>}
-                        {msg.image && <img src={msg.image} alt="Avatar" />}
-                        <span className={styles.msgTime}>{msg.created_at}</span>
+                        {msg.content && (
+                            <h6 className={`${styles.msgContent} ${msg.user_from.toString() === user_from ? styles.msgContentFromUser : styles.msgContentFromOther}`}>
+                                {msg.content}
+                            </h6>
+                        )}
+                        {msg.image && (
+                            <img
+                                src={msg.image}
+                                alt="Sent"
+                                className={styles.msgImage}
+                                style={{
+                                    marginLeft: msg.user_from.toString() === user_from ? 'auto' : '0',
+                                    marginRight: msg.user_from.toString() !== user_from ? 'auto' : '0'
+                                }}
+                            />
+                        )}
+                        <span
+                            className={styles.msgTime}
+                            style={{
+                                marginLeft: msg.user_from.toString() === user_from ? 'auto' : '0',
+                                marginRight: msg.user_from.toString() !== user_from ? 'auto' : '0'
+                            }}
+                        >
+                            {msg.created_at}
+                        </span>
                     </div>
                 ))}
-           </div>
-           {allowinputmessage &&
-               <div className={styles.footer}>
-                <input
-                    type="text"
-                    placeholder="Nhập tin nhắn..."
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                />
-                <button onClick={handleSendMessage}>Gửi</button>
-            </div>}
+            </div>
+            {allowInputMessage &&
+                <div className={styles.footer}>
+                    <div className={styles.footerinput}>
+                        <div className={styles.inputWrapper}>
+                            <textarea
+                                placeholder="Nhập tin nhắn..."
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                            />
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageChange}
+                                style={{ display: 'none' }}
+                                id="imageInput"
+                            />
+                            <label htmlFor="imageInput" style={{ cursor: 'pointer', marginTop: '0' }}>
+                                <i className="fa-solid fa-image"></i>
+                            </label>
+                        </div>
+                        <button onClick={handleSendMessage}>Gửi</button>
+                    </div>
+                    {selectedImage && (
+                        <div className={styles.selectedImagePreview}>
+                            <img src={URL.createObjectURL(selectedImage)} alt="Selected" />
+                        </div>
+                    )}
+                </div>
+            }
         </div>
     );
 }

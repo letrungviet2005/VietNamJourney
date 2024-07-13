@@ -1,57 +1,185 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './ChatBoxGroup.module.css';
-import anh from '../../../Images/Icons/Viet.jpeg';
 import dots from '../../../Images/User/dots.png';
+import logo from '../../../Images/Message/formessage.png'
 
 function ChatBoxGroup() {
+    const cookies = document.cookie;
+    const cookiesArray = cookies.split('; ');
+    const userIdCookie = cookiesArray.find(cookie => cookie.startsWith('User_ID='));
+    const user_from = userIdCookie ? userIdCookie.split('=')[1] : null;
+
     const location = useLocation();
     const params = new URLSearchParams(location.search);
-    const type = params.get('type');
     const group_id = params.get('group_id');
 
     const [message, setMessage] = useState('');
-    const [messages, setMessages] = useState(['Group message 1', 'Group message 2']);
+    const [messages, setMessages] = useState([]);
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [isMember, setIsMember] = useState(true);
+    const [groupInfo, setGroupInfo] = useState({});
     const contentRef = useRef(null);
+    const ws = useRef(null);
 
     useEffect(() => {
-        contentRef.current.scrollTop = contentRef.current.scrollHeight;
-    }, [messages]);
+        setIsMember(true);  // Reset isMember when group_id changes
+        setMessages([]);  // Clear previous messages when group_id changes
+        setGroupInfo({});  // Clear previous group info when group_id changes
 
-    const handleSendMessage = () => {
-        console.log('Đang gửi tin nhắn:', message);
-        setMessages([...messages, message]);
-        setMessage('');
+        const fetchGroupChats = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/api/getGroupChats', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ group_id: group_id, user_id: user_from })
+                });
+
+                const data = await response.json();
+                if (data.status === 'not_member') {
+                    setIsMember(false);
+                } else {
+                    setMessages(data.chats);
+                    setGroupInfo(data.groupInfo);
+                    scrollToBottom();
+                }
+            } catch (error) {
+                console.error('Error fetching group chats:', error);
+            }
+        };
+
+        ws.current = new WebSocket('ws://localhost:8080');
+        ws.current.onopen = () => {
+            ws.current.send(JSON.stringify({
+                type: 'subscribe',
+                user_group_from: user_from,
+                group_id: group_id
+            }));
+        };
+
+        ws.current.onmessage = (event) => {
+            const parsedMessage = JSON.parse(event.data);
+            if (parsedMessage.type === 'chatgroup') {
+                setMessages((prevMessages) => [...prevMessages, parsedMessage.chat]);
+            }
+        };
+
+        fetchGroupChats();
+
+        return () => {
+            ws.current.close();
+        };
+    }, [group_id, user_from]);
+
+    const handleSendMessage = async () => {
+        if (!message && !selectedImage) return;
+
+        const formData = new FormData();
+        formData.append('user_id', user_from);
+        formData.append('group_id', group_id);
+        formData.append('message', message);
+        if (selectedImage) {
+            formData.append('image', selectedImage);
+        }
+
+        try {
+            const response = await fetch('http://localhost:8000/api/sendMessageGroup', {
+                method: 'POST',
+                body: formData
+            });
+
+            const data = await response.json();
+            setMessage('');
+            setSelectedImage(null);
+
+            ws.current.send(JSON.stringify({
+                type: 'chatgroup',
+                chat: data.chat,
+                userIds: data.userIds,
+                group_id: data.group_id
+            }));
+        } catch (error) {
+            console.error('Error sending message:', error);
+        }
+    };
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setSelectedImage(file);
+        }
+    };
+
+    const scrollToBottom = () => {
+        contentRef.current.scrollTop = contentRef.current.scrollHeight;
     };
 
     return (
         <div className={styles.container}>
+            {isMember &&
             <div className={styles.containerHeader}>
-                <img src={anh} alt="Avatar"></img>
+                <img src={groupInfo.image} alt="Avatar"></img>
                 <div className={styles.containerHeaderInfo}>
-                    <h6>Group Chat</h6>
-                    <p>Hoạt động 5 phút trước</p>
+                    <h6>{groupInfo.name}</h6>
+                    <p>{groupInfo.province}</p>
                 </div>
                 <div className={styles.containerHeaderSettings}>
                     <img src={dots} alt="Settings"></img>
                 </div>
-            </div>
+            </div> }
             <div className={styles.content} ref={contentRef}>
-                <p>Type: {type}</p>
-                <p>Group ID: {group_id}</p>
-                {messages.map((msg, index) => (
-                    <p key={index}>{msg}</p>
-                ))}
+                {!isMember ? (
+                    <div>
+                    <p style={{ textAlign: 'center', fontSize: '1.5rem', marginTop: '4rem' }}>Chào mừng đến với <span style={{ fontWeight: 'bold', color: 'green' }}>Vietnam Journey</span></p>
+                    <p style={{ textAlign: 'center', fontSize: '1.2rem', marginTop: '0rem' }}>Cùng nhau đến với cuộc chơi của chúng tôi</p>
+                    <img src={logo} alt="Logo" style={{ width: '50%', marginTop: '2rem', textAlign: 'center', marginLeft: '25%', marginRight: '25%' }} />
+                </div>
+                ) : (
+                    <>
+                        {messages.map((msg, index) => (
+                            <div key={index} className={styles.message}>
+                                {msg.content && <div className={msg.user_from == user_from ? styles.contentRight : styles.contentLeft}>
+                                    <span style={{ display: msg.user_from == user_from ? 'none' : 'block' }}>{msg.user_name}</span>
+                                    <p>{msg.content}</p>
+                                </div>}
+                                {msg.image && <img src={msg.image} alt="Sent" style={{ marginLeft: msg.user_from == user_from ? 'auto' : '0' }} />}
+                                <small style={{ marginLeft: msg.user_from == user_from ? 'auto' : '0' }}>{msg.created_at}</small>
+                            </div>
+                        ))}
+                    </>
+                )}
             </div>
+            {isMember && 
             <div className={styles.footer}>
-                <input
-                    type="text"
-                    placeholder="Nhập tin nhắn..."
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                />
-                <button onClick={handleSendMessage}>Gửi</button>
-            </div>
+                <div className={styles.footerinput}>
+                    <div className={styles.inputWrapper}>
+                        <textarea
+                            placeholder="Nhập tin nhắn..."
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                        />
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                            style={{ display: 'none' }}
+                            id="imageInput"
+                        />
+                        <label htmlFor="imageInput" style={{ cursor: 'pointer', marginTop: '0' }}>
+                            <i className="fa-solid fa-image"></i>
+                        </label>
+                    </div>
+                    <button onClick={handleSendMessage}>Gửi</button>
+                </div>
+                {selectedImage && (
+                    <div className={styles.selectedImagePreview}>
+                        <img src={URL.createObjectURL(selectedImage)} alt="Selected" />
+                    </div>
+                )}
+            </div>}
+            
         </div>
     );
 }

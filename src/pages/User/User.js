@@ -53,14 +53,15 @@ function User() {
     <div className="container" style={{ marginTop: '1rem' }}>
       <div className="row">
         <div className="col-md-4 col-lg-4">
-          <Information user_ID={user_id} />
-          {user_ID != null && 
-            <div className={styles.container2}>
-              <p style={{ marginLeft: '1rem', fontWeight: 'revert', fontSize: '1.2rem' }}>Gợi ý cho bạn</p>
-              <Friends User_ID={user_ID} />
-              <h6 style={{ float: 'right', marginRight: '1rem', color: 'green' }}>Xem thêm <i className="fa-solid fa-circle-arrow-right"></i></h6>
-            </div>
-          }
+          <div className={styles.sticky}>
+            <Information user_ID={user_id} />
+            {user_ID != null && 
+              <div className={styles.container2}>
+                <p style={{ marginLeft: '1rem', fontWeight: 'revert', fontSize: '1.2rem' }}>Gợi ý cho bạn</p>
+                <Friends User_ID={user_ID} />
+              </div>
+            }
+          </div>
         </div>
         <div className="col-md-8 col-lg-8">
           {user && user.avatar && user_ID == user_id && (

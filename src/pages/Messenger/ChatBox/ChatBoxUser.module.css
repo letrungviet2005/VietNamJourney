@@ -10,12 +10,14 @@
     padding: 0.2rem;
     padding-left: 0.7rem;
     border-bottom: 2px solid rgb(223, 223, 223);
+    margin-top: 0;
 }
 
 .containerHeader img {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3.2rem;
+    height: 3.2rem;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .containerHeaderInfo {
@@ -54,29 +56,58 @@
 
 .footer {
     display: flex;
+    flex-direction: column;
+    
+}.footerinput {
+    display: flex;
     align-items: center;
     padding: 0.5rem;
 }
 
-.footer input {
+.inputWrapper {
+    position: relative;
     flex: 1;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 0.3rem;
 }
 
-.footer button {
+.inputWrapper textarea {
+    width: 100%;
+    padding: 0.3rem;
+    padding-top: 0.3rem;
+    padding-right: 2.5rem; /* To leave space for the icon on the right */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    height: 2.5rem;
+}
+
+.inputWrapper i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: #1f682f;
+}
+
+.footerinput button {
     padding: 0.5rem 1rem;
     background-color: rgb(54, 160, 63);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 0.3rem;
+    margin-bottom: 0.3rem;
 }
 
 .footer button:hover {
     background-color: rgb(87, 206, 81);
+}.selectedImagePreview img{
+    width: 8rem;
+    height: auto;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    border-radius: 10px;
 }
 
 .msg {
@@ -100,10 +131,12 @@
 
 .msgContent {
     background-color: #f1f1f1;
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
+    padding: 8px 12px;
+    border-radius: 18px 4px 18px 18px;
     max-width: 70%;
     margin-bottom: 0;
+    background-color: rgb(37, 148, 39);
+    color: #ffffff;
 }
 
 .msgTime {
@@ -112,4 +145,14 @@
     margin-top: 0;
     margin-left: 0.3rem;
     margin-right: 0.3rem;
+}.msgContentFromUser {
+    background-color: rgb(37, 148, 39); /* Màu xanh */
+    color: #ffffff;
+    margin-left: auto;
 }
+
+.msgContentFromOther {
+    background-color: #d8d8d8; /* Màu xám */
+    color: #000000;
+    border-radius: 4px 18px 18px 18px;
+} 

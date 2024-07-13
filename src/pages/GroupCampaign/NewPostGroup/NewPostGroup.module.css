@@ -1,0 +1,122 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    position: relative;
+    background: white;
+    padding: 1rem;
+    padding-bottom: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 550px;
+    max-height: 80vh; 
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+}.modal-head{
+    display: flex;
+}.modal-head i{
+    font-size: 1.5rem;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+
+.closeButton {
+    position: sticky;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    z-index: 1001;
+    align-self: flex-end;
+}
+
+.black-line {
+    border: none;
+    border-top: 1px solid black;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin-top: 0rem;
+}
+
+.modalContentWrapper {
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem; 
+}.modalContentWrapper textarea {
+    width: 100%;
+    height: auto;
+    border: none;
+    outline: none;
+}
+.modalContentWrapper textarea:focus {
+    border: none;
+    outline: none; 
+}.event {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 1rem;
+    display: flex;
+    width: 100%;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+    margin-top: auto;
+}
+
+
+.event i {
+    font-size: 2rem;
+    margin-right: 0.3rem;
+    color:  rgb(43, 90, 40);
+    cursor: pointer;
+}.event  button{
+    width: 90%;
+    margin-left: 0.3rem;
+    border-radius: 10px;
+    height: 2rem;
+    background-color: rgb(73, 152, 68);
+    color: white;
+    border: none;
+}.event  button:hover{
+    color: green;
+    background-color: white;
+    border: 1px solid  rgb(73, 152, 68);
+}
+
+post-body {
+    margin-top: 3rem;
+    width: 100%;
+    height: auto;
+    padding-left: auto;
+    padding-right: auto;
+    text-align: center; 
+    background-color: rgba(218, 253, 221, 0.705);
+    max-height: 200px;
+}
+
+.post-body img {
+    width: auto;
+    height: auto;
+    max-height: 200px;
+    max-width: 100%;
+    display: block; 
+    margin: 0 auto; 
+    border-radius: 15px;
+}
+
