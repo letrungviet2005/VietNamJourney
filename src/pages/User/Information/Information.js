@@ -76,7 +76,7 @@ function Information({ user_ID }) {
             .catch(error => console.error('Error:', error));
     };
 
-    const { avatar, name, username, followers, following, role, location, facebookLink } = userData;
+    const { avatar, name, username, followers, following, role, location, facebookLink,check } = userData;
 
     const navigateToMessenger = () => {
         navigate(`/Messenger?type=user&user_id=${user_ID}`); // Sử dụng navigate để điều hướng đến đường dẫn Messenger
@@ -94,7 +94,7 @@ function Information({ user_ID }) {
                     </div>
                     <div className={styles['container1-information']}>
                         <div className={styles['container1-information-name']}>{name}</div>
-                        <div className={styles['container1-information-linkuser']}>@{username} <i className="fa-solid fa-circle-check" style={{ color: "#258e31" }}></i></div>
+                        <div className={styles['container1-information-linkuser']}>@{username} {check == 1 && <i className="fa-solid fa-circle-check" style={{ color: "#258e31" }}></i>}</div>
                         <div className={styles['container1-information-content']}>
                             <p>
                                 <i className="fa-solid fa-user-group"></i>

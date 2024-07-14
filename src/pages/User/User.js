@@ -105,6 +105,7 @@ function User() {
                     image={post.image} 
                     likes={post.likes}
                     comments={post.comments}
+                    check={user.check}
                   />
                 ))
               )

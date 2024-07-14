@@ -216,6 +216,7 @@ function GroupCampaign() {
                                             image={post.image}
                                             likes={post.likes}
                                             comments={post.comments}
+                                            check={post.check}
                                         />
                                     ))
                                 )}
