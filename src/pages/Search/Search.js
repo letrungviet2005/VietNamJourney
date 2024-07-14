@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Skeleton } from 'antd';
 import styles from './Search.module.css';
-import Friends from '../User/Friend/Friends';
 import Post from '../User/Post/Post.js';
-import viet from '../../Images/Icons/Viet.jpeg';
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -16,10 +15,10 @@ function Search() {
     const user_ID = userIdCookie ? userIdCookie.split('=')[1] : null;
     const [posts, setPosts] = useState([]);
     const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
     const query = useQuery();
     const postInfo = query.get('post_info');
     const userInfo = query.get('user_info');
-    console.log(postInfo, userInfo);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -42,8 +41,12 @@ function Search() {
             .then(data => {
                 setPosts(data.posts || []);
                 setUsers(data.users || []);
+                setLoading(false);
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Error:', error);
+                setLoading(false);
+            });
         }
     }, [postInfo, userInfo]);
 
@@ -56,7 +59,9 @@ function Search() {
             <div className="row">
                 <div className="col-md-8">
                     <div className={styles.container2}>
-                        {posts.length === 0 ? (
+                        {loading ? (
+                            <Skeleton active />
+                        ) : posts.length === 0 ? (
                             <div style={{ textAlign: 'center', marginTop: '2rem', backgroundColor: 'white', borderRadius: '10px', padding: '2rem', fontWeight: 'revert' }}>
                                 Không tìm thấy bài viết nào.
                             </div>
@@ -81,7 +86,9 @@ function Search() {
                 <div className="col-md-4">
                     {userInfo && user_ID != null && (
                         <div className={styles.container3}>
-                            {users.length > 0 ? (
+                            {loading ? (
+                                <Skeleton active />
+                            ) : users.length > 0 ? (
                                 <>
                                     <h6 style={{ marginLeft: '0.3rem', fontWeight: '', fontSize: '1.2rem' }}>Danh sách người dùng</h6>
                                     {users.map(user => (

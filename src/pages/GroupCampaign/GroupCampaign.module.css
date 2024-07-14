@@ -13,7 +13,7 @@ body {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
 }.containergroupuser input{
     width: 90%;
     height: auto;
@@ -42,9 +42,19 @@ body {
   border-radius: 30%;
   object-fit: cover;
 }.grouplineinfo {
-  margin-left: 0.3rem;
-  display: flex;
-  flex-direction: column;
+    max-width: 14rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 0.3rem;
+}
+
+.campaignTitle, .campaignProvince {
+    font-weight: 600;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }.containerhead {
     width: 100%;
     height: auto;
@@ -60,8 +70,8 @@ body {
     max-height: 33rem;
     margin-left: auto;
     margin-right: auto;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 
 }.containerheadinfo {
     display: flex;
@@ -101,13 +111,14 @@ body {
     display: flex;
     background-color: #ffffff;
     padding: 0.3rem;
+    padding-left: 1rem;
 }.container1 img{
-    width: 3rem;
-    height: 3rem;
+    width: 2.7rem;
+    height: 2.7em;
     border-radius:50% ;
     object-fit: cover;
 }.container1 button{
-    width: 92%;
+    width: 90%;
     height: 3rem;
     border-radius: 25px;
     border: 1px solid rgb(182, 182, 182);
@@ -143,8 +154,8 @@ body {
     height: auto;
     display: flex;
 }.container3 img{
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
     object-fit: cover;
 }.container3-content {

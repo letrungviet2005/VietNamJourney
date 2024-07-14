@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './CommentModal.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useCheckCookie } from '../../../Cookie/getCookie';
+import { Skeleton } from 'antd';
 
 const CommentModal = ({ onClose, postId }) => {
     const user_ID = useCheckCookie('User_ID', '/TaiKhoan');
@@ -24,7 +25,7 @@ const CommentModal = ({ onClose, postId }) => {
                     body: JSON.stringify({ post_ID: postId }),
                 });
                 const data = await response.json();
-                
+
                 if (data.comments) {
                     setComments(data.comments);
                 } else {
@@ -80,7 +81,7 @@ const CommentModal = ({ onClose, postId }) => {
         setCommentImage(file);
     };
 
-   const sendComment = async () => {
+    const sendComment = async () => {
         if (!commentContent.trim() && !commentImage) {
             return;
         }
@@ -124,21 +125,17 @@ const CommentModal = ({ onClose, postId }) => {
         }
     };
 
-    if (loading) {
-        return <div style={{ textAlign: 'center' }}>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>{error}</div>;
-    }
-
     return (
         <div className={styles.overlay}>
             <div className={styles.modal}>
                 <button className={styles.closeButton} onClick={onClose}><i className="fas fa-times"></i></button>
                 <hr className={styles['black-line']} />
                 <div className={styles.modalContentWrapper}>
-                    {comments.length > 0 ? (
+                    {loading ? (
+                        <Skeleton active />
+                    ) : error ? (
+                        <div>{error}</div>
+                    ) : comments.length > 0 ? (
                         comments.map((comment, index) => (
                             <div key={index} className={styles.modalContent}>
                                 <img 
@@ -196,6 +193,5 @@ const CommentModal = ({ onClose, postId }) => {
         </div>
     );
 };
-
 
 export default CommentModal;

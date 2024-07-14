@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import styles from './TaiKhoanTest.module.css';
 import background1 from '../../Images/TaiKhoan/phong.jpg';
@@ -15,8 +15,15 @@ const TaiKhoanTest = () => {
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
   const [usernameError, setUsernameError] = useState('');
-
   const navigate = useNavigate();  
+
+  useEffect(() => {
+    // Check if User_ID cookie exists
+    const userID = Cookies.get('User_ID');
+    if (userID) {
+      navigate('/TrangChu');
+    }
+  }, []); // Empty dependency array ensures this effect runs only once
 
   const handleRegisterClick = () => {
     setIsActive(true);
@@ -63,8 +70,8 @@ const TaiKhoanTest = () => {
         });
         const data = await response.json();
         if (data.error) {
-            setErrorMessage("Username hoặc mật khẩu ko hợp lệ");
-            console.error("UserName hoặc pass ko hợp lệ");
+            setErrorMessage("Username hoặc mật khẩu không hợp lệ");
+            console.error("Username hoặc mật khẩu không hợp lệ");
         } else {
             setErrorMessage('');
             console.log("Đăng nhập thành công", data.user);
@@ -72,7 +79,8 @@ const TaiKhoanTest = () => {
             const userName = data.user.Username;
             Cookies.set('User_ID', userID, { expires: 30 });
             Cookies.set('UserName', userName, { expires: 30 });
-            navigate('/TrangChu'); 
+            navigate('/TrangChu'); // Navigate tới /TrangChu sau khi đăng nhập thành công
+            window.location.reload(); // Reload trang sau khi đăng nhập thành công
         }
     } catch (error) {
         console.error('Error:', error);
@@ -130,8 +138,8 @@ const TaiKhoanTest = () => {
         const data = await response.json();
         console.log(data);
         if (data.error) {
-            console.log("username đã tạo");
-           setUsernameError("Username đã tồn tại");
+            console.log("Username đã tồn tại");
+            setUsernameError("Username đã tồn tại");
         } else {
             setErrorMessage('');
             console.log("Đăng ký thành công", data.user);
@@ -139,7 +147,8 @@ const TaiKhoanTest = () => {
             const userName = data.user.Username;
             Cookies.set('User_ID', userID, { expires: 30 });
             Cookies.set('UserName', userName, { expires: 30 });
-            navigate('/TrangChu'); 
+            navigate('/TrangChu'); // Navigate tới /TrangChu sau khi đăng ký thành công
+            window.location.reload(); // Reload trang sau khi đăng ký thành công
         }
     } catch (error) {
         console.error('Error:', error);
@@ -181,9 +190,7 @@ const TaiKhoanTest = () => {
                 <label>Password</label>
                 {errorMessage && <h6 className={styles.errorMessage}>{errorMessage}</h6>}
               </div>
-              <div className={styles.rememberPassword}>
-                <label><input type="checkbox" />Nhớ tôi</label>
-              </div>
+              
               <button type="submit" className={styles.btn}>Đăng nhập</button>
               <div className={styles.createAccount}>
                 <p>Tạo tài khoản mới? <a className={styles.registerLink} onClick={handleRegisterClick} style={{ cursor: 'pointer' } }>Tạo tài khoản</a></p>
@@ -195,7 +202,7 @@ const TaiKhoanTest = () => {
               <h2>Đăng ký</h2>
               <div className={styles.inputBox}>
                 <input 
-                  type="email" 
+                  type="text" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className={emailError ? styles.inputError : ''}
@@ -237,12 +244,9 @@ const TaiKhoanTest = () => {
                 <label>Confirm Password</label>
                 {confirmPasswordError && <h6 className={styles.errorMessage}>{confirmPasswordError}</h6>}
               </div>
-              <div className={styles.rememberPassword}>
-                <label><input type="checkbox" />Tôi đồng ý với chính sách.</label>
-              </div>
               <button type="submit" className={styles.btn}>Đăng ký</button>
               <div className={styles.createAccount}>
-                              <p>Bạn đã có tài khoản? <a className={styles.loginLink} onClick={handleLoginClick} style={{ cursor: 'pointer' }} >Đăng nhập</a></p>
+                <p>Bạn đã có tài khoản? <a className={styles.loginLink} onClick={handleLoginClick} style={{ cursor: 'pointer' }} >Đăng nhập</a></p>
               </div>
             </form>
           </div>

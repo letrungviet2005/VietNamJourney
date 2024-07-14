@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Skeleton } from 'antd';
 import styles from './ChatBoxUser.module.css';
 import dots from '../../../Images/User/dots.png';
 import logo from '../../../Images/Message/formessage.png';
@@ -20,6 +21,7 @@ function ChatBoxUser() {
     const [userInfo, setUserInfo] = useState({});
     const [userFromInfo, setUserFromInfo] = useState({});
     const [selectedImage, setSelectedImage] = useState(null);
+    const [loading, setLoading] = useState(true);
     const contentRef = useRef(null);
 
     useEffect(() => {
@@ -33,6 +35,7 @@ function ChatBoxUser() {
     const ws = useRef(null);
 
     useEffect(() => {
+        setLoading(true);
         fetchMessages(user_from, user_id);
 
         ws.current = new WebSocket('ws://localhost:8080');
@@ -69,8 +72,12 @@ function ChatBoxUser() {
             if (data.chats) setMessages(data.chats);
             if (data.userToInfo) setUserInfo(data.userToInfo);
             if (data.userFromInfo) setUserFromInfo(data.userFromInfo);
+            setLoading(false); // Khi dữ liệu đã tải xong
         })
-        .catch(error => console.error('Error fetching messages:', error));
+        .catch(error => {
+            console.error('Error fetching messages:', error);
+            setLoading(false); // Ngừng hiển thị skeleton khi có lỗi
+        });
     };
 
     useEffect(() => {
@@ -98,7 +105,9 @@ function ChatBoxUser() {
         const formData = new FormData();
         formData.append('user_from', newMessage.user_from);
         formData.append('user_to', newMessage.user_to);
-        formData.append('content', newMessage.content);
+        if (newMessage.content != null) {
+            formData.append('content', newMessage.content);
+        }
         if (selectedImage) {
             formData.append('image', selectedImage);
         }
@@ -138,54 +147,62 @@ function ChatBoxUser() {
 
     return (
         <div className={styles.container}>
-            {userInfo && userInfo.image && allowInputMessage ? (
-                <div className={styles.containerHeader}>
-                    <img src={userInfo.image} alt="Avatar" />
-                    <div className={styles.containerHeaderInfo}>
-                        <h6 style={{ fontWeight: 'revert' }}>{userInfo.name || 'Người dùng'}</h6>
-                        <p>Đang hoạt động</p>
-                    </div>
-                    <div className={styles.containerHeaderSettings}>
-                        <img src={dots} alt="Settings" />
-                    </div>
-                </div>
+            {loading ? (
+                <Skeleton avatar paragraph={{ rows: 1 }} />
             ) : (
-                <div>
-                    <p style={{ textAlign: 'center', fontSize: '1.5rem', marginTop: '4rem' }}>Chào mừng đến với <span style={{ fontWeight: 'bold', color: 'green' }}>Vietnam Journey</span></p>
-                    <p style={{ textAlign: 'center', fontSize: '1.2rem', marginTop: '0rem' }}>Cùng nhau đến với cuộc chơi của chúng tôi</p>
-                    <img src={logo} alt="Logo" style={{ width: '50%', marginTop: '2rem', textAlign: 'center', marginLeft: '25%', marginRight: '25%' }} />
-                </div>
+                userInfo && userInfo.image && allowInputMessage ? (
+                    <div className={styles.containerHeader}>
+                        <img src={userInfo.image} alt="Avatar" />
+                        <div className={styles.containerHeaderInfo}>
+                            <h6 style={{ fontWeight: 'revert' }}>{userInfo.name || 'Người dùng'}</h6>
+                            <p>Người dùng VietNamJourney</p>
+                        </div>
+                        <div className={styles.containerHeaderSettings}>
+                            <img src={dots} alt="Settings" />
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <p style={{ textAlign: 'center', fontSize: '1.5rem', marginTop: '4rem' }}>Chào mừng đến với trang trò chuyện của <span style={{ fontWeight: 'bold', color: 'green' }}>Vietnam Journey</span></p>
+                        <p style={{ textAlign: 'center', fontSize: '1.2rem', marginTop: '0rem' }}>Chọn một người để bắt đầu ...</p>
+                        <img src={logo} alt="Logo" style={{ width: '50%', marginTop: '2rem', textAlign: 'center', marginLeft: '25%', marginRight: '25%' }} />
+                    </div>
+                )
             )}
             <div className={styles.content} ref={contentRef}>
-                {messages.length > 0 && messages.map((msg, index) => (
-                    <div key={index} className={`${styles.msg} ${getMessageAlignment(msg)}`}>
-                        {msg.content && (
-                            <h6 className={`${styles.msgContent} ${msg.user_from.toString() === user_from ? styles.msgContentFromUser : styles.msgContentFromOther}`}>
-                                {msg.content}
-                            </h6>
-                        )}
-                        {msg.image && (
-                            <img
-                                src={msg.image}
-                                alt="Sent"
-                                className={styles.msgImage}
+                {loading ? (
+                    <Skeleton active paragraph={{ rows: 4 }} />
+                ) : (
+                    messages.length > 0 && messages.map((msg, index) => (
+                        <div key={index} className={`${styles.msg} ${getMessageAlignment(msg)}`}>
+                            {msg.content && (
+                                <h6 className={`${styles.msgContent} ${msg.user_from.toString() === user_from ? styles.msgContentFromUser : styles.msgContentFromOther}`}>
+                                    {msg.content}
+                                </h6>
+                            )}
+                            {msg.image && (
+                                <img
+                                    src={msg.image}
+                                    alt="Sent"
+                                    className={styles.msgImage}
+                                    style={{
+                                        marginLeft: msg.user_from.toString() === user_from ? 'auto' : '0',
+                                        marginRight: msg.user_from.toString() !== user_from ? 'auto' : '0'
+                                    }}
+                                />
+                            )}
+                            <span
+                                className={styles.msgTime}
                                 style={{
                                     marginLeft: msg.user_from.toString() === user_from ? 'auto' : '0',
                                     marginRight: msg.user_from.toString() !== user_from ? 'auto' : '0'
                                 }}
-                            />
-                        )}
-                        <span
-                            className={styles.msgTime}
-                            style={{
-                                marginLeft: msg.user_from.toString() === user_from ? 'auto' : '0',
-                                marginRight: msg.user_from.toString() !== user_from ? 'auto' : '0'
-                            }}
-                        >
-                            {msg.created_at}
-                        </span>
-                    </div>
-                ))}
+                            >
+                                {msg.created_at}
+                            </span>
+                        </div>
+                    ))
+                )}
             </div>
             {allowInputMessage &&
                 <div className={styles.footer}>

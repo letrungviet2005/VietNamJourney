@@ -4,23 +4,26 @@ import { useCheckCookie } from '../../../Cookie/getCookie';
 import UpdateInformation from './updateInformation';
 import background from '../../../Images/User/backgrounduser.png';
 import { useNavigate } from 'react-router-dom';
+import { Skeleton } from 'antd';
 
 function Information({ user_ID }) {
     const [userData, setUserData] = useState(null);
     const user_id = useCheckCookie('User_ID', '/TaiKhoan');
     const [isFollowing, setIsFollowing] = useState(false);
-    const [updateInfo, setupdateInfo] = useState(true);
+    const [updateInfo, setUpdateInfo] = useState(true);
+    const [loading, setLoading] = useState(true); // State để quản lý trạng thái loading
     const navigate = useNavigate(); // Sử dụng hook useNavigate từ React Router DOM
 
     const setInfo = () => {
-        setupdateInfo(false);
+        setUpdateInfo(false);
     };
 
     const onCloseInfo = () => {
-        setupdateInfo(true);
+        setUpdateInfo(true);
     };
 
     useEffect(() => {
+        setLoading(true); // Bắt đầu fetch dữ liệu, set loading là true
         fetch('http://localhost:8000/api/user_information', {
             method: 'POST',
             headers: {
@@ -30,6 +33,7 @@ function Information({ user_ID }) {
         })
             .then(response => response.json())
             .then(data => {
+                setLoading(false); // Kết thúc fetch dữ liệu, set loading là false
                 if (data.user) {
                     setUserData(data.user);
                     setIsFollowing(data.user.isFollowing);
@@ -39,6 +43,14 @@ function Information({ user_ID }) {
             })
             .catch(error => console.error('Error:', error));
     }, [user_ID, user_id]);
+
+    if (loading) {
+        return (
+            <div className={styles.container1}>
+                <Skeleton avatar active paragraph={{ rows: 4 }} />
+            </div>
+        );
+    }
 
     if (!userData) {
         return <div>Loading...</div>;

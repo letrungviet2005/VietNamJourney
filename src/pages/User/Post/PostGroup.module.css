@@ -18,6 +18,7 @@
 .post-header-avatar {
     position: relative;
     display: inline-block;
+    margin-top: 0;
 }
 
 .square-avatar img {

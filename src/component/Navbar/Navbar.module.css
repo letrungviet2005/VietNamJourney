@@ -15,8 +15,8 @@ header {
     justify-content: space-between;
     position: fixed;
     width: 100%;
-    height: 60px;
-    border-bottom: 1.5px solid rgb(97, 94, 94);
+    height: 52px;
+    border-bottom: 1.5px solid rgb(62, 158, 45);
     background: linear-gradient(to right, rgb(29, 96, 42), rgb(39, 154, 83));
     z-index: 999;
 }
