@@ -25,5 +25,5 @@ yarn-error.log*
 
 # Git ignore những file ni
 
-*.mp4
+
 /vendor/
