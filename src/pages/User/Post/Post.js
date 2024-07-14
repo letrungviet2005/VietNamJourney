@@ -15,7 +15,8 @@ const Post = ({
     likes,
     comments,
     isLike,
-    comment
+    comment,
+    check
 }) => {
     console.log("image" , image);
     const [isLiked, setIsLiked] = useState(isLike);
@@ -173,7 +174,7 @@ const Post = ({
                     <img src={avatar} alt="avatar" />
                 </div>
                 <div className={styles['post-header-info']}>
-                    <h6 onClick={handleAvatarClick} style={{ cursor: 'pointer', fontWeight: 'revert' }}>{name} <i class="fa-solid fa-circle-check" style={{ color :"#258e31", fontSize: "0.8rem" }}></i></h6>
+                    <h6 onClick={handleAvatarClick} style={{ cursor: 'pointer', fontWeight: 'revert' }}>{name} {check ==1 && <i class="fa-solid fa-circle-check" style={{ color: "#258e31", fontSize: "0.8rem" }}></i>}</h6>
                     <span style={{ fontSize: '0.8rem' }}>{time} · <i className="fas fa-earth-asia"></i></span>
                 </div>
                 <div className={styles['post-header-option']} onClick={handleDotsClick} style={{ cursor: 'pointer' }}>

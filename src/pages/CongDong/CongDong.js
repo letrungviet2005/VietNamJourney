@@ -167,6 +167,7 @@ function CongDong() {
                                     image={post.image}
                                     likes={post.likes}
                                     comments={post.comments}
+                                    check={post.check}
                                 />
                             ))
                         )}

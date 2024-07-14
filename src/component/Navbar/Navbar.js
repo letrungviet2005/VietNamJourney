@@ -93,14 +93,7 @@ function Navbar() {
           <Link to="/CongDong">CỘNG ĐỒNG</Link>
           <Link to="/ChienDich">CHIẾN DỊCH</Link>
           <Link to="/Quy">QUỸ</Link>
-          {userInfo && (
-            <Link to="/Messenger?type=user&user_id=0">
-              <i
-                className="fa-solid fa-envelope"
-                style={{ fontSize: "28px" }}
-              ></i>
-            </Link>
-          )}
+          {userInfo && <Link to="/Messenger?type=user&user_id=0">TRÒ CHUYỆN </Link>}
 
           {userInfo ? (
             <div className={cx("nav-item", { open: isDropdownOpen })}>
