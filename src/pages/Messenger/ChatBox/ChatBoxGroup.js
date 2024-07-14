@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Skeleton } from 'antd';
 import styles from './ChatBoxGroup.module.css';
 import dots from '../../../Images/User/dots.png';
-import logo from '../../../Images/Message/formessage.png'
+import logo from '../../../Images/Message/formessage.png';
 
 function ChatBoxGroup() {
     const cookies = document.cookie;
@@ -19,6 +20,7 @@ function ChatBoxGroup() {
     const [selectedImage, setSelectedImage] = useState(null);
     const [isMember, setIsMember] = useState(true);
     const [groupInfo, setGroupInfo] = useState({});
+    const [loading, setLoading] = useState(true); // Thêm trạng thái loading
     const contentRef = useRef(null);
     const ws = useRef(null);
 
@@ -26,6 +28,7 @@ function ChatBoxGroup() {
         setIsMember(true);  // Reset isMember when group_id changes
         setMessages([]);  // Clear previous messages when group_id changes
         setGroupInfo({});  // Clear previous group info when group_id changes
+        setLoading(true); // Set loading to true when group_id changes
 
         const fetchGroupChats = async () => {
             try {
@@ -43,10 +46,11 @@ function ChatBoxGroup() {
                 } else {
                     setMessages(data.chats);
                     setGroupInfo(data.groupInfo);
-                    scrollToBottom();
                 }
+                setLoading(false); // Set loading to false after data is fetched
             } catch (error) {
                 console.error('Error fetching group chats:', error);
+                setLoading(false); // Set loading to false if there's an error
             }
         };
 
@@ -72,6 +76,10 @@ function ChatBoxGroup() {
             ws.current.close();
         };
     }, [group_id, user_from]);
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
 
     const handleSendMessage = async () => {
         if (!message && !selectedImage) return;
@@ -113,45 +121,60 @@ function ChatBoxGroup() {
     };
 
     const scrollToBottom = () => {
-        contentRef.current.scrollTop = contentRef.current.scrollHeight;
+        if (contentRef.current) {
+            contentRef.current.scrollTop = contentRef.current.scrollHeight;
+        }
     };
 
     return (
         <div className={styles.container}>
-            {isMember &&
-            <div className={styles.containerHeader}>
-                <img src={groupInfo.image} alt="Avatar"></img>
-                <div className={styles.containerHeaderInfo}>
-                    <h6>{groupInfo.name}</h6>
-                    <p>{groupInfo.province}</p>
+            {loading ? (
+                <div>
+                    <Skeleton  paragraph={{ rows: 2 }} active />
+                    <Skeleton  paragraph={{ rows: 4 }} active />
+                    <Skeleton  paragraph={{ rows: 2 }} active />
                 </div>
-                <div className={styles.containerHeaderSettings}>
-                    <img src={dots} alt="Settings"></img>
-                </div>
-            </div> }
-            <div className={styles.content} ref={contentRef}>
-                {!isMember ? (
-                    <div>
-                    <p style={{ textAlign: 'center', fontSize: '1.5rem', marginTop: '4rem' }}>Chào mừng đến với <span style={{ fontWeight: 'bold', color: 'green' }}>Vietnam Journey</span></p>
-                    <p style={{ textAlign: 'center', fontSize: '1.2rem', marginTop: '0rem' }}>Cùng nhau đến với cuộc chơi của chúng tôi</p>
-                    <img src={logo} alt="Logo" style={{ width: '50%', marginTop: '2rem', textAlign: 'center', marginLeft: '25%', marginRight: '25%' }} />
-                </div>
-                ) : (
-                    <>
-                        {messages.map((msg, index) => (
-                            <div key={index} className={styles.message}>
-                                {msg.content && <div className={msg.user_from == user_from ? styles.contentRight : styles.contentLeft}>
-                                    <span style={{ display: msg.user_from == user_from ? 'none' : 'block' }}>{msg.user_name}</span>
-                                    <p>{msg.content}</p>
-                                </div>}
-                                {msg.image && <img src={msg.image} alt="Sent" style={{ marginLeft: msg.user_from == user_from ? 'auto' : '0' }} />}
-                                <small style={{ marginLeft: msg.user_from == user_from ? 'auto' : '0' }}>{msg.created_at}</small>
+            ) : (
+                <>
+                    {isMember && 
+                    <div className={styles.containerHeader}>
+                        <img src={groupInfo.image} alt="Avatar"></img>
+                        <div className={styles.containerHeaderInfo}>
+                            <h6>{groupInfo.name}</h6>
+                            <p>{groupInfo.province}</p>
+                        </div>
+                        <div className={styles.containerHeaderSettings}>
+                            <img src={dots} alt="Settings"></img>
+                        </div>
+                    </div> }
+                    <div className={styles.content} ref={contentRef}>
+                        {!isMember ? (
+                            <div>
+                                <p style={{ textAlign: 'center', fontSize: '1.5rem', marginTop: '4rem' }}>Chào mừng đến với trang trò chuyện của <span style={{ fontWeight: 'bold', color: 'green' }}>Vietnam Journey</span></p>
+                                <p style={{ textAlign: 'center', fontSize: '1.2rem', marginTop: '0rem' }}>Chọn một nhóm để bắt đầu ...</p>
+                                <img src={logo} alt="Logo" style={{ width: '50%', marginTop: '2rem', textAlign: 'center', marginLeft: '25%', marginRight: '25%' }} />
                             </div>
-                        ))}
-                    </>
-                )}
-            </div>
-            {isMember && 
+                        ) : (
+                            <>
+                                {messages.map((msg, index) => (
+                                    <div key={index} className={styles.message}>
+                                        <div style={{marginBottom :'0.1rem'}}>
+                                            <img alt="logo" src={msg.user_image} style={{ display: msg.user_from == user_from ? 'none' : 'block',width : '1rem',height : "1rem", borderRadius : '50%'}}></img>
+                                        </div>
+                                        {msg.content && <div className={msg.user_from == user_from ? styles.contentRight : styles.contentLeft}>
+                                            <span style={{ display: msg.user_from == user_from ? 'none' : 'block',fontWeight :600,fontSize : '0.8rem' }}>{msg.user_name}</span>
+                                            <span>{msg.content}</span>
+                                        </div>}
+                                        {msg.image && <img src={msg.image} alt="Sent" style={{ marginLeft: msg.user_from == user_from ? 'auto' : '0' }} />}
+                                        <small style={{ marginLeft: msg.user_from == user_from ? 'auto' : '0' }}>{msg.created_at}</small>
+                                    </div>
+                                ))}
+                            </>
+                        )}
+                    </div>
+                </>
+            )}
+            {isMember && !loading &&
             <div className={styles.footer}>
                 <div className={styles.footerinput}>
                     <div className={styles.inputWrapper}>
@@ -179,7 +202,6 @@ function ChatBoxGroup() {
                     </div>
                 )}
             </div>}
-            
         </div>
     );
 }

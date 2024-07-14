@@ -104,7 +104,7 @@ function Messenger() {
                             onClick={() => handleViewChange('group')}
                             className={`${styles.tab} ${activeTab === 'group' ? styles.active : ''}`}
                         >
-                            Cộng Đồng
+                            Cộng đồng
                         </h6>
                     </div>
                 </div>

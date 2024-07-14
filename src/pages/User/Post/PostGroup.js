@@ -158,6 +158,16 @@ const PostGroup = ({
     const handleCancelDelete = () => {
         setIsDeleteOverlayOpen(false);
     };
+    const handleShare = () => {
+        const shareLink = `${window.location.origin}/VietNamJourney#/Search/?post_info=${Post_ID}`;
+        navigator.clipboard.writeText(shareLink)
+            .then(() => {
+                alert('Link đã được sao chép vào bộ nhớ tạm!');
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+    };
 
     return (
         <div className={styles['container-post']}>
@@ -170,17 +180,16 @@ const PostGroup = ({
                     <h6 onClick={handleAvatarClick} style={{ cursor: 'pointer', fontWeight: 'revert' }}>{name} - {namegroup}</h6>
                     <span style={{ fontSize: '0.8rem' }}>{time} · <i className="fas fa-earth-asia"></i></span>
                 </div>
-                <div className={styles['post-header-option']} onClick={handleDotsClick} style={{ cursor: 'pointer' }}>
+                {userId == user_id && (
+                    <div className={styles['post-header-option']} onClick={handleDotsClick} style={{ cursor: 'pointer' }}>
                     <img alt="options" src={dots} />
                     {isOptionsOpen && (
                         <div className={styles['options-menu']}>
-                            <p>Chia sẻ</p>
-                            {user_id == userId &&
                                 <p onClick={handleDeleteClick}>Xóa bài viết</p>
-                            }
                         </div>
                     )}
                 </div>
+                )}
             </div>
             <div className={styles['post-content']}>
                 <p>{content}</p>

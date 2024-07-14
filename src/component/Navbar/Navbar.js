@@ -4,23 +4,42 @@ import classNames from 'classnames/bind';
 import styles from './Navbar.module.css'; // Import CSS module
 import header1 from '../../Images/Logos/header1.png';
 import header2 from '../../Images/Logos/header2.png';
-import { getCookie, useCheckCookie } from '../../Cookie/getCookie';
+import { getCookie } from '../../Cookie/getCookie';
 
 const cx = classNames.bind(styles);
 
 function Navbar() {
-  const userName = useCheckCookie('UserName', null); // Kiểm tra cookie `User_Name`
   const [link, setLink] = useState('/TaiKhoan');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [userInfo, setUserInfo] = useState(null); // State to store user info
 
   useEffect(() => {
-    if (userName) {
-      setLink('/User?user_id=' + getCookie('User_ID')); // Cập nhật link khi có `User_Name`
+    const userId = getCookie('User_ID');
+    if (userId) {
+      setLink('/User?user_id=' + userId); // Cập nhật link khi có `User_ID`
+      
+      // Fetch user information
+      fetch('http://localhost:8000/api/getInformationNavBar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ User_ID: userId }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          setUserInfo(data.user);
+        } else {
+          console.error('Failed to fetch user information');
+        }
+      })
+      .catch(error => console.error('Error:', error));
     } else {
       setLink('/TaiKhoan'); // Link mặc định nếu chưa đăng nhập
     }
-  }, [userName]);
+  }, []);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -44,6 +63,7 @@ function Navbar() {
     deleteCookie('User_ID');
     deleteCookie('UserName');
     setIsDropdownOpen(false);
+    setUserInfo(null);
   };
 
   return (
@@ -71,26 +91,20 @@ function Navbar() {
           <Link to="/CongDong">CỘNG ĐỒNG</Link>
           <Link to="/ChienDich">CHIẾN DỊCH</Link>
           <Link to="/Quy">QUỸ</Link>
+          {userInfo && <Link to="/Messenger?type=user&user_id=0"><i class="fa-solid fa-envelope" style={{ fontSize: '28px' }}></i> </Link>}
 
-          {userName ? (
+          {userInfo ? (
             <div className={cx('nav-item', { open: isDropdownOpen })}>
               <span className={cx('dropdown-toggle')} onClick={toggleDropdown}>
-                <i className="fa-solid fa-circle-user" style={{ marginRight :'0.3rem',fontSize : '1.4rem' }}></i>{userName} <i className="fa-solid fa-caret-down"></i>
+               <img style={{ width: '28px', height: '28px', borderRadius: '50%',marginRight: '5px' }} src={userInfo.Image} alt="Avatar" />{userInfo.Name}
               </span>
               <div className={cx('dropdown-menu')}>
                 <Link className={cx('dropdown-item')} to={"/User?user_id=" + getCookie('User_ID')} onClick={closeDropdown}>
-                  Thông tin cá nhân
+                  Trang cá nhân
                 </Link>
                 <Link className={cx('dropdown-item')} to="/Manager" onClick={closeDropdown}>
                   Chiến dịch của tôi
                 </Link>
-                {/* <Link className={cx('dropdown-item')} to="/CampaignJoined" onClick={closeDropdown}>
-                  Chiến dịch đã tham gia
-                </Link> */}
-                <Link className={cx('dropdown-item')} to="/Messenger?type=user&user_id=0" onClick={closeDropdown}>
-                  Nhắn tin
-                </Link>
-                
                 <div className={cx('dropdown-divider')}></div>
                 <Link className={cx('dropdown-item')} to="/TaiKhoan" onClick={handleDeleteCookie}>
                   Đăng xuất
@@ -120,6 +134,16 @@ function Navbar() {
             <i className="fa-solid fa-bars"></i>
           </div>
           <div className={styles['list-navbar']}>
+            {userInfo && 
+              <Link to={"/User?user_id=" + getCookie('User_ID')} onClick={toggleSidebar}>
+                {userInfo.Name}  <i className="fa-solid fa-circle-user"></i>
+              </Link>
+            } 
+            {userInfo && 
+              <Link to="/Messenger?type=user&user_id=0" onClick={toggleSidebar}>
+                NHẮN TIN <i className="fa-solid fa-envelope"></i>
+              </Link>
+            }
             <Link to="/TrangChu" onClick={toggleSidebar}>
               TRANG CHỦ <i className="fa-solid fa-house"></i>
             </Link>
@@ -132,20 +156,14 @@ function Navbar() {
             <Link to="/Quy" onClick={toggleSidebar}>
               QUỸ <i className="fa-solid fa-hand-holding-dollar"></i>
             </Link>
-            {userName ? (
+            {userInfo ? (
               <div style={{ display : 'flex' , flexDirection : 'column' }} >
-                  <Link to={"/User?user_id=" + getCookie('User_ID')} onClick={toggleSidebar}>
-                    {userName}  <i className="fa-solid fa-circle-user"></i>
-                  </Link>
-                  <Link to="/Manager" onClick={toggleSidebar}>
-                    CHIẾN DỊCH CỦA TÔI
-                  </Link>
-                  {/* <Link to="/CampaignJoined" onClick={toggleSidebar}>
-                    CHIẾN DỊCH THAM GIA
-                  </Link> */}
-                  <Link to="/TaiKhoan" onClick={handleDeleteCookie && toggleSidebar}>
-                    ĐĂNG XUẤT <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                  </Link>
+                <Link to="/Manager" onClick={toggleSidebar}>
+                  CHIẾN DỊCH CỦA TÔI
+                </Link>
+                <Link to="/TaiKhoan" onClick={handleDeleteCookie && toggleSidebar}>
+                  ĐĂNG XUẤT <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                </Link>
               </div>
             ) : (
               <Link to={link} onClick={toggleSidebar}>

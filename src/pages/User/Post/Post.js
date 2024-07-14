@@ -155,6 +155,16 @@ const Post = ({
     const handleCancelDelete = () => {
         setIsDeleteOverlayOpen(false);
     };
+    const handleShare = () => {
+        const shareLink = `${window.location.origin}/VietNamJourney#/Search/?post_info=${Post_ID}`;
+        navigator.clipboard.writeText(shareLink)
+            .then(() => {
+                alert('Link đã được sao chép vào bộ nhớ tạm!');
+            })
+            .catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+    };
 
     return (
         <div className={styles['container-post']}>
@@ -170,7 +180,7 @@ const Post = ({
                     <img alt="options" src={dots} />
                     {isOptionsOpen && (
                         <div className={styles['options-menu']}>
-                            <p>Chia sẻ</p>
+                            <p onClick={handleShare}>Chia sẻ</p>
                             {user_id == userId &&
                                 <p onClick={handleDeleteClick}>Xóa bài viết</p>
                             }

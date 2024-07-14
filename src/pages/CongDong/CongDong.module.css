@@ -14,18 +14,15 @@ body {
     border-radius: 25px;
     width: 100%;
     margin-top: 2rem;
-    display: flex;
 }
 
 .sticky-search-bar {
     background-color: #f6f9f7; 
     border : none;
     width: 100%;
-}.sticky-search-bar i{
-    padding: 0.6rem;
 }.sticky-search-bar input{
     border-radius: 20px;
-    width: 90%;
+    width: 95%;
     border: 1px solid transparent; 
     margin-right: 0.3rem;
     margin-left: 0.1rem;
@@ -33,8 +30,6 @@ body {
     padding-right: 0.3rem;
     transition: border-color 0.3s; 
     height: 2.5rem;
-    background-color: white;
-    color: black;
 }.sticky-search-bar input:focus {
     outline: none; 
     border-color: #37be54; 
@@ -79,6 +74,20 @@ body {
     flex-direction: column;
     margin-top: 0.3rem;
     margin-left: 0.7rem;
+    max-width: 100%; /* Ensure the max-width is applied */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ellipsis-text h6,
+.ellipsis-text p {
+    font-weight: 600; /* Reset font-weight for h6 */
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; /* Ensure the max-width is applied to child elements */
 }
 
 

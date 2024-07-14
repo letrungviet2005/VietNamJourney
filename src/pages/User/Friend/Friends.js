@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Skeleton } from 'antd';
 import styles from './Friends.module.css';
 
 const Friends = ({ User_ID }) => {
     const [followers, setFollowers] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const [activeUserId, setActiveUserId] = useState(null);
 
     useEffect(() => {
         const fetchFollowers = async () => {
+            setLoading(true);
             try {
                 const response = await fetch('http://localhost:8000/api/getUnFollowedUsers', {
                     method: 'POST',
@@ -30,8 +33,10 @@ const Friends = ({ User_ID }) => {
                 } else {
                     setFollowers([]);
                 }
+                setLoading(false);
             } catch (error) {
                 setError('Đã xảy ra lỗi khi lấy danh sách người theo dõi');
+                setLoading(false);
             }
         };
 
@@ -49,26 +54,24 @@ const Friends = ({ User_ID }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ User_ID :User_ID, Followed_User_ID: userId, Status: action }),
+                body: JSON.stringify({ User_ID, Followed_User_ID: userId, Status: action }),
             });
-            console.log( User_ID, 'Followed_User_ID:', userId, 'Status:', action)
 
             if (!response.ok) {
                 throw new Error('Không thể cập nhật trạng thái theo dõi');
             }
 
-            const updatedFollowers = followers.map(follower => {
+            const updatedFollowers = followers.map((follower) => {
                 if (follower.User_ID === userId) {
                     return {
                         ...follower,
-                        is_following: action === 'follow'
+                        is_following: action === 'follow',
                     };
                 }
                 return follower;
             });
 
             setFollowers(updatedFollowers);
-
         } catch (error) {
             console.error('Lỗi khi cập nhật trạng thái theo dõi:', error);
         }
@@ -86,8 +89,12 @@ const Friends = ({ User_ID }) => {
 
     return (
         <div className={styles['friends-container']}>
-            {error ? (
+            {loading ? (
+                <Skeleton active />
+            ) : error ? (
                 <p>{error}</p>
+            ) : followers.length === 0 ? (
+                <p>Không có thành viên tham gia nào ...</p>
             ) : (
                 followers.map((follower) => (
                     <div key={follower.User_ID} className={styles['friend-item']}>
@@ -106,7 +113,7 @@ const Friends = ({ User_ID }) => {
                                 {follower.Username}
                             </h6>
                             <button onClick={() => handleFollowClick(follower.User_ID)}>
-                                {follower.is_following ? "Đang theo dõi" : "Theo dõi"}
+                                {follower.is_following ? 'Đang theo dõi' : 'Theo dõi'}
                             </button>
                         </div>
                     </div>

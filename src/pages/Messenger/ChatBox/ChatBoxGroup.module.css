@@ -13,10 +13,11 @@
 }
 
 .containerHeader img {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3.2rem;
+    height: 3.2rem;
     border-radius: 50%;
     object-fit: cover;
+    margin-top: 0.3rem;
 }
 
 .containerHeaderInfo {
@@ -86,7 +87,7 @@
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
-    border-radius: 20px;
+    border-radius: 10px;
     resize: none;
     height: 2.5rem;
     font-size: 1rem;
@@ -111,7 +112,7 @@
     background-color: #36a03f;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
     margin-left: 0.5rem;
     font-size: 1rem;
@@ -142,6 +143,11 @@
     height: auto;
     margin-top: 0.3rem;
     border-radius: 10px;
+}.avataruser img {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 
@@ -163,13 +169,14 @@
     background-color: #399435;
     margin-left: auto;
     border-radius: 18px 4px 18px 18px;
-    padding: 10px;
+    padding: 8px;
     color: #ffffff;
 }.contentLeft {
     background-color: #d2d2d2;
     border-radius: 4px 18px 18px 18px;
-    padding: 10px;
+    padding: 8px;
     margin-right: auto;
+    padding-top: 3px;
 }
 
 .messageTime {
