@@ -1,0 +1,212 @@
+.New {
+    background-color: white;
+    position: relative;
+  
+    pre {
+      white-space: pre-wrap; // Giữ nguyên ngắt dòng và cho phép ngắt dòng tự động
+      word-wrap: break-word; // Tự động ngắt dòng khi từ quá dài
+    }
+  }
+  
+  .header {
+    height: 700px;
+    padding-top: 400px;
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+  
+  .header .desc {
+    font-size: 36px;
+    font-weight: 600;
+    color: white;
+  }
+  
+  @media screen and (max-width: 1500px) {
+    .header {
+      height: 500px;
+      padding-top: 200px;
+      padding-left: 170px;
+      padding-right: 170px;
+    }
+  }
+  
+  @media screen and (max-width: 1199.8px) {
+    .header {
+      height: 450px;
+      padding-top: 150px;
+    }
+  }
+  
+  @media screen and (max-width: 991.8px) {
+    .header {
+      height: 380px;
+      padding-top: 100px;
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+  }
+  
+  @media screen and (max-width: 767.8px) {
+    .header {
+      height: 320px;
+      padding-top: 60px;
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  }
+  
+  @media screen and (max-width: 575.8px) {
+    .header .title {
+      font-size: 18px;
+    }
+    .header .camp-id {
+      font-size: 40px;
+    }
+    .header .desc {
+      font-size: 24px;
+    }
+  }
+  
+  .TongQuan {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    padding-left: 200px;
+    padding-right: 200px;
+    position: relative;
+  }
+  
+  .left {
+    position: sticky;
+    top: 0px;
+    width: 20%;
+    border-left: 1px solid #c3c3c3;
+    padding-left: 10px;
+  
+    hr {
+      margin: 0;
+      width: 60%;
+      border: 2px solid var(--color-text);
+      opacity: 1;
+      margin-bottom: 40px;
+    }
+  }
+  
+  .left .inner .title {
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 5px;
+  }
+  
+  .left .inner .time {
+    font-size: 20px;
+    font-weight: 600;
+    color: #35973f;
+    margin-bottom: 40px;
+  }
+  
+  .right {
+    width: 60%;
+    border-left: 1px solid #c3c3c3;
+    padding-left: 10px;
+    border-right: 1px solid #c3c3c3;
+    padding-right: 10px;
+  
+    pre {
+      color: black;
+      font-size: 20px;
+      font-weight: 500;
+      text-align: justify;
+      font-family: "montserrat", sans-serif;
+    }
+  }
+  
+  .description {
+    white-space: pre-wrap; // Giữ nguyên ngắt dòng và cho phép ngắt dòng tự động
+    word-wrap: break-word; // Tự động ngắt dòng khi từ quá dài
+  }
+  
+  .info {
+    position: sticky;
+    top: 0px;
+    width: 20%;
+    border-left: 1px solid #c3c3c3;
+    padding-left: 10px;
+  
+    hr {
+      margin: 0;
+      width: 60%;
+      border: 2px solid var(--color-text);
+      opacity: 1;
+      margin-bottom: 40px;
+    }
+  }
+  
+  .info .inner .title {
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 5px;
+  }
+  
+  .info .inner .time {
+    font-size: 20px;
+    font-weight: 600;
+    color: #35973f;
+    margin-bottom: 40px;
+  }
+  
+  @media screen and (max-width: 1500px) {
+  }
+  
+  @media screen and (max-width: 1199.8px) {
+    .info {
+      display: none;
+    }
+  
+    .right {
+      width: 80%;
+    }
+  
+    .TongQuan {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
+  
+  @media screen and (max-width: 991.8px) {
+    .TongQuan {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  
+    .left .inner .title {
+      font-size: 16px;
+    }
+  
+    .left .inner .time {
+      font-size: 16px;
+    }
+  }
+  
+  @media screen and (max-width: 767.8px) {
+    .TongQuan {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  
+    .left {
+      width: 30%;
+    }
+    .right {
+      width: 70%;
+    }
+    .info {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 575.8px) {
+  }
+  

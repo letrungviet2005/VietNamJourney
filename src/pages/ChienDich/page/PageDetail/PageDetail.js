@@ -8,6 +8,7 @@ import TongQuan from "./TongQuan/TongQuan";
 import TacDong from "./TacDong/TacDong";
 import ChiTiet from "./ChiTiet/ChiTiet";
 import ThongTinThem from "./ThongTinThem/ThongTinThem";
+import { Spin } from 'antd';
 
 const cx = classNames.bind(style);
 
@@ -53,7 +54,11 @@ function PageDetail() {
   }, [id]);
 
   if (!campaign) {
-    return <div>Loading...</div>; // Hiển thị trạng thái tải trong khi chờ dữ liệu từ API
+    return (
+      <div className={cx('centeredSpin')}>
+        <Spin size="large" />
+      </div>
+    );
   }
 
   const myStyle = {

@@ -53,34 +53,34 @@ function CoSoLuoc() {
 
 
             <div className={styles.div_right}>
-                <h2 className={`${styles.h2} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}
+                <h2 className={`${styles.h2}`} ref={(el) => hiddenElementsRef.current.push(el)}
                 >Một quỹ được sử dụng cho các hoạt động bảo vệ môi trường.</h2>
 
-                <p className={`${styles.p1} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}
+                <p className={`${styles.p1}`} ref={(el) => hiddenElementsRef.current.push(el)}
                 >Quỹ môi trường thuộc dự án VIETNAM JOURNEY đẩy nhanh các hành động bảo vệ môi trường góp phần giảm thiểu biến đổi khí hậu ở Việt Nam thông qua cách tiếp cận và sử dụng các giải pháp tài chính linh hoạt cũng như kiến ​​thức chuyên môn về đầu tư môi trường.</p>
 
                 <div className={styles.stats1}>
-                    <hr className={styles.hidden} ref={(el) => hiddenElementsRef.current.push(el)}></hr>
+                    <hr  ref={(el) => hiddenElementsRef.current.push(el)}></hr>
 
-                    <p className={styles.hidden} ref={(el) => hiddenElementsRef.current.push(el)}
+                    <p  ref={(el) => hiddenElementsRef.current.push(el)}
                     >Sơ lược về quỹ của chúng tôi </p>
 
-                    <hr className={styles.hidden} ref={(el) => hiddenElementsRef.current.push(el)}></hr>
+                    <hr  ref={(el) => hiddenElementsRef.current.push(el)}></hr>
                 </div>
 
 
                 <div className={styles.stats2}>
-                    <div className={`${styles.mini} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}>
+                    <div className={`${styles.mini}`} ref={(el) => hiddenElementsRef.current.push(el)}>
                         <h2>253</h2>
                         <p>Số dự án được hỗ trợ</p>
                     </div>
 
-                    <div className={`${styles.mini} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}>
+                    <div className={`${styles.mini}`} ref={(el) => hiddenElementsRef.current.push(el)}>
                         <h2>13.9</h2>
                         <p>Tổng số tiền (tỉ đồng)</p>
                     </div>
 
-                    <div className={`${styles.mini} ${styles.hidden}`} ref={(el) => hiddenElementsRef.current.push(el)}>
+                    <div className={`${styles.mini}`} ref={(el) => hiddenElementsRef.current.push(el)}>
                         <h2>43</h2>
                         <p>Tỉnh / thành phố</p>
                     </div>

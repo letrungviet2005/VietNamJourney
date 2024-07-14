@@ -1,26 +1,30 @@
+import React, { useState, useEffect } from 'react';
 import classNames from "classnames/bind";
 import style from './CampaignEd.module.scss';
 import Campaign from "../Campaign/Campaign";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Skeleton } from 'antd'; // Import Skeleton từ antd
 
 const cx = classNames.bind(style);
 
 function CampaignEd({ province }) {
   const [campaigns, setCampaigns] = useState([]);
+  const [loading, setLoading] = useState(true); // Thêm trạng thái loading
 
   useEffect(() => {
     // Hàm để gửi yêu cầu API và cập nhật danh sách chiến dịch
     async function fetchCampaigns() {
+      setLoading(true); // Đặt loading là true trước khi gửi yêu cầu API
       try {
         const response = await axios.get(`http://localhost:8000/api/listCampaignEd/${province}`);
         setCampaigns(response.data);
       } catch (error) {
         console.error('Error fetching campaigns:', error);
+      } finally {
+        setLoading(false); // Đặt loading là false sau khi dữ liệu đã được tải xong
       }
     }
 
@@ -47,27 +51,39 @@ function CampaignEd({ province }) {
       {
         breakpoint: 575.8, // Kích thước màn hình tối đa để áp dụng cài đặt này
         settings: {
-          slidesToShow: 1, // Hiển thị 2 slides khi max-width <= 767.8px
+          slidesToShow: 1, // Hiển thị 1 slide khi max-width <= 575.8px
           slidesToScroll: 1,
         },
       }
     ],
   };
+
   return (  
     <div className={cx('CampaignEd')}>
       <hr/>
       <h2 className={cx('title')}>Chiến dịch đã kết thúc</h2>
-      <Slider {...settings} className={cx('row', 'pad')}>
-        {campaigns.map(campaign => (
-          <Campaign
-            key={campaign.id}
-            campId={campaign.id}
-            desc={campaign.name}
-            title={campaign.district}
-            imageUrl={campaign.image}
-          />
-        ))}
-      </Slider>
+      
+      {loading ? (
+        // Hiển thị Skeleton khi dữ liệu đang được tải
+        <>
+          <div className={cx('skeleton-slide')}>
+            <Skeleton active />
+          </div>
+        </>
+      ) : (
+        // Hiển thị các campaign sau khi dữ liệu đã được tải
+        <Slider {...settings} className={cx('row', 'pad')}>
+          {campaigns.map(campaign => (
+            <Campaign
+              key={campaign.id}
+              campId={campaign.id}
+              desc={campaign.name}
+              title={campaign.district}
+              imageUrl={campaign.image}
+            />
+          ))}
+        </Slider>
+      )}
     </div>
   );
 }

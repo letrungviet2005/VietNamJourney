@@ -187,8 +187,7 @@ function ChiTiet({ campaign }) {
     if (n === x.length - 1) {
       // document.getElementById(cx("nextBtn")).type = "submit";
       document.getElementById(cx("nextBtn")).innerHTML = "Đăng ký";
-    } 
-    else {
+    } else {
       document.getElementById(cx("nextBtn")).innerHTML = "Tiếp theo";
       // document.getElementById(cx("nextBtn")).type = "button";
     }
@@ -250,52 +249,55 @@ function ChiTiet({ campaign }) {
   const handleRegisterClick = () => {
     setShowRegisterModal(true);
   };
-  
+
   const closeRegisterModal = () => {
     setShowRegisterModal(false);
   };
 
   const handleRegisterSubmit = async () => {
     // e.preventDefault();
-    
+
     const formData = new FormData();
-    formData.append('fullname', formValues.fullname);
-    formData.append('birth', formValues.birth);
-    formData.append('phone', formValues.phone);
-    formData.append('email', formValues.email);
-    formData.append('address', formValues.address);
-    formData.append('reason', formValues.reason);
-    formData.append('userId', getCookie("User_ID")); // Bạn cần lấy userId từ đâu đó
-    formData.append('campaignId', campaign.id);
-    formData.append('status', 1); // Bạn cần lấy status từ đâu đó
+    formData.append("fullname", formValues.fullname);
+    formData.append("birth", formValues.birth);
+    formData.append("phone", formValues.phone);
+    formData.append("email", formValues.email);
+    formData.append("address", formValues.address);
+    formData.append("reason", formValues.reason);
+    formData.append("userId", getCookie("User_ID")); // Bạn cần lấy userId từ đâu đó
+    formData.append("campaignId", campaign.id);
+    formData.append("status", 1); // Bạn cần lấy status từ đâu đó
 
     // console.log formdata
     for (const pair of formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1]);
+      console.log(pair[0] + ", " + pair[1]);
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/api/registerVolunteer', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:8000/api/registerVolunteer",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       console.log("okkk");
       if (response.status === 201) {
         alert(response.data.message);
         closeRegisterModal();
+        setStatus(1);
         // Xử lý thành công
       } else {
         alert(response.data.error);
         // Xử lý lỗi
       }
     } catch (error) {
-      alert('Đã xảy ra lỗi. Vui lòng thử lại.');
+      alert("Đã xảy ra lỗi. Vui lòng thử lại.");
     }
   };
-
-
 
   return (
     console.log("joined ", campaign.joined),
@@ -341,12 +343,12 @@ function ChiTiet({ campaign }) {
               <div className={cx("desc")}>
                 Số lượng TNV tham gia: {campaign.joined} 24 TNV
               </div>
-              {status === null && (
+              {status === 0 && (
                 <button className={cx("button")} onClick={handleRegisterClick}>
                   Đăng ký tham gia
                 </button>
               )}
-              {status === 0 && (
+              {status === null && (
                 <button
                   className={cx("button")}
                   onClick={handleRegisterClick}
@@ -389,7 +391,7 @@ function ChiTiet({ campaign }) {
                 isVisible ? "fa-caret-down" : "fa-caret-right"
               }`}
             ></i>
-          </div> 
+          </div>
 
           {isVisible && (
             <div>
@@ -456,7 +458,6 @@ function ChiTiet({ campaign }) {
         >
           <h2>Quyên góp thành công!</h2>
           <p>Cảm ơn bạn đã quyên góp vào quỹ chiến dịch FP{campaign.id}.</p>
-          <button onClick={closeModal}>Đóng</button>
         </Modal>
 
         <Modal
@@ -487,7 +488,16 @@ function ChiTiet({ campaign }) {
                             .join(" ")}
                         </div>
                         <div>
-                          Số tiền quyên góp: {transaction["Giá trị"]} VND
+                          Số tiền quyên góp:{" "}
+                          <span>
+                            {parseInt(
+                              transaction["Giá trị"],
+                              10
+                            ).toLocaleString("vi-VN", {
+                              style: "currency",
+                              currency: "VND",
+                            })}
+                          </span>
                         </div>
                         <div>Mã giao dịch: {transaction["Mã GD"]}</div>
                         <div>
@@ -510,13 +520,14 @@ function ChiTiet({ campaign }) {
           className={cx("modal-register")}
           overlayClassName={cx("overlay-history")}
         >
-          <form id={cx("signUpForm")} > {/* onSubmit={handleSubmit} */}
+          <form id={cx("signUpForm")}>
+            {" "}
+            {/* onSubmit={handleSubmit} */}
             <div className={cx("form-header", "d-flex", "mb-4")}>
               <span className={cx("stepIndicator")}>Thông tin cá nhân</span>
               <span className={cx("stepIndicator")}>Lý do tham gia</span>
               <span className={cx("stepIndicator")}>Quy tắc chiến dịch</span>
             </div>
-
             <div
               className={cx("step")}
               style={{ display: currentTab === 0 ? "block" : "none" }}
@@ -582,9 +593,7 @@ function ChiTiet({ campaign }) {
                   value={formValues.address}
                 />
               </div>
-
             </div>
-
             <div
               className={cx("step")}
               style={{ display: currentTab === 1 ? "block" : "none" }}
@@ -603,29 +612,37 @@ function ChiTiet({ campaign }) {
                   value={formValues.reason}
                 />
               </div>
-              
             </div>
-
             <div
               className={cx("step")}
               style={{ display: currentTab === 2 ? "block" : "none" }}
             >
-              <p className="text-center mb-4"><b>Quy tắc của chiến dịch</b></p>
+              <p className="text-center mb-4">
+                <b>Quy tắc của chiến dịch</b>
+              </p>
               <div className="mb-3">
                 <div className={cx("content")}>
-                  <p>1. Đảm bảo thông tin cá nhân của bạn cung cấp là chính xác</p>
+                  <p>
+                    1. Đảm bảo thông tin cá nhân của bạn cung cấp là chính xác
+                  </p>
                   <p>2. Đảm bảo về vấn đề sức khỏe khi tham gia chiến dịch</p>
                   <p>3. Tuân thủ các hướng dẫn của người đứng đầu chiến dịch</p>
-                  <p>4. Có mặt đúng giờ và tham gia đầy đủ. Bận việc đột xuất phải thông báo trước cho BTC chiến dịch</p>
+                  <p>
+                    4. Có mặt đúng giờ và tham gia đầy đủ. Bận việc đột xuất
+                    phải thông báo trước cho BTC chiến dịch
+                  </p>
                   <p>5. Tích cực tham gia các hoạt động của chiến dịch</p>
                   <p>6. Giữ thái độ lịch sự, tôn trọng các thành viên khác</p>
-                  <p>7. Cung cấp phản hồi và báo cáo về hoạt động của mình sau khi chiến dịch kết thúc.</p>
-                  <p><b>Hãy cùng nhau hết mình với chiến dịch nhé!</b></p>
+                  <p>
+                    7. Cung cấp phản hồi và báo cáo về hoạt động của mình sau
+                    khi chiến dịch kết thúc.
+                  </p>
+                  <p>
+                    <b>Hãy cùng nhau hết mình với chiến dịch nhé!</b>
+                  </p>
                 </div>
               </div>
-              
             </div>
-
             <div className={cx("form-footer", "d-flex")}>
               <button
                 type="button"

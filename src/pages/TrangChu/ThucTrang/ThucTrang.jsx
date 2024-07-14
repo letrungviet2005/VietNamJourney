@@ -1,6 +1,6 @@
-import styles from "./ThucTrang.module.css";
 import React, { useEffect, useRef, useState } from "react";
 import ApexCharts from "apexcharts";
+import styles from "./ThucTrang.module.css";
 
 function CoThucTrang() {
   const hiddenElementsRef = useRef([]);
@@ -26,10 +26,17 @@ function CoThucTrang() {
       hiddenElementsRef.current.forEach((el) => {
         if (el) observer.unobserve(el);
       });
+
+      // Hủy biểu đồ khi component unmount
+      // if (chartRef.current && chartRef.current.chart) {
+      //   chartRef.current.chart.destroy();
+      // }
     };
   }, [chartRendered]);
 
   const loadChart = () => {
+    if (chartRef.current.chart) return; // Kiểm tra nếu biểu đồ đã được tạo
+
     const colors = [
       "#3AB137",
       "#3AB137",
@@ -125,12 +132,8 @@ function CoThucTrang() {
         },
       ],
     };
-    const chart = new ApexCharts(chartRef.current, options);
-    chart.render();
-
-    return () => {
-      chart.destroy();
-    };
+    chartRef.current.chart = new ApexCharts(chartRef.current, options); // Lưu đối tượng chart vào chartRef.current.chart
+    chartRef.current.chart.render();
   };
 
   return (
@@ -142,13 +145,6 @@ function CoThucTrang() {
         >
           Thực trạng môi trường hiện nay
         </h2>
-        {/* <p
-          className={styles.hidden}
-          ref={(el) => hiddenElementsRef.current.push(el)}
-        >
-          Hãy cùng nhau nhìn những con số mà chúng tôi đã tổng hợp về thực trạng
-          ô nhiễm môi trường và tác động của nó đến Việt Nam hiện nay.
-        </p> */}
       </div>
 
       <div

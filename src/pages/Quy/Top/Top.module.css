@@ -26,7 +26,7 @@ div.main {
     align-items: center;
 
     background-image: url("../../../Images/Quy/Top/anhnen.jpg");
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -76,7 +76,7 @@ div.main div.bottom div.imgpaper {
     flex-shrink: 0;
 
     background-image: url("../../../Images/Quy/Top/paper2.png");
-    background-size: 90% 100%;
+    background-size: cover;
     background-repeat: round;
 }
 
@@ -97,4 +97,90 @@ div.main div.bottom div.imgpaper {
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
+}
+
+
+
+@media screen and (max-width: 1500px) {
+    div.main {
+        width: 100%;
+        height: 850px;
+    }
+    
+    div.main div.upper {
+        width: 90%;
+        height: 161.424px;
+        margin-top: 81px;
+        font-size: 35px;
+        font-weight: 700;
+    } 
+    
+    div.main div.bottom img {
+        width: 63px;
+        height: 61.263px;
+    }
+    
+    div.main div.bottom div.imgpaper {
+        width: 100%;
+        height: 200px;
+    }
+    
+}
+
+@media screen and (max-width: 1199.8px) {
+    div.main {
+        width: 100%;
+        height: 750px;
+    }
+}
+
+@media screen and (max-width: 991.8px) {
+    div.main {
+        width: 100%;
+        height: 650px;
+    }
+
+    div.main div.upper {
+        width: 90%;
+        height: 161.424px;
+        margin-top: 81px;
+        font-size: 26px;
+    } 
+}
+
+@media screen and (max-width: 767.8px){
+    div.main {
+        width: 100%;
+        height: 500px;
+    }
+
+    div.main div.upper {
+        width: 90%;
+        height: 161.424px;
+        margin-top: 81px;
+        font-size: 20px;
+    } 
+
+    div.main div.bottom div.imgpaper {
+        width: 100%;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 575.8px){
+    div.main {
+        width: 100%;
+        height: 300px;
+    }
+
+    div.main div.upper {
+        width: 90%;
+        margin-top: 30px;
+        font-size: 14px;
+    } 
+
+    div.main div.bottom div.imgpaper {
+        width: 100%;
+        height: 80px;
+    }
 }

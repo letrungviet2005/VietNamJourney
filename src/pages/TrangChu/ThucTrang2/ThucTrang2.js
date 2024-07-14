@@ -25,20 +25,22 @@ function ThucTrang2() {
                 const index = hiddenElementsRef.current.indexOf(entry.target);
                 if (entry.isIntersecting && !chartRendered[index]) {
                     entry.target.classList.add(style.show);
-                    loadChart(chartRefs[index].current, getSeriesData(index));
-                    setChartRendered((prev) => {
-                        const newRendered = [...prev];
-                        newRendered[index] = true;
-                        return newRendered;
-                    });
+                    if (chartRefs[index].current) {
+                        loadChart(chartRefs[index].current, getSeriesData(index)); // Chỉ gọi nếu chartRef.current tồn tại
+                        setChartRendered((prev) => {
+                            const newRendered = [...prev];
+                            newRendered[index] = true;
+                            return newRendered;
+                        });
+                    }
                 }
             });
         });
-
+    
         hiddenElementsRef.current.forEach((el) => {
             if (el) observer.observe(el);
         });
-
+    
         return () => {
             hiddenElementsRef.current.forEach((el) => {
                 if (el) observer.unobserve(el);
@@ -47,6 +49,8 @@ function ThucTrang2() {
     }, [chartRendered]);
 
     const loadChart = (chartRef, series) => {
+        if (chartRef.chart) return;
+
         const options = {
             series,
             chart: {
@@ -97,6 +101,7 @@ function ThucTrang2() {
 
         return () => {
             chart.destroy();
+            chartRef.chart = null;
         };
     };
 

@@ -29,7 +29,14 @@
 }
 
 .info table {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.table-scrollable {
+  border: #35973F 2px solid;
   width: 90%;
+  margin-bottom: 50px;
 }
 
 .info table .number {

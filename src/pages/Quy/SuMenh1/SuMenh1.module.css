@@ -12,21 +12,20 @@
 
 div.main {
     width: 100%;
-    height: 900px;
+    padding: 50px 200px;
     flex-shrink: 0;
     background: #1B9F56;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 52px;
     padding-top: 80px;
+    flex-wrap: wrap;
 }
 
 
 div.main div.div_left {
-    width: 718px;
-    height: 700.711px;
+    width: 50%;
     flex-shrink: 0;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -37,8 +36,7 @@ div.main div.div_left {
 
 
 div.main div.div_left div.top {
-    width: 718px;
-    height: 287px;
+    width: 100%;
     flex-shrink: 0;
 
     display: flex;
@@ -51,8 +49,8 @@ div.main div.div_left div.top {
 
 
 div.main div.div_left div.top h2 {
-    width: 718px; 
-
+    width: 100%; 
+    margin-bottom: 30px;
     color: #FFF;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Montserrat;
@@ -64,7 +62,7 @@ div.main div.div_left div.top h2 {
 
 
 div.main div.div_left div.top p {
-    width: 663px; 
+    width: 100%; 
 
     color: #FFF;
     font-feature-settings: 'clig' off, 'liga' off;
@@ -73,12 +71,12 @@ div.main div.div_left div.top p {
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 31.9px */
+    text-align: justify;
 }
 
 
 div.main div.div_left div.bot {
-    width: 650px;
-    height: 351.711px;
+    width: 100%;
     flex-shrink: 0;
 
     display: flex;
@@ -89,7 +87,7 @@ div.main div.div_left div.bot {
 
 
 div.main div.div_left div.bot p.p1 {
-    width: 644px;
+    width: 100%;
 
     color: #FFF;
     font-feature-settings: 'clig' off, 'liga' off;
@@ -102,8 +100,7 @@ div.main div.div_left div.bot p.p1 {
 
 
 div.main div.div_right {
-    width: 654px;
-    height: 772px;
+    width: 40%;
     flex-shrink: 0;
 
     display: flex;
@@ -114,9 +111,10 @@ div.main div.div_right {
 
 
 div.main div.div_right img {
-    width: 637px;
-    height: 684px;
+    width: 100%;
+    height: 90%;
     flex-shrink: 0;
+    margin-bottom: 10px;
 
     border-radius: 10px;
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
@@ -124,7 +122,7 @@ div.main div.div_right img {
 
 
 div.main div.div_right p {
-    width: 654px;
+    width: 100%;
 
     color: #FFF;
     font-feature-settings: 'clig' off, 'liga' off;
@@ -157,4 +155,255 @@ div.main div.div_right p {
 
 div.main div.div_left div.top p {
     transition-delay: 200ms;
+}
+
+
+@media screen and (max-width: 1500px) {
+    div.main {
+        padding: 50px 100px;
+        padding-top: 80px;
+    }
+    
+    div.main div.div_left {
+        width: 50%;
+    }
+    
+    div.main div.div_left div.top {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.top h2 {
+        width: 100%; 
+        margin-bottom: 30px;
+        font-size: 36px;
+    }
+    
+    div.main div.div_left div.top p {
+        width: 100%; 
+        font-size: 20px;
+    }
+    
+    div.main div.div_left div.bot {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.bot p.p1 {
+        width: 100%;
+        font-size: 30px;
+    }
+    
+    div.main div.div_right {
+        width: 40%;
+    }
+    
+    div.main div.div_right img {
+        width: 100%;
+        height: 90%;
+    }
+    
+    div.main div.div_right p {
+        width: 100%;
+        font-size: 14px;
+    }
+    
+}
+
+@media screen and (max-width: 1199.8px) {
+    div.main {
+        padding: 50px 100px;
+        padding-top: 80px;
+    }
+    
+    div.main div.div_left {
+        width: 50%;
+    }
+    
+    div.main div.div_left div.top {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.top h2 {
+        width: 100%; 
+        margin-bottom: 20px;
+        font-size: 32px;
+    }
+    
+    div.main div.div_left div.top p {
+        width: 100%; 
+        font-size: 16px;
+    }
+    
+    div.main div.div_left div.bot {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.bot p.p1 {
+        width: 100%;
+        font-size: 26px;
+    }
+    
+    div.main div.div_right {
+        width: 40%;
+    }
+    
+    div.main div.div_right img {
+        width: 100%;
+        height: 90%;
+    }
+    
+    div.main div.div_right p {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 991.8px) {
+    div.main {
+        padding: 50px 100px;
+        padding-top: 80px;
+        justify-content: center;
+    }
+    
+    div.main div.div_left {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.top {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.top h2 {
+        width: 100%; 
+        margin-bottom: 20px;
+        font-size: 36px;
+    }
+    
+    div.main div.div_left div.top p {
+        width: 100%; 
+        font-size: 20px;
+    }
+    
+    div.main div.div_left div.bot {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.bot p.p1 {
+        width: 100%;
+        font-size: 30px;
+    }
+    
+    div.main div.div_right {
+        width: 80%;
+    }
+    
+    div.main div.div_right img {
+        width: 100%;
+        height: 90%;
+    }
+    
+    div.main div.div_right p {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 767.8px){
+    div.main {
+        padding: 30px 50px;
+        padding: 50px;
+        padding-top: 80px;
+        justify-content: center;
+    }
+    
+    div.main div.div_left {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.top {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.top h2 {
+        width: 100%; 
+        margin-bottom: 20px;
+        font-size: 32px;
+    }
+    
+    div.main div.div_left div.top p {
+        width: 100%; 
+        font-size: 18px;
+    }
+    
+    div.main div.div_left div.bot {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.bot p.p1 {
+        width: 100%;
+        font-size: 30px;
+    }
+    
+    div.main div.div_right {
+        width: 80%;
+    }
+    
+    div.main div.div_right img {
+        width: 100%;
+        height: 90%;
+    }
+    
+    div.main div.div_right p {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 575.8px){
+    div.main {
+        padding: 50px 20px;
+        padding-bottom: 80px;
+        justify-content: center;
+    }
+    
+    div.main div.div_left {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.top {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.top h2 {
+        width: 100%; 
+        margin-bottom: 20px;
+        font-size: 32px;
+    }
+    
+    div.main div.div_left div.top p {
+        width: 100%; 
+        font-size: 18px;
+    }
+    
+    div.main div.div_left div.bot {
+        width: 100%;
+    }
+    
+    div.main div.div_left div.bot p.p1 {
+        width: 100%;
+        font-size: 30px;
+    }
+    
+    div.main div.div_right {
+        width: 80%;
+    }
+    
+    div.main div.div_right img {
+        width: 100%;
+        height: 90%;
+    }
+    
+    div.main div.div_right p {
+        width: 100%;
+        font-size: 14px;
+    }
 }

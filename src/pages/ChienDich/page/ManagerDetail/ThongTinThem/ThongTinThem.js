@@ -89,107 +89,111 @@ function ThongTinThem({ campaign }) {
         <hr />
         <div className={cx("title")}>Thành viên</div>
         <div className={cx("info")}>
-          <table className={cx("table", "table-striped", "fixed-height-table")}>
-            <thead>
-              <tr>
-                <th scope="col">STT</th>
-                <th scope="col">Thành viên</th>
-                <th scope="col" style={{ width: "100px" }}></th>
-              </tr>
-            </thead>
-            <tbody>
-            {volunteers && volunteers.length > 0 && volunteers.map((volunteer, index) => (
-              <tr key={volunteer.id}>
-                <th scope="row" className={cx("number")}>{index + 1}</th>
-                <td>
-                  <div className={cx("person")}>
-                    <img
-                      src={`http://localhost:8000/${volunteer.user_infomation.Image}`}
-                      alt="Avatar"
-                    />
-                    <div className={cx("info")}>
-                      <div className={cx("fullname")}>
-                        {volunteer.user_infomation.Name}
-                      </div>
-                      <div className={cx("username")}>
-                        {volunteer.user_infomation.Username}
+          <div className={cx("table-scrollable")}>
+            <table className={cx("table", "table-striped", "fixed-height-table")}>
+              <thead>
+                <tr>
+                  <th scope="col">STT</th>
+                  <th scope="col">Thành viên</th>
+                  <th scope="col" style={{ width: "100px" }}></th>
+                </tr>
+              </thead>
+              <tbody>
+              {volunteers && volunteers.length > 0 && volunteers.map((volunteer, index) => (
+                <tr key={volunteer.id}>
+                  <th scope="row" className={cx("number")}>{index + 1}</th>
+                  <td>
+                    <div className={cx("person")}>
+                      <img
+                        src={`http://localhost:8000/${volunteer.user_infomation.Image}`}
+                        alt="Avatar"
+                      />
+                      <div className={cx("info")}>
+                        <div className={cx("fullname")}>
+                          {volunteer.user_infomation.Name}
+                        </div>
+                        <div className={cx("username")}>
+                          {volunteer.user_infomation.Username}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td>
-                  <button
-                  onClick={() => viewProfile(volunteer)}
-                    className={cx("btn btn-outline-secondary")}
-                    >
-                    <i class="fa-solid fa-eye"></i>
-                  </button>
-                </td>
-              </tr>
-            ))}
-
-            
-            </tbody>
-          </table>
+                  </td>
+                  <td>
+                    <button
+                    onClick={() => viewProfile(volunteer)}
+                      className={cx("btn btn-outline-secondary")}
+                      >
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+  
+              
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <div className={cx("pending")}>
         <hr />
         <div className={cx("title")}>Đang chờ duyệt</div>
         <div className={cx("info")}>
-          <table className={cx("table", "table-striped", "fixed-height-table")}>
-            <thead>
-              <tr>
-                <th scope="col">STT</th>
-                <th scope="col">Thành viên</th>
-                <th scope="col"></th>
-                <th scope="col">Duyệt</th>
-                <th scope="col">Xóa</th>
-              </tr>
-            </thead>
-            <tbody>
-            {pending && pending.length > 0 && pending.map((volunteer, index) => (
-              <tr key={volunteer.id}>
-                <th scope="row" className={cx("number")}>{index + 1}</th>
-                <td>
-                  <div className={cx("person")}>
-                    <img
-                      src={`http://localhost:8000/${volunteer.user_infomation.Image}`}
-                      alt="Avatar"
-                    />
-                    <div className={cx("info")}>
-                      <div className={cx("fullname")}>
-                        {volunteer.user_infomation.Name}
-                      </div>
-                      <div className={cx("username")}>
-                        {volunteer.user_infomation.Username}
+          <div className={cx("table-scrollable")}>
+            <table className={cx("table", "table-striped", "fixed-height-table")}>
+              <thead>
+                <tr>
+                  <th scope="col">STT</th>
+                  <th scope="col">Thành viên</th>
+                  <th scope="col"></th>
+                  <th scope="col">Duyệt</th>
+                  <th scope="col">Xóa</th>
+                </tr>
+              </thead>
+              <tbody>
+              {pending && pending.length > 0 && pending.map((volunteer, index) => (
+                <tr key={volunteer.id}>
+                  <th scope="row" className={cx("number")}>{index + 1}</th>
+                  <td>
+                    <div className={cx("person")}>
+                      <img
+                        src={`http://localhost:8000/${volunteer.user_infomation.Image}`}
+                        alt="Avatar"
+                      />
+                      <div className={cx("info")}>
+                        <div className={cx("fullname")}>
+                          {volunteer.user_infomation.Name}
+                        </div>
+                        <div className={cx("username")}>
+                          {volunteer.user_infomation.Username}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td>
-                  <button
-                    onClick={() => viewProfile(volunteer)}
-                    className={cx("btn btn-outline-secondary")}
-                    >
-                    <i class="fa-solid fa-eye"></i>
-                  </button>
-                </td>
-                <td>
-                  <div className={cx("duyet")}>
-                    <button className={cx("btn btn-success")} onClick={() => updateStatus(campaign.id, volunteer.userId, 2)}>Duyệt</button>
-                  </div>
-                </td>
-                <td>
-                  <div className={cx("xoa")}>
-                    <button className={cx("btn btn-danger")} onClick={() => updateStatus(campaign.id, volunteer.userId, 0)}><i class="fa-solid fa-trash"></i></button>
-                  </div>
-                </td>
-                
-              </tr>
-            ))}
-            </tbody>
-          </table>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => viewProfile(volunteer)}
+                      className={cx("btn btn-outline-secondary")}
+                      >
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <div className={cx("duyet")}>
+                      <button className={cx("btn btn-success")} onClick={() => updateStatus(campaign.id, volunteer.userId, 2)}>Duyệt</button>
+                    </div>
+                  </td>
+                  <td>
+                    <div className={cx("xoa")}>
+                      <button className={cx("btn btn-danger")} onClick={() => updateStatus(campaign.id, volunteer.userId, 0)}><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </td>
+                  
+                </tr>
+              ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

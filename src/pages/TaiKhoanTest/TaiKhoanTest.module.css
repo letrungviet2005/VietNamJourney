@@ -8,6 +8,20 @@
   justify-content: center;
   align-items: center;
   position: relative;
+
+  input[type="email"], input[type="password"], input[type="text"] {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding-right: 28px;
+    color: white;
+  }
+
+  input:focus~label, input:valid~label {
+    top: -5px;
+  }
 }
 
 .background::before {
@@ -100,15 +114,7 @@
   transform: translateX(0);
 }
 
-input[type="email"], input[type="password"], input[type="text"] {
-  width: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  padding-right: 28px;
-  color: white;
-}
+
 
 .inputBox {
   width: 340px;
@@ -137,9 +143,7 @@ input[type="email"], input[type="password"], input[type="text"] {
   font-size: 19px;
 }
 
-input:focus~label, input:valid~label {
-  top: -5px;
-}
+
 
 .rememberPassword {
   font-size: 14px;

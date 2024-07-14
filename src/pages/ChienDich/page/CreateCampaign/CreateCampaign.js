@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Select from "react-select";
-import {getCookie} from "../../../../Cookie/getCookie"
+import { getCookie } from "../../../../Cookie/getCookie";
+import {Alert, Button, Space} from 'antd';
 
 const cx = classNames.bind(style);
 
@@ -112,7 +113,7 @@ function CreateCampaign() {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("id", getCookie('User_ID'));
+    formData.append("id", getCookie("User_ID"));
     formData.append("name", event.target.elements.name.value);
     formData.append("description", event.target.elements.desc.value);
     formData.append("plan", event.target.elements.plan.value);
@@ -120,27 +121,30 @@ function CreateCampaign() {
     formData.append("dateEnd", event.target.elements.dateEnd.value);
     formData.append("totalMoney", event.target.elements.totalMoney.value);
     formData.append("moneyByVNJN", event.target.elements.moneyByVNJN.value);
-    formData.append("province", selectedProvince ? selectedProvince.label : '');
-    formData.append("district", selectedDistrict ? selectedDistrict.label : '');
+    formData.append("province", selectedProvince ? selectedProvince.label : "");
+    formData.append("district", selectedDistrict ? selectedDistrict.label : "");
     formData.append("location", event.target.elements.location.value);
-    formData.append("timeline", JSON.stringify([
-      {
-        title: "Giai đoạn ban đầu",
-        value: event.target.elements.timelineGiaiDoanBanDau.value,
-      },
-      {
-        title: "Bắt đầu dự án",
-        value: event.target.elements.timelineBatDauDuAn.value,
-      },
-      {
-        title: "Kết thúc dự án",
-        value: event.target.elements.timelineKetThucDuAn.value,
-      },
-      {
-        title: "Tổng kết dự án",
-        value: event.target.elements.timelineTongKetDuAn.value,
-      },
-    ]));
+    formData.append(
+      "timeline",
+      JSON.stringify([
+        {
+          title: "Giai đoạn ban đầu",
+          value: event.target.elements.timelineGiaiDoanBanDau.value,
+        },
+        {
+          title: "Bắt đầu dự án",
+          value: event.target.elements.timelineBatDauDuAn.value,
+        },
+        {
+          title: "Kết thúc dự án",
+          value: event.target.elements.timelineKetThucDuAn.value,
+        },
+        {
+          title: "Tổng kết dự án",
+          value: event.target.elements.timelineTongKetDuAn.value,
+        },
+      ])
+    );
     formData.append("infoContact", JSON.stringify(contacts));
     formData.append("infoOrganization", JSON.stringify(organizationContacts));
     if (imageFile) {
@@ -153,25 +157,25 @@ function CreateCampaign() {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/createCampaign',
+        "http://localhost:8000/api/createCampaign",
         formData,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            "Content-Type": "multipart/form-data",
           },
         }
       );
 
-      console.log('Phản hồi từ API:', response.data);
+      console.log("Phản hồi từ API:", response.data);
       if (response.data.success) {
-        alert('Thêm chiến dịch thành công!');
+        alert("Thêm chiến dịch thành công!");
         // navigate('/Manager');
       } else {
-        alert('Lỗi: ' + response.data.error);
+        alert("Lỗi: " + response.data.error);
       }
     } catch (error) {
-      console.error('Lỗi khi gửi dữ liệu lên API:', error);
-      alert('Đã xảy ra lỗi. Vui lòng thử lại.');
+      console.error("Lỗi khi gửi dữ liệu lên API:", error);
+      alert("Đã xảy ra lỗi. Vui lòng thử lại.");
     }
   };
 
@@ -228,7 +232,7 @@ function CreateCampaign() {
             />
           </div>
 
-          <div className={cx("col-4" , "date")}>
+          <div className={cx("col-4", "date")}>
             <label htmlFor="dateEnd" className={cx("dateEnd")}>
               Ngày kết thúc:{" "}
             </label>
@@ -243,7 +247,9 @@ function CreateCampaign() {
         </div>
 
         <div className={cx("where")}>
-          <label htmlFor="province" className={cx("province")}>Tỉnh/thành phố:</label>
+          <label htmlFor="province" className={cx("province")}>
+            Tỉnh/thành phố:
+          </label>
           <div className={cx("input-province")}>
             <Select
               id="province"
@@ -257,8 +263,10 @@ function CreateCampaign() {
               required
             />
           </div>
-  
-          <label htmlFor="district" className={cx("district")}>Huyện/quận:</label>
+
+          <label htmlFor="district" className={cx("district")}>
+            Huyện/quận:
+          </label>
           <div className={cx("input-district")}>
             <Select
               id="district"
@@ -357,7 +365,11 @@ function CreateCampaign() {
           <div className={cx("col-6")}>
             <hr />
             <div className={cx("title")}>Thông tin liên hệ </div>
-            <button className={cx("contact")} type="button" onClick={handleAddContactClick}>
+            <button
+              className={cx("contact")}
+              type="button"
+              onClick={handleAddContactClick}
+            >
               Thêm thông tin liên hệ <i class="fa-solid fa-circle-plus"></i>
             </button>
 
@@ -397,7 +409,7 @@ function CreateCampaign() {
             </button>
 
             {organizationContacts.map((organization, index) => (
-              <div key={index} className={cx("form" , "form-contact")}>
+              <div key={index} className={cx("form", "form-contact")}>
                 <input
                   type="text"
                   id={`organizationName-${index}`}

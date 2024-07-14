@@ -206,6 +206,12 @@
   z-index: 999; /* Phải nhỏ hơn z-index của modal */
 }
 
+.modal {
+  h2 {
+    color: #02a308;
+  }
+}
+
 .transaction-history {
   max-height: 600px; // Giới hạn chiều cao của container
   overflow-y: auto;  // Thêm thanh cuộn dọc nếu nội dung vượt quá chiều cao
@@ -221,6 +227,16 @@
 .transaction-history li {
   padding: 10px; // Thêm khoảng cách bên trong mỗi item
   border-bottom: 1px solid #ddd; // Đường viền dưới mỗi item
+  font-size: 20px;
+}
+
+.transaction-history li .name{
+  font-weight: 600;
+}
+
+.transaction-history li span{
+  font-weight: 600;
+  color: #02a308;
 }
 
 .transaction-history h3 {
@@ -362,6 +378,52 @@ opacity: 0.8;
     flex-direction: column;
     align-items: start;
   }
+
+  .quy {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 70%;
+    padding: 50px;
+  }
+  
+  .quy {
+    label {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 0px;
+      margin-top: 15px;
+    }
+  
+    input {
+      padding-left: 10px;
+      font-size: 18px;
+    }
+  
+    button {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  }
+  
+  .quy .img-qr {
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    margin-right: 0px;
+  
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  
+  .quy .transfer-form {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+  
 }
 
 @media screen and (max-width: 1199.8px) {
@@ -393,8 +455,32 @@ opacity: 0.8;
   .right {
     padding-left: 50px;
   }
+
+  .quy {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    padding: 50px;
+  }
+
+  .quy .transfer-form {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (max-width: 575.8px){
-  
+  .quy {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding: 30px;
+  }
+
+  .quy .transfer-form {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }

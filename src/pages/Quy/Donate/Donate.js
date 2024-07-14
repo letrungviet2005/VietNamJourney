@@ -224,7 +224,10 @@ function CoDonate() {
               return (
                 <li key={index}>
                   <div className={cx('name')}>{transaction['Mô tả'].split(' ').slice(2, transaction['Mô tả'].split(' ').indexOf('quyen')).join(' ')}</div>
-                  <div>Số tiền quyên góp: {transaction['Giá trị']} VND</div>
+                  <div>Số tiền quyên góp: <span>{parseInt(transaction["Giá trị"], 10).toLocaleString("vi-VN", {
+                    style: "currency",
+                    currency: "VND",
+                  })}</span></div>
                   <div>Mã giao dịch: {transaction['Mã GD']}</div>
                   <div>Thời gian giao dịch: {transaction['Ngày diễn ra']}</div>
                 </li>

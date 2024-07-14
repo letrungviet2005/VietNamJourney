@@ -10,8 +10,7 @@
 
 
 div.main {
-    width: 390px;
-    height: 453px;
+    width: 100%;
     flex-shrink: 0;
 
     border-radius: 10px;
@@ -24,18 +23,26 @@ div.main {
     align-items: center;
 }
 
+div.main div.post_div1 {
+    width: 80%;
+    padding-top: 30px;
+}
+
 
 div.main div.post_div1 img {
-    width: 285px;
-    height: 236px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
     flex-shrink: 0;
+    object-fit: cover;
 }
 
 
 div.main div.post_div2 {
-    width: 328px;
-    height: 142px;
+    width: 80%;
     flex-shrink: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
 
     display: flex;
     flex-direction: column;
@@ -79,16 +86,14 @@ div.main div.post_div2 div.info1 p {
 
 
 div.main div.post_div2 div.info2 {
-    width: 328px;
-    height: 75px;
+    width: 100%;
     flex-shrink: 0;
-
     padding-top: 7px;
 }
 
 
 div.main div.post_div2 div.info2 p {
-    width: 328px; 
+    width: 100%; 
 
     color: #1E266D;
     font-feature-settings: 'clig' off, 'liga' off;
@@ -101,8 +106,7 @@ div.main div.post_div2 div.info2 p {
 
 
 div.main div.post_div2 div.info3 {
-    width: 328px;
-    height: 40px;
+    width: 100%;
     flex-shrink: 0;
 
     display: flex;
@@ -117,7 +121,7 @@ div.main div.post_div2 div.info3 img {
 
 
 div.main div.post_div2 div.info3 p {
-    width: 292px; 
+    width: 100%; 
     margin-left: 4.2px;
     padding-top: 3px;
 
@@ -128,4 +132,257 @@ div.main div.post_div2 div.info3 p {
     font-style: normal;
     font-weight: 400;
     line-height: 130%; /* 24.7px */
+}
+
+
+@media screen and (max-width: 1500px) {
+
+    div.main div.post_div1 {
+        width: 80%;
+        padding-top: 30px;
+    }
+    
+    div.main div.post_div2 {
+        width: 80%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    
+    div.main div.post_div2 div.info1 {
+        width: 102px;
+        height: 27px;
+        border-radius: 30px;
+    }
+    
+    div.main div.post_div2 div.info1 img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    div.main div.post_div2 div.info1 p {
+        width: 76px; 
+        font-size: 14px;
+    }
+    
+    div.main div.post_div2 div.info2 {
+        padding-top: 7px;
+    }
+    
+    div.main div.post_div2 div.info2 p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    div.main div.post_div2 div.info3 img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    div.main div.post_div2 div.info3 p {
+        padding-top: 3px;
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+    
+}
+
+@media screen and (max-width: 1199.8px) {
+    div.main div.post_div1 {
+        width: 85%;
+        padding-top: 20px;
+    }
+    
+    div.main div.post_div2 {
+        width: 85%;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+    
+    
+    div.main div.post_div2 div.info1 {
+        width: 80px;
+        height: 22px;
+        border-radius: 30px;
+    }
+    
+    div.main div.post_div2 div.info1 img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    div.main div.post_div2 div.info1 p {
+        width: 76px; 
+        font-size: 12px;
+    }
+    
+    div.main div.post_div2 div.info2 {
+        padding-top: 7px;
+    }
+    
+    div.main div.post_div2 div.info2 p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    div.main div.post_div2 div.info3 img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    div.main div.post_div2 div.info3 p {
+        padding-top: 3px;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 991.8px) {
+    div.main div.post_div1 {
+        width: 90%;
+        padding-top: 20px;
+    }
+    
+    div.main div.post_div2 {
+        width:90%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    
+    
+    div.main div.post_div2 div.info1 {
+        width: 80px;
+        height: 22px;
+        border-radius: 30px;
+    }
+    
+    div.main div.post_div2 div.info1 img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    div.main div.post_div2 div.info1 p {
+        width: 76px; 
+        font-size: 12px;
+    }
+    
+    div.main div.post_div2 div.info2 {
+        padding-top: 7px;
+    }
+    
+    div.main div.post_div2 div.info2 p {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+    
+    div.main div.post_div2 div.info3 img {
+        width: 15px;
+        height: 15px;
+    }
+    
+    div.main div.post_div2 div.info3 p {
+        padding-top: 3px;
+        font-size: 10px;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 767.8px){
+    div.main div.post_div1 {
+        width: 80%;
+        padding-top: 30px;
+    }
+    
+    div.main div.post_div2 {
+        width: 80%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    
+    div.main div.post_div2 div.info1 {
+        width: 102px;
+        height: 27px;
+        border-radius: 30px;
+    }
+    
+    div.main div.post_div2 div.info1 img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    div.main div.post_div2 div.info1 p {
+        width: 76px; 
+        font-size: 14px;
+    }
+    
+    div.main div.post_div2 div.info2 {
+        padding-top: 7px;
+    }
+    
+    div.main div.post_div2 div.info2 p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    div.main div.post_div2 div.info3 img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    div.main div.post_div2 div.info3 p {
+        padding-top: 3px;
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 575.8px){
+    div.main div.post_div1 {
+        width: 80%;
+        padding-top: 30px;
+    }
+    
+    div.main div.post_div2 {
+        width: 80%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    
+    div.main div.post_div2 div.info1 {
+        width: 102px;
+        height: 27px;
+        border-radius: 30px;
+    }
+    
+    div.main div.post_div2 div.info1 img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    div.main div.post_div2 div.info1 p {
+        width: 76px; 
+        font-size: 14px;
+    }
+    
+    div.main div.post_div2 div.info2 {
+        padding-top: 7px;
+    }
+    
+    div.main div.post_div2 div.info2 p {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    div.main div.post_div2 div.info3 img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    div.main div.post_div2 div.info3 p {
+        padding-top: 3px;
+        font-size: 16px;
+        margin-bottom: 0;
+    }
 }

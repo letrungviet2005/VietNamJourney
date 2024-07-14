@@ -28,7 +28,7 @@ function CoCauChuyen() {
 
       <div className={styles.slide}>
         <Slider {...settings} className="row">
-          <div className="col-11">
+          <div className="col-12">
               <div className={styles.div2}>
                 <div className={styles.div_left}>
                   <img alt=">_<" src={nguoiphunu}></img>
@@ -66,7 +66,7 @@ function CoCauChuyen() {
               </div>
           </div>
   
-          <div className="col-11">
+          <div className="col-12">
               <div className={styles.div2}>
                 <div className={styles.div_left}>
                   <img alt=">_<" src={nguoiphunu}></img>
@@ -104,7 +104,7 @@ function CoCauChuyen() {
               </div>
           </div>
   
-          <div className="col-11">
+          <div className="col-12">
               <div className={styles.div2}>
                 <div className={styles.div_left}>
                   <img alt=">_<" src={nguoiphunu}></img>

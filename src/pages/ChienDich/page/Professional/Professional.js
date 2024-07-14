@@ -119,7 +119,7 @@ function Professional() {
 
   const handleRegisterSubmit = async () => {
     alert("Yêu cầu của bạn đã được gửi đến tổ chức thành công!");
-    navigate("/Trang chủ  ");
+    navigate("/TrangChu");
   };
 
   return (
@@ -143,7 +143,7 @@ function Professional() {
         >
           <p className="text-center mb-4"><b>Điền thông tin cá nhân của bạn</b></p>
           <div className="row">
-            <div className="col-6">
+            <div className={cx("col-xl-6", "col-lg-12")}>
               <div className="mb-3">
                 <input
                   type="text"
@@ -181,7 +181,7 @@ function Professional() {
                 />
               </div>
             </div>
-            <div className="col-6">
+            <div className={cx("col-xl-6", "col-lg-12")}>
               <div className="mb-3">
                 <input
                   type="email"
@@ -220,7 +220,7 @@ function Professional() {
               </div>
             </div>
 
-            <div className="col-6">
+            <div className={cx("col-xl-6", "col-lg-12")}>
               <div className="mb-3">
                 <label
                   htmlFor="frontImage"
@@ -245,7 +245,7 @@ function Professional() {
                 )}
               </div>
             </div>
-            <div className="col-6">
+            <div className={cx("col-xl-6", "col-lg-12")}>
               <div className="mb-3">
                 <label htmlFor="backImage" className={cx("custom-file-upload")}>
                   Chọn ảnh CCCD mặt sau
@@ -404,7 +404,8 @@ function Professional() {
         >
           <div
             className={cx(
-              "col-6",
+              "col-xl-6",
+              "col-lg-12",
               "d-flex",
               "justify-content-between",
               "buttons"

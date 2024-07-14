@@ -11,12 +11,11 @@
 
 
 div.main {
-    width: 650px;
-    height: 62.711px;
+    width: 100%;
     flex-shrink: 0;
 
     display: flex;
-    gap: 3.93px;
+    line-height: 100%;
 }
 
 
@@ -30,9 +29,86 @@ div.main p {
     font-size: 28px;
     font-style: normal;
     font-weight: 700;
-    line-height: 130%; /* 36.4px */
+    line-height: 100%; /* 36.4px */
+    margin-bottom: 0;
 }
 
+div.main img {
+    height: 50px;
+    width: auto;
+    aspect-ratio: 1/1;
+}
+
+
+@media screen and (max-width: 1500px) {
+    div.main {
+        width: 100%;
+    }
+    
+    
+    div.main p {
+        padding-top: 14px;
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 1199.8px) {
+    div.main {
+        width: 100%;
+    }
+    
+    
+    div.main p {
+        padding-top: 20px;
+        font-size: 18px;
+    }
+
+    div.main img {
+        height: 50px;
+        width: auto;
+        aspect-ratio: 1/1;
+    }
+}
+
+@media screen and (max-width: 991.8px) {
+    div.main {
+        width: 100%;
+    }
+    
+    
+    div.main p {
+        padding-top: 14px;
+        font-size: 24px;
+    }
+
+    div.main img {
+        height: 50px;
+        width: auto;
+        aspect-ratio: 1/1;
+    }
+}
+
+@media screen and (max-width: 767.8px){
+  
+}
+
+@media screen and (max-width: 575.8px){
+    div.main {
+        width: 100%;
+    }
+    
+    
+    div.main p {
+        padding-top: 16px;
+        font-size: 18px;
+    }
+
+    div.main img {
+        height: 50px;
+        width: auto;
+        aspect-ratio: 1/1;
+    }
+}
 
 
 

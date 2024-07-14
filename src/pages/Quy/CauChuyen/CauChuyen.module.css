@@ -16,10 +16,7 @@
 
 div.main {
     width: 100%;
-    height: 900px;
-    flex-shrink: 0;
-
-    padding-left: 50px;
+    padding: 50px 80px;
 
     background-color: white;
 
@@ -31,7 +28,6 @@ div.main {
 
 div.main div.div1 {
     /* width: 100%; */
-    height: 78px;
     flex-shrink: 0;
 
     /* border: 1px solid red; */
@@ -46,13 +42,16 @@ div.main div.div1 p {
     font-style: normal;
     font-weight: 700;
     line-height: 130%; /* 53.3px */
-    margin-left: 200px;
+    margin-left: 150px;
+}
+
+div.slide {
+    padding: 0 150px 0 150px;
 }
 
 
 div.main div.div2 {
-    width: 1434px;
-    height: 684px;
+    width: 100%;
     flex-shrink: 0;
 
     display: flex;
@@ -61,17 +60,23 @@ div.main div.div2 {
     /* border: 1px solid red; */
 }
 
+div.main div.div2 div.div_left {
+    width: 40%;
+}
+
 
 div.main div.div2 div.div_left img {
-    width: 584px;
-    height: 674px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     flex-shrink: 0;
 }
 
 
 div.main div.div2 div.div_right {
-    width: 791.053px;
-    height: 684px;
+    width: 60%;
+    padding-left: 100px;
+    padding-right: 30px;
     flex-shrink: 0;
 
     display: flex;
@@ -83,17 +88,17 @@ div.main div.div2 div.div_right {
 
 
 div.main div.div2 div.div_right div.top {
-    width: 791.053px;
-    height: 169px;
+    width:  100%;
     flex-shrink: 0;
 
     display: flex;
     justify-content: space-between;
+    margin-bottom: 100px;
 }
 
 
 div.main div.div2 div.div_right div.top div.part1 {
-    width: 191.053px;
+    width: 30%;
     height: 67px;
     flex-shrink: 0;
 
@@ -104,7 +109,7 @@ div.main div.div2 div.div_right div.top div.part1 {
 
 
 div.main div.div2 div.div_right div.top div.part1 div.line1 {
-    width: 76.105px;
+    width: 70%;
     height: 6px;
 
     margin-bottom: 5px;
@@ -126,7 +131,8 @@ div.main div.div2 div.div_right div.top div.part1 p {
 
 
 div.main div.div2 div.div_right div.top p.top_p1 {
-    width: 510px; 
+    width: 70%;
+    text-align: justify; 
 
     color: #000;
     font-feature-settings: 'clig' off, 'liga' off;
@@ -139,8 +145,7 @@ div.main div.div2 div.div_right div.top p.top_p1 {
 
 
 div.main div.div2 div.div_right div.mid {
-    width: 683px;
-    height: 345px;
+    width: 100%;
     flex-shrink: 0;
 
     display: flex;
@@ -157,8 +162,8 @@ div.main div.div2 div.div_right div.mid img {
 
 
 div.main div.div2 div.div_right div.mid p.mid_p1 {
-    width: 683px; 
-
+    width: 100%; 
+    text-align: justify;
     color: #000;
     font-feature-settings: 'clig' off, 'liga' off;
     font-family: Montserrat;
@@ -170,7 +175,7 @@ div.main div.div2 div.div_right div.mid p.mid_p1 {
 
 
 div.main div.div2 div.div_right div.mid p.mid_p2 {
-    width: 553px; 
+    width: 100%; 
 
     color: #000;
     font-feature-settings: 'clig' off, 'liga' off;
@@ -181,56 +186,407 @@ div.main div.div2 div.div_right div.mid p.mid_p2 {
     line-height: 130%; /* 27.3px */
 }
 
+@media screen and (max-width: 1500px) {
+    div.main {
+        width: 100%;
+    }
 
-div.main div.div2 div.div_right div.bot {
-    width: 433px;
-    height: 35px;
-    flex-shrink: 0;
+    div.main div.div1 p {
+        font-size: 40px;
+        margin-left: 50px;
+    }
+    
+    div.slide {
+        padding: 0 50px 0 50px;
+    }
+    
+    div.main div.div2 {
+        width: 100%;
+    }
+    
+    div.main div.div2 div.div_left {
+        width: 40%;
+    }
+    
+    div.main div.div2 div.div_left img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    div.main div.div2 div.div_right {
+        width: 60%;
+        padding-left: 80px;
+        
+    }
+    
+    div.main div.div2 div.div_right div.top {
+        width:  100%;
+        margin-bottom: 100px;
+    }
+    
+    div.main div.div2 div.div_right div.top div.part1 {
+        width: 30%;
+        height: 67px;
+    }
+    
+    
+    div.main div.div2 div.div_right div.top div.part1 div.line1 {
+        width: 70%;
+        height: 6px;
+        margin-bottom: 5px;
+    }
+    
+    div.main div.div2 div.div_right div.top div.part1 p {
+        font-size: 36px;
+    }
+    
+    div.main div.div2 div.div_right div.top p.top_p1 {
+        width: 70%;
+        font-size: 26px;
+    }
+    
+    div.main div.div2 div.div_right div.mid {
+        width: 100%;
+    }
+    
+    div.main div.div2 div.div_right div.mid img {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+    
+    div.main div.div2 div.div_right div.mid p.mid_p1 {
+        width: 100%; 
+        font-size: 26px;
+    }
+        
+    div.main div.div2 div.div_right div.mid p.mid_p2 {
+        width: 100%; 
+        font-size: 21px;
+    }
+}
 
-    align-self: flex-end;
+@media screen and (max-width: 1199.8px) {
+    div.main {
+        width: 100%;
+        padding: 50px 50px;
+    }
 
-    display: flex;
+    div.main div.div1 p {
+        font-size: 40px;
+        margin-left: 50px;
+    }
+    
+    div.slide {
+        padding: 0 50px 0 50px;
+    }
+    
+    div.main div.div2 {
+        width: 100%;
+    }
+    
+    div.main div.div2 div.div_left {
+        width: 40%;
+    }
+    
+    div.main div.div2 div.div_left img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    div.main div.div2 div.div_right {
+        width: 60%;
+        padding-left: 50px;
+    }
+    
+    div.main div.div2 div.div_right div.top {
+        width:  100%;
+        margin-bottom: 50px;
+    }
+    
+    div.main div.div2 div.div_right div.top div.part1 {
+        width: 30%;
+        height: 50px;
+    }
+    
+    
+    div.main div.div2 div.div_right div.top div.part1 div.line1 {
+        width: 70%;
+        height: 4px;
+        margin-bottom: 5px;
+    }
+    
+    div.main div.div2 div.div_right div.top div.part1 p {
+        font-size: 30px;
+    }
+    
+    div.main div.div2 div.div_right div.top p.top_p1 {
+        width: 70%;
+        font-size: 22px;
+    }
+    
+    div.main div.div2 div.div_right div.mid {
+        width: 100%;
+    }
+    
+    div.main div.div2 div.div_right div.mid img {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+    }
+    
+    div.main div.div2 div.div_right div.mid p.mid_p1 {
+        width: 100%; 
+        font-size: 20px;
+    }
+        
+    div.main div.div2 div.div_right div.mid p.mid_p2 {
+        width: 100%; 
+        font-size: 16px;
+    }
+}
 
-    /* border: 1px solid salmon; */
+@media screen and (max-width: 991.8px) {
+    div.main {
+        width: 100%;
+        padding: 50px 50px;
+    }
+
+    div.main div.div1 p {
+        font-size: 30px;
+        margin-left: 0px;
+    }
+    
+    div.slide {
+        padding: 0;
+    }
+    
+    div.main div.div2 {
+        width: 100%;
+    }
+    
+    div.main div.div2 div.div_left {
+        width: 40%;
+    }
+    
+    div.main div.div2 div.div_left img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    div.main div.div2 div.div_right {
+        width: 60%;
+        padding-left: 30px;
+    }
+    
+    div.main div.div2 div.div_right div.top {
+        width:  100%;
+        margin-bottom: 30px;
+    }
+    
+    div.main div.div2 div.div_right div.top div.part1 {
+        width: 30%;
+    }
+    
+    
+    div.main div.div2 div.div_right div.top div.part1 div.line1 {
+        width: 70%;
+        height: 4px;
+        margin-bottom: 5px;
+    }
+    
+    div.main div.div2 div.div_right div.top div.part1 p {
+        font-size: 24px;
+    }
+    
+    div.main div.div2 div.div_right div.top p.top_p1 {
+        width: 70%;
+        font-size: 18px;
+    }
+    
+    div.main div.div2 div.div_right div.mid {
+        width: 100%;
+    }
+    
+    div.main div.div2 div.div_right div.mid img {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+    
+    div.main div.div2 div.div_right div.mid p.mid_p1 {
+        width: 100%; 
+        font-size: 16px;
+    }
+        
+    div.main div.div2 div.div_right div.mid p.mid_p2 {
+        width: 100%; 
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 767.8px){
+    div.main {
+        width: 100%;
+        padding: 50px 50px;
+    }
+
+    div.main div.div1 p {
+        font-size: 22px;
+        margin-left: 0px;
+    }
+    
+    div.slide {
+        padding: 0;
+    }
+    
+    div.main div.div2 {
+        width: 100%;
+    }
+    
+    div.main div.div2 div.div_left {
+        width: 40%;
+        display: none;
+    }
+    
+    div.main div.div2 div.div_left img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    div.main div.div2 div.div_right {
+        width: 100%;
+        padding-left: 30px;
+    }
+    
+    div.main div.div2 div.div_right div.top {
+        width:  100%;
+        margin-bottom: 30px;
+    }
+    
+    div.main div.div2 div.div_right div.top div.part1 {
+        width: 30%;
+    }
+    
+    
+    div.main div.div2 div.div_right div.top div.part1 div.line1 {
+        width: 70%;
+        height: 4px;
+        margin-bottom: 5px;
+    }
+    
+    div.main div.div2 div.div_right div.top div.part1 p {
+        font-size: 24px;
+    }
+    
+    div.main div.div2 div.div_right div.top p.top_p1 {
+        width: 70%;
+        font-size: 18px;
+    }
+    
+    div.main div.div2 div.div_right div.mid {
+        width: 100%;
+    }
+    
+    div.main div.div2 div.div_right div.mid img {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+    
+    div.main div.div2 div.div_right div.mid p.mid_p1 {
+        width: 100%; 
+        font-size: 16px;
+    }
+        
+    div.main div.div2 div.div_right div.mid p.mid_p2 {
+        width: 100%; 
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 575.8px){
+    div.main {
+        width: 100%;
+        padding: 50px 40px;
+    }
+
+    div.main div.div1 p {
+        font-size: 16px;
+        margin-left: 0px;
+    }
+    
+    div.slide {
+        padding: 0;
+    }
+    
+    div.main div.div2 {
+        width: 100%;
+    }
+    
+    div.main div.div2 div.div_left {
+        width: 40%;
+        display: none;
+    }
+    
+    div.main div.div2 div.div_left img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    div.main div.div2 div.div_right {
+        width: 100%;
+        padding-left: 0px;
+    }
+    
+    div.main div.div2 div.div_right div.top {
+        width:  100%;
+        margin-bottom: 30px;
+    }
+    
+    div.main div.div2 div.div_right div.top div.part1 {
+        width: 30%;
+    }
+    
+    
+    div.main div.div2 div.div_right div.top div.part1 div.line1 {
+        width: 70%;
+        height: 4px;
+        margin-bottom: 5px;
+    }
+    
+    div.main div.div2 div.div_right div.top div.part1 p {
+        font-size: 20px;
+    }
+    
+    div.main div.div2 div.div_right div.top p.top_p1 {
+        width: 70%;
+        font-size: 16px;
+    }
+    
+    div.main div.div2 div.div_right div.mid {
+        width: 100%;
+    }
+    
+    div.main div.div2 div.div_right div.mid img {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+    }
+    
+    div.main div.div2 div.div_right div.mid p.mid_p1 {
+        width: 100%; 
+        font-size: 14px;
+    }
+        
+    div.main div.div2 div.div_right div.mid p.mid_p2 {
+        width: 100%; 
+        font-size: 12px;
+    }
 }
 
 
-div.main div.div2 div.div_right div.bot p {
-    color: #000;
-    text-align: center;
-    font-feature-settings: 'clig' off, 'liga' off;
-    font-family: Montserrat;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 130%; /* 23.4px */
-}
 
-
-div.main div.div2 div.div_right div.bot img {
-    width: 35px;
-    height: 35px;
-    flex-shrink: 0;
-
-    margin-left: 5px;
-    margin-top: -5px;
-}
-
-
-div.main div.div3 {
-    width: 106px;
-    height: 41px;
-    flex-shrink: 0;
-
-    margin-top: 31px;
-
-    align-self: center;
-}
-
-
-div.slide {
-    padding: 0 150px 0 200px;
-}
 
 
 
