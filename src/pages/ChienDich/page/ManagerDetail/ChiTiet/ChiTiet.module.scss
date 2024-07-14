@@ -29,6 +29,369 @@
 }
 
 .left .inner-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #001273;
+  margin-bottom: 5px;
+}
+
+.left .desc {
+  font-size: 20px;
+  font-weight: 600;
+  color: #737373;
+  margin-bottom: 30px;  
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #35973F;
+  margin-bottom: 20px;
+}
+
+.right .register {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 30px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.right .register .button {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  background-color: #1A931F;
+}
+
+.right .desc {
+  font-size: 23px;
+  font-weight: 600;
+  color: #4F4F4F;
+  font-family: 'montserrat', sans-serif;
+  line-height: 200%;
+}
+
+.plan-row {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.plan-row .desc {
+  color: black;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: justify;
+    font-family: 'montserrat', sans-serif;
+}
+
+.button-history {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  background-color: #1A931F;
+  margin-top: 20px;
+}
+
+.quy {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #DFEFE5;
+  padding: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 20px;
+}
+.quy .title {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.quy {
+  label {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-top: 15px;
+  }
+
+  input {
+    width: 100%;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: black;
+
+    &:focus-visible {
+      outline: none;
+      border: 1px solid #5fa967;
+      box-shadow: none;
+    }
+  }
+
+  button {
+    padding: 5px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background-color: #1A931F;
+    margin-top: 20px;
+  }
+}
+
+.button {
+  text-align: center;
+}
+
+
+.quy-row {
+  padding: 0 50px;
+}
+
+.quy .img-qr {
+  width: 40%;
+  height: 400px;
+  text-align: center;
+  margin-right: 50px;
+
+  img {
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.quy .transfer-form {
+  width: 50%;
+}
+
+.line {
+  border: 1px solid #e3e3e3;
+  width: calc(100% - 100px);
+  margin-left: 50px;
+  margin-top: 30px;
+}
+
+.modal, .modal-history, .modal-register {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.overlay, .overlay-history {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Phải nhỏ hơn z-index của modal */
+}
+
+.modal {
+  h2 {
+    color: #02a308;
+  }
+}
+
+.transaction-history {
+  max-height: 600px; // Giới hạn chiều cao của container
+  overflow-y: auto;  // Thêm thanh cuộn dọc nếu nội dung vượt quá chiều cao
+  padding-right: 10px; // Tạo khoảng trống để tránh nội dung bị che bởi thanh cuộn
+  margin-bottom: 20px; // Thêm khoảng cách dưới để tạo không gian giữa các thành phần khác
+}
+
+.transaction-history ul {
+  list-style-type: none; // Loại bỏ ký hiệu trước các item trong danh sách
+  padding: 0; // Loại bỏ padding mặc định của ul
+}
+
+.transaction-history li {
+  padding: 10px; // Thêm khoảng cách bên trong mỗi item
+  border-bottom: 1px solid #ddd; // Đường viền dưới mỗi item
+  font-size: 20px;
+}
+
+.transaction-history li .name{
+  font-weight: 600;
+}
+
+.transaction-history li span{
+  font-weight: 600;
+  color: #02a308;
+}
+
+.transaction-history h3 {
+  margin-bottom: 10px; // Khoảng cách giữa tiêu đề và danh sách
+}
+
+
+#signUpForm {
+  width: 600px;
+  background-color: #ffffff;
+  // margin: 40px auto;
+  padding: 40px;
+  // box-shadow: 0px 6px 18px rgb(0 0 0 / 9%);
+  border-radius: 12px;
+}
+#signUpForm .form-header {
+  gap: 5px;
+  text-align: center;
+  font-size: .9em;
+}
+#signUpForm .form-header .stepIndicator {
+  position: relative;
+  flex: 1;
+  padding-bottom: 30px;
+}
+#signUpForm .form-header .stepIndicator.active {
+  font-weight: 600;
+}
+#signUpForm .form-header .stepIndicator.finish {
+  font-weight: 600;
+  color: #02a308;
+}
+#signUpForm .form-header .stepIndicator::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 9;
+  width: 20px;
+  height: 20px;
+  background-color: #d5efed;
+  border-radius: 50%;
+  border: 3px solid #ecf5f4;
+}
+#signUpForm .form-header .stepIndicator.active::before {
+  background-color: #79fd7b;
+  border: 3px solid #d5f9f6;
+}
+#signUpForm .form-header .stepIndicator.finish::before {
+  background-color: #02a308;
+  border: 3px solid #aeffb0;
+}
+#signUpForm .form-header .stepIndicator::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 100%;
+  height: 3px;
+  background-color: #f3f3f3;
+}
+#signUpForm .form-header .stepIndicator.active::after {
+  background-color: #8ffc91;
+}
+#signUpForm .form-header .stepIndicator.finish::after {
+  background-color: #02a308;
+}
+#signUpForm .form-header .stepIndicator:last-child:after {
+  display: none;
+}
+#signUpForm input {
+  padding: 15px 20px;
+  width: 100%;
+  font-size: 1em;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+}
+#signUpForm textarea {
+  padding: 15px 20px;
+  width: 100%;
+  height: 340px;
+  font-size: 1em;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+}
+#signUpForm input, #signUpForm textarea:focus {
+  border: 1px solid #02a308;
+  outline: 0;
+}
+#signUpForm input.invalid, #signUpForm textarea.invalid {
+  border: 1px solid #ffaba5;
+}
+#signUpForm .step {
+display: none;
+}
+#signUpForm .form-footer{
+  overflow:auto;
+  gap: 20px;
+}
+#signUpForm .form-footer button{
+  background-color: #02a308;
+  border: 1px solid #02a308 !important;
+  color: #ffffff;
+  border: none;
+  padding: 13px 30px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  flex: 1;
+  margin-top: 5px;
+}
+#signUpForm .form-footer button:hover {
+opacity: 0.8;
+}
+
+#signUpForm .form-footer #prevBtn {
+  background-color: #fff;
+  color: #02a308;
+}
+
+
+
+@media screen and (max-width: 1600px) {
+.ChiTiet {
+  width: calc(100% - 200px);
+  margin-left: 100px;
+  margin-top: 40px;
+  background-color: white;
+
+  hr {
+    width: 100px;
+    border: 2px solid #35973F;
+    opacity: 1;
+    margin-bottom: 10px;
+    margin-top: 40px;
+  }
+
+  pre {
+    white-space: pre-wrap; // Giữ nguyên ngắt dòng và cho phép ngắt dòng tự động
+    word-wrap: break-word; // Tự động ngắt dòng khi từ quá dài
+  }
+}
+
+.left {
+  padding-left: 50px;
+}
+
+.left .time {
+  margin-left: 10px;
+  border-left: 3px solid #001273;
+  padding-left: 40px;
+}
+
+.left .inner-title {
   font-size: 18px;
   font-weight: 700;
   color: #001273;
@@ -206,6 +569,12 @@
   z-index: 999; /* Phải nhỏ hơn z-index của modal */
 }
 
+.modal {
+  h2 {
+    color: #02a308;
+  }
+}
+
 .transaction-history {
   max-height: 600px; // Giới hạn chiều cao của container
   overflow-y: auto;  // Thêm thanh cuộn dọc nếu nội dung vượt quá chiều cao
@@ -221,6 +590,16 @@
 .transaction-history li {
   padding: 10px; // Thêm khoảng cách bên trong mỗi item
   border-bottom: 1px solid #ddd; // Đường viền dưới mỗi item
+  font-size: 20px;
+}
+
+.transaction-history li .name{
+  font-weight: 600;
+}
+
+.transaction-history li span{
+  font-weight: 600;
+  color: #02a308;
 }
 
 .transaction-history h3 {
@@ -341,18 +720,7 @@ opacity: 0.8;
   background-color: #fff;
   color: #02a308;
 }
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 

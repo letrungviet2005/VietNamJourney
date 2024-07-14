@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { getCookie, useCheckCookie } from "../../../../Cookie/getCookie";
+import { Spin } from 'antd';
 
 const cx = classNames.bind(style);
 
@@ -41,7 +42,11 @@ function Manager() {
 
   // Xử lý trạng thái tải dữ liệu
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className={cx('centeredSpin')}>
+        <Spin size="large" />
+      </div>
+    );
   }
 
   // Xử lý lỗi

@@ -149,3 +149,16 @@ button.edit {
 .status.da-ket-thuc {
   background-color: #AD3D3D;
 }
+
+.centeredSpin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Để đảm bảo Spin nằm giữa màn hình
+  .ant-spin-dot {
+    font-size: 40px; // Tăng kích thước Spin nếu cần
+    .ant-spin-dot-item {
+      background-color: #1cef09; // Đổi màu cho Spin
+    }
+  }
+}

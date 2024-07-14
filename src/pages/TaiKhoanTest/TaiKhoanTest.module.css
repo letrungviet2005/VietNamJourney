@@ -10,7 +10,6 @@
   position: relative;
 
   input[type="email"], input[type="password"], input[type="text"] {
-<<<<<<< HEAD
     width: 100%;
     background: transparent;
     border: none;
@@ -23,18 +22,6 @@
   input:focus~label, input:valid~label {
     top: -5px;
   }
-=======
-  width: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  padding-right: 28px;
-  color: white;
-}input:focus~label, input:valid~label {
-  top: -5px;
-}
->>>>>>> 0ffb888042571fac18bb15646ed2a3d6dd95d054
 }
 
 .background::before {
